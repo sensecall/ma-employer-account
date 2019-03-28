@@ -1,53 +1,134 @@
 
-{% extends "layout.html" %}
+{% extends "./layout.html" %}
 
 {% block pageTitle %}
 GOV.UK Prototype Kit
 {% endblock %}
 
+
+{% block main %}
+<div class="app-account-header">
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <p class="govuk-body-l govuk-!-margin-bottom-0">
+          Your employer account
+        </p>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">
+          AZ Enterprises Ltd
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    {{ govukPanel({
-      titleText: "Welcome to your account",
-      headingLevel: "2",
-      html: "",
-      classes: "govuk-panel--info govuk-!-margin-bottom-8"
-    }) }}
+<div class="app-account-main">
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-fifths">
+        <div class="app-cta-box app-cta-box--main">
+          <h2 class="app-cta-box__heading">
+            Get government funding
+          </h2>
+
+          <p>
+            Lorem ipsum ex cillum id mollit labore aliquip labore incididunt dolore labore anim minim duis in officia proident consequat minim laborum ad amet proident.
+          </p>
+
+          <p>
+            <a href="#">
+              Get funding now
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="govuk-grid-column-two-fifths">
+        <div class="app-cta-box">
+          <h2 class="app-cta-box__heading">
+            ABC Training Ltd
+            <span class="govuk-caption-m">
+              UKPRN: 1000000
+            </span>
+          </h2>
+
+          <p>
+            Labore cupidatat eu ex dolore deserunt qui pariatur aliquip ut cupidatat sit in sunt eu commodo reprehenderit qui in ut in in aliqua.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-fifths">
+        <div class="app-cta-box">
+          <h2 class="app-cta-box__heading">
+            Your saved apprenticeships and training providers
+          </h2>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <p>
+                <span class="govuk-!-font-size-48 govuk-!-font-weight-bold">
+                  12
+                </span>
+                <br>
+                <span class="govuk-!-font-size-16">
+                  Saved apprenticeships
+                </span>
+              </p>
+            </div>
+
+            <div class="govuk-grid-column-one-half">
+              <p>
+                <span class="govuk-!-font-size-48 govuk-!-font-weight-bold">
+                  5
+                </span>
+                <br>
+                <span class="govuk-!-font-size-16">
+                  Saved training providers
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <p>
+            <a href="#">Back to preferences</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="govuk-grid-column-two-fifths">
+        <div class="app-cta-box">
+          <h2 class="app-cta-box__heading">
+            Your account settings
+          </h2>
+
+          <ul class="govuk-list">
+            <li>
+              <a href="#">Link 1</a>
+            </li>
+            <li>
+              <a href="#">Link 2</a>
+            </li>
+            <li>
+              <a href="#">Link 3</a>
+            </li>
+            <li>
+              <a href="#">Link 4</a>
+            </li>
+            <li>
+              <a href="#">Link 5</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>    
   </div>
 </div>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      AZ Enterprises Ltd
-    </h1>{{releaseVersion | log }}
-    <p>
-      This kit lets you rapidly create HTML prototypes of GOV.UK services.
-    </p>
+{% endblock %}
 
-    <p>
-      It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-    </p>
-
-    <h2 class="govuk-heading-m">Your apprentices</h2>
-
-    <p>We recommend you add links to your prototype to this page, rather than delete it.
-    You'll find this page in the kit at '/app/views/index.html'.</p>
-
-    <p>You can change the service name by editing the file '/app/config.js'.</p>
-
-    <h2 class="govuk-heading-m">Examples and documentation</h2>
-
-    <ul class="govuk-list govuk-list--bullet">
-      <li><a href="/docs/tutorials-and-examples">Example pages and documentation</a></li>
-      <li>
-        <a href="https://design-system.service.gov.uk">
-          GOV.UK Design System
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
 
 {% endblock %}
