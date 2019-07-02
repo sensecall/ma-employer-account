@@ -71,13 +71,14 @@
 }
 
 .das-dashboard-header__tasks-link--active {  
-  &, &:link {
+  &, &:link, &:visited {
     color: govuk-colour('black');
     background-color: #fff;
     background-image: url('data:image/svg+xml;utf8,#{$icon-arrow-up--black}');
   }
 
   &:focus {
+    color: govuk-colour('black');
     background-color: #fff;
   }
 
