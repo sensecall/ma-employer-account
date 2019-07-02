@@ -39,9 +39,13 @@
   {% include "includes/ma-header.html" %}
 {% endblock %}
 
-{% block content %}
-{% block searchArea %}
-{% endblock %}
+{% set mainClasses = "das-section--dashboard" %}
+
+{% block accountHeader %}{% endblock %}
+{% block searchArea %}{% endblock %}
+
+{% block main %}
+{% block content %}{% endblock %}
 {% endblock %}
 
 {% if useAutoStoreData %}
