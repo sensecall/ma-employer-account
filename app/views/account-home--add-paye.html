@@ -1,2 +1,51 @@
 {% extends "./layout--ma__account-home.html" %}
 
+{% block searchArea %}
+{% endblock %}
+
+{% block panelTopLeft %}
+<div class="das-panel das-panel--featured">
+	<h3 class="das-panel__heading">
+		You’ve successfully registered your account
+	</h3>
+
+	<p>
+		Add your organisation’s PAYE scheme and sign your employer agreement with the Education and Skills Funding Agency to get funding for apprenticeship training.
+	</p>
+
+	<p>
+		<a href="#">
+			Add your PAYE scheme
+		</a>
+	</p>
+</div>
+{% endblock %}
+
+{% block panelBottomLeft %}
+<div class="das-panel">
+	<h3 class="das-panel__heading">
+		Financial transactions
+	</h3>
+	
+	<p>
+		View your transactions here once your account is set up.
+	</p>
+</div>
+{% endblock %}
+
+{% block panelTopRight %}
+<div class="das-panel">
+	<h3 class="das-panel__heading">Training provider permissions</h3>
+	<p>Control what tasks you would like your training provider to do on your behalf.</p>
+	<p><a href="#" class="govuk-link govuk-link--no-visited-state">Set permissions</a> </p>
+</div>
+{% endblock %}
+
+{% block panelBottomRight %}
+<div class="das-panel">
+	<h3 class="das-panel__heading">Recruitment</h3>
+	<p>Recruit an apprentice by creating a vacancy. This vacancy will be advertised on Find an apprenticeship.</p>
+	<p><a href="#" class="govuk-link govuk-link--no-visited-state">Create vacancy</a> </p>
+	<p><a href="#" class="govuk-link govuk-link--no-visited-state">Manage your vacancy</a> </p>
+</div>
+{% endblock %}
