@@ -51,57 +51,19 @@ GOV.UK Prototype Kit
 	<div class="govuk-width-container">
 		<div class="das-panels">
 			<div class="das-panels__col das-panels__col--primary">
-				<div class="das-panel">
-					<h3 class="govuk-heading-xl">Your apprentices</h3>
-					<p>Add apprentices, update details of existing apprentices and authorise payments to training providers.</p>
-					<table class="govuk-table" style="width: 80%; line-height: 30px">
-						<tbody class="govuk-table__body">
-							<tr class="govuk-table__row">
-								<td><strong>15</strong> live apprentices</td>
-								<td class="govuk-table__cell--numeric"><a href="#" class="govuk-link govuk-link--no-visited-state">View</a></td>
-							</tr>
-							<tr class="govuk-table__row">
-								<td><strong>2</strong> apprentices paused</td>
-								<td class="govuk-table__cell--numeric"><a href="#" class="govuk-link govuk-link--no-visited-state">View</a></td>
-							</tr>
-							<tr class="govuk-table__row">
-								<td><strong>2</strong> apprentice details to approve</td>
-								<td class="govuk-table__cell--numeric"><a href="#" class="govuk-link govuk-link--no-visited-state">View</a></td>
-							</tr>
-							<tr class="govuk-table__row">
-								<td><strong>4</strong> apprentice changes to review</td>
-								<td class="govuk-table__cell--numeric"><a href="#" class="govuk-link govuk-link--no-visited-state">View</a></td>
-							</tr>
-						</tbody>
-					</table>
+				{% block panelTopLeft %}
+				{% endblock %}
 
-					<!-- <p><a href="#" class="das-panel__link govuk-link--no-visited-state">Review and approve</a> </p> -->
-				</div>
-				<div class="das-panel">
-					<h3 class="das-panel__heading" style="padding-bottom: 10px">Current levy funds</h3>
-					<div style="background: #E5E5E5; padding: 15px;">
-						<h2 class="govuk-heading-l" style="margin: 0">
-							£150,500.00
-						</h2>
-						<p style="margin: 0">
-							<strong>£3,500.00</strong> could expire on <strong>18/05/2019</strong>
-						</p>
-					</div>
-					<p><a href="#" class="govuk-link govuk-link--no-visited-state">View transactions</a> </p>
-				</div>
+				{% block panelBottomLeft %}
+				{% endblock %}
 			</div>
+
 			<div class="das-panels__col das-panels__col--secondary">
-				<div class="das-panel">
-					<h3 class="das-panel__heading">Training provider permissions</h3>
-					<p>Control what tasks you would like your training provider to do on your behalf.</p>
-					<p><a href="#" class="govuk-link govuk-link--no-visited-state">Set permissions</a> </p>
-				</div>
-				<div class="das-panel">
-					<h3 class="das-panel__heading">Recruitment</h3>
-					<p>Recruit an apprentice by creating a vacancy. This vacancy will be advertised on Find an apprenticeship.</p>
-					<p><a href="#" class="govuk-link govuk-link--no-visited-state">Create vacancy</a> </p>
-					<p><a href="#" class="govuk-link govuk-link--no-visited-state">Manage your vacancy</a> </p>
-				</div>
+				{% block panelTopRight %}
+				{% endblock %}
+
+				{% block panelBottomRight %}
+				{% endblock %}
 			</div>
 		</div>
 	</div>
@@ -111,7 +73,6 @@ GOV.UK Prototype Kit
 	<div class="govuk-width-container das-section__inner-wrap" tabindex="-1">
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-two-thirds">
-
 				<section class="das-section-dashboard">
 					<h2 class="das-section__heading govuk-heading-l">Apprenticeships</h2>
 					<p class="das-section__description">Manage your apprentices, recruit apprentice and set training provider permissions.</p>
@@ -169,26 +130,22 @@ GOV.UK Prototype Kit
 						</div>
 					</div>
 				</section>
-
-
 			</div>
+
 			<div class="govuk-grid-column-one-third">
-
-
 				<div class="govuk-tabs" data-module="tabs">
-
 					<ul class="govuk-tabs__list" role="tablist">
 						<li class="govuk-tabs__list-item" role="presentation">
 							<a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#tab-tasks" id="tab_tab-tasks" role="tab" aria-controls="tab-tasks" tabindex="0" aria-selected="true">
 								Tasks
 							</a>
 						</li>
+
 						<li class="govuk-tabs__list-item" role="presentation">
 							<a class="govuk-tabs__tab" href="#tab-activity" id="tab_tab-activity" role="tab" aria-controls="tab-activity" tabindex="-1" aria-selected="false">
 								Activity
 							</a>
 						</li>
-
 					</ul>
 
 					<section class="govuk-tabs__panel" id="tab-tasks" role="tabpanel" aria-labelledby="tab_tab-tasks">
@@ -203,16 +160,65 @@ GOV.UK Prototype Kit
 								</form>
 							</li>
 						</ul>
-
-
 					</section>
+
 					<section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab-activity" role="tabpanel" aria-labelledby="tab_tab-activity">
+						<ol id="item-list">
+							<li class="item">
+								<div class="item-label">28th Mar 2019</div>
+								<div class="item-description">Raina Nisar joined</div>
+							</li>
 
-						<ol id="item-list"><li class="item"><div class="item-label">28th Mar 2019</div><div class="item-description">Raina Nisar joined</div></li><li class="item"><div class="item-label">28th Mar 2019</div><div class="item-description">raina nisar invited by Sultan Mahmood</div></li><li class="item"><div class="item-label">25th Mar 2019</div><div class="item-description">2 users joined</div></li><li class="item"><div class="item-label">25th Mar 2019</div><div class="item-description">2 users invited</div></li><li class="item all-activity"><div class="item-label"><a href="/accounts/84VBNV/activity">See all activity</a></div></li></ol>
+							<li class="item"><div class="item-label">28th Mar 2019</div>
+								<div class="item-description">raina nisar invited by Sultan Mahmood</div>
+							</li>
+
+							<li class="item">
+								<div class="item-label">25th Mar 2019</div>
+								<div class="item-description">2 users joined</div>
+							</li>
+
+							<li class="item">
+								<div class="item-label">25th Mar 2019</div>
+								<div class="item-description">2 users invited</div>
+							</li>
+							<li class="item all-activity">
+								<div class="item-label">
+									<a href="/accounts/84VBNV/activity">See all activity</a>
+								</div>
+							</li>
+						</ol>
 					</section>
-
 				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
+<section class="das-section das-section--main das-dashboard-footer" aria-labelledby="more-title">
+	<div class="govuk-width-container">
+		<div class="govuk-grid-row">
+			<hr class="das-section-break das-section-break--l das-section-break--heavy das-section-break--gutters">
+			<div class="das-dashboard-footer__column das-dashboard-footer__column--title">
+				<h2 id="more-title" class="das-dashboard-footer__title">More on the Apprenticeships Service</h2>
+			</div>
+			<div class="das-dashboard-footer__column">
+				<h3 class="govuk-heading-m das-dashboard-footer__sub-title">Most active</h3>
+				<ul class="govuk-list das-list--featured">
+					<li><a href="#" class="govuk-link govuk-link--no-visited-state">Add an apprentice</a></li>
+					<li><a href="#" class="govuk-link govuk-link--no-visited-state">Manage your apprentices</a></li>
+					<li><a href="#" class="govuk-link govuk-link--no-visited-state">Add a new training provider</a></li>
+					<li><a href="#" class="govuk-link govuk-link--no-visited-state">Add a new organisation</a></li>
+					<li><a href="#" class="govuk-link govuk-link--no-visited-state">Rename your account</a></li>
+				</ul>
+			</div>
+			<div class="das-dashboard-footer__column">
+				<a class="das-promo" href="#">
+					What you need to know about apprenticeships
+				</a>
+				<p>
+					Find out more about <a href="#" class="govuk-link govuk-link--no-visited-state"> what the Apprenticeship Service can do for your organisation</a>.
+				</p>
 			</div>
 		</div>
 	</div>

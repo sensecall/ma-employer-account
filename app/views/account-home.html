@@ -1,0 +1,64 @@
+{% extends "./layout--ma__account-home.html" %}
+
+{% block panelTopLeft %}
+<div class="das-panel">
+	<h3 class="das-panel__heading">
+		Your apprentices
+	</h3>
+	
+	<p>Add apprentices, update details of existing apprentices and authorise payments to training providers.</p>
+	
+	<table class="govuk-table" style="width: 80%; line-height: 30px">
+		<tbody class="govuk-table__body">
+			<tr class="govuk-table__row">
+				<td><strong>15</strong> live apprentices</td>
+				<td class="govuk-table__cell--numeric"><a href="#" class="govuk-link govuk-link--no-visited-state">View</a></td>
+			</tr>
+			<tr class="govuk-table__row">
+				<td><strong>2</strong> apprentices paused</td>
+				<td class="govuk-table__cell--numeric"><a href="#" class="govuk-link govuk-link--no-visited-state">View</a></td>
+			</tr>
+			<tr class="govuk-table__row">
+				<td><strong>2</strong> apprentice details to approve</td>
+				<td class="govuk-table__cell--numeric"><a href="#" class="govuk-link govuk-link--no-visited-state">View</a></td>
+			</tr>
+			<tr class="govuk-table__row">
+				<td><strong>4</strong> apprentice changes to review</td>
+				<td class="govuk-table__cell--numeric"><a href="#" class="govuk-link govuk-link--no-visited-state">View</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+{% endblock %}
+
+{% block panelBottomLeft %}
+<div class="das-panel">
+	<h3 class="das-panel__heading" style="padding-bottom: 10px">Current levy funds</h3>
+	<div style="background: #E5E5E5; padding: 15px;">
+		<h2 class="govuk-heading-l" style="margin: 0">
+			£150,500.00
+		</h2>
+		<p style="margin: 0">
+			<strong>£3,500.00</strong> could expire on <strong>18/05/2019</strong>
+		</p>
+	</div>
+	<p><a href="#" class="govuk-link govuk-link--no-visited-state">View transactions</a> </p>
+</div>
+{% endblock %}
+
+{% block panelTopRight %}
+<div class="das-panel">
+	<h3 class="das-panel__heading">Training provider permissions</h3>
+	<p>Control what tasks you would like your training provider to do on your behalf.</p>
+	<p><a href="#" class="govuk-link govuk-link--no-visited-state">Set permissions</a> </p>
+</div>
+{% endblock %}
+
+{% block panelBottomRight %}
+<div class="das-panel">
+	<h3 class="das-panel__heading">Recruitment</h3>
+	<p>Recruit an apprentice by creating a vacancy. This vacancy will be advertised on Find an apprenticeship.</p>
+	<p><a href="#" class="govuk-link govuk-link--no-visited-state">Create vacancy</a> </p>
+	<p><a href="#" class="govuk-link govuk-link--no-visited-state">Manage your vacancy</a> </p>
+</div>
+{% endblock %}

@@ -22,7 +22,10 @@
 }
 
 .das-user-navigation__link {
-  color: #fff;
+  &, &:link {
+    color: #fff;
+  }
+
   text-decoration: none;
   display: block;
   padding: 10px 15px;
@@ -103,18 +106,21 @@
 }
 
 .das-user-navigation__sub-menu-link {
-  color: #fff;
+  &, &:link, &:visited {
+    color: govuk-colour("blue");
+  }
+
   text-decoration: none;
   display: block;
   padding: 8px 15px;
   font-size: 15px;
+
   @include govuk-focusable;
+  
   &:hover {
     text-decoration: underline;
   }
-  &:visited {
-    color: #fff;
-  }
+  
   @include govuk-media-query($from: desktop) {
     color: $govuk-link-colour;
     text-decoration: underline;
@@ -127,7 +133,11 @@
 
 .das-user-navigation__sub-menu--open > a {
   background: #fff;
-  color: $govuk-link-colour !important;
+
+  &, &:link, &:visited {
+    color: $govuk-link-colour !important;
+  }
+
   position: relative;
   z-index: 2;
   border: 1px solid $govuk-border-colour;

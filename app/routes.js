@@ -10,5 +10,5 @@ router.get('/', (req, res) => {
 })
 
 router.get('/account-home--1-0', (req, res) => {
-	res.render('_account-home')
+	res.render('account-home')
 })
