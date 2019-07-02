@@ -15,6 +15,15 @@ $govuk-global-styles: true;
 @import "components/cookie-banner";
 @import "components/panels";
 
+
+// DAS patterns
+@import "helpers/das-utilities";
+@import "helpers/arrows";
+@import "helpers/das-colours";
+@import "components/das-header";
+@import "components/das-user-navigation";
+
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 body {
 	background: govuk-colour('grey-4') !important
@@ -54,9 +63,9 @@ body {
 }
 
 .govuk-grid-column-two-fifths {
-		@include grid-column( 2/5, $full-width: tablet );
-	}
+	@include grid-column( 2/5, $full-width: tablet );
+}
 
-	.govuk-grid-column-three-fifths {
-		@include grid-column( 3/5, $full-width: tablet );
-	}
+.govuk-grid-column-three-fifths {
+	@include grid-column( 3/5, $full-width: tablet );
+}
