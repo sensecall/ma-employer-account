@@ -37,7 +37,7 @@
     color: #fff;
   }
   &:focus {
-    color: $govuk-link-colour;
+    color: #fff;
   }
 
   .das-user-navigation__list-item--has-sub-menu & {
@@ -112,6 +112,9 @@
   &:hover {
     text-decoration: underline;
   }
+  &:visited {
+    color: #fff;
+  }
   @include govuk-media-query($from: desktop) {
     color: $govuk-link-colour;
     text-decoration: underline;
@@ -129,4 +132,8 @@
   z-index: 2;
   border: 1px solid $govuk-border-colour;
   border-bottom: 1px solid #fff;
+
+  &:focus {
+    color: $govuk-link-colour;
+  }
 }

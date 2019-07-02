@@ -39,6 +39,11 @@
   {% include "includes/ma-header.html" %}
 {% endblock %}
 
+{% block content %}
+{% block searchArea %}
+{% endblock %}
+{% endblock %}
+
 {% if useAutoStoreData %}
   {% block footer %}
     {{ govukFooter({

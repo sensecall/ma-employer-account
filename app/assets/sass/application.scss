@@ -18,10 +18,15 @@ $govuk-global-styles: true;
 
 // DAS patterns
 @import "helpers/das-utilities";
-@import "helpers/arrows";
+@import "helpers/das-arrows";
 @import "helpers/das-colours";
+@import "helpers/das-images";
+@import "patterns/das-sections";
+@import "components/das-buttons";
+@import "components/das-dashboard-header";
 @import "components/das-header";
 @import "components/das-user-navigation";
+@import "components/das-search";
 
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
