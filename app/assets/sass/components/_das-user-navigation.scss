@@ -40,7 +40,11 @@
     color: #fff;
   }
   &:focus {
-    color: #fff;
+    color: #000;
+  }
+
+  .das-user-navigation__list-item--has-sub-menu &:focus:after {
+    @include triangle-equilateral(down, 8px, #000);
   }
 
   .das-user-navigation__list-item--has-sub-menu & {
@@ -50,7 +54,9 @@
       position: absolute;
       right: 15px;
       top: 17px;
+
       @include triangle-equilateral(down, 8px, #fff);
+
       .govuk-header & {
         @include govuk-media-query($from: tablet) {
           top: 20px;
@@ -58,6 +64,11 @@
       }
     }
   }
+
+  .das-user-navigation__sub-menu--open &:focus:after {
+    @include triangle-equilateral(up, 8px, $govuk-link-colour);
+  }
+
   .das-user-navigation__sub-menu--open & {
     &:after {
       top: 15px;
