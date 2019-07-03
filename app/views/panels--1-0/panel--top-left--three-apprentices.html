@@ -1,12 +1,7 @@
 {% set apprentice1Html %}
 <h3 class="govuk-heading-m">
-	Apprentice details
+	Sarah Philips-Johnson
 </h3>
-
-<dl class="das-definition-list das-definition-list--table">
-	<dt class="das-definition-list__title">Name</dt>
-	<dd class="das-definition-list__definition">Sarah Phillips</dd>
-</dl>
 
 <dl class="das-definition-list das-definition-list--table">
 	<dt class="das-definition-list__title">Apprenticeship training course</dt>
@@ -27,23 +22,18 @@
 
 {% set apprentice2Html %}
 <h3 class="govuk-heading-m">
-	Sarah Philips-Johnson
+	Jon Ash
 </h3>
 
 <dl class="das-definition-list das-definition-list--table">
-	<dt class="das-definition-list__title">Name</dt>
-	<dd class="das-definition-list__definition">Sarah Philips-Johnson</dd>
-</dl>
-
-<dl class="das-definition-list das-definition-list--table">
 	<dt class="das-definition-list__title">Apprenticeship training course</dt>
-	<dd class="das-definition-list__definition">Advanced butcher</dd>
+	<dd class="das-definition-list__definition">Astrophysical Engineer</dd>
 
 	<dt class="das-definition-list__title">Apprenticeship training start date</dt>
-	<dd class="das-definition-list__definition">September 2019</dd>
+	<dd class="das-definition-list__definition">October 2019</dd>
 
 	<dt class="das-definition-list__title">Planned apprenticeship training end date</dt>
-	<dd class="das-definition-list__definition">June 2021</dd>
+	<dd class="das-definition-list__definition">July 2022</dd>
 </dl>
 
 <dl class="das-definition-list das-definition-list--table">
@@ -54,20 +44,15 @@
 
 {% set apprentice3Html %}
 <h3 class="govuk-heading-m">
-	Apprentice details
+	Jimmy Cricket
 </h3>
 
 <dl class="das-definition-list das-definition-list--table">
-	<dt class="das-definition-list__title">Name</dt>
-	<dd class="das-definition-list__definition">Sarah Phillips</dd>
-</dl>
-
-<dl class="das-definition-list das-definition-list--table">
 	<dt class="das-definition-list__title">Apprenticeship training course</dt>
-	<dd class="das-definition-list__definition">Advanced butcher</dd>
+	<dd class="das-definition-list__definition">Sheep Herder</dd>
 
 	<dt class="das-definition-list__title">Apprenticeship training start date</dt>
-	<dd class="das-definition-list__definition">September 2019</dd>
+	<dd class="das-definition-list__definition">August 2019</dd>
 
 	<dt class="das-definition-list__title">Planned apprenticeship training end date</dt>
 	<dd class="das-definition-list__definition">June 2021</dd>
@@ -80,7 +65,10 @@
 {% endset -%}
 
 <div class="das-panel">
-	<h2 class="govuk-heading-m">Your apprentices</h2>
+	<h2 class="govuk-heading-l">
+		Your apprentices
+	</h2>
+	
 	{{ govukTabs({
 		classes: 'das-tabs--apprentices',
 		items: [
@@ -93,7 +81,7 @@
 			}
 		},
 		{
-			label: "First Surname",
+			label: "Jon Ash",
 			id: "past-week",
 			panel:
 			{
@@ -101,7 +89,7 @@
 			}
 		},
 		{
-			label: "First Surname",
+			label: "Jimmy Cricket",
 			id: "past-month",
 			panel:
 			{

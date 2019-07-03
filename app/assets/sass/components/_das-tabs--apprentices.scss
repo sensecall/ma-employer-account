@@ -3,14 +3,17 @@
 		margin-bottom: 0;
 		
 		.govuk-tabs__tab {
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			font-size: 16px;
-
-			@include govuk-media-query($from: tablet) {
+			@include govuk-media-query($until: desktop) {
+				width: 100%;
 				max-width: 25%;
 				overflow: hidden;
+				font-size: 14px;
+				padding: 0.5em 0.75em;
 			}
+
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: 16px;			
 		}
 	}
 }
