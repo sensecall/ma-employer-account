@@ -1,0 +1,51 @@
+<div class="das-panel">
+	<h3 class="govuk-heading-l">
+		Manage your apprentices
+	</h3>
+
+	<p>
+		Add apprentices, update details of existing apprentices and authorise payments to training providers.
+	</p>
+
+	{{ govukTable({
+		firstCellIsHeader: false,
+		rows: [
+		[
+		{
+			text: "15 live apprentices"
+		},
+		{
+			html: '<a href="#">View</a>',
+			classes: "govuk-table__cell--numeric"
+		}
+		],
+		[
+		{
+			text: "2 apprentices paused"
+		},
+		{
+			html: '<a href="#">View</a>',
+			classes: "govuk-table__cell--numeric"
+		}
+		],
+		[
+		{
+			text: "2 apprentice details to approve"
+		},
+		{
+			html: '<a href="#">View</a>',
+			classes: "govuk-table__cell--numeric"
+		}
+		],
+		[
+		{
+			text: "2 apprentice details to review"
+		},
+		{
+			html: '<a href="#">View</a>',
+			classes: "govuk-table__cell--numeric"
+		}
+		]
+		]
+	}) }}
+</div>
