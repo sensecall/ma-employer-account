@@ -7,6 +7,9 @@
     background: $das-dashboard-bg;
     margin: 0 -$das-dashboard-gutter / 2;
     padding-bottom: $das-dashboard-gutter;
+
+    // Dan's modifications
+    background: transparent;
   }
 }
 
@@ -16,6 +19,8 @@
     margin: 0 $das-dashboard-gutter / 2;
     background: #fff;
 
+    // Dan's modifications
+    background: transparent;
   }
 }
 

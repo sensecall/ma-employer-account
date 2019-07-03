@@ -37,11 +37,11 @@
     display: none;
 
     @include govuk-media-query($from: tablet) {
-      margin-top: 19px;
+      margin-top: -51px;
     }
 
     @include govuk-media-query($until: tablet) {
-      margin-top: 0px;
+      margin-top: -50px;
     }
   }
 }
