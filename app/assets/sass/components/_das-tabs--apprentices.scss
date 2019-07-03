@@ -1,0 +1,16 @@
+.js-enabled {
+	.das-tabs--apprentices {
+		margin-bottom: 0;
+		
+		.govuk-tabs__tab {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: 16px;
+
+			@include govuk-media-query($from: tablet) {
+				max-width: 25%;
+				overflow: hidden;
+			}
+		}
+	}
+}
