@@ -3,6 +3,7 @@
   display: block;
   text-align: center;
   padding: $govuk-gutter * 1.5 $govuk-gutter;
+  margin-bottom: $govuk-gutter / 2;
 
   &, &:link, &:visited {
     color: #fff;
