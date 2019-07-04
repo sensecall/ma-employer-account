@@ -18,7 +18,9 @@
 
 			text-overflow: ellipsis;
 			white-space: nowrap;
-			font-size: 16px;			
+			font-size: 16px;
+			max-width: 24.2%;
+			overflow: hidden;
 
 			@include govuk-media-query($until: tablet) {
 				width: auto;
