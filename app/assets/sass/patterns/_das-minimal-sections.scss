@@ -1,0 +1,36 @@
+.das-minimal-section__wrapper {
+	@include govuk-responsive-margin(6, "bottom");
+
+	.das-minimal-section__header {
+		@extend .govuk-heading-l;
+		border-bottom: 1px solid $govuk-border-colour;
+		padding-bottom: $govuk-gutter / 2;
+		@include govuk-responsive-margin(2, "bottom");
+	}
+
+	.das-minimal-section {
+		@include govuk-responsive-margin(8, "bottom");
+
+		.das-minimal-section__heading {
+			@include govuk-font(24, $weight: bold);
+			@include govuk-responsive-margin(2, "bottom");
+
+			a, a:link {
+				text-decoration: none;
+			}	
+		}
+
+		.das-minimal-section__description {
+			@include govuk-font(16);
+		}
+
+		.das-minimal-section__links {
+			@extend .govuk-list;
+
+			li {
+				@include govuk-font(16);
+				@include govuk-responsive-margin(2, "bottom");
+			}
+		}
+	}
+}

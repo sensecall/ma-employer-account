@@ -34,12 +34,14 @@ $govuk-global-styles: true;
 @import "components/das-header";
 @import "components/das-user-navigation";
 @import "components/das-search";
+@import "components/das-nav";
 @import "components/das-tabs--apprentices";
 @import "components/das-item-list";
+@import "patterns/das-minimal-sections";
 
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-body {
+.das-body {
 	background: govuk-colour('grey-4') !important
 }
 

@@ -8,6 +8,11 @@
   @include govuk-media-query($from: tablet) {
     padding: $govuk-gutter 0;
   }
+
+  &.das-section--header--has-border {
+    border-bottom: 4px solid $govuk-border-colour;
+    margin-bottom: $govuk-gutter * 2;
+  }
 }
 
 .das-section--dashboard {
