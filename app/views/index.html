@@ -15,6 +15,11 @@ GOV.UK Prototype Kit
 	Account home variants
 </h1>
 
+{{ govukWarningText({
+	text: "Still in progress. Not all variants have been defined.",
+	iconFallbackText: "Warning"
+}) }}
+
 <h2 class="govuk-heading-l">
 	Non-levy employers
 </h2>
@@ -47,9 +52,6 @@ GOV.UK Prototype Kit
 	<li>
 		<a href="account-home--many-apprentices">Many apprentices added (without training provider)</a>
 	</li>
-	<li>
-		<a href="account-home--many-apprentices--one-provider">Many apprentices added (one training provider)</a>
-	</li>
 </ul>
 
 
@@ -73,11 +75,6 @@ GOV.UK Prototype Kit
 <h2 class="govuk-heading-l">
 	Levy employers
 </h2>
-
-{{ govukWarningText({
-	text: "Not started yet.",
-	iconFallbackText: "Warning"
-}) }}
 
 <ul class="govuk-list govuk-list--bullet">
 	<li>
@@ -106,6 +103,9 @@ GOV.UK Prototype Kit
 	</li>
 	<li>
 		<strike>Many apprentices added</strike>
+	</li>
+	<li>
+		<a href="account-home--many-apprentices--one-provider">Many apprentices added (one training provider)</a>
 	</li>
 </ul>
 
