@@ -15,8 +15,33 @@ $govuk-global-styles: true;
 @import "components/cookie-banner";
 @import "components/panels";
 
+
+// DAS patterns
+@import "helpers/das-utilities";
+@import "helpers/das-arrows";
+@import "helpers/das-colours";
+@import "helpers/das-images";
+@import "patterns/das-sections";
+@import "patterns/das-panels";
+@import "patterns/das-panel";
+@import "components/das-buttons";
+@import "components/das-definition-lists";
+@import "components/das-section-break";
+@import "components/das-dashboard-header";
+@import "components/das-promo";
+@import "components/das-dashboard-footer";
+@import "patterns/das-account-header";
+@import "components/das-header";
+@import "components/das-user-navigation";
+@import "components/das-search";
+@import "components/das-nav";
+@import "components/das-tabs--apprentices";
+@import "components/das-item-list";
+@import "patterns/das-minimal-sections";
+
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-body {
+.das-body {
 	background: govuk-colour('grey-4') !important
 }
 

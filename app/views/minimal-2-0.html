@@ -1,0 +1,184 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{{ govukHeader({
+	homepageUrl: "/",
+	serviceName: serviceName,
+	serviceUrl: "/",
+	containerClasses: "govuk-width-container",
+	classes: "das-header--nav-right",
+	navigation: [
+	{
+		href: "#4",
+		text: "Sign out"
+	}
+	]
+}) }}
+{% endblock %}
+
+{% block content %}
+<section class="das-section das-section--header das-section--header--has-border govuk-!-margin-bottom-8">
+	<h1 class="govuk-heading-m das-account__title">Your employer account</h1>
+	<h2 class="govuk-heading-l das-account__account-name">Assurance Aerospace Ltd</h2>
+</section>
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<div class="das-minimal-section__wrapper">
+			<div class="das-minimal-section das-minimal-section--info">
+				<h2 class="das-minimal-section__heading das-minimal-section__heading--large">
+					You’ve successfully registered your account
+				</h2>
+
+				<p class="das-minimal-section__description">
+					Add your organisation’s PAYE scheme and sign your employer agreement with the Education and Skills Funding Agency to get funding for apprenticeship training.
+				</p>
+
+				{{govukButton({
+					text: "Add your PAYE scheme",
+					classes: "govuk-!-margin-bottom-2"
+				})}}
+			</div>
+
+			<div class="das-minimal-section">
+				<h2 class="das-minimal-section__heading">
+					<a href="#">Your apprentices</a>
+				</h2>
+
+				<p class="das-minimal-section__description">
+					Add apprentices, update details of existing apprentices and authorise payments to training providers.
+				</p>
+			</div>
+
+			<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+			<div class="das-minimal-section">
+				<h2 class="das-minimal-section__heading">
+					<a href="#">Recruitment</a>
+				</h2>
+				<p class="das-minimal-section__description">
+					Recruit an apprentice by creating a vacancy. This vacancy will be advertised on Find an apprenticeship.
+				</p>
+				
+				<ul class="das-minimal-section__links">
+					<li>
+						<a href="#" class="govuk-!-font-weight-bold">3 applications to review</a>
+					</li>
+				</ul>
+			</div>
+
+			<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+			<div class="das-minimal-section">
+				<h2 class="das-minimal-section__heading">
+					<a href="#">Finances</a>
+				</h2>
+
+				<p class="das-minimal-section__description">
+					Reserve and manage funding, view your financial transactions, connect with other employers and send or receive transfer funds.
+				</p>
+			</div>
+
+			<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+			<div class="das-minimal-section">
+				<h2 class="das-minimal-section__heading">
+					<a href="#">Training providers and apprenticeships</a>
+				</h2>
+
+				<p class="das-minimal-section__description">
+					Set training provider permissions and control what tasks they can do on your behalf. Search for apprenticeships and see details of approved providers who can deliver the training.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="govuk-grid-column-one-third">
+		<!-- <h3 class="govuk-heading-m govuk-!-margin-bottom-4">
+			Your account activity
+		</h3> -->
+
+		<div class="govuk-tabs" data-module="tabs">
+			<ul class="govuk-tabs__list">
+				<li class="govuk-tabs__list-item">
+					<a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#tab-tasks">
+						Tasks
+					</a>
+				</li>
+
+				<li class="govuk-tabs__list-item">
+					<a class="govuk-tabs__tab" href="#tab-activity">
+						Activity
+					</a>
+				</li>
+			</ul>
+
+			<section class="govuk-tabs__panel" id="tab-tasks">
+				<ul class="task-list">
+					<li>
+						<p>
+							Levy declaration due by 19 May
+						</p>
+						
+						<p>
+							<a href="#">Dismiss this message</a>
+						</p>
+					</li>
+				</ul>
+			</section>
+
+			<section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab-activity">
+				<ol id="item-list">
+					<li class="item">
+						<div class="item-label">28th Mar 2019</div>
+						<div class="item-description">Raina Nisar joined</div>
+					</li>
+
+					<li class="item">
+						<div class="item-label">28th Mar 2019</div>
+						<div class="item-description">raina nisar invited by Sultan Mahmood</div>
+					</li>
+
+					<li class="item">
+						<div class="item-label">25th Mar 2019</div><div class="item-description">2 users joined</div>
+					</li>
+
+					<li class="item">
+						<div class="item-label">25th Mar 2019</div>
+						<div class="item-description">2 users invited</div>
+					</li>
+
+					<li class="item all-activity">
+						<div class="item-label"><a href="/accounts/84VBNV/activity">See all activity</a></div>
+					</li>
+				</ol>
+			</section>
+		</div>
+
+		<h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+			Account settings
+		</h3>
+		<ul class="govuk-list govuk-!-font-size-16 govuk-!-margin-bottom-8">
+			<li>
+				<a href="#">Your accounts</a>
+			</li>
+			<li>
+				<a href="#">Rename account</a>
+			</li>
+			<li>
+				<a href="#">Change your password</a>
+			</li>
+			<li>
+				<a href="#">Change your email address</a>
+			</li>
+			<li>
+				<a href="#">Notification settings</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+{% endblock %}
