@@ -66,6 +66,7 @@
 
 			<div class="das-cards">
 				<div class="govuk-grid-row">
+					{% if data['employer-type'] == 'non-levy' %}
 					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
 							<a href="#">Your funding reservations</a>
@@ -75,7 +76,7 @@
 							Reserve and manage funding.
 						</p>
 					</div>
-
+					{% elif data['employer-type'] == 'levy' %}
 					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
 							<a href="#">Manage your levy</a>
@@ -84,6 +85,7 @@
 							View your financial transactions, connect with other employers and send or receive transfer funds.
 						</p>
 					</div>
+					{% endif %}
 				</div>
 			</div>
 		</section>

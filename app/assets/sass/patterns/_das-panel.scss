@@ -17,12 +17,12 @@
     border-top: $das-dashboard-gutter solid $das-dashboard-bg;
 
     // Dan's modifications
-    border: 1px solid $govuk-border-colour;
+    // border: 1px solid $govuk-border-colour;
   }
 
   // Dan's modifications
-  border: 1px solid $govuk-border-colour;
-  margin-bottom: $govuk-gutter / 1.5;
+  // border: 1px solid $govuk-border-colour;
+  // margin-bottom: $govuk-gutter / 1.5;
 }
 
 .das-panel--featured {
@@ -30,7 +30,7 @@
   color: #fff;
 
   // Dan's modifications
-  border: none !important;
+  // border: none !important;
 
   & > p {
     color: #fff;
