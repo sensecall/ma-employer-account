@@ -13,35 +13,6 @@
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<div class="das-minimal-section__wrapper das-section-dashboard">
-			<div class="das-minimal-section das-minimal-section--info" style="background:rgba(230,240,255,0.5)">
-				<section class="das-section-dashboard-last">
-					<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
-						Your account is almost ready
-					</h2>
-					
-
-					<p class="das-minimal-section__description">
-						Add your organisation’s PAYE scheme and sign your employer agreement with the Education and Skills Funding Agency to get funding for apprenticeship training.
-					</p>
-
-					<!-- {{govukButton({
-						text: "Add your PAYE scheme",
-						classes: "govuk-!-margin-bottom-2"
-					})}} -->
-					<p>
-						<a href="#" class="govuk-!-font-weight-bold">
-							Add your PAYE scheme
-						</a>
-					</p>
-				</section>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="govuk-grid-row">
-	<div class="govuk-grid-column-two-thirds">
 		<section class="das-section-dashboard">
 			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
 				Apprenticeships
@@ -95,6 +66,7 @@
 
 			<div class="das-cards">
 				<div class="govuk-grid-row">
+					{% if data['employer-type'] == 'non-levy' or data['employer-type'] == 'mvp' %}
 					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
 							<a href="#">Your funding reservations</a>
@@ -104,15 +76,17 @@
 							Reserve and manage funding.
 						</p>
 					</div>
-
+					{% endif %}
+					{% if data['employer-type'] == 'levy' or data['employer-type'] == 'mvp' %}
 					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
-							<a href="#">Manage your levy</a>
+							<a href="#">Your finances</a>
 						</h3>
 						<p class="das-minimal-section__description">
 							View your financial transactions, connect with other employers and send or receive transfer funds.
 						</p>
 					</div>
+					{% endif %}
 				</div>
 			</div>
 		</section>

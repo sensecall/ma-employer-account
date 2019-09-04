@@ -3,6 +3,7 @@
 {% block header %}
 {% include "includes/cookie-banner.html" %}
 {% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
 {% endblock %}
 
 {% block content %}
@@ -13,6 +14,8 @@
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
+		{% include './interim-0-1__prompts.html' %}
+
 		<section class="das-section-dashboard">
 			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
 				Apprenticeships
@@ -66,7 +69,6 @@
 
 			<div class="das-cards">
 				<div class="govuk-grid-row">
-					{% if data['employer-type'] == 'non-levy' or data['employer-type'] == 'mvp' %}
 					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
 							<a href="#">Your funding reservations</a>
@@ -76,17 +78,15 @@
 							Reserve and manage funding.
 						</p>
 					</div>
-					{% endif %}
-					{% if data['employer-type'] == 'levy' or data['employer-type'] == 'mvp' %}
+
 					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
-							<a href="#">Your finances</a>
+							<a href="#">Manage your levy</a>
 						</h3>
 						<p class="das-minimal-section__description">
 							View your financial transactions, connect with other employers and send or receive transfer funds.
 						</p>
 					</div>
-					{% endif %}
 				</div>
 			</div>
 		</section>
