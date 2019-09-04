@@ -25,7 +25,7 @@ GOV.UK Prototype Kit
 		</h1>
 
 		<ol class="app-task-list">
-			<li>
+			<li id="one">
 				<h2 class="app-task-list__section">
 					<span class="app-task-list__section-number">1. </span> Find apprenticeship training courses and providers
 				</h2>
@@ -36,7 +36,7 @@ GOV.UK Prototype Kit
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="?training=true" onclick="window.open('https://findapprenticeshiptraining.apprenticeships.education.gov.uk/');" aria-describedby="eligibility-completed">
+						<a class="app-task-list__task-name" href="?training=true#one" onclick="window.open('https://findapprenticeshiptraining.apprenticeships.education.gov.uk/');" aria-describedby="eligibility-completed">
 							Find apprenticeship training
 						</a>
 						{% if data['training'] == 'true' %}
@@ -60,7 +60,7 @@ GOV.UK Prototype Kit
 				</ul>
 			</li>
 
-			<li>
+			<li id="two">
 				<h2 class="app-task-list__section">
 					<span class="app-task-list__section-number">2. </span> Reserve funding for apprenticeship training
 				</h2>
@@ -71,7 +71,7 @@ GOV.UK Prototype Kit
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="?reserved=true" aria-describedby="eligibility-completed">
+						<a class="app-task-list__task-name" href="?reserved=true#two" aria-describedby="eligibility-completed">
 							Reserve funding for apprenticeship training
 						</a>
 						{% if data['reserved'] == 'true' or data['apprentice-details'] == 'true' %}
@@ -87,7 +87,7 @@ GOV.UK Prototype Kit
 				</ul>
 			</li>
 
-			<li>
+			<li id="three">
 				<h2 class="app-task-list__section">
 					<span class="app-task-list__section-number">3. </span> Recruit an apprentice
 				</h2>
@@ -98,11 +98,11 @@ GOV.UK Prototype Kit
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="#" aria-describedby="eligibility-completed">
+						<a class="app-task-list__task-name" href="?vacancy-created=true#three" aria-describedby="eligibility-completed">
 							Create a vacancy
 						</a>
 
-						{% if data['know-provider'] == 'yes' %}
+						{% if data['vacancy-created'] == 'true' %}
 						<strong class="govuk-tag app-task-list__task-completed">
 							Completed
 						</strong>
@@ -121,7 +121,7 @@ GOV.UK Prototype Kit
 				</ul>
 			</li>
 
-			<li>
+			<li id="four">
 				<h2 class="app-task-list__section">
 					<span class="app-task-list__section-number">4. </span> Add your apprentice's details
 				</h2>
@@ -132,7 +132,7 @@ GOV.UK Prototype Kit
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="?apprentice-details=true" aria-describedby="eligibility-completed">
+						<a class="app-task-list__task-name" href="?apprentice-details=true#four" aria-describedby="eligibility-completed">
 							Add apprentice details
 						</a>
 
@@ -149,7 +149,7 @@ GOV.UK Prototype Kit
 
 					<li class="app-task-list__item">
 						{% if data['apprentice-details'] == 'true' %}
-						<a class="app-task-list__task-name" href="?details-sent=true" aria-describedby="eligibility-completed">
+						<a class="app-task-list__task-name" href="?details-sent=true#four" aria-describedby="eligibility-completed">
 							Send apprentice details to Training provider
 						</a>
 						{% if data['details-sent'] == 'true' %}
