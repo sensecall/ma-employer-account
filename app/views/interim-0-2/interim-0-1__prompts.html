@@ -1,0 +1,149 @@
+{% if data['paye'] != 'true' or data['agreement'] != 'true' %}
+<div class="das-minimal-section__wrapper">
+	<div class="das-minimal-section das-minimal-section--action">
+		{% if data['paye'] != 'true' and data['agreement'] != 'true' %}
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				You’ve successfully registered your account
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Add your organisation’s PAYE scheme and sign your employer agreement with the Education and Skills Funding Agency to get funding for apprenticeship training.
+			</p>
+
+			<p>
+				<a href="?paye=true" class="govuk-!-font-weight-bold">
+					Add your PAYE scheme
+				</a>
+			</p>
+		</section>
+		{% endif %}
+		{% if data['agreement'] != 'true' and data['paye'] == 'true' %}
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				You’ve successfully registered your account
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Sign your employer agreement with the Education and Skills Funding Agency to  get  funding for apprenticeship training. 
+			</p>
+
+			<p>
+				<a href="?agreement=true" class="govuk-!-font-weight-bold">
+					Sign your employer agreement
+				</a>
+			</p>
+		</section>
+		{% endif %}
+	</div>
+</div>
+{% endif %}
+
+{% if data['agreement'] == 'true' and data['apprentice-approved'] != 'true' and data['started'] != 'true' %}
+<h2 class="govuk-heading-l govuk-!-margin-top-2">
+	Start taking on an apprentice
+</h2>
+<p class="govuk-body-l">
+	Reserve apprenticeship funding, find apprenticeship training, create a vacancy, add a training provider and add your apprentice record.
+</p>
+{{govukButton({
+	text: "Get started",
+	classes: "govuk-button--start",
+	href: "task-list"
+})}}
+
+{% endif %}
+
+{% if data['agreement'] == 'true' and data['apprentice-approved'] != 'true' and data['started'] == 'true' %}
+<h2 class="govuk-heading-l govuk-!-margin-top-2">
+	Continue taking on an apprentice
+</h2>
+<p class="govuk-body-l">
+	Reserve apprenticeship funding, find apprenticeship training, create a vacancy, add a training provider and add your apprentice record.
+</p>
+{{govukButton({
+	text: "Continue",
+	href: "task-list"
+})}}
+{% endif %}
+
+{% if data['agreement'] == 'true' and data['apprentice-approved'] == 'true' %}
+<h3 class="govuk-heading-l">
+	Your apprentice
+</h3>
+
+{{ govukSummaryList({
+	classes: "govuk-!-font-size-16",
+	rows: [
+	{
+		key:
+		{
+			text: "Name"
+		},
+		value:
+		{
+			text: "Sarah Philips"
+		}
+	},
+	{
+		key:
+		{
+			text: "Training provider"
+		},
+		value: 
+		{
+			text: "ABC Training Limited"
+		}
+	},
+	{
+		key:
+		{
+			text: "Training course"
+		},
+		value: 
+		{
+			text: "Advanced butcher"
+		}
+	},
+	{
+		key:
+		{
+			text: "Apprenticeship start date"
+		},
+		value:
+		{
+			text: 'September 2019'
+		}
+	},
+	{
+		key:
+		{
+			text: "Planned end date"
+		},
+		value: 
+		{
+			text: "June 2021"
+		}
+	},
+	{
+		key:
+		{
+			text: "Agreed apprenticeship training price"
+		},
+		value: 
+		{
+			text: "£1,500 excluding VAT"
+		}
+	}
+	]
+}) }}
+
+<p class="govuk-!-margin-bottom-8">
+	<a href="#">View apprentice details</a>
+</p>
+
+{% block reviewButton %}{% endblock %}
+
+{% endif %}
