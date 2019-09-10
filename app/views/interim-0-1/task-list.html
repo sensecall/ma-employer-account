@@ -13,7 +13,7 @@ Take on an apprentice - Prototype
 {% block beforeContent %}
 {{ govukBackLink({
 	text: "Back to your account",
-	href: "account-home?hide-interstitial=true"
+	href: "account-home"
 }) }}
 {% endblock %}
 
@@ -41,7 +41,7 @@ Take on an apprentice - Prototype
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="?training=true#one" onclick="window.open('https://findapprenticeshiptraining.apprenticeships.education.gov.uk/');" aria-describedby="eligibility-completed">
+						<a class="app-task-list__task-name" href="?training=true" onclick="window.open('https://findapprenticeshiptraining.apprenticeships.education.gov.uk/');" aria-describedby="eligibility-completed">
 							Find apprenticeship training
 						</a>
 						{% if data['training'] == 'true' %}
