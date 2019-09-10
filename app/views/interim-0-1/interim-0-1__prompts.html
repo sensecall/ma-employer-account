@@ -13,7 +13,7 @@
 			</p>
 
 			<p>
-				<a href="?paye=true" class="govuk-!-font-weight-bold">
+				<a href="interstitial?paye=true&title=Add your PAYE scheme" class="govuk-!-font-weight-bold">
 					Add your PAYE scheme
 				</a>
 			</p>
@@ -31,7 +31,7 @@
 			</p>
 
 			<p>
-				<a href="?agreement=true" class="govuk-!-font-weight-bold">
+				<a href="interstitial?agreement=true&title=Sign your employer agreement" class="govuk-!-font-weight-bold">
 					Sign your employer agreement
 				</a>
 			</p>
@@ -51,7 +51,7 @@
 {{govukButton({
 	text: "Get started",
 	classes: "govuk-button--start",
-	href: "task-list"
+	href: "interstitial?task-list=true&title=Start taking on an apprentice"
 })}}
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" style="border-width: 2px">
 {% endif %}
