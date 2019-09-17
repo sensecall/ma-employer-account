@@ -6,19 +6,26 @@
 {% include "includes/ma-navbar.html" %}
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<form>
+		<form method="post">
 			{{ govukRadios({
-				idPrefix: "changed-name",
-				name: "changed-name",
+				idPrefix: "need-vacancy",
+				name: "need-vacancy",
 				fieldset:
 				{
 					legend:
 					{
-						text: "Do you need to create an advert for your apprenticeship?",
+						text: "Do you need to create an advert to find an apprentice for this role?",
 						isPageHeading: true,
 						classes: "govuk-fieldset__legend--xl"
 					}

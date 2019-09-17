@@ -69,6 +69,14 @@ router.post('/q--found-apprentice', (req, res) => {
 	}
 })
 
+router.post('/q--need-vacancy', (req, res) => {
+	if (req.session.data['need-vacancy'] == 'yes'){
+		// res.redirect('q--provider-permission')
+	} else {
+		res.redirect('task-list')
+	}
+})
+
 router.post('/add-apprentice-details', (req, res) => {
 	res.redirect('task-list')
 })
