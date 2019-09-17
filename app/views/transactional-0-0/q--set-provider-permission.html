@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "changed-name",
+				name: "changed-name",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Select the things your training provider can do on your behalf",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
+				},
+				hint:
+				{
+					text: "In qui in officia id qui elit excepteur laborum velit eiusmod anim ut magna."
+				},
+				items: [
+				{
+					value: "1",
+					text: "Voluptate eu."
+				},
+				{
+					value: "2",
+					text: "Duis nulla aliqua velit tempor."
+				},
+				{
+					value: "3",
+					text: "Labore nostrud."
+				},
+				{
+					value: "4",
+					text: "Ea eiusmod aliqua ut. Dolore irure."
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set courseHtml %}
+{{ govukInput({
+	id: "choose-course",
+	name: "choose-course",
+	type: "text",
+	classes: "govuk-!-width-two-thirds",
+	label: {
+	text: "Search for apprenticeship training course"
+}
+}) }}
+{% endset -%}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "know-course",
+				name: "know-course",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you know which apprenticeship training your apprentice will take?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
+				},
+				hint:
+				{
+					text: "In qui in officia id qui elit excepteur laborum velit eiusmod anim ut magna."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes",
+					conditional:
+					{
+						html: courseHtml
+					}
+				},
+				{
+					value: "no",
+					text: "No"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

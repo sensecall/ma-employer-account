@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Apprenticeship funding may not be available
+			</h1>
+
+			<p class="govuk-body-l">
+				Apprenticeship funding cannot be reserved until you know the apprenticeship training course and the apprenticeship training start date...
+			</p>
+
+			{{govukButton({
+				text: "I understand"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

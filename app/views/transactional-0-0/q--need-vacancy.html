@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form>
+			{{ govukRadios({
+				idPrefix: "changed-name",
+				name: "changed-name",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you need to create an advert for your apprenticeship?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
+				},
+				hint:
+				{
+					text: "In qui in officia id qui elit excepteur laborum velit eiusmod anim ut magna."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes"
+				},
+				{
+					value: "no",
+					text: "No"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}
