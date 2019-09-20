@@ -1,0 +1,71 @@
+<!-- ADD PAYE SCHEME -->
+{% if data['add-paye-now'] != 'yes' and data['sign-agreement-now'] != 'yes' %}
+<div class="das-minimal-section__wrapper">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				You’ve successfully registered your account
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Add your organisation’s PAYE scheme and sign your employer agreement with the Education and Skills Funding Agency to get funding for apprenticeship training.
+			</p>
+
+			<p>
+				<a href="?add-paye-now=yes" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+					Add your PAYE scheme
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}
+
+<!-- SIGN AGREEMENT -->
+{% if data['sign-agreement-now'] != 'yes' and data['add-paye-now'] == 'yes' %}
+<div class="das-minimal-section__wrapper das-section-dashboard">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				You’ve successfully registered your account
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Sign your employer agreement with the Education and Skills Funding Agency to  get  funding for apprenticeship training. 
+			</p>
+
+			<p>
+				<a href="?sign-agreement-now=yes" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+					Sign your employer agreement
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}
+
+<!-- RESERVE FUNDS -->
+{% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['reserved-funding'] != 'yes' %}
+<div class="das-minimal-section__wrapper das-section-dashboard">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				Reserve funding for apprenticeship training
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Incididunt excepteur occaecat nisi exercitation eu qui in magna commodo nisi incididunt nulla ut. 
+			</p>
+
+			<p>
+				<a href="?reserved-funding=yes" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+					Reserve apprenticeship funding
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}

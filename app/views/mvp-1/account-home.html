@@ -11,11 +11,14 @@
 {% block content %}
 <section class="das-section das-section--header das-section--header--has-border govuk-!-margin-bottom-8 govuk-!-padding-top-0">
 	<h1 class="govuk-heading-m das-account__title">Account ID: A1B2C3</h1>
-	<h2 class="govuk-heading-l das-account__account-name">Aadvark Zebra Ltd</h2>
+	<h2 class="govuk-heading-l das-account__account-name">{{data['employer-name']}}</h2>
 </section>
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
+		{% include './_account-home--prompts.html' %}
+	
+		{% if data['add-paye-now'] == 'yes' %}
 		<section class="das-section-dashboard">
 			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
 				Apprenticeships
@@ -144,8 +147,10 @@
 				</div>
 			</div>
 		</section>
+		{% endif %}
 	</div>
 
+	{% if data['add-paye-now'] == 'yes' %}
 	<div class="govuk-grid-column-one-third">
 		<div class="govuk-tabs" data-module="tabs">
 			<ul class="govuk-tabs__list">
@@ -203,7 +208,7 @@
 			</section>
 		</div>
 	</div>
+	{% endif %}
 </div>
-
 
 {% endblock %}
