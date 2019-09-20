@@ -7,16 +7,15 @@
 {% include "includes/ma-navbar.html" %}
 {% endblock %}
 
+
 {% block content %}
 <section class="das-section das-section--header das-section--header--has-border govuk-!-margin-bottom-8 govuk-!-padding-top-0">
-	<h1 class="govuk-heading-m das-account__title">Your employer account</h1>
-	<h2 class="govuk-heading-l das-account__account-name">Assurance Aerospace Ltd</h2>
+	<h1 class="govuk-heading-m das-account__title">Account ID: A1B2C3</h1>
+	<h2 class="govuk-heading-l das-account__account-name">Aadvark Zebra Ltd</h2>
 </section>
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		{% include './interim-0-1__prompts.html' %}
-
 		<section class="das-section-dashboard">
 			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
 				Apprenticeships
@@ -70,35 +69,44 @@
 
 			<div class="das-cards">
 				<div class="govuk-grid-row">
+					{% if data['employer-type'] != 'levy' %}
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading">
+							<a href="#">Reserve apprenticeship funding</a>
+						</h3>
+
+						<p class="das-minimal-section__description">
+							Reserve funding for apprenticeship training and assessment.
+						</p>
+					</div>
+
 					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
 							<a href="#">Your funding reservations</a>
 						</h3>
 
 						<p class="das-minimal-section__description">
-							Reserve and manage funding.
+							Use, view or delete funding reservations you’ve made.
 						</p>
 					</div>
-
+					{% endif %}
+					{% if data['employer-type'] == 'levy' %}
 					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
-							<a href="#">Manage your levy</a>
+							<a href="#">Your finances</a>
 						</h3>
 						<p class="das-minimal-section__description">
-							View your financial transactions, connect with other employers and send or receive transfer funds.
+							View your financial transactions, connect with other employers and receive transfer funds.
 						</p>
 					</div>
+					{% endif %}
 				</div>
 			</div>
 		</section>
 
 		<section class="das-section-dashboard govuk-!-margin-bottom-7">
-			<h2 class="das-section__heading govuk-heading-l">
-				Account
-			</h2>
-			<p class="das-section__description">
-				Manage your account details and team.
-			</p>
+			<h2 class="das-section__heading govuk-heading-l">Account</h2>
+			<p class="das-section__description">Manage your account details and team.</p>
 
 			<div class="das-cards">
 				<div class="govuk-grid-row">
