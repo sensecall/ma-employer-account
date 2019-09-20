@@ -11,69 +11,93 @@
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			<h1 class="govuk-heading-xl govuk-!-margin-top-4">
-				Agreement between {{data['employer-name']}}
+				Agreement between {{data['employer-name']}} and the Education Skills Funding Agency (ESFA)
 			</h1>
 			
 			<p>
-				If you're ready to pay for your apprenticeship training, you can do this now by adding the PAYE scheme for your organisation.
+				We updated the agreement on 1 May 2018.
 			</p>
 			
+			<h2 class="govuk-heading-m">
+				Key features of the agreement
+			</h2>
+
 			<p>
-				If you do not need to get apprenticeship funding yet, you can still register an account to:
+				{{data['employer-name']}} must:
 			</p>
 			
 			<ul class="govuk-list govuk-list--bullet">
-				<li>search and save apprenticeships</li>
-				<li>save your chosen training providers</li>
-			</ul>
-			
-			<p>
-				To get apprenticeship funding now, you can use either of the following:
-			</p>
-			
-			<ul class="govuk-list govuk-list--bullet">
-				<li>the Government Gateway login for your PAYE scheme</li>
-				<li>your account office reference number and employer PAYE scheme reference</li>
-			</ul>
-			
-			{{ govukDetails({
-				summaryText: "Find your Government Gateway login for your PAYE scheme",
-				text: "Ut officia dolor in adipisicing cupidatat tempor tempor consectetur consequat minim consequat elit laboris in magna minim do magna veniam."
-			}) }}
-			
-			{{ govukDetails({
-				summaryText: "Find your accounts office and PAYE scheme reference numbers",
-				text: "Eiusmod cupidatat pariatur duis nisi tempor tempor ut tempor eu nisi mollit ut in velit nostrud nostrud ut ad fugiat qui consequat nostrud ad reprehenderit nostrud dolore aliqua."
-			}) }}
-			
-			{{ govukRadios({
-				idPrefix: "add-paye-now",
-				name: "add-paye-now",
-				fieldset:
-				{
-					legend:
+				<li>have a 'contract for services' with their training providers
+					<li>follow the apprenticeship funding rules</li>
+				</ul>
+
+				<p>
+					The ESFA can:
+				</p>
+
+				<ul class="govuk-list govuk-list--bullet">
+					<li>suspend payments, recover funds or close {{data['employer-name']}}'s account if {{data['employer-name']}} breaks the agreement</li>
+					<li>change the terms of the agreement and any part of the apprenticeship service</li>
+				</ul>
+
+				<h2 class="govuk-heading-m">
+					The full agreement
+				</h2>
+
+				{{ govukAccordion({
+					id: "accordion-default",
+					items: [
 					{
-						text: "Do you want to add a PAYE scheme to get apprenticeship funding?",
-						isPageHeading: false,
-						classes: "govuk-fieldset__legend--m"
+						heading: 
+						{
+							text: "ESFA employer agreement"
+						},
+						content: 
+						{
+							html: "<p class='govuk-body'>Sed reprehenderit elit nostrud incididunt exercitation amet dolore laboris qui anim esse ut.</p>"
+						}
 					}
-				},
-				items: [
-				{
-					value: "yes",
-					text: "Yes, add my PAYE scheme details now"
-				},
-				{
-					value: "no",
-					text: "No, I'll do this later"
-				}
-				]
-			}) }}
-			
-			{{govukButton({
-				text: "Continue",
-			})}}
-		</form>
+					]
+				}) }}
+
+				<p>
+					<a href="#">Save this agreement as a PDF</a>
+				</p>
+
+
+				{{ govukWarningText({
+					text: "The agreement is legally binding. If {{data['employer-name']}} breaks it, we could close their account and stop them running apprenticeships.",
+					iconFallbackText: "Warning"
+				}) }}
+
+				{{ govukRadios({
+					idPrefix: "sign-agreement-now",
+					name: "sign-agreement-now",
+					fieldset:
+					{
+						legend:
+						{
+							text: "Do you accept the agreement?",
+							isPageHeading: false,
+							classes: "govuk-fieldset__legend--m"
+						}
+					},
+					items: [
+					{
+						value: "yes",
+						text: "Yes, I have read the agreement and accept it"
+					},
+					{
+						value: "no",
+						text: "I'll review it later"
+					}
+					]
+				}) }}
+
+				{{govukButton({
+					text: "Continue"
+				})}}
+			</form>
+		</div>
 	</div>
-</div>
-{% endblock %}
+	{% endblock %}

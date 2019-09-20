@@ -15,5 +15,9 @@ router.post('/add-paye-question', (req, res) => {
 	}
 })
 
+router.post('/sign-agreement-question', (req, res) => {
+	res.redirect(`/${req.version}/account-home`)
+})
+
 
 module.exports = router
