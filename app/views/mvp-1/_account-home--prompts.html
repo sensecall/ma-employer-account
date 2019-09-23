@@ -47,7 +47,7 @@
 {% endif %}
 
 <!-- RESERVE FUNDS -->
-{% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['reserved-funding'] != 'yes' %}
+{% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['reserved-funding'] != 'yes' and data['employer-type'] != 'levy' %}
 <div class="das-minimal-section__wrapper das-section-dashboard">
 	<div class="das-minimal-section das-minimal-section--action">
 		<section class="das-section-dashboard-last">

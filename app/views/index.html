@@ -19,13 +19,50 @@ GOV.UK Prototype Kit
 	<h2 class="govuk-heading-l">
 		MVP designs
 	</h2>
-	<ul class="govuk-list govuk-list--bullet">
-		<li><a href="mvp-1/create-account-start-page?add-paye-now=no&sign-agreement-now=no&reserved-funding=no">Registration start page</a></li>
-		<li><a href="mvp-1/account-home?add-paye-now=no&sign-agreement-now=no&reserved-funding=no">Account home - skipped PAYE</a></li>
-		<li><a href="mvp-1/account-home?add-paye-now=yes&sign-agreement-now=no&reserved-funding=no">Account home - PAYE added, skipped agreement</a></li>
-		<li><a href="mvp-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=no">Account home - PAYE added, agreement signed, no funds reserved</a></li>
-		<li><a href="mvp-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=yes">Account home - PAYE added, agreement signed, has reserved funds</a></li>
-	</ul>
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-half">
+			<h3 class="govuk-heading-s">
+				Non-levy journey
+			</h3>
+			<ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
+				<li><a href="mvp-1/create-account-start-page?add-paye-now=no&sign-agreement-now=no&reserved-funding=no&employer-type=non-levy">Registration start page</a></li>
+				<li>
+					<a href="mvp-1/account-home?add-paye-now=no&sign-agreement-now=no&reserved-funding=no&employer-type=non-levy">Account home - skipped PAYE</a>
+				</li>
+				<li>
+					<a href="mvp-1/account-home?add-paye-now=yes&sign-agreement-now=no&reserved-funding=no&employer-type=non-levy">Account home - PAYE added, skipped agreement</a>
+				</li>
+				<li>
+					<a href="mvp-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=no&employer-type=non-levy">Account home - PAYE added, agreement signed, no funds reserved</a>
+				</li>
+				<li>
+					<a href="mvp-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=yes&employer-type=non-levy">Account home - PAYE added, agreement signed, reserved funds prompt hidden</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="govuk-grid-column-one-half">
+			<h3 class="govuk-heading-s">
+				Levy journey
+			</h3>
+			<ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
+				<li><a href="mvp-1/create-account-start-page?add-paye-now=no&sign-agreement-now=no&reserved-funding=no&employer-type=levy">Registration start page</a></li>
+				<li>
+					<a href="mvp-1/account-home?add-paye-now=no&sign-agreement-now=no&reserved-funding=no&employer-type=levy">Account home - skipped PAYE</a>
+				</li>
+				<li>
+					<a href="mvp-1/account-home?add-paye-now=yes&sign-agreement-now=no&reserved-funding=no&employer-type=levy">Account home - PAYE added, skipped agreement</a>
+				</li>
+				<li>
+					<a href="mvp-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=no&employer-type=levy">Account home - PAYE added, agreement signed, no funds reserved</a>
+				</li>
+				<li>
+					<a href="mvp-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=yes&employer-type=levy">Account home - PAYE added, agreement signed, reserved funds prompt hidden</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
 
 <h2 class="govuk-heading-l">
