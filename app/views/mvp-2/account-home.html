@@ -29,7 +29,7 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		{% include './_account-home--prompts.html' %}
-	
+
 		{% if data['add-paye-now'] == 'yes' %}
 		<section class="das-section-dashboard">
 			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
@@ -162,46 +162,30 @@
 
 	{% if data['add-paye-now'] == 'yes' %}
 	<div class="govuk-grid-column-one-third">
-		<div class="govuk-tabs" data-module="tabs">
-			<ul class="govuk-tabs__list">
-				<li class="govuk-tabs__list-item">
-					<a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#tab-tasks">
-						Tasks
-					</a>
-				</li>
+		<aside class="app-related-items">
+			<h3 class="govuk-heading-m">
+				Your tasks
+			</h3>
 
-				<li class="govuk-tabs__list-item">
-					<a class="govuk-tabs__tab" href="#tab-activity">
-						Activity
-					</a>
+			<ul class="govuk-list">
+				{% if data['add-paye-now'] == 'yes' and data['sign-agreement-now'] != 'yes' %}
+				<li>
+					<p>
+						1 agreement to sign
+					</p>
+					<p class="govuk-!-margin-top-2 govuk-body-s">
+						<a href="#">View agreements</a>
+					</p>
 				</li>
+				{% else %}
+				<li>
+					<p>
+						You currently have no tasks
+					</p>
+				</li>
+				{% endif %}
 			</ul>
-
-			<section class="govuk-tabs__panel" id="tab-tasks">
-				<ul class="task-list">
-					{% if data['add-paye-now'] == 'yes' and data['sign-agreement-now'] != 'yes' %}
-					<li>
-						<p>
-							1 agreement to sign
-						</p>
-						<p class="govuk-!-margin-top-2 govuk-body-s">
-							<a href="#">View agreements</a>
-						</p>
-					</li>
-					{% else %}
-					<li>
-						<p>							
-							You currently have no tasks
-						</p>
-					</li>
-					{% endif %}
-				</ul>
-			</section>
-
-			<section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab-activity">
-				No activity
-			</section>
-		</div>
+		</aside>
 	</div>
 	{% endif %}
 </div>
