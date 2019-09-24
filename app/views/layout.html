@@ -46,6 +46,20 @@
 {% endblock %}
 
 {% if useAutoStoreData %}
+{% set prototypeDataHtml %}
+{% for i,v in data %}
+<span class="govuk-!-font-size-14"><b>{{i}}</b>: {{v}}</span><br>
+{% endfor %}
+{% endset %}
+
+{% set prototypeData %}
+{{ govukDetails({
+  summaryText: "Prototype data",
+  text: prototypeDataHtml | safe,
+  classes: "govuk-!-font-size-16"
+}) }}
+{% endset %}
+
   {% block footer %}
     {{ govukFooter({
       meta: {
@@ -58,7 +72,8 @@
             href: "/prototype-admin/clear-data",
             text: "Clear data"
           }
-        ]
+        ],
+        text: prototypeData | safe
       }
     }) }}
   {% endblock %}
