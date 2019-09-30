@@ -15,31 +15,32 @@
 
 {% block content %}
 
-{% set providerHtml %}
-{{ govukInput({
-	id: "choose-provider",
-	name: "choose-provider",
-	type: "text",
-	classes: "govuk-!-width-two-thirds",
-	label: {
-	text: "Search for apprenticeship training provider"
-}
-}) }}
-{% endset -%}
-
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Confirm provider details
+			</h1>
+
+			<div class="govuk-inset-text">
+				<p>
+					Provider name
+				</p>
+				<p>
+					UKPRN: 100100123
+				</p>
+			</div>
+
 			{{ govukRadios({
-				idPrefix: "found-provider",
-				name: "found-provider",
+				idPrefix: "confirm-provider-details",
+				name: "confirm-provider-details",
 				fieldset:
 				{
 					legend:
 					{
-						text: "Do you know which training provider will be delivering your apprentice's training?",
+						text: "Are these provider details correct?",
 						isPageHeading: true,
-						classes: "govuk-fieldset__legend--xl"
+						classes: "govuk-fieldset__legend--l"
 					}
 				},
 				hint:
@@ -49,11 +50,7 @@
 				items: [
 				{
 					value: "yes",
-					text: "Yes",
-					conditional:
-					{
-						html: providerHtml
-					}
+					text: "Yes"
 				},
 				{
 					value: "no",

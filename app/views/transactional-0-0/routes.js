@@ -38,18 +38,26 @@ router.post('/q--enter-start-date', (req, res) => {
 })
 
 router.post('/q--reserve-warning', (req, res) => {
-	res.redirect('q--found-apprentice')
+	res.redirect('task-list')
 })
 
 router.post('/q--reserve-confirmation', (req, res) => {
-	res.redirect('q--found-provider')
+	res.redirect('q--found-apprentice')
 })
 
 router.post('/q--found-provider', (req, res) => {
 	if (req.session.data['found-provider'] == 'yes'){
-		res.redirect('q--provider-permission')
+		res.redirect('q--confirm-provider')
 	} else {
 		res.redirect('q--found-apprentice')
+	}
+})
+
+router.post('/q--confirm-provider', (req, res) => {
+	if (req.session.data['confirm-provider-details'] == 'yes'){
+		res.redirect('q--provider-permission')
+	} else {
+		res.redirect('q--found-provider')
 	}
 })
 
@@ -73,7 +81,7 @@ router.post('/q--need-vacancy', (req, res) => {
 	if (req.session.data['need-vacancy'] == 'yes'){
 		// res.redirect('q--provider-permission')
 	} else {
-		res.redirect('task-list')
+		res.redirect('q--know-course')
 	}
 })
 
