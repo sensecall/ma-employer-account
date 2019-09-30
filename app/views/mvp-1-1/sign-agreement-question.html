@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl govuk-!-margin-top-4">
+				Agreement between {{data['employer-name']}} and the Education Skills Funding Agency (ESFA)
+			</h1>
+			
+			<p>
+				We updated the agreement on 1 May 2018.
+			</p>
+			
+			<h2 class="govuk-heading-m">
+				Key features of the agreement
+			</h2>
+
+			<p>
+				{{data['employer-name']}} must:
+			</p>
+			
+			<ul class="govuk-list govuk-list--bullet">
+				<li>have a 'contract for services' with their training providers
+					<li>follow the apprenticeship funding rules</li>
+				</ul>
+
+				<p>
+					The ESFA can:
+				</p>
+
+				<ul class="govuk-list govuk-list--bullet">
+					<li>suspend payments, recover funds or close {{data['employer-name']}}'s account if {{data['employer-name']}} breaks the agreement</li>
+					<li>change the terms of the agreement and any part of the apprenticeship service</li>
+				</ul>
+
+				<h2 class="govuk-heading-m">
+					The full agreement
+				</h2>
+
+				{{ govukAccordion({
+					id: "accordion-default",
+					items: [
+					{
+						heading: 
+						{
+							text: "ESFA employer agreement"
+						},
+						content: 
+						{
+							html: "<p class='govuk-body'>Sed reprehenderit elit nostrud incididunt exercitation amet dolore laboris qui anim esse ut.</p>"
+						}
+					}
+					]
+				}) }}
+
+				<p>
+					<a href="#">Save this agreement as a PDF</a>
+				</p>
+
+
+				{{ govukWarningText({
+					text: "The agreement is legally binding. If {{data['employer-name']}} breaks it, we could close their account and stop them running apprenticeships.",
+					iconFallbackText: "Warning"
+				}) }}
+
+				{{ govukRadios({
+					idPrefix: "sign-agreement-now",
+					name: "sign-agreement-now",
+					fieldset:
+					{
+						legend:
+						{
+							text: "Do you accept the agreement?",
+							isPageHeading: false,
+							classes: "govuk-fieldset__legend--m"
+						}
+					},
+					items: [
+					{
+						value: "yes",
+						text: "Yes, I have read the agreement and accept it"
+					},
+					{
+						value: "no",
+						text: "I'll review it later"
+					}
+					]
+				}) }}
+
+				{{govukButton({
+					text: "Continue"
+				})}}
+			</form>
+		</div>
+	</div>
+	{% endblock %}
