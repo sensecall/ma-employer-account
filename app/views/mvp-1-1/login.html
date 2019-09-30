@@ -5,35 +5,53 @@
 {% include "includes/ma-header.html" %}
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "start"
+}) }}
+{% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			<h1 class="govuk-heading-xl govuk-!-margin-top-4 govuk-!-margin-bottom-6">
-				Create an account to manage apprenticeships
+				Sign in
 			</h1>
 
 			<p>
-				 You need to create or <a href="login">sign in</a> to an apprenticeship account, then you'll be able to get funding to pay for apprenticeship training and assessment costs. 
+				Sign in or <a href="#">create an account</a> to manage your apprenticeship funds.
 			</p>
 
-			<p>
-				You’ll use your account to:
-			</p>
+			{{ govukInput({
+				label:
+				{
+					text: "Email address",
+					classes: "govuk-!-font-weight-bold"
+				},
+				type: "email",
+				classes: "govuk-!-width-two-thirds"
+			}) }}
 
-			<ul class="govuk-list govuk-list--bullet">
-				<li>get apprenticeship funding</li>
-				<li>find and save apprenticeships</li>
-				<li>find, save and manage training providers</li>
-				<li>recruit apprentices</li>
-				<li>add and manage apprenticeships</li>
-			</ul>
+			{{ govukInput({
+				label:
+				{
+					text: "Password",
+					classes: "govuk-!-font-weight-bold"
+				},
+				type: "password",
+				classes: "govuk-!-width-two-thirds"
+			}) }}
 
 			{{govukButton({
-				text: "Create account",
-				classes: "govuk-button--start govuk-!-margin-top-4"
+				text: "Sign in",
+				href: "account-home"
 			})}}
+
+			<p>
+				<a href="#">Forgotten your password?</a>
+			</p>
 		</form>
 	</div>
 </div>
