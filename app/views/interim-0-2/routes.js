@@ -8,4 +8,13 @@ router.get('/', (req, res) => {
 })
 
 
+router.get('/interstitial', (req, res) => {
+	if (req.session.data['hide-interstitial'] == 'true'){
+		res.redirect('task-list')
+	} else {
+		res.render(`${req.version}/interstitial`)
+	}
+})
+
+
 module.exports = router

@@ -1,59 +1,62 @@
-{% if data['paye'] != 'true' or data['agreement'] != 'true' %}
+<!-- ADD PAYE SCHEME -->
+{% if data['add-paye-now'] != 'yes' and data['sign-agreement-now'] != 'yes' %}
 <div class="das-minimal-section__wrapper">
 	<div class="das-minimal-section das-minimal-section--action">
-		{% if data['paye'] != 'true' and data['agreement'] != 'true' %}
 		<section class="das-section-dashboard-last">
 			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
-				You’ve successfully registered your account
+				Add your PAYE scheme to access your account
 			</h2>
 
 
 			<p class="das-minimal-section__description">
-				Add your organisation’s PAYE scheme and sign your employer agreement with the Education and Skills Funding Agency to get funding for apprenticeship training.
+				Add your organisation’s PAYE scheme and sign your agreement with the Education and Skills Funding Agency to get funding for apprenticeship training.
 			</p>
 
 			<p>
-				<a href="?paye=true" class="govuk-!-font-weight-bold">
+				<a href="?add-paye-now=yes" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
 					Add your PAYE scheme
 				</a>
 			</p>
 		</section>
-		{% endif %}
-		{% if data['agreement'] != 'true' and data['paye'] == 'true' %}
-		<section class="das-section-dashboard-last">
-			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
-				You’ve successfully registered your account
-			</h2>
-
-
-			<p class="das-minimal-section__description">
-				Sign your employer agreement with the Education and Skills Funding Agency to  get  funding for apprenticeship training. 
-			</p>
-
-			<p>
-				<a href="?agreement=true" class="govuk-!-font-weight-bold">
-					Sign your employer agreement
-				</a>
-			</p>
-		</section>
-		{% endif %}
 	</div>
 </div>
 {% endif %}
 
-{% if data['agreement'] == 'true' and data['apprentice-approved'] != 'true' and data['started'] != 'true' %}
+<!-- SIGN AGREEMENT -->
+{% if data['sign-agreement-now'] != 'yes' and data['add-paye-now'] == 'yes' %}
+<div class="das-minimal-section__wrapper das-section-dashboard">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				Sign your agreement to access apprenticeship funding
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Sign your agreement with the Education and Skills Funding Agency to access funding for apprenticeship training. 
+			</p>
+
+			<p>
+				<a href="?sign-agreement-now=yes" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+					Sign your agreement
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}
+
+{% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['reserved-funding'] != 'yes' and data['employer-type'] != 'levy' %}
 <h2 class="govuk-heading-l govuk-!-margin-top-2">
-	Start taking on an apprentice
+	Step-by-step guide to beginning an apprenticeship
 </h2>
 <p class="govuk-body-l">
 	Reserve apprenticeship funding, find apprenticeship training, create a vacancy, add a training provider and add your apprentice record.
 </p>
-{{govukButton({
-	text: "Get started",
-	classes: "govuk-button--start",
-	href: "task-list"
-})}}
 
+<a href="task-list" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-button--start">Get started</a>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" style="border-width: 2px">
 {% endif %}
 
 {% if data['agreement'] == 'true' and data['apprentice-approved'] != 'true' and data['started'] == 'true' %}
@@ -67,6 +70,7 @@
 	text: "Continue",
 	href: "task-list"
 })}}
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" style="border-width: 2px">
 {% endif %}
 
 {% if data['agreement'] == 'true' and data['apprentice-approved'] == 'true' %}
@@ -145,5 +149,6 @@
 </p>
 
 {% block reviewButton %}{% endblock %}
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" style="border-width: 2px">
 
 {% endif %}
