@@ -16,6 +16,11 @@ router.get('/account-home--1-0', (req, res) => {
 	res.render('account-home')
 })
 
+// STABLE URL FOR OTHER TEAMS TO POINT TO
+router.get('/stable', (req, res) => {
+	res.redirect('mvp-1-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=yes&employer-type=non-levy')
+})
+
 
 router.use(/\/interim-([0-9]+)-([0-9]+)/, (req, res, next) => {
   require(`./views/interim-${req.params[0]}-${req.params[1]}/routes`)(req, res, next);

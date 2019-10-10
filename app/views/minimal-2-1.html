@@ -1,0 +1,208 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{{ govukHeader({
+	homepageUrl: "/",
+	serviceName: serviceName,
+	serviceUrl: "/",
+	containerClasses: "govuk-width-container",
+	classes: "das-header--nav-right",
+	navigation: [
+	{
+		href: "#4",
+		text: "Sign out"
+	}
+	]
+}) }}
+
+{% from "macros/navbar.njk" import navbar %}
+{{ navbar({
+	links:
+	[
+	{
+		href: "#",
+		text: "Home",
+		selected: true
+	},
+	{
+		href: "#",
+		text: "Apprentices"
+	},
+	{
+		href: "#",
+		text: "Finance"
+	},
+	{
+		href: "#",
+		text: "Recruitment"
+	},
+	{
+		href: "#",
+		text: "Your organisations and agreements"
+	}
+	]
+}) }}  
+{% endblock %}
+
+{% block content %}
+<section class="das-section das-section--header das-section--header--has-border govuk-!-margin-bottom-8 govuk-!-padding-top-0">
+	<h1 class="govuk-heading-m das-account__title">Your employer account</h1>
+	<h2 class="govuk-heading-l das-account__account-name">Assurance Aerospace Ltd</h2>
+</section>
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<div class="das-minimal-section__wrapper">
+			<div class="das-minimal-section__wrapper">
+				<div class="das-minimal-section das-minimal-section--action">
+					<section class="das-section-dashboard-last">
+						<h2 class="govuk-heading-l govuk-!-margin-top-2">
+							Take on an apprentice: step by step
+						</h2>
+						<p>
+							Reserve apprenticeship funding, find apprenticeship training, create a vacancy, add a training provider and add your apprentice record.
+						</p>
+
+						<a href="task-list" class="govuk-button">Start now</a>
+					</section>
+				</div>
+			</div>
+			<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" style="border-width: 2px">
+
+			<div class="das-minimal-section">
+				<h2 class="das-minimal-section__heading">
+					<a href="#">Apprentices</a>
+				</h2>
+
+				<p class="das-minimal-section__description">
+					Add apprentices, update details of existing apprentices and authorise payments to training providers.
+				</p>
+
+				<ul class="das-minimal-section__links">
+					<li>
+						<a href="#">Add an apprentice</a>
+					</li>
+
+					<li>
+						<a href="#">View your cohorts</a>
+					</li>
+					<li>
+						<a href="#">Report public sector apprenticeship target </a>
+					</li>
+				</ul>
+			</div>
+
+			<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+			<div class="das-minimal-section">
+				<h2 class="das-minimal-section__heading">
+					<a href="#">Recruitment</a>
+				</h2>
+				<p class="das-minimal-section__description">
+					Recruit an apprentice by creating a vacancy. This vacancy will be advertised on Find an apprenticeship.
+				</p>
+				
+				<ul class="das-minimal-section__links">
+					<li>
+						<a href="#" class="govuk-!-font-weight-bold">3 applications to review</a>
+					</li>
+					<li>
+						<a href="#">Create a vacancy</a>
+					</li>
+					<li>
+						<a href="#">Find apprenticeship training</a>
+					</li>
+				</ul>
+			</div>
+
+			<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+			<div class="das-minimal-section">
+				<h2 class="das-minimal-section__heading">
+					<a href="#">Finances</a>
+				</h2>
+
+				<p class="das-minimal-section__description">
+					Reserve and manage funding, view your financial transactions, connect with other employers and send or receive transfer funds.
+				</p>
+
+
+				<ul class="das-minimal-section__links">
+					<li>
+						<a href="#">View transactions</a>
+					</li>
+					<li>
+						<a href="#">Download transactions</a>
+					</li>
+					<li>
+						<a href="#">Funding projection</a>
+					</li>
+					<li>
+						<a href="#">Transfers</a>
+					</li>
+				</ul>
+			</div>
+
+			<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+			<div class="das-minimal-section">
+				<h2 class="das-minimal-section__heading">
+					<a href="#">Training providers</a>
+				</h2>
+
+				<p class="das-minimal-section__description">
+					Set training provider permissions and control what tasks they can do on your behalf. Search for apprenticeships and see details of approved providers who can deliver the training.
+				</p>
+
+				<ul class="das-minimal-section__links">
+					<li>
+						<a href="#">Training provider permissions</a>
+					</li>
+					<li>
+						<a href="#">Your organisations and agreements</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="govuk-grid-column-one-third">
+		<h3 class="govuk-heading-m govuk-!-margin-bottom-2">
+			{{data['employer-name']}}
+		</h3>
+		<ul class="govuk-list govuk-!-font-size-1 govuk-!-margin-bottom-8">
+			<li>
+				<a href="#">Team members</a>
+			</li>
+			<li>
+				<a href="#">PAYE schemes</a>
+			</li>
+			<li>
+				<a href="#">Rename account</a>
+			</li>
+		</ul>
+
+		<h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+			<span class="govuk-!-font-weight-regular">Logged in as:</span> Jay Smith
+		</h3>
+		<ul class="govuk-list govuk-!-font-size-16 govuk-!-margin-bottom-8">
+			<li>
+				<a href="#">Switch accounts</a>
+			</li>
+			<li>
+				<a href="#">Change your password</a>
+			</li>
+			<li>
+				<a href="#">Change your email address</a>
+			</li>
+			<li>
+				<a href="#">Notification settings</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+{% endblock %}

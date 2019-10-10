@@ -1,0 +1,14 @@
+{% macro navbar(params) %}
+<div class="header-organisation {{- ' ' + params.classes if params.classes}}" role="navigation" style="border: none">
+    <nav class="header-inner" style="border-bottom: 1px solid #aaa">
+        <ul id="global-nav-links">
+        	{%- for link in params.links -%}
+            <li>
+                <a href="{{ link.href }}" class="govuk-!-font-size-16 {{'selected' if link.selected == true}}" role="menuitem">{{link.text}}</a>
+            </li>
+            {{ text }}
+            {% endfor %}
+        </ul>
+    </nav>
+</div>
+{% endmacro %}

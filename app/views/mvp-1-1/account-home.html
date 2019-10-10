@@ -29,7 +29,7 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		{% include './_account-home--prompts.html' %}
-	
+
 		{% if data['add-paye-now'] == 'yes' %}
 		<section class="das-section-dashboard">
 			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
@@ -83,9 +83,9 @@
 			</p>
 
 			<div class="das-cards">
+				{% if data['employer-type'] != 'levy' %}
 				<div class="govuk-grid-row">
-					{% if data['employer-type'] != 'levy' %}
-					<!-- <div class="das-card govuk-grid-column-one-half">
+					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
 							<a href="#">Reserve apprenticeship funding</a>
 						</h3>
@@ -93,7 +93,7 @@
 						<p class="das-minimal-section__description">
 							Reserve funding for apprenticeship training and assessment.
 						</p>
-					</div> -->
+					</div>
 
 					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
@@ -104,7 +104,9 @@
 							Use, view or delete funding reservations you’ve made.
 						</p>
 					</div>
-					{% endif %}
+				</div>
+				{% endif %}
+				<div class="govuk-grid-row">
 					<div class="das-card govuk-grid-column-one-half">
 						<h3 class="govuk-heading-m das-card__heading">
 							<a href="#">Your finances</a>
