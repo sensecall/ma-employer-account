@@ -18,12 +18,12 @@ router.get('/account-home--1-0', (req, res) => {
 
 // STABLE URL FOR OTHER TEAMS TO POINT TO
 router.get('/stable', (req, res) => {
-	res.redirect('mvp-1-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=yes&employer-type=non-levy')
+	res.redirect('mvp-1-1/account-home')
 })
 
 // URLS for other team projects
 // Training provider permissions
-const providerPermissionsURL = 'https://das-registration-prototype.herokuapp.com/providers'
+const providerPermissionsURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/providers'
 router.get('/provider-permissions', (req, res) => {
 	res.redirect(providerPermissionsURL)
 })
