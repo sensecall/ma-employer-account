@@ -27,6 +27,18 @@ const providerPermissionsURL = 'https://esfa:educ4tion@das-registration-prototyp
 router.get('/provider-permissions', (req, res) => {
 	res.redirect(providerPermissionsURL)
 })
+ 
+// Add paye
+const payeURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/ways-to-add-paye-scheme'
+router.get('/add-paye', (req, res) => {
+	res.redirect(payeURL)
+})
+
+// sign agreement
+const signAgreementURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/agreement'
+router.get('/sign-agreement', (req, res) => {
+	res.redirect(signAgreementURL)
+})
 
 
 router.use(/\/interim-([0-9]+)-([0-9]+)/, (req, res, next) => {
