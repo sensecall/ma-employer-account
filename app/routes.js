@@ -21,6 +21,13 @@ router.get('/stable', (req, res) => {
 	res.redirect('mvp-1-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=yes&employer-type=non-levy')
 })
 
+// URLS for other team projects
+// Training provider permissions
+const providerPermissionsURL = 'https://das-registration-prototype.herokuapp.com/providers'
+router.get('/provider-permissions', (req, res) => {
+	res.redirect(providerPermissionsURL)
+})
+
 
 router.use(/\/interim-([0-9]+)-([0-9]+)/, (req, res, next) => {
   require(`./views/interim-${req.params[0]}-${req.params[1]}/routes`)(req, res, next);
