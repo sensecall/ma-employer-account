@@ -23,7 +23,7 @@ router.get('/stable', (req, res) => {
 
 // URLS for other team projects
 // Training provider permissions
-const providerPermissionsURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/providers'
+const providerPermissionsURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/provider-permissions/provider'
 router.get('/provider-permissions', (req, res) => {
 	res.redirect(providerPermissionsURL)
 })
