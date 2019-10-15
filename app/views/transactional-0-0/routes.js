@@ -79,7 +79,7 @@ router.post('/q--found-apprentice', (req, res) => {
 
 router.post('/q--need-vacancy', (req, res) => {
 	if (req.session.data['need-vacancy'] == 'yes'){
-		// res.redirect('q--provider-permission')
+		res.redirect('q--need-vacancy')
 	} else {
 		res.redirect('q--know-course')
 	}

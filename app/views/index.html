@@ -59,17 +59,17 @@ GOV.UK Prototype Kit
 			</ul>
 
 			<ul class="govuk-list govuk-list--bullet govuk-!-font-size-16">
-					<a href="mvp-1-1/account-home?add-paye-now=no&sign-agreement-now=no&reserved-funding=no&employer-type=levy">Account home - skipped PAYE</a>
-				</li>
-				<li>
-					<a href="mvp-1-1/account-home?add-paye-now=yes&sign-agreement-now=no&reserved-funding=no&employer-type=levy">Account home - PAYE added, skipped agreement</a>
-				</li>
-				<li>
-					<a href="mvp-1-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=levy">Account home - PAYE added, agreement signed</a>
-				</li>
-			</ul>
-		</div>
+				<a href="mvp-1-1/account-home?add-paye-now=no&sign-agreement-now=no&reserved-funding=no&employer-type=levy">Account home - skipped PAYE</a>
+			</li>
+			<li>
+				<a href="mvp-1-1/account-home?add-paye-now=yes&sign-agreement-now=no&reserved-funding=no&employer-type=levy">Account home - PAYE added, skipped agreement</a>
+			</li>
+			<li>
+				<a href="mvp-1-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=levy">Account home - PAYE added, agreement signed</a>
+			</li>
+		</ul>
 	</div>
+</div>
 </div>
 
 <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
@@ -77,6 +77,16 @@ GOV.UK Prototype Kit
 <h2 class="govuk-heading-l">
 	Other design concepts
 </h2>
+
+<h3 class="govuk-heading-m">
+	Transactional
+</h3>
+<ul class="govuk-list govuk-list--bullet">
+	<li>
+		<a href="transactional-0-0">Version 0</a>
+	</li>
+</ul>
+
 
 <h3 class="govuk-heading-m">
 	Based on interim design
@@ -100,6 +110,8 @@ GOV.UK Prototype Kit
 	</li>
 </ul>
 
+<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
 <h3 class="govuk-heading-m">
 	Based on panel design
 </h3>
@@ -109,93 +121,81 @@ GOV.UK Prototype Kit
 	iconFallbackText: "Warning"
 }) }}
 
-<h3 class="govuk-heading-s">
-	Non-levy employers
-</h3>
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-one-half">
+		<h3 class="govuk-heading-s">
+			Non-levy employers
+		</h3>
 
-<ul class="govuk-list govuk-list--bullet">
-	<li>
-		<a href="account-home--add-paye">Add PAYE scheme prompt</a>
-	</li>
-	<li>
-		<a href="account-home--sign-agreement">Sign agreement prompt</a>
-	</li>
-	<li>
-		<a href="account-home--reserve-funding--no-provider">Reserve funding prompt (no provider added)</a>
-	</li>
-	<li>
-		<a href="account-home--reserve-funding--with-provider">Reserve funding prompt (provider added)</a>
-	</li>
-	<li>
-		<a href="account-home--funding-reserved--no-provider">Funding reserved (no provider added)</a>
-	</li>
-	<li>
-		<a href="account-home--one-apprentice--review">One apprentice (approve details prompt)</a>
-	</li>
-	<li>
-		<a href="account-home--one-apprentice">One apprentice added</a>
-	</li>
-	<li>
-		<a href="account-home--three-apprentices">3 apprentices added</a>
-	</li>
-	<li>
-		<a href="account-home--many-apprentices">Many apprentices added (without training provider)</a>
-	</li>
-</ul>
+		<ul class="govuk-list govuk-list--bullet">
+			<li>
+				<a href="account-home--add-paye">Add PAYE scheme prompt</a>
+			</li>
+			<li>
+				<a href="account-home--sign-agreement">Sign agreement prompt</a>
+			</li>
+			<li>
+				<a href="account-home--reserve-funding--no-provider">Reserve funding prompt (no provider added)</a>
+			</li>
+			<li>
+				<a href="account-home--reserve-funding--with-provider">Reserve funding prompt (provider added)</a>
+			</li>
+			<li>
+				<a href="account-home--funding-reserved--no-provider">Funding reserved (no provider added)</a>
+			</li>
+			<li>
+				<a href="account-home--one-apprentice--review">One apprentice (approve details prompt)</a>
+			</li>
+			<li>
+				<a href="account-home--one-apprentice">One apprentice added</a>
+			</li>
+			<li>
+				<a href="account-home--three-apprentices">3 apprentices added</a>
+			</li>
+			<li>
+				<a href="account-home--many-apprentices">Many apprentices added (without training provider)</a>
+			</li>
+		</ul>
+	</div>
 
+	<div class="govuk-grid-column-one-half">
+		<h2 class="govuk-heading-s">
+			Levy employers
+		</h2>
 
-<!-- <pre>
-	| Agreement signed > PAYE added > Reserved funds > Apprentice added > Apprentice started >
-	------------------------------------------------------------------------------------------
-	|        ✅        |            |                |                  |                    |
-	------------------------------------------------------------------------------------------
-	|        ✅        |     ✅     |                |                  |                    |
-	------------------------------------------------------------------------------------------
-	|        ✅        |     ✅     |       ✅       |                  |                    |
-	------------------------------------------------------------------------------------------
-	|        ✅        |     ✅     |       ✅       |        ✅        |                    |
-	------------------------------------------------------------------------------------------
-	|        ✅        |     ✅     |       ✅       |        ✅        |         ✅         |
-</pre> -->
-
-
-<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-<h2 class="govuk-heading-m">
-	Levy employers
-</h2>
-
-<ul class="govuk-list govuk-list--bullet">
-	<li>
-		<strike>Add PAYE scheme prompt</strike>
-	</li>
-	<li>
-		<strike>Sign agreement prompt</strike>
-	</li>
-	<li>
-		<strike>Reserve funding prompt (no provider added)</strike>
-	</li>
-	<li>
-		<strike>Reserve funding prompt (provider added)</strike>
-	</li>
-	<li>
-		<strike>Funding reserved</strike>
-	</li>
-	<li>
-		<strike>One apprentice (approve details prompt)</strike>
-	</li>
-	<li>
-		<strike>One apprentice added</strike>
-	</li>
-	<li>
-		<strike>3 apprentices added</strike>
-	</li>
-	<li>
-		<strike>Many apprentices added</strike>
-	</li>
-	<li>
-		<a href="account-home--many-apprentices--one-provider">Many apprentices added (one training provider)</a>
-	</li>
-</ul>
+		<ul class="govuk-list govuk-list--bullet">
+			<li>
+				<strike>Add PAYE scheme prompt</strike>
+			</li>
+			<li>
+				<strike>Sign agreement prompt</strike>
+			</li>
+			<li>
+				<strike>Reserve funding prompt (no provider added)</strike>
+			</li>
+			<li>
+				<strike>Reserve funding prompt (provider added)</strike>
+			</li>
+			<li>
+				<strike>Funding reserved</strike>
+			</li>
+			<li>
+				<strike>One apprentice (approve details prompt)</strike>
+			</li>
+			<li>
+				<strike>One apprentice added</strike>
+			</li>
+			<li>
+				<strike>3 apprentices added</strike>
+			</li>
+			<li>
+				<strike>Many apprentices added</strike>
+			</li>
+			<li>
+				<a href="account-home--many-apprentices--one-provider">Many apprentices added (one training provider)</a>
+			</li>
+		</ul>
+	</div>
+</div>
 
 {% endblock %}
