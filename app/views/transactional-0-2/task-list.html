@@ -30,24 +30,37 @@ Take on an apprentice - Prototype
 		</p>
 
 
+		{% set doneTagHtml %}
+		<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>
+		{% endset %}
+
+		{% set optionalTagHtml %}
+		<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>Optional</strong>
+		{% endset %}
+
+		{% set todoTagHtml %}
+		<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>To-do</strong>
+		{% endset %}
+
+
 		{{ govukTable({
 			firstCellIsHeader: true,
 			rows: [
 			[
 			{
-				html: "<a href='#' class='govuk-!-font-size-24'>Training provider</a>"
+				html: "<a href='g--found-provider' class='govuk-!-font-size-24'>Training provider</a>"
 			},
 			{
-				html: "<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>",
+				html: doneTagHtml if data['provider'] == 'true' else todoTagHtml,
 				format: 'numeric'
 			}
 			],
 			[
 			{
-				html: "<a href='#' class='govuk-!-font-size-24'>Apprenticeship training course</a>"
+				html: "<a href='g--know-course' class='govuk-!-font-size-24'>Apprenticeship training course</a>"
 			},
 			{
-				html: "<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>",
+				html: doneTagHtml if data['choose-course'] != '' else todoTagHtml,
 				format: 'numeric'
 			}
 			],
@@ -56,7 +69,7 @@ Take on an apprentice - Prototype
 				html: "<a href='#' class='govuk-!-font-size-24'>Training start date</a>"
 			},
 			{
-				html: "<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>",
+				html: doneTagHtml if data['start-date'] != '' else todoTagHtml,
 				format: 'numeric'
 			}
 			],
@@ -65,16 +78,16 @@ Take on an apprentice - Prototype
 				html: "<a href='#' class='govuk-!-font-size-24'>Funding</a>"
 			},
 			{
-				html: "<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>",
+				html: doneTagHtml if data['reserve-funding'] == 'true' else todoTagHtml,
 				format: 'numeric'
 			}
 			],
 			[
 			{
-				html: "<a href='#' class='govuk-!-font-size-24'>Advertise vacancy</a>"
+				html: "<a href='#' class='govuk-!-font-size-24'>Recruitment</a>"
 			},
 			{
-				html: "<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>Optional</strong>",
+				html: doneTagHtml if data['vacancy-created'] == 'true' else todoTagHtml,
 				format: 'numeric'
 			}
 			],
