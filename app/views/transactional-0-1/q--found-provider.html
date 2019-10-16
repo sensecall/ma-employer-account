@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set providerHtml %}
+{{ govukInput({
+	id: "choose-provider",
+	name: "choose-provider",
+	type: "text",
+	classes: "govuk-!-width-two-thirds",
+	label: {
+	text: "Search for apprenticeship training provider"
+}
+}) }}
+{% endset -%}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "found-provider",
+				name: "found-provider",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you know which training provider will be delivering your apprentice's training?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
+				},
+				hint:
+				{
+					text: "In qui in officia id qui elit excepteur laborum velit eiusmod anim ut magna."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes",
+					conditional:
+					{
+						html: providerHtml
+					}
+				},
+				{
+					value: "no",
+					text: "No, I don't know yet"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+
+			<p>
+				<a href="#">Skip this question</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

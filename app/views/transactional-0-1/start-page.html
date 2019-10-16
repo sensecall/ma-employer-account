@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [
+  {
+    text: "Home",
+    href: "account-home"
+  },
+  {
+    text: "Create an apprenticeship for your organisation"
+  }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Start an apprenticeship
+    </h1>
+
+    <p>
+      Ex esse pariatur non nostrud incididunt laborum officia duis adipisicing dolor anim nisi dolore.
+    </p>
+    <p>
+      anim enim dolore aute dolore est ea labore mollit fugiat sint mollit dolore commodo sint sit est qui minim minim.
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>do something</li>
+      <li>this other thing</li>
+      <li>something else</li>
+    </ul>
+
+    <p class="govuk-body">You can leave this process at any time and your progress will be saved.</p>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "q--found-provider",
+      classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+    }) }}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends "./layout.html" %}
+
+{% set serviceName %}
+Configure MA employer account prototype
+{% endset -%}
+
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">
+	{{serviceName}}
+</h1>
+
+<form method="post" action="config">
+	<h2 class="govuk-heading-m">
+		Select prototype version
+	</h2>
+	{{ govukSelect({
+		id: "prototype-version",
+		name: "prototype-version",
+		label:
+		{
+			text: "Version"
+		},
+		items:
+		[
+		{
+			value: "mvp-1-0",
+			text: "mvp-1-0"
+		},
+		{
+			value: "mvp-1-1",
+			text: "mvp-1-1"
+		},
+		{
+			value: "mvp-1-2",
+			text: "mvp-1-2"
+		},
+		{
+			value: "interim-0-0",
+			text: "interim-0-0"
+		},
+		{
+			value: "interim-0-1",
+			text: "interim-0-1"
+		},
+		{
+			value: "interim-0-2",
+			text: "interim-0-2"
+		},
+		{
+			value: "transactional-0-0",
+			text: "transactional-0-0"
+		},
+		{
+			value: "transactional-0-1",
+			text: "transactional-0-1"
+		}
+		]
+	})}}
+
+	<!-- ADDED PAYE -->
+	{{govukRadios({
+		classes: "govuk-radios--inline",
+		formGroup:
+		{
+			classes: "radio--add-paye-now"
+		},
+		name: "add-paye-now",
+		fieldset:
+		{
+			legend:
+			{
+				text: "Added PAYE?",
+				isPageHeading: false,
+				classes: "govuk-fieldset__legend--m"
+			}
+		},
+		items:
+		[
+		{
+			value: "yes",
+			text: "Yes"
+		},
+		{
+			value: "no",
+			text: "No"
+		}]
+	})}}
+
+	<!-- SIGNED AGREEMENT -->
+	{{govukRadios({
+		classes: "govuk-radios--inline",
+		name: "sign-agreement-now",
+		formGroup:
+		{
+			classes: "radio--sign-agreement-now"
+		},
+		fieldset:
+		{
+			legend:
+			{
+				text: "Signed agreement?",
+				isPageHeading: false,
+				classes: "govuk-fieldset__legend--m"
+			}
+		},
+		items:
+		[
+		{
+			value: "yes",
+			text: "Yes"
+		},
+		{
+			value: "no",
+			text: "No",
+			attributes: {
+			checked: "selected"
+		}
+		}]
+	})}}
+
+
+	{{ govukButton({
+		text: "Save and continue"
+	})}}
+</form>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		let signAgreementGroup = $('.radio--sign-agreement-now')
+		let addPAYEGroup = $('.radio--add-paye-now')
+
+		signAgreementGroup.hide()
+
+		addPAYEGroup.find("input").on('change', function(){
+			if( $("input[name='add-paye-now']:checked").val() === 'yes' ){
+				signAgreementGroup.show()
+			} else {
+				$("input[name='sign-agreement-now'][value='no']").prop('checked', true)
+				signAgreementGroup.hide()
+			}
+		})
+	})
+</script>
+{% endblock %}

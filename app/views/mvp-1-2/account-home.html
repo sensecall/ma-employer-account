@@ -3,34 +3,33 @@
 {% block header %}
 {% include "includes/cookie-banner.html" %}
 {% include "includes/ma-header.html" %}
-{% include "includes/ma-account-header.html" %}
 
-{% if data['add-paye-now'] == 'yes' %}
+{% if data['sign-agreement-now'] == 'yes' %}
+{% include "includes/ma-account-header.html" %}
 {% include "includes/ma-navbar.html" %}
 {% endif %}
+
 {% endblock %}
 
 
 {% block content %}
+{% if data['sign-agreement-now'] == 'yes' %}
 <section class="das-section das-section--header das-section--header--has-border govuk-!-margin-bottom-8 govuk-!-padding-top-0">
-	{% if data['add-paye-now'] == 'yes' %}
 	<h1 class="govuk-heading-m das-account__title">Account ID: A1B2C3</h1>
 	<h2 class="govuk-heading-l das-account__account-name">{{data['employer-name']}}</h2>
-	{% else %}
-	<h1 class="govuk-heading-m das-account__title">Account ID: A1B2C3</h1>
-	<h2 class="govuk-heading-l das-account__account-name">My account</h2>
-	{% endif %}
-	<a href="" class="das-favourites-link govuk-body">
+	
+	<a href="#" class="das-favourites-link govuk-body">
 		<span class="das-favourites-link__icon"><img src="https://das-at-frnt-end.azureedge.net/images/favourite-unchecked-black.svg" alt=""></span>
 		<span class="das-favourites-link__text">View saved favourites</span>
 	</a>
 </section>
+{% endif %}
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		{% include './_account-home--prompts.html' %}
 
-		{% if data['add-paye-now'] == 'yes' %}
+		{% if data['sign-agreement-now'] == 'yes' %}
 		<section class="das-section-dashboard">
 			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
 				Apprenticeships
@@ -172,7 +171,7 @@
 		</div>
 	</div>
 
-	{% if data['add-paye-now'] == 'yes' %}
+	{% if data['sign-agreement-now'] == 'yes' %}
 	<div class="govuk-grid-column-one-third">
 		<div class="govuk-tabs" data-module="tabs">
 			<ul class="govuk-tabs__list">
