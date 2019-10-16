@@ -24,183 +24,84 @@ Take on an apprentice - Prototype
 		<h1 class="govuk-heading-xl">
 			Start an apprenticeship: step-by-step
 		</h1>
-		<p>
-			Use this step-by-step list to help you with starting a new apprenticeship in your organisation.
-		</p>
 
 		<p>
-			This list can help whether you're taking on a new apprentice or offering training to an existing member of staff.
+			Fill in the sections below to start an apprenticeship in your organisation.
 		</p>
 
-		<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-		<ol class="app-task-list">
-			<li id="one">
-				<h2 class="app-task-list__section">
-					<span class="app-task-list__section-number">1. </span> Find apprenticeship training courses and providers
-				</h2>
+		{{ govukTable({
+			firstCellIsHeader: true,
+			rows: [
+			[
+			{
+				html: "<a href='#' class='govuk-!-font-size-24'>Training provider</a>"
+			},
+			{
+				html: "<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>",
+				format: 'numeric'
+			}
+			],
+			[
+			{
+				html: "<a href='#' class='govuk-!-font-size-24'>Apprenticeship training course</a>"
+			},
+			{
+				html: "<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>",
+				format: 'numeric'
+			}
+			],
+			[
+			{
+				html: "<a href='#' class='govuk-!-font-size-24'>Training start date</a>"
+			},
+			{
+				html: "<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>",
+				format: 'numeric'
+			}
+			],
+			[
+			{
+				html: "<a href='#' class='govuk-!-font-size-24'>Funding</a>"
+			},
+			{
+				html: "<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>",
+				format: 'numeric'
+			}
+			],
+			[
+			{
+				html: "<a href='#' class='govuk-!-font-size-24'>Advertise vacancy</a>"
+			},
+			{
+				html: "<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>",
+				format: 'numeric'
+			}
+			],
+			[
+			{
+				html: "<a href='#' class='govuk-!-font-size-24'>Apprentice details</a>"
+			},
+			{
+				html: "<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>To-do</strong>",
+				format: 'numeric'
+			}
+			],
+			[
+			{
+				html: "<span class='govuk-!-font-size-24' style='color:#999'>Confirm apprenticeship details</span>"
+			},
+			{
+				html: "<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>Do last</strong>",
+				format: 'numeric'
+			}
+			]
+			]
+		}) }}
 
-				<p class="app-task-list__description">
-					Find the right apprenticeship for your business and find a training provider to deliver the training. You can save your searches.
-				</p>
+		<p class="govuk-!-margin-top-8">
+			<a href="#">Save and return to your account</a>
+		</p>
+</div>
 
-				<ul class="app-task-list__items">
-					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="?training=true" onclick="window.open('https://findapprenticeshiptraining.apprenticeships.education.gov.uk/');" aria-describedby="eligibility-completed">
-							Find apprenticeship training
-						</a>
-						{% if data['training'] == 'true' %}
-						<strong class="govuk-tag app-task-list__task-completed" style="background:#777">
-							Visited
-						</strong>
-						{% endif %}
-					</li>
-
-					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="" aria-describedby="eligibility-completed" onclick="window.open('interstitial');">
-							View your saved apprenticeship training courses
-						</a>
-					</li>
-
-					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="" aria-describedby="eligibility-completed" onclick="window.open('interstitial');">
-							View your shortlisted training providers
-						</a>
-					</li>
-				</ul>
-			</li>
-
-			<li id="two">
-				<h2 class="app-task-list__section">
-					<span class="app-task-list__section-number">2. </span> Reserve funding for apprenticeship training
-				</h2>
-
-				<p class="app-task-list__description">
-					Reserve apprenticeship funding to pay your chosen training provider for training and assessing your apprentice.
-				</p>
-
-				<ul class="app-task-list__items">
-					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="?reserved=true&started=true#two" onclick="window.open('interstitial');" aria-describedby="eligibility-completed">
-							Reserve funding for apprenticeship training
-						</a>
-						{% if data['reserved'] == 'true' or data['apprentice-details'] == 'true' %}
-						<strong class="govuk-tag app-task-list__task-completed">
-							Completed
-						</strong>
-						{% else %}
-						<strong class="govuk-tag app-task-list__task-completed" style="background: #777">
-							Incomplete
-						</strong>
-						{% endif %}
-					</li>
-				</ul>
-			</li>
-
-			<li id="three">
-				<h2 class="app-task-list__section">
-					<span class="app-task-list__section-number">3. </span> Recruit an apprentice
-				</h2>
-
-				<p class="app-task-list__description">
-					Advertise your apprenticeships and view current applications you have been sent.
-				</p>
-
-				<ul class="app-task-list__items">
-					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="?vacancy-created=true&started=true#three" onclick="window.open('interstitial');" aria-describedby="eligibility-completed">
-							Create a vacancy
-						</a>
-
-						{% if data['vacancy-created'] == 'true' %}
-						<strong class="govuk-tag app-task-list__task-completed">
-							Completed
-						</strong>
-						{% else %}
-						<strong class="govuk-tag app-task-list__task-completed" style="background: #777">
-							Optional
-						</strong>
-						{% endif %}
-					</li>
-
-					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="" onclick="window.open('interstitial');" aria-describedby="eligibility-completed">
-							View your applications
-						</a>
-					</li>
-				</ul>
-			</li>
-
-			<li id="four">
-				<h2 class="app-task-list__section">
-					<span class="app-task-list__section-number">4. </span> Add your apprentice's details
-				</h2>
-
-				<p class="app-task-list__description">
-					Once you have chosen your apprentice, you or your training provider will need to add their details to the Manage apprenticeships service.
-				</p>
-
-				<ul class="app-task-list__items">
-					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" onclick="window.open('interstitial');" href="?apprentice-details=true&started=true#four" aria-describedby="eligibility-completed">
-							Add apprentice details
-						</a>
-
-						{% if data['found-apprentice'] == 'yes' %}
-						<strong class="govuk-tag app-task-list__task-completed">
-							Completed
-						</strong>
-						{% else %}
-						<strong class="govuk-tag app-task-list__task-completed" style="background: #777">
-							Incomplete
-						</strong>
-						{% endif %}
-					</li>
-
-					<li class="app-task-list__item">
-						{% if data['found-apprentice'] == 'yes' %}
-						<a class="app-task-list__task-name" onclick="window.open('interstitial');" href="?details-sent=true#four" aria-describedby="eligibility-completed">
-							Send apprentice details to Training provider
-						</a>
-						{% if data['details-sent'] == 'true' %}
-						<strong class="govuk-tag app-task-list__task-completed">
-							Completed
-						</strong>
-						{% else %}
-						<strong class="govuk-tag app-task-list__task-completed" style="background: #777">
-							Incomplete
-						</strong>
-						{% endif %}
-						{% else %}
-						<span class="app-task-list__task-name" style="color:#777">
-							Send apprentice details to Training provider
-						</span>
-						{% endif %}
-					</span>
-				</li>
-
-				<li class="app-task-list__item">
-					{% if data['details-sent'] == 'true' %}
-					<a class="app-task-list__task-name" onclick="window.open('interstitial');" href="account-home?apprentice-approved=true" aria-describedby="eligibility-completed">
-						Approve apprentice details
-					</a>
-					{% if data['details-approved'] == 'true' %}
-					<strong class="govuk-tag app-task-list__task-completed">
-						Completed
-					</strong>
-					{% else %}
-					<strong class="govuk-tag app-task-list__task-completed" style="background: #777">
-						Incomplete
-					</strong>
-					{% endif %}
-					{% else %}
-					<span class="app-task-list__task-name" style="color:#777">
-						Approve apprentice details
-					</span>
-					{% endif %}
-				</li>
-			</ul>
-		</li>
-	</div>
-
-	{% endblock %}
+{% endblock %}
