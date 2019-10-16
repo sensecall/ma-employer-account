@@ -5,4 +5,10 @@
 		border: 3px solid $tag-colour;
 		color: $tag-colour
 	}
+	&.govuk-tag--border--light {
+		$tag-colour: #aaa;
+		background: #fff;
+		border: 3px solid $tag-colour;
+		color: $tag-colour
+	}
 }
