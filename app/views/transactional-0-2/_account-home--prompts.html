@@ -1,0 +1,71 @@
+<!-- ADD PAYE SCHEME -->
+{% if data['add-paye-now'] != 'yes' and data['sign-agreement-now'] != 'yes' %}
+<div class="das-minimal-section__wrapper">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				Add your PAYE scheme to access your account
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Add your organisation’s PAYE scheme and sign your agreement with the Education and Skills Funding Agency to get funding for apprenticeship training.
+			</p>
+
+			<p>
+				<a href="add-paye" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+					Add your PAYE scheme
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}
+
+<!-- SIGN AGREEMENT -->
+{% if data['sign-agreement-now'] != 'yes' and data['add-paye-now'] == 'yes' %}
+<div class="das-minimal-section__wrapper das-section-dashboard">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				Sign your agreement to access apprenticeship funding
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Sign your agreement with the Education and Skills Funding Agency to access funding for apprenticeship training. 
+			</p>
+
+			<p>
+				<a href="sign-agreement" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+					Sign your agreement
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}
+
+<!-- RESERVE FUNDS -->
+{% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['employer-type'] != 'levy' %}
+<div class="das-minimal-section__wrapper das-section-dashboard">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				Start an apprenticeship: step by step
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Dolor minim eu veniam culpa magna anim sunt ut ad ad nulla dolor irure sit voluptate id fugiat sit.
+			</p>
+
+			<p>
+				<a href="start-page" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold govuk-!-font-size-24">
+					Get started
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}

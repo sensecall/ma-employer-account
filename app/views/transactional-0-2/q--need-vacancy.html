@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Recruiting your apprentice
+		</h1>
+
+		<p>
+			Here is some information about recruiting and advertising an apprentice.
+		</p>
+
+		<p>
+			Here is a bit more information.
+		</p>
+
+		<p>
+			Here is a final bit of information about recruiting an apprentice.
+		</p>
+
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "need-vacancy",
+				name: "need-vacancy",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you want to create an advert to find an apprentice for this role?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--l govuk-!-margin-top-8"
+					}
+				},
+				hint:
+				{
+					text: "Here is some help text."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes"
+				},
+				{
+					value: "no",
+					text: "Not right now"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+
+			<p>
+				<a href="task-list">Skip this question</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

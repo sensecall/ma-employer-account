@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set courseHtml %}
+{{ govukInput({
+	id: "choose-course",
+	name: "choose-course",
+	type: "text",
+	classes: "govuk-!-width-two-thirds",
+	label: {
+	text: "Search for apprenticeship training course"
+}
+}) }}
+{% endset -%}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Apprenticeship training course
+		</h1>
+
+		<p>
+			Here is some information about apprenticeship training courses.
+		</p>
+
+		<p>
+			You can use <a href="#">find apprenticeship training</a> to search for courses and training providers.
+		</p>
+
+		<p>
+			Here is some more information about apprenticeship training courses, including how long they can take and what a start date is.
+		</p>
+
+		<p>
+			Here is a final piece of information before we continue.
+		</p>
+
+		{{govukButton({
+			text: "Continue",
+			href: "q--know-course"
+		})}}
+	</div>
+</div>
+{% endblock %}

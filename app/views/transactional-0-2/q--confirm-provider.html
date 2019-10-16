@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Confirm provider details
+			</h1>
+
+			<div class="govuk-inset-text">
+				<p>
+					Provider name
+				</p>
+				<p>
+					UKPRN: 100100123
+				</p>
+			</div>
+
+			{{ govukRadios({
+				idPrefix: "confirm-provider-details",
+				name: "confirm-provider-details",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Are these provider details correct?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--l"
+					}
+				},
+				hint:
+				{
+					text: "Here is some help text."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes"
+				},
+				{
+					value: "no",
+					text: "No"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

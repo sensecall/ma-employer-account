@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Start an apprenticeship
+    </h1>
+
+    <p>
+      Here is an introduction to starting an apprenticeship.
+    </p>
+
+    <p>
+      Here is some information about the thing you will need to do to start an apprenticeship:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>do something</li>
+      <li>this other thing</li>
+      <li>something else</li>
+    </ul>
+
+    <p>
+      Here is a final bit of useful information about the process that you're about to begin.
+    </p>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "g--found-provider",
+      classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-0"
+    }) }}
+
+    <p class="govuk-inset-text">
+      You can leave this process at any time and your progress will be saved.
+    </p>
+  </div>
+</div>
+{% endblock %}
