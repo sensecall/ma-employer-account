@@ -59,7 +59,7 @@ router.post('/q--found-provider', (req, res) => {
 	if (req.session.data['found-provider'] == 'yes'){
 		res.redirect('q--confirm-provider')
 	} else {
-		res.redirect('g--know-course')
+		res.redirect('g--funding')
 	}
 })
 
@@ -75,7 +75,7 @@ router.post('/q--provider-permission', (req, res) => {
 	if (req.session.data['provider-permission'] == 'yes'){
 		res.redirect('q--set-provider-permission')
 	} else {
-		res.redirect('q--know-course')
+		res.redirect('g--funding')
 	}
 })
 
