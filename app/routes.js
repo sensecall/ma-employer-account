@@ -1,6 +1,24 @@
 const express = require('express')
 const router = express.Router()
 
+// URLS for other team projects
+// var isLocal = if(req.get('host') === 'localhost')
+
+// Training provider permissions
+const providerPermissionsURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/provider-permissions/providers'
+router.get('/provider-permissions', (req, res) => {
+	res.redirect(providerPermissionsURL)
+})
+
+// Add paye
+const payeURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/ways-to-add-paye-scheme'
+
+// sign agreement
+const signAgreementURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/agreement'
+
+// ---------------------------------------
+// ROUTING
+// ---------------------------------------
 // Get Sprint and Feature for URL links
 router.use('/', (req, res, next) => {
 	req.version = req.originalUrl.split('/')[1]
@@ -28,22 +46,6 @@ router.get('/stable', (req, res) => {
 
 	res.redirect(prototypeVersion + '/account-home')
 })
-
-// URLS for other team projects
-// var isLocal = if(req.get('host') === 'localhost')
-
-// Training provider permissions
-const providerPermissionsURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/provider-permissions/providers'
-router.get('/provider-permissions', (req, res) => {
-	res.redirect(providerPermissionsURL)
-})
-
-// Add paye
-const payeURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/ways-to-add-paye-scheme'
-
-// sign agreement
-const signAgreementURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/agreement'
-
 
 router.use(/\/interim-([0-9]+)-([0-9]+)/, (req, res, next) => {
 	require(`./views/interim-${req.params[0]}-${req.params[1]}/routes`)(req, res, next);
