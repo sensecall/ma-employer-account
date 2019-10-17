@@ -18,7 +18,11 @@ Example usage:
 */
 
 module.exports = {
+	// URLS
+	'providerPermissionsURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/provider-permissions/providers'
+	'payeURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/ways-to-add-paye-scheme'
+	'signAgreementURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/agreement'
 
-  // Insert values here
-  'employer-name': "Aardvark Zebra Ltd"
+	// Other
+	'employer-name': "Aardvark Zebra Ltd"
 }

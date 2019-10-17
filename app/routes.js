@@ -12,10 +12,6 @@ router.use('/', (req, res, next) => {
 	req.version = req.originalUrl.split('/')[1]
 	res.locals.version = req.version
 
-	const providerPermissionsURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/provider-permissions/providers'
-	const payeURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/ways-to-add-paye-scheme'
-	const signAgreementURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/agreement'
-
 	next()
 })
 

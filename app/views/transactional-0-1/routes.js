@@ -14,7 +14,7 @@ router.get('/add-paye', (req, res) => {
 		
 		res.redirect(`/${req.version}/account-home`)
 	} else {
-		res.redirect(payeURL)
+		res.redirect(data['payeURL'])
 	}
 })
 
@@ -25,7 +25,7 @@ router.get('/sign-agreement', (req, res) => {
 		
 		res.redirect(`/${req.version}/account-home`)
 	} else {
-		res.redirect(signAgreementURL)
+		res.redirect(data['signAgreementURL'])
 	}
 })
 
