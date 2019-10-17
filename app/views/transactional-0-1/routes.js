@@ -9,24 +9,12 @@ router.get('/', (req, res) => {
 
 // add paye external linking
 router.get('/add-paye', (req, res) => {
-	if( req.get('host').includes('localhost') ){
-		req.session.data['add-paye-now'] = 'yes'
-		
-		res.redirect(`/${req.version}/account-home`)
-	} else {
-		res.redirect(req.session.data['payeURL'])
-	}
+	res.redirect(req.session.data['payeURL'] + '?referrer=' + res.locals.fullUrl + '/' + req.version + '/account-home')
 })
 
 // sign agreement external linking
 router.get('/sign-agreement', (req, res) => {
-	if( req.get('host').includes('localhost') ){
-		req.session.data['sign-agreement-now'] = 'yes'
-		
-		res.redirect(`/${req.version}/account-home`)
-	} else {
-		res.redirect(req.session.data['signAgreementURL'])
-	}
+	res.redirect(req.session.data['signAgreementURL'] + '?referrer=' + res.locals.fullUrl + '/' + req.version + '/account-home')
 })
 
 
