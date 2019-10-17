@@ -25,7 +25,7 @@ router.get('/add-paye', (req, res) => {
 		
 		res.redirect(`/${req.version}/account-home`)
 	} else {
-		res.redirect(data['payeURL'])
+		res.redirect(req.session.data['payeURL'])
 	}
 })
 
@@ -35,7 +35,7 @@ router.get('/sign-agreement', (req, res) => {
 		
 		res.redirect(`/${req.version}/account-home`)
 	} else {
-		res.redirect(data['signAgreementURL'])
+		res.redirect(req.session.data['signAgreementURL'])
 	}
 })
 
