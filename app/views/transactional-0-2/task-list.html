@@ -14,7 +14,7 @@ Take on an apprentice - Prototype
 {% block beforeContent %}
 {{ govukBackLink({
 	text: "Back to your account",
-	href: "account-home"
+	href: "account-home?sign-agreement-now=yes&add-paye-now=yes"
 }) }}
 {% endblock %}
 
@@ -75,7 +75,7 @@ Take on an apprentice - Prototype
 			],
 			[
 			{
-				html: "<a href='g--funding' class='govuk-!-font-size-24'>Funding</a>"
+				html: "<a href='#' class='govuk-!-font-size-24'>Funding</a>"
 			},
 			{
 				html: doneTagHtml if data['reserve-funding'] == 'true' else todoTagHtml,
@@ -113,7 +113,7 @@ Take on an apprentice - Prototype
 		}) }}
 
 		<p class="govuk-!-margin-top-8">
-			<a href="#">Save and return to your account</a>
+			<a href="account-home?sign-agreement-now=yes&add-paye-now=yes">Save and return to your account</a>
 		</p>
 </div>
 

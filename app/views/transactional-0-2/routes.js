@@ -44,7 +44,9 @@ router.post('/q--know-start-date', (req, res) => {
 })
 
 router.post('/q--enter-start-date', (req, res) => {
-	res.redirect('q--reserve-confirmation')
+	// res.redirect('q--reserve-confirmation')
+	
+	res.redirect('q--found-apprentice')
 })
 
 router.post('/q--reserve-warning', (req, res) => {
