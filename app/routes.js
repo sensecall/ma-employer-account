@@ -28,7 +28,7 @@ router.post('/config', (req, res) => {
 
 // STABLE URL FOR OTHER TEAMS TO POINT TO
 router.get('/stable', (req, res) => {
-	let prototypeVersion = req.version || 'mvp-1-1'
+	let prototypeVersion = req.session.data['prototype-version'] || 'mvp-1-1'
 
 	res.redirect(prototypeVersion + '/account-home')
 })
