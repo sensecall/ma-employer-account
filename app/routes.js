@@ -4,18 +4,6 @@ const router = express.Router()
 // URLS for other team projects
 // var isLocal = if(req.get('host') === 'localhost')
 
-// Training provider permissions
-const providerPermissionsURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/provider-permissions/providers'
-router.get('/provider-permissions', (req, res) => {
-	res.redirect(providerPermissionsURL)
-})
-
-// Add paye
-const payeURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/ways-to-add-paye-scheme'
-
-// sign agreement
-const signAgreementURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/agreement'
-
 // ---------------------------------------
 // ROUTING
 // ---------------------------------------
@@ -23,6 +11,11 @@ const signAgreementURL = 'https://esfa:educ4tion@das-registration-prototype.hero
 router.use('/', (req, res, next) => {
 	req.version = req.originalUrl.split('/')[1]
 	res.locals.version = req.version
+
+	const providerPermissionsURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/provider-permissions/providers'
+	const payeURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/ways-to-add-paye-scheme'
+	const signAgreementURL = 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/agreement'
+
 	next()
 })
 
