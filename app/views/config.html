@@ -59,6 +59,10 @@ GOV.UK Prototype Kit
 		{
 			value: "transactional-0-1",
 			text: "transactional-0-1"
+		},
+		{
+			value: "transactional-0-2",
+			text: "transactional-0-2"
 		}
 		]
 	})}}
@@ -121,13 +125,20 @@ GOV.UK Prototype Kit
 			attributes: {
 			checked: "selected"
 		}
-		}]
-	})}}
+	}]
+})}}
 
+<p>
+	<a id="urlValue" href="#"></a>
+</p>
 
-	{{ govukButton({
-		text: "Save and continue"
-	})}}
+<p>
+	——— OR ———
+</p>
+
+{{ govukButton({
+	text: "Save and continue"
+})}}
 </form>
 
 {% endblock %}
@@ -135,18 +146,38 @@ GOV.UK Prototype Kit
 {% block pageScripts %}
 <script>
 	$(document).ready(function(){
-		let signAgreementGroup = $('.radio--sign-agreement-now')
-		let addPAYEGroup = $('.radio--add-paye-now')
+		let signAgreementGroup = $('.radio--sign-agreement-now');
+		let addPAYEGroup = $('.radio--add-paye-now');
 
 		signAgreementGroup.hide()
 
-		addPAYEGroup.find("input").on('change', function(){
+		function radios() {
 			if( $("input[name='add-paye-now']:checked").val() === 'yes' ){
-				signAgreementGroup.show()
+				signAgreementGroup.show();
 			} else {
-				$("input[name='sign-agreement-now'][value='no']").prop('checked', true)
-				signAgreementGroup.hide()
+				$("input[name='sign-agreement-now'][value='no']").prop('checked', true);
+				signAgreementGroup.hide();
 			}
+		}
+
+		radios()
+
+		addPAYEGroup.find("input").on('change', function(){
+			radios()
+		})
+
+		function updateUrl() {
+			let firstSlash = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
+			let newUrl = window.location.href.replace(firstSlash, $('#prototype-version').val()) + "/?" + $('form').serialize();
+			$('#urlValue').html(newUrl).attr('href',newUrl)
+		}
+
+		updateUrl()
+
+		$('input, select').each(function(){
+			$(this).on('change keyup',function(){
+				updateUrl()
+			})
 		})
 	})
 </script>
