@@ -8,6 +8,7 @@ const router = express.Router()
 router.use('/', (req, res, next) => {
 	req.version = req.originalUrl.split('/')[1]
 	res.locals.version = req.version
+	req.session.data['prototype-version'] = req.version
 
 	next()
 })
