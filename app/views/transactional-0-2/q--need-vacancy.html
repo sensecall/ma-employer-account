@@ -18,19 +18,21 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<h1 class="govuk-heading-xl">
-			Recruiting your apprentice
+			Recruiting an apprentice
 		</h1>
 
-		<p>
-			Here is some information about recruiting and advertising an apprentice.
+		<p class="govuk-inset-text">
+			You told us that you don't have the apprentice's details yet.
+		<br>
+			<a href="#">Change your answer</a>
 		</p>
 
 		<p>
-			Here is a bit more information.
+			You can create a free advert for your apprenticeship vacancy using the <a href="#">Recruit an apprentice (opens in a new tab)</a> service.
 		</p>
 
 		<p>
-			Here is a final bit of information about recruiting an apprentice.
+			Your training provider may offer to advertise your apprenticeship vacancy on your behalf.
 		</p>
 
 		<form method="post">
@@ -41,9 +43,9 @@
 				{
 					legend:
 					{
-						text: "Do you want to create an advert to find an apprentice for this role?",
+						text: "Do you want to create an advert to find an apprentice for this role now?",
 						isPageHeading: true,
-						classes: "govuk-fieldset__legend--l govuk-!-margin-top-8"
+						classes: "govuk-fieldset__legend--l govuk-!-margin-top-4"
 					}
 				},
 				hint:
@@ -56,8 +58,12 @@
 					text: "Yes"
 				},
 				{
+					value: "later",
+					text: "Maybe later"
+				},
+				{
 					value: "no",
-					text: "Not right now"
+					text: "No, I don't need to"
 				}
 				]
 			}) }}

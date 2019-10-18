@@ -84,10 +84,10 @@ Take on an apprentice - Prototype
 			],
 			[
 			{
-				html: "<a href='#' class='govuk-!-font-size-24'>Recruitment</a>"
+				html: "<a href='q--need-vacancy' class='govuk-!-font-size-24'>Recruitment</a>"
 			},
 			{
-				html: doneTagHtml if data['vacancy-created'] == 'true' else todoTagHtml,
+				html: todoTagHtml if data['need-vacancy'] != 'no' else doneTagHtml,
 				format: 'numeric'
 			}
 			],
