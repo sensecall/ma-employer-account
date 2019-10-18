@@ -24,9 +24,7 @@
 	<select id="course-name" name="course-name">
 		<option value="">Select one</option>
 		{% for apprenticeship in data['apprenticeships'].apprenticeships %}
-		{% set optionValue %}
-		{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}
-		{% endset %}
+		{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
 		<option value="{{optionValue}}" {{"selected" if optionValue === data['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
 		{% endfor %}
 	</select>

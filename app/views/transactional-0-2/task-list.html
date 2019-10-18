@@ -60,7 +60,7 @@ Take on an apprentice - Prototype
 				html: "<a href='g--know-course?return-to-task-list=true' class='govuk-!-font-size-24'>Apprenticeship training course</a>"
 			},
 			{
-				html: doneTagHtml if data['choose-course'] != '' else todoTagHtml,
+				html: doneTagHtml if data['course-name'] else todoTagHtml,
 				format: 'numeric'
 			}
 			],

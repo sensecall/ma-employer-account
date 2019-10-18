@@ -37,11 +37,13 @@
 				items: [
 				{
 					value: "yes",
-					text: "Yes"
+					text: "Yes",
+					checked: data['know-start-date'] === 'yes'
 				},
 				{
 					value: "no",
-					text: "No, I don't know yet"
+					text: "No, I don't know yet",
+					checked: data['know-start-date'] === 'no'
 				}
 				]
 			}) }}
