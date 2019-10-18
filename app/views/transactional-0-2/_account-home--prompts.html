@@ -48,24 +48,25 @@
 
 <!-- RESERVE FUNDS -->
 {% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['employer-type'] != 'levy' %}
-<div class="das-minimal-section__wrapper das-section-dashboard">
-	<div class="das-minimal-section das-minimal-section--action">
-		<section class="das-section-dashboard-last">
-			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
-				Start an apprenticeship: step by step
-			</h2>
+<section class="govuk-!-padding-5" style="background: #eee">
+<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+	<span class="govuk-caption-l">Step by step:</span>
+	Start a new apprenticeship
+</h2>
 
+<p class="govuk-body-l">
+	Follow this step by step guide to start a new apprenticeship in your organisation.
+</p>
 
-			<p class="das-minimal-section__description">
-				Follow this step by step guide to starting a new apprenticeship in your organisation.
-			</p>
+<p>
+	<a href="start-page" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-button--start govuk-!-margin-bottom-0">
+		Get started
+	</a>
+</p>
 
-			<p>
-				<a href="start-page" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold govuk-!-font-size-24">
-					Get started
-				</a>
-			</p>
-		</section>
-	</div>
-</div>
+<p class="govuk-!-margin-top-6 govuk-body-s">
+	<a href="#">Don't show this message</a>
+</p>
+</section>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 {% endif %}
