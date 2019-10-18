@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-
 // Home page redirect
 router.get('/', (req, res) => {
 	res.redirect(`/${req.version}/account-home`)
@@ -94,10 +93,14 @@ router.post('/q--found-apprentice', (req, res) => {
 })
 
 router.post('/q--need-vacancy', (req, res) => {
-	if (req.session.data['need-vacancy'] == 'yes'){
-		res.redirect('q--need-vacancy')
-	} else {
+	if (req.session.data['return-to-task-list'] == 'true'){
 		res.redirect('task-list')
+	} else {
+		if (req.session.data['need-vacancy'] == 'yes'){
+			res.redirect('q--need-vacancy')
+		} else {
+			res.redirect('task-list')
+		}
 	}
 })
 

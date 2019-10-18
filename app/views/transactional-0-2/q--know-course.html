@@ -16,15 +16,22 @@
 {% block content %}
 
 {% set courseHtml %}
-{{ govukInput({
-	id: "choose-course",
-	name: "choose-course",
-	type: "text",
-	classes: "govuk-!-width-two-thirds",
-	label: {
-	text: "Search for apprenticeship training course"
-}
-}) }}
+<div class="govuk-form-group">
+	<label class="govuk-label" for="choose-apprenticeship">
+		Search for a course
+	</label>
+
+	<select id="course-name" name="course-name">
+		<option value="">Select one</option>
+		{% for apprenticeship in data['apprenticeships'] %}
+		<option value="{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}">{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+		{% endfor %}
+	</select>
+
+	<p class="govuk-!-margin-top-2">
+		<a href="#course-name" id="clear-search">Clear search</a>
+	</p>
+</div>
 {% endset -%}
 
 <div class="govuk-grid-row">
@@ -68,4 +75,19 @@
 		</form>
 	</div>
 </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#course-name')
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#course-name').val("");
+		})
+	})
+</script>
 {% endblock %}

@@ -17,11 +17,15 @@ Example usage:
 
 */
 
+const apprenticeships = require('./apprenticeships.json')
+
 module.exports = {
 	// URLS
 	'providerPermissionsURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/provider-permissions/providers',
 	'payeURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/add-paye-scheme',
 	'signAgreementURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/agreement',
+	
 	// Other
+	'apprenticeships': apprenticeships,
 	'employer-name': "Aardvark Zebra Ltd"
 }
