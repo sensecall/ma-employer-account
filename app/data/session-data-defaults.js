@@ -18,6 +18,7 @@ Example usage:
 */
 
 const apprenticeships = require('./apprenticeships.json')
+const providers = require('./providers.json')
 
 module.exports = {
 	// URLS
@@ -27,5 +28,6 @@ module.exports = {
 	
 	// Other
 	'apprenticeships': apprenticeships,
+	'providers': providers,
 	'employer-name': "Aardvark Zebra Ltd"
 }

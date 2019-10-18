@@ -37,11 +37,13 @@
 				items: [
 				{
 					value: "yes",
-					text: "Yes"
+					text: "Yes",
+					checked: data['provider-permission'] === 'yes'
 				},
 				{
 					value: "no",
-					text: "No"
+					text: "No",
+					checked: data['provider-permission'] === 'no'
 				}
 				]
 			}) }}

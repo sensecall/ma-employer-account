@@ -8,23 +8,30 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-  text: "Back",
-  href: "javascript: window.history.go(-1)"
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
 }) }}
 {% endblock %}
 
 {% block content %}
 
 {% set providerHtml %}
-{{ govukInput({
-	id: "choose-provider",
-	name: "choose-provider",
-	type: "text",
-	classes: "govuk-!-width-two-thirds",
-	label: {
-	text: "Search for apprenticeship training provider"
-}
-}) }}
+<div class="govuk-form-group">
+	<label class="govuk-label" for="choose-apprenticeship">
+		Search for a provider
+	</label>
+
+	<select id="provider-name" name="provider-name">
+		<option value="">Select one</option>
+		{% for provider in data['providers'].providers %}
+		<option value="{{provider.name}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
+		{% endfor %}
+	</select>
+
+	<p class="govuk-!-margin-top-2">
+		<a href="#provider-name" id="clear-search">Clear search</a>
+	</p>
+</div>
 {% endset -%}
 
 <div class="govuk-grid-row">
@@ -53,11 +60,13 @@
 					conditional:
 					{
 						html: providerHtml
-					}
+					},
+					checked: data['found-provider'] === 'yes'
 				},
 				{
 					value: "no",
-					text: "No, I don't know yet"
+					text: "No, I don't know yet",
+					checked: data['found-provider'] === 'no'
 				}
 				]
 			}) }}
@@ -65,11 +74,22 @@
 			{{govukButton({
 				text: "Continue"
 			})}}
-
-			<p>
-				<a href="#">Skip this question</a>
-			</p>
 		</form>
 	</div>
 </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#provider-name')
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#provider-name').val("");
+		})
+	})
+</script>
 {% endblock %}

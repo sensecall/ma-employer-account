@@ -16,6 +16,11 @@ router.get('/sign-agreement', (req, res) => {
 	res.redirect(req.session.data['signAgreementURL'] + '?referrer=' + res.locals.fullUrl + '/' + req.version + '/account-home')
 })
 
+router.get('/task-list', (req, res) => {
+	req.session.data['return-to-task-list'] = 'false'
+	res.render(`${req.version}/task-list`)
+})
+
 
 router.get('/interstitial', (req, res) => {
 	if (req.session.data['hide-interstitial'] == 'true'){
@@ -49,7 +54,11 @@ router.post('/q--enter-start-date', (req, res) => {
 })
 
 router.post('/q--reserve-warning', (req, res) => {
-	res.redirect('q--found-apprentice')
+	if (req.session.data['return-to-task-list'] == 'true'){
+		res.redirect('task-list')
+	} else {
+		res.redirect('q--found-apprentice')
+	}
 })
 
 router.post('/q--reserve-confirmation', (req, res) => {
@@ -60,7 +69,13 @@ router.post('/q--found-provider', (req, res) => {
 	if (req.session.data['found-provider'] == 'yes'){
 		res.redirect('q--confirm-provider')
 	} else {
-		res.redirect('g--funding')
+		req.session.data['provider-name'] = ''
+
+		if (req.session.data['return-to-task-list'] == 'true'){
+			res.redirect('task-list')
+		} else {
+			res.redirect('g--funding')
+		}
 	}
 })
 
@@ -76,7 +91,11 @@ router.post('/q--provider-permission', (req, res) => {
 	if (req.session.data['provider-permission'] == 'yes'){
 		res.redirect('q--set-provider-permission')
 	} else {
-		res.redirect('g--funding')
+		if (req.session.data['return-to-task-list'] == 'true'){
+			res.redirect('task-list')
+		} else {
+			res.redirect('g--funding')
+		}
 	}
 })
 

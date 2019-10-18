@@ -8,8 +8,8 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-  text: "Back",
-  href: "javascript: window.history.go(-1)"
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
 }) }}
 {% endblock %}
 
@@ -22,12 +22,13 @@
 				Confirm provider details
 			</h1>
 
-			<div class="govuk-inset-text">
-				<p>
-					Provider name
-				</p>
-				<p>
-					UKPRN: 100100123
+			<div class="govuk-!-padding-5 govuk-!-margin-bottom-8" style="background: #f3f2f1">
+				<h2 class="govuk-heading-m">
+					{{data['provider-name']}}
+					<span class="govuk-caption-m">16 Dorrington Ave, Coventry, CV1 6HX<br>UKPRN: 10004319</span>
+				</h2>
+				<p class="govuk-body govuk-!-margin-bottom-0">
+					<a href="q--found-provider">Change provider</a>
 				</p>
 			</div>
 

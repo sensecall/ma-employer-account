@@ -23,8 +23,11 @@
 
 	<select id="course-name" name="course-name">
 		<option value="">Select one</option>
-		{% for apprenticeship in data['apprenticeships'] %}
-		<option value="{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}">{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+		{% for apprenticeship in data['apprenticeships'].apprenticeships %}
+		{% set optionValue %}
+		{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}
+		{% endset %}
+		<option value="{{optionValue}}" {{"selected" if optionValue === data['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
 		{% endfor %}
 	</select>
 
@@ -60,11 +63,13 @@
 					conditional:
 					{
 						html: courseHtml
-					}
+					},
+					checked: data['know-course'] === 'yes'
 				},
 				{
 					value: "no",
-					text: "No"
+					text: "No",
+					checked: data['know-course'] === 'no'
 				}
 				]
 			}) }}

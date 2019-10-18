@@ -48,16 +48,16 @@ Take on an apprentice - Prototype
 			rows: [
 			[
 			{
-				html: "<a href='g--found-provider' class='govuk-!-font-size-24'>Training provider</a>"
+				html: "<a href='g--found-provider?return-to-task-list=true' class='govuk-!-font-size-24'>Training provider</a>"
 			},
 			{
-				html: doneTagHtml if data['choose-provider'] != '' else todoTagHtml,
+				html: doneTagHtml if data['confirm-provider-details'] == 'yes' and data['found-provider'] == 'yes' else todoTagHtml,
 				format: 'numeric'
 			}
 			],
 			[
 			{
-				html: "<a href='g--know-course' class='govuk-!-font-size-24'>Apprenticeship training course</a>"
+				html: "<a href='g--know-course?return-to-task-list=true' class='govuk-!-font-size-24'>Apprenticeship training course</a>"
 			},
 			{
 				html: doneTagHtml if data['choose-course'] != '' else todoTagHtml,
@@ -66,7 +66,7 @@ Take on an apprentice - Prototype
 			],
 			[
 			{
-				html: "<a href='q--know-start-date' class='govuk-!-font-size-24'>Training start date</a>"
+				html: "<a href='q--know-start-date?return-to-task-list=true' class='govuk-!-font-size-24'>Training start date</a>"
 			},
 			{
 				html: doneTagHtml if data['start-date'] else todoTagHtml,
