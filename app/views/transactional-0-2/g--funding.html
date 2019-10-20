@@ -15,34 +15,35 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-	<div class="govuk-grid-column-two-thirds">
-		<h1 class="govuk-heading-xl">
-			Funding
-		</h1>
-
-		<p>
-			Here is an explanation about what a training provider is.
-		</p>
-
-		<p>
-			Here are some other names for a training providers:
-		</p>
-
-		<ul class="govuk-list govuk-list--bullet">
-			<li>College</li>
-			<li>University</li>
-			<li>Academy</li>
-			<li>Your current workplace</li>
-		</ul>
-
-		<p>
-			Here is some other useful guidance about training providers.
-		</p>
-
-		{{govukButton({
-			text: "Continue",
-			href: "g--know-course"
-		})}}
-	</div>
+	<form method="post">
+		<div class="govuk-grid-column-two-thirds">
+			<h1 class="govuk-heading-xl">
+				Funding
+			</h1>
+			
+			<p>
+				Here is an explanation about what a training provider is.
+			</p>
+			
+			<p>
+				Here are some other names for a training providers:
+			</p>
+			
+			<ul class="govuk-list govuk-list--bullet">
+				<li>College</li>
+				<li>University</li>
+				<li>Academy</li>
+				<li>Your current workplace</li>
+			</ul>
+			
+			<p>
+				Here is some other useful guidance about training providers.
+			</p>
+			
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</div>
+	</form>
 </div>
 {% endblock %}

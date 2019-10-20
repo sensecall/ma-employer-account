@@ -33,10 +33,14 @@ router.get('/interstitial', (req, res) => {
 // Questions
 router.post('/q--know-course', (req, res) => {
 	if (req.session.data['know-course'] == 'yes'){
-		if (req.session.data['return-to-task-list'] == 'true'){
-			res.redirect('task-list')
-		} else {
+		if (req.session.data['funding-journey'] == 'true') {
 			res.redirect('q--know-start-date')
+		} else {
+			if (req.session.data['return-to-task-list'] == 'true'){
+				res.redirect('task-list')
+			} else {
+				res.redirect('q--know-start-date')
+			}
 		}
 	} else {
 		req.session.data['course-name'] = ''
@@ -51,19 +55,42 @@ router.post('/q--know-start-date', (req, res) => {
 	} else {
 		req.session.data['start-date'] = ''
 		
-		if (req.session.data['return-to-task-list'] == 'true'){
-			res.redirect('task-list')
-		} else {
+		if (req.session.data['funding-journey'] == 'true') {
 			res.redirect('q--reserve-warning')
+		} else {
+			if (req.session.data['return-to-task-list'] == 'true'){
+				res.redirect('task-list')
+			} else {
+				res.redirect('q--reserve-warning')
+			}
 		}
 	}
 })
 
 router.post('/q--enter-start-date', (req, res) => {
-	if (req.session.data['return-to-task-list'] == 'true'){
-		res.redirect('task-list')
+	if (req.session.data['funding-journey'] == 'true') {
+		res.redirect('q--reserve-confirmation')
 	} else {
-		res.redirect('q--found-apprentice')
+		if (req.session.data['return-to-task-list'] == 'true'){
+			res.redirect('task-list')
+		} else {
+			res.redirect('q--found-apprentice')
+		}
+	}
+})
+
+router.post('/g--funding', (req, res) => {
+	let chosenCourse = req.session.data['know-course'] == 'yes' && req.session.data['course-name']
+	let chosenStartDate = req.session.data['know-start-date'] == 'yes' && req.session.data['start-date']
+
+	if(!chosenCourse && !chosenStartDate) {
+		res.redirect('g--know-course')
+	} else if (chosenCourse && !chosenStartDate){
+		res.redirect('q--know-start-date')
+	} else if (chosenStartDate && !chosenCourse){
+		res.redirect('q--know-course')
+	} else if (chosenCourse && chosenStartDate){
+		res.redirect('q--reserve-confirmation')
 	}
 })
 
@@ -76,7 +103,11 @@ router.post('/q--reserve-warning', (req, res) => {
 })
 
 router.post('/q--reserve-confirmation', (req, res) => {
-	res.redirect('q--found-apprentice')
+	if (req.session.data['return-to-task-list'] == 'true'){
+		res.redirect('task-list')
+	} else {
+		res.redirect('q--found-apprentice')
+	}
 })
 
 router.post('/q--found-provider', (req, res) => {
