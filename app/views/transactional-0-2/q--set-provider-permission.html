@@ -3,7 +3,7 @@
 {% block header %}
 {% include "includes/cookie-banner.html" %}
 {% include "includes/ma-header.html" %}
-{% include "includes/ma-navbar.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,41 +18,15 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
-			{{ govukCheckboxes({
-				idPrefix: "changed-name",
-				name: "changed-name",
-				fieldset:
-				{
-					legend:
-					{
-						text: "Select the things your training provider can do on your behalf",
-						isPageHeading: true,
-						classes: "govuk-fieldset__legend--xl"
-					}
-				},
-				hint:
-				{
-					text: "In qui in officia id qui elit excepteur laborum velit eiusmod anim ut magna."
-				},
-				items: [
-				{
-					value: "1",
-					text: "Voluptate eu"
-				},
-				{
-					value: "2",
-					text: "Duis nulla aliqua velit tempor"
-				},
-				{
-					value: "3",
-					text: "Labore nostrud"
-				},
-				{
-					value: "4",
-					text: "Ea eiusmod aliqua ut. Dolore irure"
-				}
-				]
-			}) }}
+			<h2 class="govuk-heading-l">
+				Choose what {{data['provider-name']}} can do on your behalf
+			</h2>
+
+			<p>
+				{{data['provider-name']}} will be able to do the following on behalf of {{data['employer-name']}}.
+			</p>
+
+			{% include './includes/_provider-permissions-table.html' %}
 
 			{{govukButton({
 				text: "Continue"
