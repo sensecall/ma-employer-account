@@ -51,7 +51,7 @@ Take on an apprentice - Prototype
 				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
 			</p>
 			<p>
-				<a href="#" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+				<a href="g--found-provider?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
 			</p>
 		</div>
 		{% endset %}
@@ -65,7 +65,7 @@ Take on an apprentice - Prototype
 				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
 			</p>
 			<p>
-				<a href="#" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+				<a href="g--found-provider?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
 			</p>
 		</div>
 		{% endset %}
@@ -74,18 +74,56 @@ Take on an apprentice - Prototype
 		<h2 class="app-task-list__heading">
 			<a href='g--found-provider?return-to-task-list=true'>Apprenticeship training course</a>
 		</h2>
-		<p class="govuk-!-font-size-16">
-			<a href="#" class="show-hide">Show</a>
-		</p>
+		<div class="app-task-list__content">
+			<p>
+				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
+			</p>
+			<p>
+				<a href="g--found-provider?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+			</p>
+		</div>
 		{% endset %}
 
 		{% set fundingHtml %}
 		<h2 class="app-task-list__heading">
 			<a href='g--found-provider?return-to-task-list=true'>Funding</a>
 		</h2>
-		<p class="govuk-!-font-size-16">
-			<a href="#" class="show-hide">Show</a>
-		</p>
+		<div class="app-task-list__content">
+			<p>
+				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
+			</p>
+			<p>
+				<a href="g--found-provider?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+			</p>
+		</div>
+		{% endset %}
+
+		{% set recruitmentHtml %}
+		<h2 class="app-task-list__heading">
+			<a href='g--found-provider?return-to-task-list=true'>Recruitment</a>
+		</h2>
+		<div class="app-task-list__content">
+			<p>
+				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
+			</p>
+			<p>
+				<a href="g--found-provider?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+			</p>
+		</div>
+		{% endset %}
+
+		{% set apprenticeHtml %}
+		<h2 class="app-task-list__heading">
+			<a href="g--found-provider?return-to-task-list=true">Apprentice details</a>
+		</h2>
+		<div class="app-task-list__content">
+			<p>
+				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
+			</p>
+			<p>
+				<a href="g--found-provider?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+			</p>
+		</div>
 		{% endset %}
 
 		{{ govukTable({
@@ -130,7 +168,7 @@ Take on an apprentice - Prototype
 			],
 			[
 			{
-				html: "<a href='q--need-vacancy?return-to-task-list=true' class='govuk-!-font-size-24'>Recruitment</a>"
+				html: recruitmentHtml
 			},
 			{
 				html: todoTagHtml if data['need-vacancy'] != 'no' else doneTagHtml,
@@ -139,7 +177,7 @@ Take on an apprentice - Prototype
 			],
 			[
 			{
-				html: "<a href='#' class='govuk-!-font-size-24'>Apprentice details</a>"
+				html: apprenticeHtml
 			},
 			{
 				html: doneTagHtml if data['found-apprentice'] == 'yes' else todoTagHtml,
@@ -170,22 +208,53 @@ Take on an apprentice - Prototype
 		$(document).ready(function(){
 			$('.app-task-list__content').each(function(){
 				let content = $(this);
-				let buttonHtml = '<p class="govuk-!-font-size-16"><a href="#training-provider" class="show-hide">Show</a></p>';
+				let buttonHtml = '<p class="govuk-!-font-size-16"><a href="#js" class="show-hide show-hide__link">Show</a></p>';
+				
+				let button = content.find('.show-hide.show-hide__link');
+				let heading = content.parent().find('.app-task-list__heading a');
+
+				heading.addClass('show-hide');
 
 				content
 				.hide()
 				.before(buttonHtml);
 
-				content.parent().on('click', '.show-hide', function(){
-					let button = $(this);
+				let buttons = content.parent().find('.show-hide__link');
 
-					content.toggle()
-
-					if(content.is(':visible')){
-						button.html('Hide')
+				function toggleContent(){
+					if(content.is(":hidden")){
+						content.show();
 					} else {
-						button.html('Show')
+						content.hide();
 					}
+				}
+
+				function updateButtonText(target, originalText, text){				
+					if(content.is(":hidden")){
+						target.html(text);
+					} else {
+						target.html(originalText);
+					}
+				}
+
+				buttons.each(function(){
+					let originalText = $(this).html();
+
+					$(this).on('click', function(event){
+						event.preventDefault()
+						updateButtonText($(this), originalText, "Hide")
+						toggleContent()
+					})
+				})
+
+				heading.each(function(){
+					let closestButton = $(this).parent().parent().find('.show-hide__link');
+					
+					$(this).on('click', function(event){
+						event.preventDefault()
+						updateButtonText(closestButton, "Show", "Hide")
+						toggleContent()
+					})
 				})
 			})
 		})
