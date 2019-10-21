@@ -5,6 +5,14 @@
 		min-width: 135px !important;
 	}
 
+	.app-task-list__toggle {
+		&:visited {
+			color: govuk-colour("blue");
+		}
+
+		outline: none;
+	}
+
 	.app-task-list__heading {
 		@include govuk-font(24,bold);
 		margin-top: govuk-spacing(1);

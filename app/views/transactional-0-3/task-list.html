@@ -79,7 +79,7 @@ Take on an apprentice - Prototype
 				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
 			</p>
 			<p>
-				<a href="g--found-provider?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+				<a href="g--know-course?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
 			</p>
 		</div>
 		{% endset %}
@@ -93,7 +93,7 @@ Take on an apprentice - Prototype
 				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
 			</p>
 			<p>
-				<a href="g--found-provider?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+				<a href="g--funding?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
 			</p>
 		</div>
 		{% endset %}
@@ -107,7 +107,7 @@ Take on an apprentice - Prototype
 				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
 			</p>
 			<p>
-				<a href="g--found-provider?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+				<a href="q--need-vacancy?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
 			</p>
 		</div>
 		{% endset %}
@@ -208,18 +208,12 @@ Take on an apprentice - Prototype
 		$(document).ready(function(){
 			$('.app-task-list__content').each(function(){
 				let content = $(this);
-				let buttonHtml = '<p class="govuk-!-font-size-16"><a href="#js" class="show-hide show-hide__link">Show</a></p>';
-				
+				let buttonHtml = '<span class="govuk-!-font-size-16 govuk-!-font-weight-regular govuk-!-display-block">Show</span>';
 				let button = content.find('.show-hide.show-hide__link');
 				let heading = content.parent().find('.app-task-list__heading a');
 
-				heading.addClass('show-hide');
-
-				content
-				.hide()
-				.before(buttonHtml);
-
-				let buttons = content.parent().find('.show-hide__link');
+				heading.addClass('app-task-list__toggle show-hide').append(buttonHtml);
+				content.hide()
 
 				function toggleContent(){
 					if(content.is(":hidden")){
@@ -237,19 +231,9 @@ Take on an apprentice - Prototype
 					}
 				}
 
-				buttons.each(function(){
-					let originalText = $(this).html();
-
-					$(this).on('click', function(event){
-						event.preventDefault()
-						updateButtonText($(this), originalText, "Hide")
-						toggleContent()
-					})
-				})
-
 				heading.each(function(){
-					let closestButton = $(this).parent().parent().find('.show-hide__link');
-					
+					let closestButton = $(this).find('span');
+
 					$(this).on('click', function(event){
 						event.preventDefault()
 						updateButtonText(closestButton, "Show", "Hide")
