@@ -7,20 +7,11 @@
 
 	.app-task-list__toggle {
 		color: govuk-colour("black");
-
-		span {
+		&:visited {
 			color: govuk-colour("blue");
-		}
-
-		&:hover {
-			color: govuk-colour("blue");
-			span {
-				text-decoration: underline;
-			}
 		}
 
 		outline: none;
-		background: none;
 	}
 
 	.app-task-list__heading {
@@ -31,10 +22,6 @@
 		a {
 			text-decoration: none;
 		}
-	}
-
-	.app-task-list__content {
-		margin: ($govuk-gutter) 0
 	}
 
 	tr th p {

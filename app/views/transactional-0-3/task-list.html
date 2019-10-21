@@ -172,7 +172,7 @@ Take on an apprentice - Prototype
 			},
 			{
 				html: todoTagHtml if data['need-vacancy'] != 'no' else doneTagHtml,
-				format: 'numeric'
+				classes: "app-task-list__status"
 			}
 			],
 			[
@@ -181,7 +181,7 @@ Take on an apprentice - Prototype
 			},
 			{
 				html: doneTagHtml if data['found-apprentice'] == 'yes' else todoTagHtml,
-				format: 'numeric'
+				classes: "app-task-list__status"
 			}
 			],
 			[
@@ -190,7 +190,7 @@ Take on an apprentice - Prototype
 			},
 			{
 				html: "<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>Do last</strong>",
-				format: 'numeric'
+				classes: "app-task-list__status"
 			}
 			]
 			]
