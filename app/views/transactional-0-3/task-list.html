@@ -42,45 +42,90 @@ Take on an apprentice - Prototype
 		<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>To-do</strong>
 		{% endset %}
 
+		{% set providerHtml %}
+		<h2 class="app-task-list__heading">
+			<a href='g--found-provider?return-to-task-list=true'>Training provider</a>
+		</h2>
+		<div class="app-task-list__content">
+			<p>
+				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
+			</p>
+			<p>
+				<a href="#" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+			</p>
+		</div>
+		{% endset %}
+
+		{% set startDateHtml %}
+		<h2 class="app-task-list__heading">
+			<a href='g--found-provider?return-to-task-list=true'>Training start date</a>
+		</h2>
+		<div class="app-task-list__content">
+			<p>
+				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
+			</p>
+			<p>
+				<a href="#" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
+			</p>
+		</div>
+		{% endset %}
+
+		{% set courseHtml %}
+		<h2 class="app-task-list__heading">
+			<a href='g--found-provider?return-to-task-list=true'>Apprenticeship training course</a>
+		</h2>
+		<p class="govuk-!-font-size-16">
+			<a href="#" class="show-hide">Show</a>
+		</p>
+		{% endset %}
+
+		{% set fundingHtml %}
+		<h2 class="app-task-list__heading">
+			<a href='g--found-provider?return-to-task-list=true'>Funding</a>
+		</h2>
+		<p class="govuk-!-font-size-16">
+			<a href="#" class="show-hide">Show</a>
+		</p>
+		{% endset %}
 
 		{{ govukTable({
-			classes: "app-task-list",
+			classes: "app-task-list app-task-list--sections",
 			firstCellIsHeader: true,
 			rows: [
 			[
 			{
-				html: "<a href='g--found-provider?return-to-task-list=true' class='govuk-!-font-size-24'>Training provider</a>"
+				html: providerHtml
 			},
 			{
 				html: doneTagHtml if data['confirm-provider-details'] == 'yes' and data['found-provider'] == 'yes' else todoTagHtml,
-				format: 'numeric'
+				classes: "app-task-list__status"
 			}
 			],
 			[
 			{
-				html: "<a href='g--know-course?return-to-task-list=true' class='govuk-!-font-size-24'>Apprenticeship training course</a>"
+				html: courseHtml
 			},
 			{
 				html: doneTagHtml if data['course-name'] else todoTagHtml,
-				format: 'numeric'
+				classes: "app-task-list__status"
 			}
 			],
 			[
 			{
-				html: "<a href='q--know-start-date?return-to-task-list=true' class='govuk-!-font-size-24'>Training start date</a>"
+				html: startDateHtml
 			},
 			{
 				html: doneTagHtml if data['start-date'] else todoTagHtml,
-				format: 'numeric'
+				classes: "app-task-list__status"
 			}
 			],
 			[
 			{
-				html: "<a href='g--funding?return-to-task-list=true&funding-journey=true' class='govuk-!-font-size-24'>Funding</a>"
+				html: fundingHtml
 			},
 			{
 				html: doneTagHtml if data['reserve-funding'] == 'true' else todoTagHtml,
-				format: 'numeric'
+				classes: "app-task-list__status"
 			}
 			],
 			[
@@ -116,6 +161,33 @@ Take on an apprentice - Prototype
 		<p class="govuk-!-margin-top-8">
 			<a href="account-home?sign-agreement-now=yes&add-paye-now=yes">Save and return to your account</a>
 		</p>
-</div>
+	</div>
 
-{% endblock %}
+	{% endblock %}
+
+	{% block pageScripts %}
+	<script>
+		$(document).ready(function(){
+			$('.app-task-list__content').each(function(){
+				let content = $(this);
+				let buttonHtml = '<p class="govuk-!-font-size-16"><a href="#training-provider" class="show-hide">Show</a></p>';
+
+				content
+				.hide()
+				.before(buttonHtml);
+
+				content.parent().on('click', '.show-hide', function(){
+					let button = $(this);
+
+					content.toggle()
+
+					if(content.is(':visible')){
+						button.html('Hide')
+					} else {
+						button.html('Show')
+					}
+				})
+			})
+		})
+	</script>
+	{% endblock %}

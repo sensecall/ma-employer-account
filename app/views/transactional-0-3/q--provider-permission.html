@@ -19,31 +19,31 @@
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			{{ govukRadios({
-				idPrefix: "know-start-date",
-				name: "know-start-date",
+				idPrefix: "provider-permission",
+				name: "provider-permission",
 				fieldset:
 				{
 					legend:
 					{
-						text: "Do you know which month your apprentice will start their apprenticeship training?",
+						text: "Do you need to give your training provider permission to carry out tasks on your behalf?",
 						isPageHeading: true,
-						classes: "govuk-fieldset__legend--l"
+						classes: "govuk-fieldset__legend--xl"
 					}
 				},
 				hint:
 				{
-					text: "Here is some help text."
+					text: "In qui in officia id qui elit excepteur laborum velit eiusmod anim ut magna."
 				},
 				items: [
 				{
 					value: "yes",
 					text: "Yes",
-					checked: data['know-start-date'] === 'yes'
+					checked: data['provider-permission'] === 'yes'
 				},
 				{
 					value: "no",
-					text: "No, I don't know yet",
-					checked: data['know-start-date'] === 'no'
+					text: "No",
+					checked: data['provider-permission'] === 'no'
 				}
 				]
 			}) }}

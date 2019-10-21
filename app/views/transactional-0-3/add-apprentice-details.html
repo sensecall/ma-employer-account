@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Apprentice details
+			</h1>
+
+			<p>
+				Below are some of the fields required to add an apprentice's details.
+			</p>
+
+
+			{{ govukInput({
+				label:
+				{
+					text: "Name"
+				},
+				classes: "govuk-input--width-20",
+				id: "width-20",
+				name: "width-20"
+			}) }}
+
+			{{ govukInput({
+				label:
+				{
+					text: "Date of birth"
+				},
+				classes: "govuk-input--width-20",
+				id: "width-20",
+				name: "width-20"
+			}) }}
+
+			{{ govukInput({
+				label:
+				{
+					text: "Course"
+				},
+				classes: "govuk-input--width-20",
+				id: "width-20",
+				name: "width-20"
+			}) }}
+
+			{{ govukInput({
+				label:
+				{
+					text: "Cost"
+				},
+				classes: "govuk-input--width-10",
+				id: "width-10",
+				name: "width-10"
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

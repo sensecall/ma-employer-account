@@ -19,13 +19,13 @@
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			{{ govukRadios({
-				idPrefix: "know-start-date",
-				name: "know-start-date",
+				idPrefix: "start-date",
+				name: "start-date",
 				fieldset:
 				{
 					legend:
 					{
-						text: "Do you know which month your apprentice will start their apprenticeship training?",
+						text: "When will the apprentice start their apprenticeship training?",
 						isPageHeading: true,
 						classes: "govuk-fieldset__legend--l"
 					}
@@ -36,14 +36,34 @@
 				},
 				items: [
 				{
-					value: "yes",
-					text: "Yes",
-					checked: data['know-start-date'] === 'yes'
+					value: "1",
+					text: "January 2020",
+					checked: data['start-date'] === '1'
 				},
 				{
-					value: "no",
-					text: "No, I don't know yet",
-					checked: data['know-start-date'] === 'no'
+					value: "2",
+					text: "February 2020",
+					checked: data['start-date'] === '2'
+				},
+				{
+					value: "3",
+					text: "March 2020",
+					checked: data['start-date'] === '3'
+				},
+				{
+					value: "4",
+					text: "April 2020",
+					checked: data['start-date'] === '4'
+				},
+				{
+					value: "5",
+					text: "May 2020",
+					checked: data['start-date'] === '5'
+				},
+				{
+					value: "6",
+					text: "June 2020",
+					checked: data['start-date'] === '6'
 				}
 				]
 			}) }}

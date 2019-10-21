@@ -1,0 +1,21 @@
+.app-task-list {
+	.app-task-list__status {
+		vertical-align: top;
+		text-align: right;
+		min-width: 135px !important;
+	}
+
+	.app-task-list__heading {
+		@include govuk-font(24,bold);
+		margin-top: govuk-spacing(1);
+		margin-bottom: govuk-spacing(1);
+
+		a {
+			text-decoration: none;
+		}
+	}
+
+	tr th p {
+		color: govuk-colour("grey-1")
+	}
+}

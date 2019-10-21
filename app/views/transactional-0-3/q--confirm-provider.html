@@ -8,8 +8,8 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-  text: "Back",
-  href: "javascript: window.history.go(-1)"
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
 }) }}
 {% endblock %}
 
@@ -18,14 +18,28 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Confirm provider details
+			</h1>
+
+			<div class="govuk-!-padding-5 govuk-!-margin-bottom-8" style="background: #f3f2f1">
+				<h2 class="govuk-heading-m">
+					{{data['provider-name']}}
+					<span class="govuk-caption-m">16 Dorrington Ave, Coventry, CV1 6HX<br>UKPRN: 10004319</span>
+				</h2>
+				<p class="govuk-body govuk-!-margin-bottom-0">
+					<a href="q--found-provider">Change provider</a>
+				</p>
+			</div>
+
 			{{ govukRadios({
-				idPrefix: "know-start-date",
-				name: "know-start-date",
+				idPrefix: "confirm-provider-details",
+				name: "confirm-provider-details",
 				fieldset:
 				{
 					legend:
 					{
-						text: "Do you know which month your apprentice will start their apprenticeship training?",
+						text: "Are these provider details correct?",
 						isPageHeading: true,
 						classes: "govuk-fieldset__legend--l"
 					}
@@ -37,13 +51,11 @@
 				items: [
 				{
 					value: "yes",
-					text: "Yes",
-					checked: data['know-start-date'] === 'yes'
+					text: "Yes"
 				},
 				{
 					value: "no",
-					text: "No, I don't know yet",
-					checked: data['know-start-date'] === 'no'
+					text: "No"
 				}
 				]
 			}) }}
