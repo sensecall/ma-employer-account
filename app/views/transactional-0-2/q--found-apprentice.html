@@ -8,8 +8,8 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-  text: "Back",
-  href: "javascript: window.history.go(-1)"
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
 }) }}
 {% endblock %}
 
@@ -22,8 +22,36 @@
 		</h1>
 
 		<p>
-			Here is an explanation about what an apprentice is.
+			If you’re an employer who wants to take on an apprentice, you need to know:
 		</p>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>
+				apprentices are aged 16 or over (to any age)
+			</li>
+			<li>
+				they combine working with studying to gain skills and knowledge in a specific job
+			</li>
+			<li>
+				they can be new or current employees who are looking to upskill
+			</li>
+		</ul>
+
+		<p>
+			Your apprentice should:
+		</p>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>
+				work with experienced staff
+			</li>
+			<li>
+				learn job-specific skills
+			</li>
+			<li>
+				study whilst doing their apprenticeship
+			</li>
+		</ul>
 
 		<form method="post">
 			{{ govukRadios({
@@ -33,7 +61,7 @@
 				{
 					legend:
 					{
-						text: "Do you have the apprentice's details?",
+						text: "Do you want to enter the apprentice's details now?",
 						isPageHeading: true,
 						classes: "govuk-fieldset__legend--l govuk-!-margin-top-6"
 					}
