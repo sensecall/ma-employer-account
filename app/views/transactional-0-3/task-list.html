@@ -29,6 +29,7 @@ Take on an apprentice - Prototype
 			Fill in the sections below to start a new apprenticeship in your organisation.
 		</p>
 
+		{%- from "./macros/task-list-item.njk" import appTaskListItem %}
 
 		{% set doneTagHtml %}
 		<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>
@@ -43,87 +44,59 @@ Take on an apprentice - Prototype
 		{% endset %}
 
 		{% set providerHtml %}
-		<h2 class="app-task-list__heading">
-			<a href='g--found-provider?return-to-task-list=true'>Training provider</a>
-		</h2>
-		<div class="app-task-list__content">
-			<p>
-				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
-			</p>
-			<p>
-				<a href="g--found-provider?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
-			</p>
-		</div>
+		{{appTaskListItem({
+			href: "g--found-provider",
+			title: "Training provider",
+			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+		})}}
+		{% endset %}
+
+		{% set providerTagHtml %}
+		{% if data['confirm-provider-details'] == 'yes' and data['found-provider'] == 'yes' %}
+		{{doneTagHtml | safe}}
+		{% else %}
+		{{todoTagHtml | safe}}
+		{% endif %}
 		{% endset %}
 
 		{% set startDateHtml %}
-		<h2 class="app-task-list__heading">
-			<a href='q--know-start-date?return-to-task-list=true'>Training start date</a>
-		</h2>
-		<div class="app-task-list__content">
-			<p>
-				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
-			</p>
-			<p>
-				<a href="q--know-start-date?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
-			</p>
-		</div>
+		{{appTaskListItem({
+			href: "q--know-start-date",
+			title: "Training start date",
+			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+		})}}
 		{% endset %}
 
 		{% set courseHtml %}
-		<h2 class="app-task-list__heading">
-			<a href='g--know-course?return-to-task-list=true'>Apprenticeship training course</a>
-		</h2>
-		<div class="app-task-list__content">
-			<p>
-				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
-			</p>
-			<p>
-				<a href="g--know-course?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
-			</p>
-		</div>
+		{{appTaskListItem({
+			href: "g--know-course",
+			title: "Apprenticeship training course",
+			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+		})}}
 		{% endset %}
 
 		{% set fundingHtml %}
-		<h2 class="app-task-list__heading">
-			<a href='g--funding?return-to-task-list=true'>Funding</a>
-		</h2>
-		<div class="app-task-list__content">
-			<p>
-				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
-			</p>
-			<p>
-				<a href="g--funding?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
-			</p>
-		</div>
+		{{appTaskListItem({
+			href: "g--funding",
+			title: "Funding",
+			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+		})}}
 		{% endset %}
 
 		{% set recruitmentHtml %}
-		<h2 class="app-task-list__heading">
-			<a href='q--need-vacancy?return-to-task-list=true'>Recruitment</a>
-		</h2>
-		<div class="app-task-list__content">
-			<p>
-				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
-			</p>
-			<p>
-				<a href="q--need-vacancy?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
-			</p>
-		</div>
+		{{appTaskListItem({
+			href: "q--need-vacancy",
+			title: "Recruitment",
+			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+		})}}
 		{% endset %}
 
 		{% set apprenticeHtml %}
-		<h2 class="app-task-list__heading">
-			<a href="q--found-apprentice?return-to-task-list=true">Apprentice details</a>
-		</h2>
-		<div class="app-task-list__content">
-			<p>
-				Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa.
-			</p>
-			<p>
-				<a href="q--found-apprentice?return-to-task-list=true" class="govuk-button govuk-!-margin-bottom-0">Start section</a>
-			</p>
-		</div>
+		{{appTaskListItem({
+			href: "q--found-apprentice",
+			title: "Apprentice details",
+			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+		})}}
 		{% endset %}
 
 		{{ govukTable({
@@ -135,7 +108,7 @@ Take on an apprentice - Prototype
 				html: providerHtml
 			},
 			{
-				html: doneTagHtml if data['confirm-provider-details'] == 'yes' and data['found-provider'] == 'yes' else todoTagHtml,
+				html: providerTagHtml,
 				classes: "app-task-list__status"
 			}
 			],
