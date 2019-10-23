@@ -47,23 +47,15 @@ Take on an apprentice - Prototype
 		{{appTaskListItem({
 			href: "g--found-provider",
 			title: "Training provider",
-			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+			description: "Choose which training provider will deliver the apprentice's training course."
 		})}}
-		{% endset %}
-
-		{% set providerTagHtml %}
-		{% if data['confirm-provider-details'] == 'yes' and data['found-provider'] == 'yes' %}
-		{{doneTagHtml | safe}}
-		{% else %}
-		{{todoTagHtml | safe}}
-		{% endif %}
 		{% endset %}
 
 		{% set startDateHtml %}
 		{{appTaskListItem({
 			href: "q--know-start-date",
 			title: "Training start date",
-			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+			description: "To reserve apprenticeship funding, you need to enter the month that the apprentice will start their training course with your training provider."
 		})}}
 		{% endset %}
 
@@ -71,7 +63,7 @@ Take on an apprentice - Prototype
 		{{appTaskListItem({
 			href: "g--know-course",
 			title: "Apprenticeship training course",
-			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+			description: "To reserve apprenticeship funding, you must know which apprenticeship training course the apprentice will take."
 		})}}
 		{% endset %}
 
@@ -79,7 +71,7 @@ Take on an apprentice - Prototype
 		{{appTaskListItem({
 			href: "g--funding",
 			title: "Funding",
-			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+			description: "Reserve funding so that the government can pay for some or all of the apprentice's training and assessment."
 		})}}
 		{% endset %}
 
@@ -87,7 +79,7 @@ Take on an apprentice - Prototype
 		{{appTaskListItem({
 			href: "q--need-vacancy",
 			title: "Recruitment",
-			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+			description: "Tell us whether you need to create a free advert to find an apprentice to fill your vacancy."
 		})}}
 		{% endset %}
 
@@ -95,7 +87,7 @@ Take on an apprentice - Prototype
 		{{appTaskListItem({
 			href: "q--found-apprentice",
 			title: "Apprentice details",
-			description: "Ut aute fugiat eu sed id ut dolore sint esse pariatur ullamco cillum qui commodo culpa."
+			description: "Add the apprentice's details once you know who will complete this apprenticeship."
 		})}}
 		{% endset %}
 
@@ -108,7 +100,7 @@ Take on an apprentice - Prototype
 				html: providerHtml
 			},
 			{
-				html: providerTagHtml,
+				html: doneTagHtml if data['confirm-provider-details'] == 'yes' and data['found-provider'] == 'yes' else "<a href='#'>" + todoTagHtml + "</a>",
 				classes: "app-task-list__status"
 			}
 			],
@@ -117,7 +109,7 @@ Take on an apprentice - Prototype
 				html: courseHtml
 			},
 			{
-				html: doneTagHtml if data['course-name'] else todoTagHtml,
+				html: doneTagHtml if data['course-name'] else "<a href='#'>" + todoTagHtml + "</a>",
 				classes: "app-task-list__status"
 			}
 			],
@@ -126,7 +118,7 @@ Take on an apprentice - Prototype
 				html: startDateHtml
 			},
 			{
-				html: doneTagHtml if data['start-date'] else todoTagHtml,
+				html: doneTagHtml if data['start-date'] else "<a href='#'>" + todoTagHtml + "</a>",
 				classes: "app-task-list__status"
 			}
 			],
@@ -135,7 +127,7 @@ Take on an apprentice - Prototype
 				html: fundingHtml
 			},
 			{
-				html: doneTagHtml if data['reserve-funding'] == 'true' else todoTagHtml,
+				html: doneTagHtml if data['reserve-funding'] == 'true' else "<a href='#'>" + todoTagHtml + "</a>",
 				classes: "app-task-list__status"
 			}
 			],
@@ -144,7 +136,7 @@ Take on an apprentice - Prototype
 				html: recruitmentHtml
 			},
 			{
-				html: todoTagHtml if data['need-vacancy'] != 'no' else doneTagHtml,
+				html: "<a href='#'>" + todoTagHtml + "</a>" if data['need-vacancy'] != 'no' else doneTagHtml,
 				classes: "app-task-list__status"
 			}
 			],
@@ -153,7 +145,7 @@ Take on an apprentice - Prototype
 				html: apprenticeHtml
 			},
 			{
-				html: doneTagHtml if data['found-apprentice'] == 'yes' else todoTagHtml,
+				html: doneTagHtml if data['found-apprentice'] == 'yes' else "<a href='#'>" + todoTagHtml + "</a>",
 				classes: "app-task-list__status"
 			}
 			],

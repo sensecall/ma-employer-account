@@ -18,6 +18,8 @@ router.get('/sign-agreement', (req, res) => {
 
 router.get('/task-list', (req, res) => {
 	req.session.data['return-to-task-list'] = 'false'
+	req.session.data['started'] = 'true'
+
 	res.render(`${req.version}/task-list`)
 })
 

@@ -29,5 +29,6 @@ module.exports = {
 	// Other
 	'apprenticeships': apprenticeships,
 	'providers': providers,
-	'employer-name': "Aardvark Zebra Ltd"
+	'employer-name': "Aardvark Zebra Ltd",
+	'started': ''
 }
