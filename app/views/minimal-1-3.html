@@ -1,0 +1,301 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{# Set serviceName in config.js. #}
+{{ govukHeader({
+	homepageUrl: "/",
+	serviceName: serviceName,
+	serviceUrl: "/",
+	containerClasses: "govuk-width-container",
+	classes: "das-header--nav-right",
+	navigation: [
+	{
+		href: "#4",
+		text: "Sign out"
+	}
+	]
+}) }}
+
+{% from "macros/navbar.njk" import navbar %}
+{{ navbar({
+	links:
+	[
+	{
+		href: "#",
+		text: "Home",
+		selected: true
+	},
+	{
+		href: "#",
+		text: "Your apprentices"
+	},
+	{
+		href: "#",
+		text: "Finance"
+	},
+	{
+		href: "#",
+		text: "Recruitment"
+	},
+	{
+		href: "#",
+		text: "Your organisations and agreements"
+	}
+	]
+}) }}  
+{% endblock %}
+
+{% block content %}
+<section class="das-section das-section--header das-section--header--has-border govuk-!-padding-top-0">
+	<h1 class="govuk-heading-m das-account__title">
+		Account ID: A1B2C3
+	</h1>
+	<h2 class="govuk-heading-xl govuk-!-margin-bottom-0">
+		{{data['employer-name']}}
+	</h2>
+</section>
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<div class="das-minimal-section__wrapper">
+			<h2 class="das-minimal-section__header govuk-!-font-size-24 govuk-!-padding-bottom-3">
+				Apprenticeships
+			</h2>
+
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-one-half">
+					<div class="das-minimal-section">
+						<h3 class="das-minimal-section__heading">
+							<a href="#">Your apprentices</a>
+						</h3>
+
+						<p class="das-minimal-section__description">
+							Add apprentices, update details of existing apprentices and authorise payments to training providers.
+						</p>
+					</div>
+				</div>
+
+				<div class="govuk-grid-column-one-half">
+					<div class="das-minimal-section">
+						<h3 class="das-minimal-section__heading">
+							<a href="#">Recruitment</a>
+						</h3>
+						<p class="das-minimal-section__description">
+							Recruit an apprentice by creating a vacancy. This vacancy will be advertised on Find an apprenticeship.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-one-half">
+					
+				</div>
+
+				<div class="govuk-grid-column-one-half">
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="das-minimal-section__wrapper">
+			<h2 class="das-minimal-section__header govuk-!-font-size-24 govuk-!-padding-bottom-3">
+				Finances and funding
+			</h2>
+
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-one-half">
+					<div class="das-minimal-section">
+						<h3 class="das-minimal-section__heading">
+							<a href="#">Transactions</a>
+						</h3>
+						<p class="das-minimal-section__description">
+							View your financial transactions, connect with other employers and send or receive transfer funds.
+						</p>
+					</div>
+				</div>
+
+				<div class="govuk-grid-column-one-half">
+					<div class="das-minimal-section">
+						<h3 class="das-minimal-section__heading">
+							<a href="#">Your funding reservations</a>
+						</h3>
+
+						<p class="das-minimal-section__description">
+							Reserve and manage funding.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-one-half">
+					<div class="das-minimal-section">
+						<h3 class="das-minimal-section__heading">
+							<a href="#">Funding projection</a>
+						</h3>
+
+						<p class="das-minimal-section__description">
+							View funding projection to plan your future spending.
+						</p>
+					</div>
+				</div>
+
+				<div class="govuk-grid-column-one-half">
+					<div class="das-minimal-section">
+						<h3 class="das-minimal-section__heading">
+							<a href="#">Transfers</a>
+						</h3>
+						<p class="das-minimal-section__description">
+							Connect with other employers and send or receive transfer funds. 
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="das-minimal-section__wrapper">
+			<h2 class="das-minimal-section__header govuk-!-font-size-24 govuk-!-padding-bottom-3">
+				Other
+			</h2>
+
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-one-half">
+					<!-- <div class="das-minimal-section">
+						<h3 class="das-minimal-section__heading">
+							<a href="#">Your agreements</a>
+						</h3>
+
+						<p class="das-minimal-section__description">
+							Aliqua incididunt minim in dolore aliqua quis laborum tempor officia aute ut cupidatat qui dolor quis.
+						</p>
+					</div> -->
+				</div>
+
+				<div class="govuk-grid-column-one-half">
+					<div class="das-minimal-section">
+						<h3 class="das-minimal-section__heading">
+							<a href="#">Find apprenticeship training</a>
+						</h3>
+						<p class="das-minimal-section__description">
+							Search for apprenticeships and see details of approved providers who can deliver the training.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="govuk-grid-row">
+				<!-- <div class="govuk-grid-column-one-half">
+					<div class="das-minimal-section">
+						<h3 class="das-minimal-section__heading">
+							<a href="#">PAYE schemes</a>
+						</h3>
+						<p class="das-minimal-section__description">
+							Est esse do dolore magna veniam aliquip enim voluptate enim aute culpa.
+						</p>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+
+	<div class="govuk-grid-column-one-third">
+		<!-- <div class="govuk-tabs" data-module="tabs">
+			<ul class="govuk-tabs__list">
+				<li class="govuk-tabs__list-item">
+					<a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#tab-tasks">
+						Tasks
+					</a>
+				</li>
+
+				<li class="govuk-tabs__list-item">
+					<a class="govuk-tabs__tab" href="#tab-activity">
+						Activity
+					</a>
+				</li>
+			</ul>
+
+			<section class="govuk-tabs__panel" id="tab-tasks">
+				<ul class="task-list">
+					<li>
+						<p>
+							Levy declaration due by 19 May
+						</p>
+						<form action="/tasks/84VBNV/dismissTask" method="POST">
+							<input type="hidden" name="taskType" value="LevyDeclarationDue">
+							<button class="button-link" type="submit">Dismiss this message</button>
+						</form>
+					</li>
+				</ul>
+			</section>
+
+			<section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab-activity">
+				<ol id="item-list">
+					<li class="item">
+						<div class="item-label">28th Mar 2019</div>
+						<div class="item-description">Raina Nisar joined</div>
+					</li>
+
+					<li class="item">
+						<div class="item-label">28th Mar 2019</div>
+						<div class="item-description">raina nisar invited by Sultan Mahmood</div>
+					</li>
+
+					<li class="item">
+						<div class="item-label">25th Mar 2019</div><div class="item-description">2 users joined</div>
+					</li>
+
+					<li class="item">
+						<div class="item-label">25th Mar 2019</div>
+						<div class="item-description">2 users invited</div>
+					</li>
+
+					<li class="item all-activity">
+						<div class="item-label"><a href="/accounts/84VBNV/activity">See all activity</a></div>
+					</li>
+				</ol>
+			</section>
+		</div> -->
+
+		<h3 class="govuk-heading-m govuk-!-margin-bottom-2">
+			{{data['employer-name']}}
+		</h3>
+		<ul class="govuk-list govuk-!-font-size-1 govuk-!-margin-bottom-8">
+			<li>
+				<a href="#">Organisations and agreements</a>
+			</li>
+			<li>
+				<a href="#">Training provider permissions</a>
+			</li>
+			<li>
+				<a href="#">Team members</a>
+			</li>
+			<li>
+				<a href="#">PAYE schemes</a>
+			</li>
+			<li>
+				<a href="#">Rename account</a>
+			</li>
+		</ul>
+
+		<h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+			<span class="govuk-!-font-weight-regular">Logged in as:</span> Jay Smith
+		</h3>
+		<ul class="govuk-list govuk-!-font-size-16 govuk-!-margin-bottom-8">
+			<li>
+				<a href="#">Switch accounts</a>
+			</li>
+			<li>
+				<a href="#">Change your password</a>
+			</li>
+			<li>
+				<a href="#">Change your email address</a>
+			</li>
+			<li>
+				<a href="#">Notification settings</a>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
