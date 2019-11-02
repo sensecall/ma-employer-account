@@ -33,52 +33,25 @@ router.get('/interstitial', (req, res) => {
 })
 
 // Questions
-router.post('/q--know-course', (req, res) => {
-	if (req.session.data['know-course'] == 'yes'){
-		if (req.session.data['funding-journey'] == 'true') {
-			res.redirect('q--know-start-date')
-		} else {
-			if (req.session.data['return-to-task-list'] == 'true'){
-				res.redirect('task-list')
-			} else {
-				res.redirect('q--know-start-date')
-			}
-		}
+router.post('/task--reserve-funding/choose-course', (req, res) => {
+	if (req.session.data['know-course'] == 'yes' && req.session.data['course-name']){
+		res.redirect('know-start-month')
 	} else {
-		req.session.data['course-name'] = ''
-
-		res.redirect('q--reserve-warning')
+		res.redirect('reserve-warning')
 	}
 })
 
-router.post('/q--know-start-date', (req, res) => {
-	if (req.session.data['know-start-date'] == 'yes'){
-		res.redirect('q--enter-start-date')
+router.post('/task--reserve-funding/know-start-month', (req, res) => {
+	if (req.session.data['know-start-month'] == 'yes'){
+		res.redirect('choose-start-month')
 	} else {
-		req.session.data['start-date'] = ''
-		
-		if (req.session.data['funding-journey'] == 'true') {
-			res.redirect('q--reserve-warning')
-		} else {
-			if (req.session.data['return-to-task-list'] == 'true'){
-				res.redirect('task-list')
-			} else {
-				res.redirect('q--reserve-warning')
-			}
-		}
+		req.session.data['start-month'] = ''
+		res.redirect('reserve-warning')
 	}
 })
 
-router.post('/q--enter-start-date', (req, res) => {
-	if (req.session.data['funding-journey'] == 'true') {
-		res.redirect('q--reserve-confirmation')
-	} else {
-		if (req.session.data['return-to-task-list'] == 'true'){
-			res.redirect('task-list')
-		} else {
-			res.redirect('q--found-apprentice')
-		}
-	}
+router.post('/task--reserve-funding/choose-start-month', (req, res) => {
+	res.redirect('confirm-reservation-details')
 })
 
 router.post('/g--funding', (req, res) => {

@@ -12,11 +12,7 @@
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			{{ govukPanel({
-				titleText: "Funding is available for your chosen apprenticeship training",
-				attributes:
-				{
-					style: "background: #fff;border:5px solid green;color:green"
-				}
+				titleText: "Funding has been reserved for your chosen apprenticeship training"
 			}) }}
 
 			<p>
@@ -26,8 +22,8 @@
 			<input type="hidden" value="true" name="reserve-funding">
 
 			{{govukButton({
-				text: "Reserve funding and continue",
-				href: "reservation-success?reservation-confirmed=true"
+				text: "Return to task list",
+				href: "../task-list"
 			})}}
 		</form>
 	</div>

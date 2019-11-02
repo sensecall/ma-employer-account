@@ -16,68 +16,81 @@
 {% block content %}
 
 {% set courseHtml %}
-{{ govukInput({
-	id: "choose-course",
-	name: "choose-course",
-	type: "text",
-	classes: "govuk-!-width-two-thirds",
-	label: {
-	text: "Search for apprenticeship training course"
-}
-}) }}
+<div class="govuk-form-group">
+	<label class="govuk-label" for="choose-apprenticeship">
+		Search for a course
+	</label>
+
+	<select id="course-name" name="course-name">
+		<option value="">Select one</option>
+		{% for apprenticeship in data['apprenticeships'].apprenticeships %}
+		{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
+		<option value="{{optionValue}}" {{"selected" if optionValue === data['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+		{% endfor %}
+	</select>
+
+	<p class="govuk-!-margin-top-2">
+		<a href="#course-name" id="clear-search">Clear search</a>
+	</p>
+</div>
 {% endset -%}
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<h1 class="govuk-heading-xl">
-			Apprenticeship training course
-		</h1>
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "know-course",
+				name: "know-course",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you know which apprenticeship training your apprentice will take?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--l"
+					}
+				},
+				hint:
+				{
+					text: "Here is some help text."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes",
+					conditional:
+					{
+						html: courseHtml
+					},
+					checked: data['know-course'] === 'yes'
+				},
+				{
+					value: "no",
+					text: "No, I don't know yet",
+					checked: data['know-course'] === 'no'
+				}
+				]
+			}) }}
 
-		<p>
-			Apprentices will spend at least 20% of their time on off-the-job training with your chosen training provider. Apprenticeships offer the opportunity to have a flexible, but structured training programme, that meet your organisation's needs.
-		</p>
-
-		<h2 class="govuk-heading-l">
-			Types of apprenticeships
-		</h2>
-
-
-		<p>
-			Apprentices must work towards an approved apprenticeship. Their training must last at least 1 year.
-		</p>
-
-		<h2 class="govuk-heading-m">
-			Apprenticeship standards
-		</h2>
-
-		<p>
-			Designed by groups of employers, apprenticeship standards set out the knowledge, skills and behaviours the apprentice needs to be competent in a particular occupation. Institute for Apprenticeships and Technical Education is responsible for the development and approval of standards and works with employers to ensure a wide range of high-quality apprenticeship standards are available.
-		</p>
-
-		<h2 class="govuk-heading-m">
-			Apprenticeship frameworks
-		</h2>
-
-		<p>
-			Apprenticeship frameworks are a series of work-related qualifications. There is no end-point assessment for this type of apprenticeship.
-		</p>
-		<p>
-			All apprenticeship frameworks will be withdrawn by 2020. This will be a phased approach as employers take on more apprentices using the new apprenticeship standards. 
-		</p>
-
-		<h2 class="govuk-heading-l">
-			Finding an apprenticeship training course
-		</h2>
-
-		<p>
-			You can use <a href="#">find apprenticeship training</a> to search for courses and training providers.
-		</p>
-
-		{{govukButton({
-			text: "Continue",
-			classes: "govuk-!-margin-top-6",
-			href: "q--know-course"
-		})}}
+			{{govukButton({
+				text: "Save and continue"
+			})}}
+		</form>
 	</div>
 </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#course-name')
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#course-name').val("");
+		})
+	})
+</script>
 {% endblock %}
