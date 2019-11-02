@@ -110,10 +110,17 @@ Take on an apprentice - Prototype
 					</li>
 
 					<li class="app-task-list__item">
+						{% if data['reserve-funding-intro'] == 'done' %}
 						<a class="app-task-list__task-name" href="task--reserve-funding/choose-course">
 							Apprenticeship training course
 						</a>
-						{% if data['course-name'] != '' %}
+						{% else %}
+						<span style="color: #777">
+							Apprenticeship training course
+						</span>
+						{% endif %}
+						
+						{% if data['course-name'] %}
 						<strong class="govuk-tag app-task-list__task-completed">
 							Done
 						</strong>
@@ -121,11 +128,17 @@ Take on an apprentice - Prototype
 					</li>
 
 					<li class="app-task-list__item">
+						{% if data['reserve-funding-intro'] == 'done' %}
 						<a class="app-task-list__task-name" href="task--reserve-funding/know-start-month">
 							Start date
 						</a>
+						{% else %}
+						<span style="color: #777">
+							Start date
+						</span>
+						{% endif %}
 
-						{% if data['start-month'] != '' %}
+						{% if data['start-month'] %}
 						<strong class="govuk-tag app-task-list__task-completed">
 							Done
 						</strong>
@@ -133,9 +146,15 @@ Take on an apprentice - Prototype
 					</li>
 
 					<li class="app-task-list__item">
+						{% if data['reserve-funding-intro'] == 'done' and data['course-name'] and data['start-month'] %}
 						<a class="app-task-list__task-name" href="task--reserve-funding/confirm-reservation-details">
 							Confirm reservation
 						</a>
+						{% else %}
+						<span style="color: #777">
+							Confirm reservation
+						</span>
+						{% endif %}
 
 						{% if data['reservation-confirmed'] == 'true' %}
 						<strong class="govuk-tag app-task-list__task-completed">
