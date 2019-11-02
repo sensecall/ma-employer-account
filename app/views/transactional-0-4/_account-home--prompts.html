@@ -1,0 +1,87 @@
+<!-- ADD PAYE SCHEME -->
+{% if data['add-paye-now'] != 'yes' and data['sign-agreement-now'] != 'yes' %}
+<div class="das-minimal-section__wrapper">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				Add your PAYE scheme to access your account
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Add your organisation’s PAYE scheme and sign your agreement with the Education and Skills Funding Agency to get funding for apprenticeship training.
+			</p>
+
+			<p>
+				<a href="add-paye" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+					Add your PAYE scheme
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}
+
+<!-- SIGN AGREEMENT -->
+{% if data['sign-agreement-now'] != 'yes' and data['add-paye-now'] == 'yes' %}
+<div class="das-minimal-section__wrapper das-section-dashboard">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				Sign your agreement to access apprenticeship funding
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Sign your agreement with the Education and Skills Funding Agency to access funding for apprenticeship training. 
+			</p>
+
+			<p>
+				<a href="sign-agreement" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+					Sign your agreement
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}
+
+<!-- START -->
+{% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['employer-type'] != 'levy' and data['started'] != 'true' %}
+<section class="govuk-!-padding-5" style="background: #f3f2f1">
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Start a new apprenticeship
+	</h2>
+
+	<p class="govuk-body-l">
+		Follow this step by step guide to start a new apprenticeship in your organisation.
+	</p>
+
+	<p>
+		<a href="task-list" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-button--start govuk-!-margin-bottom-0">
+			Get started
+		</a>
+	</p>
+</section>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+{% endif %}
+
+<!-- CONTINUE -->
+{% if data['started'] == 'true' %}
+<section class="govuk-!-padding-5" style="background: #f3f2f1">
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Continue adding a new apprenticeship
+	</h2>
+
+	<p class="govuk-body-l">
+		Finish adding details to start a new apprenticeship in your organisation.
+	</p>
+
+	<p>
+		<a href="task-list" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-!-margin-bottom-0">
+			Continue
+		</a>
+	</p>
+</section>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+{% endif %}

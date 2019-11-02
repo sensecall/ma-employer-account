@@ -1,0 +1,362 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Take on an apprentice - Prototype
+{% endblock %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back to your account",
+	href: "account-home?sign-agreement-now=yes&add-paye-now=yes"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Start a new apprenticeship
+		</h1>
+
+		<p>
+			Fill in the sections below to start a new apprenticeship in your organisation.
+		</p>
+
+		{%- from "./macros/task-list-item.njk" import appTaskListItem %}
+
+
+		<ol class="app-task-list">
+			<li id="training-provider">
+				<h2 class="app-task-list__section">
+					<span class="app-task-list__section-number">1. </span> Training provider
+				</h2>
+
+				<p class="app-task-list__description">
+					Ad esse amet sed in magna minim non tempor sunt et incididunt laborum quis magna est aute duis aliqua ex veniam esse qui nulla duis sit cupidatat laborum consequat dolore tempor tempor dolor nulla sunt amet officia.
+				</p>
+
+				<ul class="app-task-list__items">
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Introduction
+						</a>
+						{% if data['training'] == 'true' %}
+						<strong class="govuk-tag app-task-list__task-completed" style="background:#777">
+							Visited
+						</strong>
+						{% endif %}
+					</li>
+
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Choose a training provider
+						</a>
+					</li>
+
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Training provider permissions
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li id="training-provider">
+				<h2 class="app-task-list__section">
+					<span class="app-task-list__section-number">2. </span> Reserve funding
+				</h2>
+
+				<p class="app-task-list__description">
+					Minim et ullamco ut cillum qui amet veniam duis in dolore et ea quis sunt voluptate esse duis aute est eu qui est anim occaecat proident qui elit dolore excepteur do magna.
+				</p>
+
+				<ul class="app-task-list__items">
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Introduction
+						</a>
+						{% if data['training'] == 'true' %}
+						<strong class="govuk-tag app-task-list__task-completed" style="background:#777">
+							Visited
+						</strong>
+						{% endif %}
+					</li>
+
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Apprenticeship training course
+						</a>
+					</li>
+
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Start date
+						</a>
+					</li>
+
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Confirm reservation
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li id="training-provider">
+				<h2 class="app-task-list__section">
+					<span class="app-task-list__section-number">3. </span> Recruitment (optional)
+				</h2>
+
+				<p class="app-task-list__description">
+					Minim et ullamco ut cillum qui amet veniam duis in dolore et ea quis sunt voluptate esse duis aute est eu qui est anim occaecat proident qui elit dolore excepteur do magna.
+				</p>
+
+				<ul class="app-task-list__items">
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Introduction
+						</a>
+						{% if data['training'] == 'true' %}
+						<strong class="govuk-tag app-task-list__task-completed" style="background:#777">
+							Visited
+						</strong>
+						{% endif %}
+					</li>
+
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Create a vacancy
+						</a>
+					</li>
+
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							View applications
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li id="training-provider">
+				<h2 class="app-task-list__section">
+					<span class="app-task-list__section-number">4. </span> Add apprentice details
+				</h2>
+
+				<p class="app-task-list__description">
+					Minim et ullamco ut cillum qui amet veniam duis in dolore et ea quis sunt voluptate esse duis aute est eu qui est anim occaecat proident qui elit dolore excepteur do magna.
+				</p>
+
+				<ul class="app-task-list__items">
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Introduction
+						</a>
+						{% if data['training'] == 'true' %}
+						<strong class="govuk-tag app-task-list__task-completed" style="background:#777">
+							Visited
+						</strong>
+						{% endif %}
+					</li>
+
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Apprentice details
+						</a>
+					</li>
+
+					<li class="app-task-list__item">
+						<a class="app-task-list__task-name" href="#">
+							Check and confirm apprentice details
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ol>
+
+
+
+		{% set doneTagHtml %}
+		<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>
+		{% endset %}
+
+		{% set optionalTagHtml %}
+		<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>Optional</strong>
+		{% endset %}
+
+		{% set todoTagHtml %}
+		<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>To-do</strong>
+		{% endset %}
+
+		{% set providerHtml %}
+		{{appTaskListItem({
+			href: "g--found-provider",
+			title: "Training provider",
+			description: "Choose which training provider will deliver the apprentice's training course."
+		})}}
+		{% endset %}
+
+		{% set startDateHtml %}
+		{{appTaskListItem({
+			href: "q--know-start-date",
+			title: "Training start date",
+			description: "To reserve apprenticeship funding, you need to enter the month that the apprentice will start their training course with your training provider."
+		})}}
+		{% endset %}
+
+		{% set courseHtml %}
+		{{appTaskListItem({
+			href: "g--know-course",
+			title: "Apprenticeship training course",
+			description: "To reserve apprenticeship funding, you must know which apprenticeship training course the apprentice will take."
+		})}}
+		{% endset %}
+
+		{% set fundingHtml %}
+		{{appTaskListItem({
+			href: "g--funding",
+			title: "Funding",
+			description: "Reserve funding so that the government can pay for some or all of the apprentice's training and assessment."
+		})}}
+		{% endset %}
+
+		{% set recruitmentHtml %}
+		{{appTaskListItem({
+			href: "q--need-vacancy",
+			title: "Recruitment",
+			description: "Tell us whether you need to create a free advert to find an apprentice to fill your vacancy."
+		})}}
+		{% endset %}
+
+		{% set apprenticeHtml %}
+		{{appTaskListItem({
+			href: "q--found-apprentice",
+			title: "Apprentice details",
+			description: "Add the apprentice's details once you know who will complete this apprenticeship."
+		})}}
+		{% endset %}
+
+		{{ govukTable({
+			classes: "app-task-list app-task-list--sections",
+			firstCellIsHeader: true,
+			rows: [
+			[
+			{
+				html: providerHtml
+			},
+			{
+				html: doneTagHtml if data['confirm-provider-details'] == 'yes' and data['found-provider'] == 'yes' else "<a href='#'>" + todoTagHtml + "</a>",
+				classes: "app-task-list__status"
+			}
+			],
+			[
+			{
+				html: courseHtml
+			},
+			{
+				html: doneTagHtml if data['course-name'] else "<a href='#'>" + todoTagHtml + "</a>",
+				classes: "app-task-list__status"
+			}
+			],
+			[
+			{
+				html: startDateHtml
+			},
+			{
+				html: doneTagHtml if data['start-date'] else "<a href='#'>" + todoTagHtml + "</a>",
+				classes: "app-task-list__status"
+			}
+			],
+			[
+			{
+				html: fundingHtml
+			},
+			{
+				html: doneTagHtml if data['reserve-funding'] == 'true' else "<a href='#'>" + todoTagHtml + "</a>",
+				classes: "app-task-list__status"
+			}
+			],
+			[
+			{
+				html: recruitmentHtml
+			},
+			{
+				html: "<a href='#'>" + todoTagHtml + "</a>" if data['need-vacancy'] != 'no' else doneTagHtml,
+				classes: "app-task-list__status"
+			}
+			],
+			[
+			{
+				html: apprenticeHtml
+			},
+			{
+				html: doneTagHtml if data['found-apprentice'] == 'yes' else "<a href='#'>" + todoTagHtml + "</a>",
+				classes: "app-task-list__status"
+			}
+			],
+			[
+			{
+				html: "<span class='govuk-!-font-size-24' style='color:#999'>Confirm apprenticeship details</span>"
+			},
+			{
+				html: "<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>Do last</strong>",
+				classes: "app-task-list__status"
+			}
+			]
+			]
+		}) }}
+
+		<p class="govuk-!-margin-top-8">
+			<a href="account-home?sign-agreement-now=yes&add-paye-now=yes">Save and return to your account</a>
+		</p>
+	</div>
+
+	{% endblock %}
+
+	{% block pageScripts %}
+	<script>
+		$(document).ready(function(){
+			$('.app-task-list__content').each(function(){
+				let content = $(this);
+				let buttonHtml = '<span class="govuk-!-font-size-16 govuk-!-font-weight-regular govuk-!-display-block">Show</span>';
+				let button = content.find('.show-hide.show-hide__link');
+				let heading = content.parent().find('.app-task-list__heading a');
+
+				heading.addClass('app-task-list__toggle show-hide').append(buttonHtml);
+				content.hide()
+
+				function toggleContent(){
+					if(content.is(":hidden")){
+						content.show();
+					} else {
+						content.hide();
+					}
+				}
+
+				function updateButtonText(target, originalText, text){				
+					if(content.is(":hidden")){
+						target.html(text);
+					} else {
+						target.html(originalText);
+					}
+				}
+
+				heading.each(function(){
+					let closestButton = $(this).find('span');
+
+					$(this).on('click', function(event){
+						event.preventDefault()
+						updateButtonText(closestButton, "Show", "Hide")
+						toggleContent()
+					})
+				})
+			})
+		})
+	</script>
+	{% endblock %}

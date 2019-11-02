@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "start-date",
+				name: "start-date",
+				fieldset:
+				{
+					legend:
+					{
+						text: "When will the apprentice start their apprenticeship training?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--l"
+					}
+				},
+				hint:
+				{
+					text: "Here is some help text."
+				},
+				items: [
+				{
+					value: "1",
+					text: "January 2020",
+					checked: data['start-date'] === '1'
+				},
+				{
+					value: "2",
+					text: "February 2020",
+					checked: data['start-date'] === '2'
+				},
+				{
+					value: "3",
+					text: "March 2020",
+					checked: data['start-date'] === '3'
+				},
+				{
+					value: "4",
+					text: "April 2020",
+					checked: data['start-date'] === '4'
+				},
+				{
+					value: "5",
+					text: "May 2020",
+					checked: data['start-date'] === '5'
+				},
+				{
+					value: "6",
+					text: "June 2020",
+					checked: data['start-date'] === '6'
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukPanel({
+				titleText: "Funding is available for your chosen apprenticeship training"
+			}) }}
+
+			<p>
+				Here is some information form the Reserve funding journey about having reserved funding.
+			</p>
+
+			<input type="hidden" value="true" name="reserve-funding">
+
+			{{govukButton({
+				text: "Reserve funding and continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

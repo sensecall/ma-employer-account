@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set providerHtml %}
+<div class="govuk-form-group">
+	<label class="govuk-label" for="choose-apprenticeship">
+		Search for a provider
+	</label>
+
+	<select id="provider-name" name="provider-name">
+		<option value="">Select one</option>
+		{% for provider in data['providers'].providers %}
+		<option value="{{provider.name}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
+		{% endfor %}
+	</select>
+
+	<p class="govuk-!-margin-top-2">
+		<a href="#provider-name" id="clear-search">Clear search</a>
+	</p>
+</div>
+{% endset -%}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "found-provider",
+				name: "found-provider",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you know which training provider will be delivering your apprentice's training?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--l"
+					}
+				},
+				hint:
+				{
+					text: "Here is some help text."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes",
+					conditional:
+					{
+						html: providerHtml
+					},
+					checked: data['found-provider'] === 'yes'
+				},
+				{
+					value: "no",
+					text: "No, I don't know yet",
+					checked: data['found-provider'] === 'no'
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#provider-name')
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#provider-name').val("");
+		})
+	})
+</script>
+{% endblock %}
