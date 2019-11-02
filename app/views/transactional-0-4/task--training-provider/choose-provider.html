@@ -22,7 +22,7 @@
 	</label>
 
 	<select id="provider-name" name="provider-name">
-		<option value="">Select one</option>
+		<option value="">
 		{% for provider in data['providers'].providers %}
 		<option value="{{provider.name}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
 		{% endfor %}
@@ -44,7 +44,7 @@
 				{
 					legend:
 					{
-						text: "Do you know which training provider will be delivering your apprentice's training?",
+						text: "Have you found a training provider to deliver your apprentice's training?",
 						isPageHeading: true,
 						classes: "govuk-fieldset__legend--l"
 					}
@@ -83,7 +83,9 @@
 <script>
 	$(document).ready(function(){
 		accessibleAutocomplete.enhanceSelectElement({
-			selectElement: document.querySelector('#provider-name')
+			selectElement: document.querySelector('#provider-name'),
+			showAllValues: true,
+			defaultValue: ''
 		})
 
 		$('#clear-search').on('click', function(e) {

@@ -112,41 +112,37 @@ router.post('/q--reserve-confirmation', (req, res) => {
 	}
 })
 
-router.post('/q--found-provider', (req, res) => {
+router.post('/task--training-provider/choose-provider', (req, res) => {
 	if (req.session.data['found-provider'] == 'yes'){
-		res.redirect('q--confirm-provider')
+		res.redirect('confirm-provider')
 	} else {
 		req.session.data['provider-name'] = ''
 
-		if (req.session.data['return-to-task-list'] == 'true'){
-			res.redirect('task-list')
-		} else {
-			res.redirect('g--funding')
-		}
+		res.redirect('error')
 	}
 })
 
-router.post('/q--confirm-provider', (req, res) => {
+router.post('/task--training-provider/confirm-provider', (req, res) => {
 	if (req.session.data['confirm-provider-details'] == 'yes'){
-		res.redirect('q--provider-permission')
+		req.session.data['choose-provider'] = 'done'
+		res.redirect('provider-permissions')
 	} else {
-		res.redirect('q--found-provider')
+		req.session.data['choose-provider'] = ''
+		res.redirect('choose-provider')
 	}
 })
 
-router.post('/q--provider-permission', (req, res) => {
-	if (req.session.data['provider-permission'] == 'yes'){
-		res.redirect('q--set-provider-permission')
+router.post('/task--training-provider/provider-permissions', (req, res) => {
+	if (req.session.data['provider-permissions'] == 'yes'){
+		res.redirect('set-provider-permissions')
 	} else {
-		if (req.session.data['return-to-task-list'] == 'true'){
-			res.redirect('task-list')
-		} else {
-			res.redirect('g--funding')
-		}
+		req.session.data['training-provider-permissions'] = 'done'
+		res.redirect('../task-list')
 	}
 })
 
-router.post('/q--set-provider-permission', (req, res) => {
+router.post('/task--training-provider/set-provider-permissions', (req, res) => {
+	req.session.data['training-provider-permissions'] = 'done'
 	res.redirect('q--permissions-confirmation')
 })
 

@@ -22,12 +22,14 @@ Take on an apprentice - Prototype
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<h1 class="govuk-heading-xl">
-			Start a new apprenticeship
+			Set up a new apprenticeship
 		</h1>
 
 		<p>
-			Fill in the sections below to start a new apprenticeship in your organisation.
+			Fill in the sections below to set up a new apprenticeship in your organisation.
 		</p>
+
+		<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
 		{%- from "./macros/task-list-item.njk" import appTaskListItem %}
 
@@ -44,26 +46,44 @@ Take on an apprentice - Prototype
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="#">
+						<a class="app-task-list__task-name" href="task--training-provider/introduction">
 							Introduction
 						</a>
-						{% if data['training'] == 'true' %}
-						<strong class="govuk-tag app-task-list__task-completed" style="background:#777">
-							Visited
+						{% if data['training-provider-intro'] == 'done' %}
+						<strong class="govuk-tag app-task-list__task-completed">
+							Done
 						</strong>
 						{% endif %}
 					</li>
 
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="#">
+						{% if data['training-provider-intro'] == 'done' %}
+						<a class="app-task-list__task-name" href="task--training-provider/choose-provider">
 							Choose a training provider
 						</a>
+						{% else %}
+						<span style="color: #777">
+							Choose a training provider
+						</span>
+						{% endif %}
+						{% if data['choose-provider'] == 'done' %}
+						<strong class="govuk-tag app-task-list__task-completed">
+							Done
+						</strong>
+						{% endif %}
 					</li>
 
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="#">
+						{% if data['choose-provider'] == 'done' %}
+						<a class="app-task-list__task-name" href="task--training-provider/provider-permissions">
 							Training provider permissions
 						</a>
+						<strong class="govuk-tag app-task-list__task-completed">
+							Done
+						</strong>
+						{% else %}
+						<span style="color: #777">Training provider permissions</span>
+						{% endif %}
 					</li>
 				</ul>
 			</li>
