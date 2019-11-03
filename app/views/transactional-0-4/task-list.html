@@ -187,15 +187,27 @@ Take on an apprentice - Prototype
 					</li>
 
 					<li class="app-task-list__item">
+						{% if data['recruitment-intro'] == 'done' %}
 						<a class="app-task-list__task-name" href="task--recruitment/introduction">
 							Create a vacancy
 						</a>
+						{% else %}
+						<span style="color: #777">
+							Create a vacancy
+						</span>
+						{% endif %}
 					</li>
 
 					<li class="app-task-list__item">
+						{% if data['create-vacancy'] == 'done' %}
 						<a class="app-task-list__task-name" href="task--recruitment/introduction">
 							View applications
 						</a>
+						{% else %}
+						<span style="color: #777">
+							View applications
+						</span>
+						{% endif %}
 					</li>
 				</ul>
 			</li>
@@ -235,138 +247,6 @@ Take on an apprentice - Prototype
 				</ul>
 			</li>
 		</ol>
-
-
-
-		{% set doneTagHtml %}
-		<strong class='govuk-tag govuk-!-font-size-24'>Done</strong>
-		{% endset %}
-
-		{% set optionalTagHtml %}
-		<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>Optional</strong>
-		{% endset %}
-
-		{% set todoTagHtml %}
-		<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>To-do</strong>
-		{% endset %}
-
-		{% set providerHtml %}
-		{{appTaskListItem({
-			href: "g--found-provider",
-			title: "Training provider",
-			description: "Choose which training provider will deliver the apprentice's training course."
-		})}}
-		{% endset %}
-
-		{% set startDateHtml %}
-		{{appTaskListItem({
-			href: "q--know-start-date",
-			title: "Training start date",
-			description: "To reserve apprenticeship funding, you need to enter the month that the apprentice will start their training course with your training provider."
-		})}}
-		{% endset %}
-
-		{% set courseHtml %}
-		{{appTaskListItem({
-			href: "g--know-course",
-			title: "Apprenticeship training course",
-			description: "To reserve apprenticeship funding, you must know which apprenticeship training course the apprentice will take."
-		})}}
-		{% endset %}
-
-		{% set fundingHtml %}
-		{{appTaskListItem({
-			href: "g--funding",
-			title: "Funding",
-			description: "Reserve funding so that the government can pay for some or all of the apprentice's training and assessment."
-		})}}
-		{% endset %}
-
-		{% set recruitmentHtml %}
-		{{appTaskListItem({
-			href: "q--need-vacancy",
-			title: "Recruitment",
-			description: "Tell us whether you need to create a free advert to find an apprentice to fill your vacancy."
-		})}}
-		{% endset %}
-
-		{% set apprenticeHtml %}
-		{{appTaskListItem({
-			href: "q--found-apprentice",
-			title: "Apprentice details",
-			description: "Add the apprentice's details once you know who will complete this apprenticeship."
-		})}}
-		{% endset %}
-
-		{{ govukTable({
-			classes: "app-task-list app-task-list--sections",
-			firstCellIsHeader: true,
-			rows: [
-			[
-			{
-				html: providerHtml
-			},
-			{
-				html: doneTagHtml if data['confirm-provider-details'] == 'yes' and data['found-provider'] == 'yes' else "<a href='#'>" + todoTagHtml + "</a>",
-				classes: "app-task-list__status"
-			}
-			],
-			[
-			{
-				html: courseHtml
-			},
-			{
-				html: doneTagHtml if data['course-name'] else "<a href='#'>" + todoTagHtml + "</a>",
-				classes: "app-task-list__status"
-			}
-			],
-			[
-			{
-				html: startDateHtml
-			},
-			{
-				html: doneTagHtml if data['start-date'] else "<a href='#'>" + todoTagHtml + "</a>",
-				classes: "app-task-list__status"
-			}
-			],
-			[
-			{
-				html: fundingHtml
-			},
-			{
-				html: doneTagHtml if data['reserve-funding'] == 'true' else "<a href='#'>" + todoTagHtml + "</a>",
-				classes: "app-task-list__status"
-			}
-			],
-			[
-			{
-				html: recruitmentHtml
-			},
-			{
-				html: "<a href='#'>" + todoTagHtml + "</a>" if data['need-vacancy'] != 'no' else doneTagHtml,
-				classes: "app-task-list__status"
-			}
-			],
-			[
-			{
-				html: apprenticeHtml
-			},
-			{
-				html: doneTagHtml if data['found-apprentice'] == 'yes' else "<a href='#'>" + todoTagHtml + "</a>",
-				classes: "app-task-list__status"
-			}
-			],
-			[
-			{
-				html: "<span class='govuk-!-font-size-24' style='color:#999'>Confirm apprenticeship details</span>"
-			},
-			{
-				html: "<strong class='govuk-tag govuk-tag--border govuk-!-font-size-24'>Do last</strong>",
-				classes: "app-task-list__status"
-			}
-			]
-			]
-		}) }}
 
 		<p class="govuk-!-margin-top-8">
 			<a href="account-home?sign-agreement-now=yes&add-paye-now=yes">Save and return to your account</a>
