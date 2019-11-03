@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Recruiting an apprentice
+		</h1>
+
+		<p>
+			You can create a free advert for your apprenticeship vacancy using the <a href="#">Recruit an apprentice (opens in a new tab)</a> service.
+		</p>
+
+		<p>
+			Your training provider may offer to advertise your apprenticeship vacancy on your behalf. Contact your training provider for more details.
+		</p>
+
+		{{govukButton({
+			text: "Continue",
+			href: "../task-list?recruitment-intro=done",
+			classes: "govuk-!-margin-top-6"
+		})}}
+	</div>
+</div>
+{% endblock %}

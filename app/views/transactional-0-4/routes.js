@@ -35,9 +35,18 @@ router.get('/interstitial', (req, res) => {
 // Questions
 router.post('/task--reserve-funding/choose-course', (req, res) => {
 	if (req.session.data['know-course'] == 'yes' && req.session.data['course-name']){
-		res.redirect('know-start-month')
+		res.redirect('confirm-course')
 	} else {
 		res.redirect('reserve-warning')
+	}
+})
+
+// Questions
+router.post('/task--reserve-funding/confirm-course', (req, res) => {
+	if (req.session.data['confirm-course'] == 'yes'){
+		res.redirect('../task-list')
+	} else {
+		res.redirect('choose-course')
 	}
 })
 
@@ -51,7 +60,20 @@ router.post('/task--reserve-funding/know-start-month', (req, res) => {
 })
 
 router.post('/task--reserve-funding/choose-start-month', (req, res) => {
-	res.redirect('confirm-reservation-details')
+	if (req.session.data['course-name']){
+		res.redirect('confirm-reservation-details')
+	} else {
+		res.redirect('../task-list')
+	}
+})
+
+router.post('/task--reserve-funding/confirm-reservation-details', (req, res) => {
+	if (req.session.data['confirm-reservation-details'] == 'yes'){
+		req.session.data['reservation-confirmed'] = 'true'
+		res.redirect('reservation-success')
+	} else {
+		res.redirect('../task-list')
+	}
 })
 
 router.post('/g--funding', (req, res) => {

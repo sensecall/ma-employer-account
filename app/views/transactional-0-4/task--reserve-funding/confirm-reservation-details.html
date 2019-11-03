@@ -12,22 +12,110 @@
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			{{ govukPanel({
-				titleText: "Funding is available for your chosen apprenticeship training",
+				titleText: "Government funding is available for your apprenticeship",
 				attributes:
 				{
 					style: "background: #fff;border:5px solid green;color:green"
 				}
 			}) }}
 
-			<p>
-				Here is some information form the Reserve funding journey about having reserved funding.
-			</p>
+			{{ govukSummaryList({
+				rows:
+				[
+				{
+					key:
+					{
+						text: "Employer"
+					},
+					value:
+					{
+						text: data['employer']
+					},
+					actions:
+					{
+						items: 
+						[
+						{
 
-			<input type="hidden" value="true" name="reserve-funding">
+						}
+						]
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship training start date"
+					},
+					value:
+					{
+						html: "January 2020"
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-start-month",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training start date"
+						}
+						]
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship training course"
+					},
+					value:
+					{
+						html: data['course-name']
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-course",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training course"
+						}
+						]
+					}
+				}
+				]
+			}) }}
+
+			{{ govukRadios({
+				idPrefix: "confirm-reservation-details",
+				name: "confirm-reservation-details",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you want to reserve funding for this apprenticeship training now?",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--l govuk-!-margin-top-4"
+					}
+				},
+				hint:
+				{
+					text: "You are reserving funding for part, or all of the training cost for this apprenticeship. You may need to pay up to a maximum of 5% of the total training cost."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes, reserve funding now"
+				},
+				{
+					value: "no",
+					text: "No, return to list"
+				}
+				]
+			}) }}
 
 			{{govukButton({
-				text: "Reserve funding and continue",
-				href: "reservation-success?reservation-confirmed=true"
+				text: "Reserve funding and continue"
 			})}}
 		</form>
 	</div>

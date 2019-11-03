@@ -129,7 +129,7 @@ Take on an apprentice - Prototype
 
 					<li class="app-task-list__item">
 						{% if data['reserve-funding-intro'] == 'done' %}
-						<a class="app-task-list__task-name" href="task--reserve-funding/know-start-month">
+						<a class="app-task-list__task-name" href="task--reserve-funding/{{'choose' if data['start-month' ] else 'know'}}-start-month">
 							Start date
 						</a>
 						{% else %}
@@ -176,24 +176,24 @@ Take on an apprentice - Prototype
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="#">
+						<a class="app-task-list__task-name" href="task--recruitment/introduction">
 							Introduction
 						</a>
-						{% if data['training'] == 'true' %}
-						<strong class="govuk-tag app-task-list__task-completed" style="background:#777">
-							Visited
+						{% if data['recruitment-intro'] == 'done' %}
+						<strong class="govuk-tag app-task-list__task-completed">
+							Done
 						</strong>
 						{% endif %}
 					</li>
 
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="#">
+						<a class="app-task-list__task-name" href="task--recruitment/introduction">
 							Create a vacancy
 						</a>
 					</li>
 
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="#">
+						<a class="app-task-list__task-name" href="task--recruitment/introduction">
 							View applications
 						</a>
 					</li>
@@ -211,24 +211,24 @@ Take on an apprentice - Prototype
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="#">
+						<a class="app-task-list__task-name" href="task--apprentice-details/introduction">
 							Introduction
 						</a>
-						{% if data['training'] == 'true' %}
-						<strong class="govuk-tag app-task-list__task-completed" style="background:#777">
-							Visited
+						{% if data['apprentice-details-intro'] == 'done' %}
+						<strong class="govuk-tag app-task-list__task-completed">
+							Done
 						</strong>
 						{% endif %}
 					</li>
 
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="#">
+						<a class="app-task-list__task-name" href="task--apprentice-details/introduction">
 							Apprentice details
 						</a>
 					</li>
 
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="#">
+						<a class="app-task-list__task-name" href="task--apprentice-details/introduction">
 							Check and confirm apprentice details
 						</a>
 					</li>
