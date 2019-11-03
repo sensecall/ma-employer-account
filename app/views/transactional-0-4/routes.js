@@ -107,6 +107,7 @@ router.post('/q--reserve-confirmation', (req, res) => {
 	}
 })
 
+// Training provider
 router.post('/task--training-provider/choose-provider', (req, res) => {
 	if (req.session.data['found-provider'] == 'yes'){
 		res.redirect('confirm-provider')
@@ -132,13 +133,18 @@ router.post('/task--training-provider/provider-permissions', (req, res) => {
 		res.redirect('set-provider-permissions')
 	} else {
 		req.session.data['training-provider-permissions'] = 'done'
-		res.redirect('../task-list')
+		res.redirect('success')
 	}
 })
 
 router.post('/task--training-provider/set-provider-permissions', (req, res) => {
 	req.session.data['training-provider-permissions'] = 'done'
-	res.redirect('q--permissions-confirmation')
+	res.redirect('permissions-success')
+})
+
+router.post('/task--training-provider/success', (req, res) => {
+	req.session.data['training-provider-permissions'] = 'done'
+	res.redirect('../task-list')
 })
 
 router.post('/q--found-apprentice', (req, res) => {
