@@ -37,17 +37,17 @@ Take on an apprentice - Prototype
 		<ol class="app-task-list">
 			<li id="training-provider">
 				<h2 class="app-task-list__section">
-					<span class="app-task-list__section-number">1. </span> Training provider
+					<span class="app-task-list__section-number">1. </span> The training provider
 				</h2>
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
 						<a class="app-task-list__task-name" href="task--training-provider/introduction">
-							Introduction
+							Introduction and what you’ll need
 						</a>
 						{% if data['training-provider-intro'] == 'done' %}
 						<strong class="govuk-tag app-task-list__task-completed">
-							Done
+							Completed
 						</strong>
 						{% endif %}
 					</li>
@@ -55,16 +55,16 @@ Take on an apprentice - Prototype
 					<li class="app-task-list__item">
 						{% if data['training-provider-intro'] == 'done' %}
 						<a class="app-task-list__task-name" href="task--training-provider/choose-provider">
-							Choose a training provider
+							Find a training provider
 						</a>
 						{% else %}
 						<span style="color: #777">
-							Choose a training provider
+							Find a training provider
 						</span>
 						{% endif %}
 						{% if data['choose-provider'] == 'done' %}
 						<strong class="govuk-tag app-task-list__task-completed">
-							Done
+							Completed
 						</strong>
 						{% endif %}
 					</li>
@@ -74,11 +74,16 @@ Take on an apprentice - Prototype
 						<a class="app-task-list__task-name" href="task--training-provider/provider-permissions">
 							Training provider permissions
 						</a>
-						<strong class="govuk-tag app-task-list__task-completed">
-							Done
-						</strong>
 						{% else %}
-						<span style="color: #777">Training provider permissions</span>
+						<span style="color: #777">
+							Training provider permissions
+						</span>
+						{% endif %}
+
+						{% if data['training-provider-permissions'] == 'done' %}
+						<strong class="govuk-tag app-task-list__task-completed">
+							Completed
+						</strong>
 						{% endif %}
 					</li>
 				</ul>
@@ -86,17 +91,17 @@ Take on an apprentice - Prototype
 
 			<li id="training-provider">
 				<h2 class="app-task-list__section">
-					<span class="app-task-list__section-number">2. </span> Reserve funding
+					<span class="app-task-list__section-number">2. </span> Apprenticeship training
 				</h2>
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
 						<a class="app-task-list__task-name" href="task--reserve-funding/introduction">
-							Introduction
+							Introduction and what you’ll need
 						</a>
 						{% if data['reserve-funding-intro'] == 'done' %}
 						<strong class="govuk-tag app-task-list__task-completed">
-							Done
+							Completed
 						</strong>
 						{% endif %}
 					</li>
@@ -114,7 +119,7 @@ Take on an apprentice - Prototype
 						
 						{% if data['course-name'] %}
 						<strong class="govuk-tag app-task-list__task-completed">
-							Done
+							Completed
 						</strong>
 						{% endif %}
 					</li>
@@ -122,17 +127,17 @@ Take on an apprentice - Prototype
 					<li class="app-task-list__item">
 						{% if data['reserve-funding-intro'] == 'done' %}
 						<a class="app-task-list__task-name" href="task--reserve-funding/{{'choose' if data['start-month' ] else 'know'}}-start-month">
-							Start date
+							Apprenticeship training start date
 						</a>
 						{% else %}
 						<span style="color: #777">
-							Start date
+							Apprenticeship training start date
 						</span>
 						{% endif %}
 
 						{% if data['start-month'] %}
 						<strong class="govuk-tag app-task-list__task-completed">
-							Done
+							Completed
 						</strong>
 						{% endif %}
 					</li>
@@ -140,17 +145,17 @@ Take on an apprentice - Prototype
 					<li class="app-task-list__item">
 						{% if data['reserve-funding-intro'] == 'done' and data['course-name'] and data['start-month'] %}
 						<a class="app-task-list__task-name" href="task--reserve-funding/confirm-reservation-details">
-							Confirm reservation
+							Reserve funding for apprenticeship training
 						</a>
 						{% else %}
 						<span style="color: #777">
-							Confirm reservation
+							Reserve funding for apprenticeship training
 						</span>
 						{% endif %}
 
 						{% if data['reservation-confirmed'] == 'true' %}
 						<strong class="govuk-tag app-task-list__task-completed">
-							Done
+							Completed
 						</strong>
 						{% endif %}
 					</li>
@@ -159,22 +164,22 @@ Take on an apprentice - Prototype
 
 			<li id="training-provider">
 				<h2 class="app-task-list__section">
-					<span class="app-task-list__section-number">3. </span> Recruitment (optional)
+					<span class="app-task-list__section-number">3. </span> Recruit an apprentice (optional)
 				</h2>
 
 				<p class="app-task-list__description">
-					Minim et ullamco ut cillum qui amet veniam duis in dolore et ea quis sunt voluptate esse duis aute est eu qui est anim occaecat proident qui elit dolore excepteur do magna.
+					Do not complete this section if you are setting up an apprenticeship for an existing employee.
 				</p>
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
 						<a class="app-task-list__task-name" href="task--recruitment/introduction">
-							Introduction
+							Introduction and what you’ll need
 						</a>
 
 						{% if data['recruitment-intro'] == 'done' %}
 						<strong class="govuk-tag app-task-list__task-completed">
-							Done
+							Completed
 						</strong>
 						{% endif %}
 					</li>
@@ -194,21 +199,21 @@ Take on an apprentice - Prototype
 
 						{% if data['create-vacancy'] == 'done' %}
 						<strong class="govuk-tag app-task-list__task-completed">
-							Done
+							Completed
 						</strong>
 						{% endif %}
 					</li>
 
 					<li class="app-task-list__item">
-						{% set applicationsUrl %}https://das-recruit-prototype.herokuapp.com/raa-v2/0-2-1/testing/account/manage-vacancy{% endset %}
+						{% set applicationsUrl %}https://https://esfa:educ4tion@das-recruit-prototype.herokuapp.com/raa-v2/0-2-1/testing/account/manage-vacancy{% endset %}
 
 						{% if data['create-vacancy'] == 'done' %}
 						<a class="app-task-list__task-name"  href="" onclick="window.open('{{applicationsUrl | safe}}');">
-							View applications
+							Manage applications
 						</a>
 						{% else %}
 						<span style="color: #777">
-							View applications
+							Manage applications
 						</span>
 						{% endif %}
 					</li>
@@ -217,31 +222,53 @@ Take on an apprentice - Prototype
 
 			<li id="training-provider">
 				<h2 class="app-task-list__section">
-					<span class="app-task-list__section-number">4. </span> Add apprentice details
+					<span class="app-task-list__section-number">4. </span> The apprentice
 				</h2>
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
 						<a class="app-task-list__task-name" href="task--apprentice-details/introduction">
-							Introduction
+							Introduction and what you’ll need
 						</a>
-						{% if data['apprentice-details-intro'] == 'done' %}
+
+						{% if data['apprentice-intro'] == 'done' %}
 						<strong class="govuk-tag app-task-list__task-completed">
-							Done
+							Completed
 						</strong>
 						{% endif %}
 					</li>
 
 					<li class="app-task-list__item">
-						<a class="app-task-list__task-name" href="task--apprentice-details/introduction">
-							Apprentice details
+						{% set apprenticeDetailsUrl %}https://esfa:educ4tion@das-add-and-approve-prototype.herokuapp.com/approve/sprint-19/research/employer/recruit-data/add--confirm-provider?provider-name={{data['provider-name']}}&ukprn=10001921{% endset %}
+
+
+						{% if data['apprentice-intro'] == 'done' %}
+						<a class="app-task-list__task-name"  href="?apprentice-details=done" onclick="window.open('{{apprenticeDetailsUrl | safe}}');">
+							Add apprentice details
 						</a>
+						{% else %}
+						<span style="color: #777">
+							Add apprentice details
+						</span>
+						{% endif %}
+
+						{% if data['apprentice-details'] == 'done' %}
+						<strong class="govuk-tag app-task-list__task-completed">
+							Completed
+						</strong>
+						{% endif %}
 					</li>
 
 					<li class="app-task-list__item">
+						{% if data['apprentice-details'] == 'done' %}
 						<a class="app-task-list__task-name" href="task--apprentice-details/introduction">
-							Check and confirm apprentice details
+							Send apprentice details to training provider
 						</a>
+						{% else %}
+						<span style="color: #777">
+							Send apprentice details to training provider
+						</span>
+						{% endif %}
 					</li>
 				</ul>
 			</li>
