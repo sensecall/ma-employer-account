@@ -50,37 +50,27 @@
 {% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['employer-type'] != 'levy' and data['started'] != 'true' %}
 <section class="govuk-!-padding-5" style="background: #f3f2f1">
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
-		Start a new apprenticeship
+		{% if data['started'] != 'true' %}
+		Set up an apprenticeship
+		{% else %}
+		Continue setting up an apprenticeship
+		{% endif %}
 	</h2>
 
 	<p class="govuk-body-l">
-		Follow this step by step guide to start a new apprenticeship in your organisation.
+		You’ll need to choose a training provider, add the course details, reserve funding, find an apprentice and enter their details.
 	</p>
 
 	<p>
+		{% if data['started'] != 'true' %}
 		<a href="task-list" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-button--start govuk-!-margin-bottom-0">
 			Get started
 		</a>
-	</p>
-</section>
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-{% endif %}
-
-<!-- CONTINUE -->
-{% if data['started'] == 'true' %}
-<section class="govuk-!-padding-5" style="background: #f3f2f1">
-	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
-		Continue adding a new apprenticeship
-	</h2>
-
-	<p class="govuk-body-l">
-		Finish adding details to start a new apprenticeship in your organisation.
-	</p>
-
-	<p>
+		{% else %}
 		<a href="task-list" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-!-margin-bottom-0">
 			Continue
 		</a>
+		{% endif %}
 	</p>
 </section>
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
