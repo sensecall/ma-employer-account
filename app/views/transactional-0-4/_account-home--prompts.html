@@ -47,13 +47,13 @@
 {% endif %}
 
 <!-- START -->
-{% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['employer-type'] != 'levy' and data['started'] != 'true' %}
+{% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['employer-type'] != 'levy' %}
 <section class="govuk-!-padding-5" style="background: #f3f2f1">
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
-		{% if data['started'] != 'true' %}
-		Set up an apprenticeship
-		{% else %}
+		{% if data['started'] == 'true' %}
 		Continue setting up an apprenticeship
+		{% else %}
+		Set up an apprenticeship
 		{% endif %}
 	</h2>
 
@@ -62,13 +62,13 @@
 	</p>
 
 	<p>
-		{% if data['started'] != 'true' %}
-		<a href="task-list" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-button--start govuk-!-margin-bottom-0">
-			Get started
-		</a>
-		{% else %}
+		{% if data['started'] == 'true' %}
 		<a href="task-list" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-!-margin-bottom-0">
 			Continue
+		</a>
+		{% else %}
+		<a href="task-list" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-button--start govuk-!-margin-bottom-0">
+			Get started
 		</a>
 		{% endif %}
 	</p>

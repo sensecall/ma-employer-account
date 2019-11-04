@@ -23,13 +23,13 @@ const providers = require('./providers.json')
 module.exports = {
 	// URLS
 	'providerPermissionsURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/provider-permissions/providers',
-	'payeURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/add-paye-scheme',
-	'signAgreementURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/agreement',
+	'payeURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/registration/add-paye-scheme',
+	'signAgreementURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/registration/agreement',
 	'recruitmentURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/recruitment/recruitment',
 	
 	// Other
 	'apprenticeships': apprenticeships,
 	'providers': providers,
 	'employer-name': "Aardvark Zebra Ltd",
-	'started': ''
+	'started': 'false'
 }

@@ -22,7 +22,7 @@
 	</label>
 
 	<select id="course-name" name="course-name">
-		<option value="">Select one</option>
+		<option value=""></option>
 		{% for apprenticeship in data['apprenticeships'].apprenticeships %}
 		{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
 		<option value="{{optionValue}}" {{"selected" if optionValue === data['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
@@ -84,7 +84,9 @@
 <script>
 	$(document).ready(function(){
 		accessibleAutocomplete.enhanceSelectElement({
-			selectElement: document.querySelector('#course-name')
+			selectElement: document.querySelector('#course-name'),
+			showAllValues: true,
+			defaultValue: ''
 		})
 
 		$('#clear-search').on('click', function(e) {

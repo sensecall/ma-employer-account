@@ -22,7 +22,7 @@
 	</label>
 
 	<select id="provider-name" name="provider-name">
-		<option value="">
+		<option value=""></option>
 		{% for provider in data['providers'].providers %}
 		<option value="{{provider.name}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
 		{% endfor %}
