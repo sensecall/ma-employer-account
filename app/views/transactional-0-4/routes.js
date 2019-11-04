@@ -85,7 +85,7 @@ router.post('/task--training-provider/confirm-provider', (req, res) => {
 	if (req.session.data['confirm-provider-details'] == 'yes'){
 		req.session.data['choose-provider'] = 'done'
 		req.session.data['started'] == 'true'
-		res.redirect('provider-permissions')
+		res.redirect('../task-list')
 	} else {
 		req.session.data['choose-provider'] = ''
 		res.redirect('choose-provider')
