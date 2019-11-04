@@ -11,12 +11,9 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
-			{{ govukPanel({
-				titleText: "Government funding is available for your apprenticeship",
-				attributes:
-				{
-					style: "background: #fff;border:5px solid green;color:green"
-				}
+			{%- from "../macros/alert.njk" import appAlert %}
+			{{ appAlert({
+				titleHtml: "<h2 class='govuk-heading-l govuk-!-margin-bottom-0'>Government funding is available for your apprenticeship</h2>"
 			}) }}
 
 			{{ govukSummaryList({

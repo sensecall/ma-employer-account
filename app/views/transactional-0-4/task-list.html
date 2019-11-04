@@ -13,7 +13,7 @@ Take on an apprentice - Prototype
 
 {% block beforeContent %}
 {{ govukBackLink({
-	text: "Back to your account",
+	text: "Back",
 	href: "account-home?sign-agreement-now=yes&add-paye-now=yes"
 }) }}
 {% endblock %}
@@ -21,20 +21,26 @@ Take on an apprentice - Prototype
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
+		{%- from "./macros/alert.njk" import appAlert %}
+
 		<h1 class="govuk-heading-xl">
 			Set up a new apprenticeship
 		</h1>
 
 		<hr class="govuk-section-break govuk-section-break--xl">
 
-		{%- from "./macros/task-list-item.njk" import appTaskListItem %}
-
-
 		<ol class="app-task-list">
 			<li id="training-provider">
 				<h2 class="app-task-list__section">
 					<span class="app-task-list__section-number">1. </span> The training provider
 				</h2>
+
+				{% if data['choose-provider'] == 'done' and data['training-provider-permissions'] == 'done' %}
+				{{ appAlert({
+					titleText: "You have added "+ data['provider-name'] +" to your account",
+					classes: "govuk-!-margin-bottom-6"
+				}) }}
+				{% endif %}
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
@@ -89,6 +95,13 @@ Take on an apprentice - Prototype
 				<h2 class="app-task-list__section">
 					<span class="app-task-list__section-number">2. </span> Apprenticeship training
 				</h2>
+
+				{% if data['reservation-confirmed'] == 'true' %}
+				{{ appAlert({
+					titleText: "You have reserved funds for your chosen apprenticeship training",
+					classes: "govuk-!-margin-bottom-6"
+				}) }}
+				{% endif %}
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
@@ -185,11 +198,11 @@ Take on an apprentice - Prototype
 
 						{% if data['recruitment-intro'] == 'done' %}
 						<a class="app-task-list__task-name"  href="?create-vacancy=done" onclick="window.open('{{recruitUrl | safe}}');">
-							Create a vacancy
+							Create a vacancy (opens in a new tab or window)
 						</a>
 						{% else %}
 						<span style="color: #777">
-							Create a vacancy
+							Create a vacancy (opens in a new tab or window)
 						</span>
 						{% endif %}
 
@@ -223,9 +236,15 @@ Take on an apprentice - Prototype
 
 				<ul class="app-task-list__items">
 					<li class="app-task-list__item">
+						{% if data['reservation-confirmed'] == 'done' %}
 						<a class="app-task-list__task-name" href="task--apprentice-details/introduction">
 							Introduction and what you’ll need
 						</a>
+						{% else %}
+						<span style="color: #777">
+							Introduction and what you’ll need
+						</span>
+						{% endif %}
 
 						{% if data['apprentice-intro'] == 'done' %}
 						<strong class="govuk-tag app-task-list__task-completed">
@@ -235,16 +254,16 @@ Take on an apprentice - Prototype
 					</li>
 
 					<li class="app-task-list__item">
-						{% set apprenticeDetailsUrl %}https://esfa:educ4tion@das-add-and-approve-prototype.herokuapp.com/approve/sprint-19/research/employer/recruit-data/add--confirm-provider?provider-name={{data['provider-name']}}&ukprn=10001921{% endset %}
+						{% set apprenticeDetailsUrl %}https://esfa:educ4tion@das-add-and-approve-prototype.herokuapp.com/approve/sprint-19/research/employer/recruit-data/add--confirm-provider?provider-name={{data['provider-name']}}&ukprn=10001921&course-name={{data['course-name']}}{% endset %}
 
 
 						{% if data['apprentice-intro'] == 'done' %}
 						<a class="app-task-list__task-name"  href="?apprentice-details=done" onclick="window.open('{{apprenticeDetailsUrl | safe}}');">
-							Add apprentice details
+							Add apprentice details (opens in a new tab or window)
 						</a>
 						{% else %}
 						<span style="color: #777">
-							Add apprentice details
+							Add apprentice details (opens in a new tab or window)
 						</span>
 						{% endif %}
 
