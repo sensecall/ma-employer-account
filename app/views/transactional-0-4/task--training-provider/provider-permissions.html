@@ -8,8 +8,8 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-  text: "Back",
-  href: "javascript: window.history.go(-1)"
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
 }) }}
 {% endblock %}
 
@@ -17,39 +17,19 @@
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
+		<h2 class="govuk-heading-l">
+			Choose what {{data['provider-name']}} can do on your behalf
+		</h2>
+
+		<p>
+			{{data['provider-name']}} will be able to do the following on behalf of {{data['employer-name']}}.
+		</p>
+
 		<form method="post">
-			{{ govukRadios({
-				idPrefix: "provider-permissions",
-				name: "provider-permissions",
-				fieldset:
-				{
-					legend:
-					{
-						text: "Do you need to give your training provider permission to carry out tasks on your behalf?",
-						isPageHeading: true,
-						classes: "govuk-fieldset__legend--xl"
-					}
-				},
-				hint:
-				{
-					text: "In qui in officia id qui elit excepteur laborum velit eiusmod anim ut magna."
-				},
-				items: [
-				{
-					value: "yes",
-					text: "Yes",
-					checked: data['provider-permission'] === 'yes'
-				},
-				{
-					value: "no",
-					text: "No",
-					checked: data['provider-permission'] === 'no'
-				}
-				]
-			}) }}
+			{% include '../includes/_provider-permissions-table.html' %}
 
 			{{govukButton({
-				text: "Continue"
+				text: "Save and continue"
 			})}}
 		</form>
 	</div>

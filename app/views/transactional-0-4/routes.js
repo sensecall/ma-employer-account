@@ -129,17 +129,8 @@ router.post('/task--training-provider/confirm-provider', (req, res) => {
 })
 
 router.post('/task--training-provider/provider-permissions', (req, res) => {
-	if (req.session.data['provider-permissions'] == 'yes'){
-		res.redirect('set-provider-permissions')
-	} else {
-		req.session.data['training-provider-permissions'] = 'done'
-		res.redirect('success')
-	}
-})
-
-router.post('/task--training-provider/set-provider-permissions', (req, res) => {
 	req.session.data['training-provider-permissions'] = 'done'
-	res.redirect('permissions-success')
+	res.redirect('success')
 })
 
 router.post('/task--training-provider/success', (req, res) => {
