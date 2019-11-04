@@ -26,7 +26,7 @@ router.post('/task--reserve-funding/choose-course', (req, res) => {
 	if (req.session.data['know-course'] == 'yes' && req.session.data['course-name']){
 		res.redirect('confirm-course')
 	} else {
-		res.redirect('reserve-warning')
+		res.redirect('course-warning')
 	}
 })
 
@@ -45,16 +45,17 @@ router.post('/task--reserve-funding/know-start-month', (req, res) => {
 		res.redirect('choose-start-month')
 	} else {
 		req.session.data['start-month'] = ''
-		res.redirect('reserve-warning')
+		res.redirect('start-month-warning')
 	}
 })
 
 router.post('/task--reserve-funding/choose-start-month', (req, res) => {
-	if (req.session.data['course-name']){
-		res.redirect('confirm-reservation-details')
-	} else {
-		req.session.data['started'] == 'true'
+	req.session.data['started'] == 'true'
+
+	if (req.session.data['start-month']){
 		res.redirect('../task-list')
+	} else {
+		res.redirect('start-month-warning')
 	}
 })
 
