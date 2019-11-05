@@ -1,0 +1,19 @@
+{% macro dasAccountHeader(params) %}
+<div class="das-account-header-v2 das-account-header--{{- params.headerType if params.headerType}} {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+    <div class="govuk-width-container">
+        <p class="das-account-header__title">{{params.title}}</p>
+
+        {% if params.navigation %}
+        <nav class="das-account-header__navigation" id="user-nav">
+            <ul class="das-account-header__navigation-list" role="menu">
+                {% for navigationItem in params.navigation %}
+                <li role="menuitem" class="das-account-header__navigation-list-item {{ 'das-user-navigation__list-item--has-sub-menu' if link.subNav }}">
+                    <a href="{{navigationItem.href}}" class="das-account-header__navigation-link">{{navigationItem.text}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}

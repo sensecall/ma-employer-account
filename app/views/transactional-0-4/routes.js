@@ -3,7 +3,7 @@ const router = express.Router()
 
 // Home page redirect
 router.get('/', (req, res) => {
-	res.redirect(`/${req.version}/account-home`)
+	res.redirect(`/${req.version}/service-start`)
 })
 
 // add paye external linking
@@ -19,6 +19,14 @@ router.get('/sign-agreement', (req, res) => {
 router.get('/task-list', (req, res) => {
 	req.session.data['alert-text'] = ''
 	res.render(`${req.version}/task-list`)
+})
+
+// login
+router.post('/login', (req, res) => {
+	req.session.data['sign-agreement-now'] = 'yes'
+	req.session.data['add-paye-now'] = 'yes'
+
+	res.redirect('account-home')
 })
 
 // Questions

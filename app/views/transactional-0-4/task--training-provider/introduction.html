@@ -41,10 +41,14 @@
 		</ul>
 
 		{{govukButton({
-			text: "Continue",
+			text: "Continue with this section",
 			classes: "govuk-!-margin-top-6",
-			href: "../task-list?training-provider-intro=done&started=true"
+			href: "choose-provider?training-provider-intro=done&started=true"
 		})}}
+
+		<p>
+			<a href="../task-list">Come back to this section later</a>
+		</p>
 	</div>
 </div>
 {% endblock %}

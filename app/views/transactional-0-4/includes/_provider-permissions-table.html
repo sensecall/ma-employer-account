@@ -1,96 +1,62 @@
-<table class="govuk-table">
-        <tbody class="govuk-table__body">
+<h2 class="govuk-heading-m">
+	Reserve funding and add apprentice records
+</h2>
 
-          <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="row">
-              <legend class="govuk-fieldset__legend">Create cohort</legend>
-            </th>
-            <td class="govuk-table__cell">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="create-cohort" name="create-cohort" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="create-cohort">Yes</label>
-              </div>
-            </td>
-            <td class="govuk-table__cell">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="create-cohort-2" name="create-cohort" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="create-cohort-2">No</label>
-              </div>
-            </td>
-          </tr>
+<p class="govuk-body">
+	With your permission, training providers can reserve funding and add apprentice records on your behalf.
+</p>
 
-          <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="row">
-              <legend class="govuk-fieldset__legend">Reserve funding</legend>
-            </th>
-            <td class="govuk-table__cell">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reserve-funding" name="reserve-funding" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="reserve-funding">Yes</label>
-              </div>
-            </td>
-            <td class="govuk-table__cell">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reserve-funding-2" name="reserve-funding" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="reserve-funding-2">No</label>
-              </div>
-            </td>
-          </tr>
+<div class="govuk-form-group">
+	<div class="govuk-radios">
+		<div class="govuk-radios__item">
+			<input class="govuk-radios__input" id="permission-reserve-funding" name="permission-reserve-funding" type="radio" value="yes" {{"checked" if data['permission-reserve-funding'] == "yes"}}>
+			<label class="govuk-label govuk-radios__label" for="permission-reserve-funding">
+				Allow
+			</label>
+		</div>
 
-          <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="row">
-              <legend class="govuk-fieldset__legend">Add and edit apprentice vacancy ads</legend>
-            </th>
-            <td class="govuk-table__cell">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="vacancy-ads" name="vacancy-ads" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="vacancy-ads">Yes</label>
-              </div>
-            </td>
-            <td class="govuk-table__cell">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="vacancy-ads-2" name="vacancy-ads" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="vacancy-ads-2">No</label>
-              </div>
-            </td>
-          </tr>
+		<div class="govuk-radios__item">
+			<input class="govuk-radios__input" id="permission-reserve-funding-2" name="permission-reserve-funding" type="radio" value="no" {{"checked" if data['permission-reserve-funding'] == "no"}}>
+			<label class="govuk-label govuk-radios__label" for="permission-reserve-funding-2">
+				Do not allow
+			</label>
+		</div>
+	</div>
+</div>
 
-          <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="row">
-              <legend class="govuk-fieldset__legend">Notify successful and unsuccessful candidates</legend>
-            </th>
-            <td class="govuk-table__cell">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="notify-candidates" name="notify-candidates" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="notify-candidates">Yes</label>
-              </div>
-            </td>
-            <td class="govuk-table__cell">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="notify-candidates-2" name="notify-candidates" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="notify-candidates-2">No</label>
-              </div>
-            </td>
-          </tr>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-          <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="row">
-              <legend class="govuk-fieldset__legend">Create candidate shortlists </legend>
-            </th>
-            <td class="govuk-table__cell">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="create-shortlist" name="create-shortlist" type="radio" value="yes">
-                <label class="govuk-label govuk-radios__label" for="create-shortlist">Yes</label>
-              </div>
-            </td>
-            <td class="govuk-table__cell">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="create-shortlist-2" name="create-shortlist" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="create-shortlist-2">No</label>
-              </div>
-            </td>
-          </tr>
+<h2 class="govuk-heading-m">
+	Recruit apprentices
+</h2>
 
+<p class="govuk-body">
+	With your permission, training providers can create and manage vacancies, and also receive and manage applications on your behalf. 
+</p>
 
-        </tbody>
-      </table>
+<div class="govuk-form-group">
+	<div class="govuk-radios">
+		<div class="govuk-radios__item">
+			<input class="govuk-radios__input" id="permission-recruit-apprentices" name="permission-recruit-apprentices" type="radio" value="yes" {{"checked" if data['permission-recruit-apprentices'] == "yes"}}>
+			<label class="govuk-label govuk-radios__label" for="permission-recruit-apprentices">
+				Allow
+			</label>
+		</div>
+
+		<div class="govuk-radios__item">
+			<input class="govuk-radios__input" id="permission-recruit-apprentices-2" name="permission-recruit-apprentices" type="radio" value="yes-1" {{"checked" if data['permission-recruit-apprentices'] == "yes-1"}}>
+			<label class="govuk-label govuk-radios__label" for="permission-recruit-apprentices-2">
+				Allow, but review vacancies before they go live
+			</label>
+		</div>
+
+		<div class="govuk-radios__item">
+			<input class="govuk-radios__input" id="permission-recruit-apprentices-3" name="permission-recruit-apprentices" type="radio" value="no" {{"checked" if data['permission-recruit-apprentices'] == "no"}}>
+			<label class="govuk-label govuk-radios__label" for="permission-recruit-apprentices-3">
+				Do not allow
+			</label>
+		</div>
+	</div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
