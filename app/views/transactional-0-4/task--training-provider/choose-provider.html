@@ -75,6 +75,12 @@
 				text: "Continue"
 			})}}
 		</form>
+
+		{% if data['provider-name'] %}
+		<p>
+			<a href="../task-list">Cancel and return to all sections</a>
+		</p>
+		{% endif %}
 	</div>
 </div>
 {% endblock %}

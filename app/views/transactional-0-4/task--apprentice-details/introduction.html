@@ -56,13 +56,17 @@
 
 		{{govukButton({
 			text: "Continue with this section",
-			classes: "govuk-!-margin-top-6",
+			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-2",
 			href: "../task-list?apprentice-intro=done&apprentice-details=done&started=true",
 			attributes:
 			{
 				onclick: "window.open('" + apprenticeDetailsUrl | safe + "');"
 			}
 		})}}
+
+		<p class="govuk-!-font-size-16" style="color: #888">
+			Opens in new tab or window
+		</p>
 
 		<p>
 			<a href="../task-list">Come back to this section later</a>

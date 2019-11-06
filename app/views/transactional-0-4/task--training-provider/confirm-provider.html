@@ -32,10 +32,13 @@
 				</p>
 			</div>
 
-			<input type="hidden" value="yes" name="confirm-provider-details">
 			{{govukButton({
 				text: "Save and continue"
 			})}}
+
+			<p>
+				<a href="../task-list{{'?provider-name=&training-provider-permissions=&found-provider=' if data['change-provider'] != 'true' else '?provider-name='+data['old-provider-name']}}">Cancel and return to all sections</a>
+			</p>
 		</form>
 	</div>
 </div>

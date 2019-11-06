@@ -34,6 +34,7 @@ router.post('/task--reserve-funding/choose-course', (req, res) => {
 	if (req.session.data['know-course'] == 'yes' && req.session.data['course-name']){
 		res.redirect('confirm-course')
 	} else {
+		req.session.data['course-name'] = ''
 		res.redirect('course-warning')
 	}
 })
@@ -63,6 +64,7 @@ router.post('/task--reserve-funding/choose-start-month', (req, res) => {
 	if (req.session.data['start-month']){
 		res.redirect('../task-list')
 	} else {
+		req.session.data['start-month'] = ''
 		res.redirect('start-month-warning')
 	}
 })
@@ -79,25 +81,35 @@ router.post('/task--reserve-funding/confirm-reservation-details', (req, res) => 
 })
 
 // Training provider
+router.get('/task--training-provider/choose-provider', (req, res) => {
+	if(req.session.data['provider-name'] != ''){
+		req.session.data['old-provider-name'] = req.session.data['provider-name']
+		req.session.data['change-provider'] = 'true'
+	} else {
+		req.session.data['change-provider'] = 'false'
+		req.session.data['old-provider-name'] = ''
+	}
+
+	res.render(`${req.version}/task--training-provider/choose-provider`)
+})
+
 router.post('/task--training-provider/choose-provider', (req, res) => {
 	if (req.session.data['found-provider'] == 'yes'){
 		res.redirect('confirm-provider')
 	} else {
 		req.session.data['provider-name'] = ''
-
+		req.session.data['training-provider-permissions'] = ''
+		req.session.data['provider-permissions'] = ''
 		res.redirect('error')
 	}
 })
 
 router.post('/task--training-provider/confirm-provider', (req, res) => {
-	if (req.session.data['confirm-provider-details'] == 'yes'){
-		req.session.data['choose-provider'] = 'done'
-		req.session.data['started'] == 'true'
-		res.redirect('../task-list')
-	} else {
-		req.session.data['choose-provider'] = ''
-		res.redirect('choose-provider')
-	}
+	req.session.data['choose-provider'] = 'done'
+	req.session.data['training-provider-permissions'] = ''
+	req.session.data['provider-permissions'] = ''
+	req.session.data['started'] == 'true'
+	res.redirect('../task-list')
 })
 
 router.post('/task--training-provider/provider-permissions', (req, res) => {
