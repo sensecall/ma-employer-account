@@ -9,14 +9,14 @@
 <div class="govuk-form-group">
 	<div class="govuk-radios">
 		<div class="govuk-radios__item">
-			<input class="govuk-radios__input" id="permission-reserve-funding" name="permission-reserve-funding" type="radio" value="yes" {{"checked" if data['permission-reserve-funding'] == "yes"}}>
+			<input class="govuk-radios__input" id="permission-reserve-funding" name="provider-permissions[permission-reserve-funding]" type="radio" value="yes" {{"checked" if data['provider-permissions']['permission-reserve-funding'] == "yes"}}>
 			<label class="govuk-label govuk-radios__label" for="permission-reserve-funding">
 				Allow
 			</label>
 		</div>
 
 		<div class="govuk-radios__item">
-			<input class="govuk-radios__input" id="permission-reserve-funding-2" name="permission-reserve-funding" type="radio" value="no" {{"checked" if data['permission-reserve-funding'] == "no"}}>
+			<input class="govuk-radios__input" id="permission-reserve-funding-2" name="provider-permissions[permission-reserve-funding]" type="radio" value="no" {{"checked" if data['provider-permissions']['permission-reserve-funding'] == "no"}}>
 			<label class="govuk-label govuk-radios__label" for="permission-reserve-funding-2">
 				Do not allow
 			</label>
@@ -37,21 +37,21 @@
 <div class="govuk-form-group">
 	<div class="govuk-radios">
 		<div class="govuk-radios__item">
-			<input class="govuk-radios__input" id="permission-recruit-apprentices" name="permission-recruit-apprentices" type="radio" value="yes" {{"checked" if data['permission-recruit-apprentices'] == "yes"}}>
+			<input class="govuk-radios__input" id="permission-recruit-apprentices" name="provider-permissions[permission-recruit-apprentices]" type="radio" value="yes" {{"checked" if data['provider-permissions']['permission-recruit-apprentices'] == "yes"}}>
 			<label class="govuk-label govuk-radios__label" for="permission-recruit-apprentices">
 				Allow
 			</label>
 		</div>
 
 		<div class="govuk-radios__item">
-			<input class="govuk-radios__input" id="permission-recruit-apprentices-2" name="permission-recruit-apprentices" type="radio" value="yes-1" {{"checked" if data['permission-recruit-apprentices'] == "yes-1"}}>
+			<input class="govuk-radios__input" id="permission-recruit-apprentices-2" name="provider-permissions[permission-recruit-apprentices]" type="radio" value="yes-1" {{"checked" if data['provider-permissions']['permission-recruit-apprentices'] == "yes-1"}}>
 			<label class="govuk-label govuk-radios__label" for="permission-recruit-apprentices-2">
 				Allow, but review vacancies before they go live
 			</label>
 		</div>
 
 		<div class="govuk-radios__item">
-			<input class="govuk-radios__input" id="permission-recruit-apprentices-3" name="permission-recruit-apprentices" type="radio" value="no" {{"checked" if data['permission-recruit-apprentices'] == "no"}}>
+			<input class="govuk-radios__input" id="permission-recruit-apprentices-3" name="provider-permissions[permission-recruit-apprentices]" type="radio" value="no" {{"checked" if data['provider-permissions']['permission-recruit-apprentices'] == "no"}}>
 			<label class="govuk-label govuk-radios__label" for="permission-recruit-apprentices-3">
 				Do not allow
 			</label>

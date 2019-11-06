@@ -47,6 +47,7 @@
 {% endif %}
 
 <!-- START -->
+{% if data['started'] != 'true' %}
 {% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['employer-type'] != 'levy' %}
 <section class="govuk-!-padding-5" style="background: #f3f2f1">
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
@@ -74,4 +75,20 @@
 	</p>
 </section>
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+{% endif %}
+{% endif %}
+
+{% if data['started'] == 'true' %}
+<section class="das-minimal-section__wrapper das-section-dashboard">
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Your apprenticeship
+	</h2>
+
+	{% include './_apprenticeship-table.html' %}
+
+	{{govukButton({
+		text: "Continue setting up your apprenticeship",
+		href: "task-list"
+	})}}
+</section>
 {% endif %}

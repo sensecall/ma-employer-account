@@ -52,10 +52,21 @@
 			</li>
 		</ul>
 
+		{% set apprenticeDetailsUrl %}https://esfa:educ4tion@das-add-and-approve-prototype.herokuapp.com/approve/sprint-19/research/employer/recruit-data/add--confirm-provider?provider-name={{data['provider-name']}}&ukprn=10001921&course-name={{data['course-name']}}{% endset %}
+
 		{{govukButton({
-			text: "Continue",
-			href: "../task-list?apprentice-intro=done&started=true"
+			text: "Continue with this section",
+			classes: "govuk-!-margin-top-6",
+			href: "../task-list?apprentice-intro=done&apprentice-details=done&started=true",
+			attributes:
+			{
+				onclick: "window.open('" + apprenticeDetailsUrl | safe + "');"
+			}
 		})}}
+
+		<p>
+			<a href="../task-list">Come back to this section later</a>
+		</p>
 	</div>
 </div>
 {% endblock %}
