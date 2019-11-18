@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Training provider
+		</h1>
+
+		<h2 class="govuk-heading-m">
+			What is a training provider?
+		</h2>
+
+		<p>
+			A training provider is the organisation that will deliver the apprentice's training course, sometimes called "off-the-job training".
+		</p>
+
+		<p>
+			The training provider could be:
+		</p>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>a college</li>
+			<li>a university</li>
+			<li>an academy</li>
+			<li>a large national training company</li>
+			<li>your organisation</li>
+		</ul>
+
+		<h2 class="govuk-heading-m">
+			Finding a training provider
+		</h2>
+		<p>
+			To search for training providers and apprenticeship training courses, you can use the <a href="#">Find apprenticeship training (opens in a new tab)</a> service.
+		</p>
+
+		<h2 class="govuk-heading-m">
+			Becoming an apprenticeship training provider
+		</h2>
+		<p>
+			Some organisations may train their own employees rather than using a third party.
+		</p>
+
+		<p>
+			Find out about <a href="https://www.gov.uk/guidance/becoming-an-apprenticeship-training-provider" target="_blank">becoming an apprenticeship training provider (opens in a new tab)</a>.
+		</p>
+
+		{{govukButton({
+			text: "Continue",
+			href: "q--found-provider"
+		})}}
+	</div>
+</div>
+{% endblock %}

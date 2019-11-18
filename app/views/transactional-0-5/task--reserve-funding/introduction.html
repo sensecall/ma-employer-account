@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<form method="post">
+		<div class="govuk-grid-column-two-thirds">
+			<h1 class="govuk-heading-xl">
+				Apprenticeship training
+			</h1>
+
+			<p>
+				Apprentices will spend at least 20% of their time on off-the-job training with your chosen training provider. Apprenticeships offer the opportunity to have a flexible, but structured training programme, that meet your organisation's needs.
+			</p>
+
+			<h2 class="govuk-heading-l">
+				Types of apprenticeships
+			</h2>
+
+
+			<p>
+				Apprentices must work towards an approved apprenticeship. Their training must last at least 1 year.
+			</p>
+
+			<h2 class="govuk-heading-m">
+				Apprenticeship standards
+			</h2>
+
+			<p>
+				Designed by groups of employers, apprenticeship standards set out the knowledge, skills and behaviours the apprentice needs to be competent in a particular occupation. Institute for Apprenticeships and Technical Education is responsible for the development and approval of standards and works with employers to ensure a wide range of high-quality apprenticeship standards are available.
+			</p>
+
+			<h2 class="govuk-heading-m">
+				Apprenticeship frameworks
+			</h2>
+
+			<p>
+				Apprenticeship frameworks are a series of work-related qualifications. There is no end-point assessment for this type of apprenticeship.
+			</p>
+			<p>
+				All apprenticeship frameworks will be withdrawn by 2020. This will be a phased approach as employers take on more apprentices using the new apprenticeship standards. 
+			</p>
+			
+			{{govukButton({
+				text: "Continue with this section",
+				classes: "govuk-!-margin-top-6",
+				href: "choose-course?reserve-funding-intro=done&started=true"
+			})}}
+
+			<p>
+				<a href="../task-list">Come back to this section later</a>
+			</p>
+		</div>
+	</form>
+</div>
+{% endblock %}

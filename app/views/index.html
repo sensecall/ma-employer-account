@@ -10,19 +10,159 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-
 <h1 class="govuk-heading-xl">
 	<span class="govuk-caption-l">Continuous improvement team</span>
 	Employer account home page
 </h1>
 
-<div style="border:5px solid SteelBlue; background: GhostWhite" class="govuk-!-padding-6 govuk-!-margin-bottom-8">
-	<h2 class="govuk-heading-l">
-		MVP designs
-	</h2>
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h3 class="govuk-heading-l">
+			<span class="govuk-tag" style="background: green">Testing</span> Transactional
+		</h3>
+		<ul class="govuk-list govuk-list--bullet">
+			<li>
+				<a href="transactional-0-1">Version 0-1</a> (skip to <a href="transactional-0-1/task-list">task list</a>)
+			</li>
+			<li>
+				<a href="transactional-0-2">Version 0-2</a> (account setup <a href="transactional-0-2/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=non-levy&return-to-task-list=false">link</a>)
+			</li>
+			<li>
+				<a href="transactional-0-3">Version 0-3</a> (account setup <a href="transactional-0-3/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=non-levy&return-to-task-list=false">link</a>)
+			</li>
+			<li>
+				<a href="transactional-0-4">Version 0-4</a> (account setup <a href="transactional-0-4/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=non-levy&return-to-task-list=false">link</a>)
+			</li>
+			<li>
+				<a href="transactional-0-5">Version 0-5</a> (account setup <a href="transactional-0-5/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=non-levy&return-to-task-list=false">link</a>)
+			</li>
+		</ul>
 
-	<div class="govuk-grid-row">
-		<div class="govuk-grid-column-one-half">
+		<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
+		<h3 class="govuk-heading-l">
+			<span class="govuk-tag">Ideas</span> Based on interim design
+		</h3>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>
+				<a href="interim-0-0">Interim version 0</a> (as-is)
+			</li>
+			<li>
+				<a href="interim-0-1">Interim version 0.1</a> (as-is plus CTA panel)
+			</li>
+			<li>
+				<a href="minimal-1-0">Minimal version 1</a>
+			</li>
+			<li>
+				<a href="minimal-1-1">Minimal version 1.1</a>
+			</li>
+			<li>
+				<a href="minimal-1-2">Minimal version 1.2</a>
+			</li>
+			<li>
+				<a href="minimal-2-0">Minimal version 2</a>
+			</li>
+			<li>
+				<a href="minimal-2-1">Minimal version 2.1</a>
+			</li>
+		</ul>
+
+		<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
+		<h3 class="govuk-heading-m">
+			<span class="govuk-tag" style="background: crimson">Archived</span>&nbsp;&nbsp;Based on panel design
+		</h3>
+
+		{{ govukWarningText({
+			text: "For reference only – superseded by new designs",
+			iconFallbackText: "Warning"
+		}) }}
+
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-one-half">
+				<h3 class="govuk-heading-s">
+					Non-levy employers
+				</h3>
+
+				<ul class="govuk-list govuk-list--bullet">
+					<li>
+						<a href="account-home--add-paye">Add PAYE scheme prompt</a>
+					</li>
+					<li>
+						<a href="account-home--sign-agreement">Sign agreement prompt</a>
+					</li>
+					<li>
+						<a href="account-home--reserve-funding--no-provider">Reserve funding prompt (no provider added)</a>
+					</li>
+					<li>
+						<a href="account-home--reserve-funding--with-provider">Reserve funding prompt (provider added)</a>
+					</li>
+					<li>
+						<a href="account-home--funding-reserved--no-provider">Funding reserved (no provider added)</a>
+					</li>
+					<li>
+						<a href="account-home--one-apprentice--review">One apprentice (approve details prompt)</a>
+					</li>
+					<li>
+						<a href="account-home--one-apprentice">One apprentice added</a>
+					</li>
+					<li>
+						<a href="account-home--three-apprentices">3 apprentices added</a>
+					</li>
+					<li>
+						<a href="account-home--many-apprentices">Many apprentices added (without training provider)</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="govuk-grid-column-one-half">
+				<h2 class="govuk-heading-s">
+					Levy employers
+				</h2>
+
+				<ul class="govuk-list govuk-list--bullet">
+					<li>
+						<strike>Add PAYE scheme prompt</strike>
+					</li>
+					<li>
+						<strike>Sign agreement prompt</strike>
+					</li>
+					<li>
+						<strike>Reserve funding prompt (no provider added)</strike>
+					</li>
+					<li>
+						<strike>Reserve funding prompt (provider added)</strike>
+					</li>
+					<li>
+						<strike>Funding reserved</strike>
+					</li>
+					<li>
+						<strike>One apprentice (approve details prompt)</strike>
+					</li>
+					<li>
+						<strike>One apprentice added</strike>
+					</li>
+					<li>
+						<strike>3 apprentices added</strike>
+					</li>
+					<li>
+						<strike>Many apprentices added</strike>
+					</li>
+					<li>
+						<a href="account-home--many-apprentices--one-provider">Many apprentices added (one training provider)</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="govuk-grid-column-one-third">
+		<div style="border-top:5px solid SteelBlue; background: GhostWhite" class="govuk-!-padding-4 govuk-!-margin-bottom-8">
+			<h2 class="govuk-heading-m">
+				MVP designs
+			</h2>
+
 			<h3 class="govuk-heading-s">
 				Non-levy journey
 			</h3>
@@ -46,9 +186,7 @@ GOV.UK Prototype Kit
 					<a href="mvp-1-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=yes&employer-type=non-levy">Account home - PAYE added, agreement signed, reserved funds prompt hidden</a>
 				</li>
 			</ul>
-		</div>
 
-		<div class="govuk-grid-column-one-half">
 			<h3 class="govuk-heading-s">
 				Levy journey
 			</h3>
@@ -66,151 +204,6 @@ GOV.UK Prototype Kit
 			</li>
 			<li>
 				<a href="mvp-1-1/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=levy">Account home - PAYE added, agreement signed</a>
-			</li>
-		</ul>
-	</div>
-</div>
-</div>
-
-<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
-
-<h2 class="govuk-heading-l">
-	Other design concepts
-</h2>
-
-<h3 class="govuk-heading-m">
-	Transactional
-</h3>
-<ul class="govuk-list govuk-list--bullet">
-	<!-- <li>
-		<a href="transactional-0-0">Version 0-0</a> (skip to <a href="transactional-0-0/task-list">task list</a>)
-	</li> -->
-	<li>
-		<a href="transactional-0-1">Version 0-1</a> (skip to <a href="transactional-0-1/task-list">task list</a>)
-	</li>
-	<li>
-		<a href="transactional-0-2">Version 0-2</a> (account setup <a href="transactional-0-2/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=non-levy&return-to-task-list=false">link</a>)
-	</li>
-	<li>
-		<a href="transactional-0-3">Version 0-3</a> (account setup <a href="transactional-0-3/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=non-levy&return-to-task-list=false">link</a>)
-	</li>
-	<li>
-		<a href="transactional-0-4">Version 0-4</a> (account setup <a href="transactional-0-4/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=non-levy&return-to-task-list=false">link</a>)
-	</li>
-</ul>
-
-
-<h3 class="govuk-heading-m">
-	Based on interim design
-</h3>
-
-<ul class="govuk-list govuk-list--bullet">
-	<li>
-		<a href="interim-0-0">Interim version 0</a> (as-is)
-	</li>
-	<li>
-		<a href="interim-0-1">Interim version 0.1</a> (as-is plus CTA panel)
-	</li>
-	<li>
-		<a href="minimal-1-0">Minimal version 1</a>
-	</li>
-	<li>
-		<a href="minimal-1-1">Minimal version 1.1</a>
-	</li>
-	<li>
-		<a href="minimal-1-2">Minimal version 1.2</a>
-	</li>
-	<li>
-		<a href="minimal-2-0">Minimal version 2</a>
-	</li>
-	<li>
-		<a href="minimal-2-.1">Minimal version 2.1</a>
-	</li>
-</ul>
-
-<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
-
-<h3 class="govuk-heading-m">
-	Based on panel design
-</h3>
-
-{{ govukWarningText({
-	text: "Still in progress. Not all variants have been defined.",
-	iconFallbackText: "Warning"
-}) }}
-
-<div class="govuk-grid-row">
-	<div class="govuk-grid-column-one-half">
-		<h3 class="govuk-heading-s">
-			Non-levy employers
-		</h3>
-
-		<ul class="govuk-list govuk-list--bullet">
-			<li>
-				<a href="account-home--add-paye">Add PAYE scheme prompt</a>
-			</li>
-			<li>
-				<a href="account-home--sign-agreement">Sign agreement prompt</a>
-			</li>
-			<li>
-				<a href="account-home--reserve-funding--no-provider">Reserve funding prompt (no provider added)</a>
-			</li>
-			<li>
-				<a href="account-home--reserve-funding--with-provider">Reserve funding prompt (provider added)</a>
-			</li>
-			<li>
-				<a href="account-home--funding-reserved--no-provider">Funding reserved (no provider added)</a>
-			</li>
-			<li>
-				<a href="account-home--one-apprentice--review">One apprentice (approve details prompt)</a>
-			</li>
-			<li>
-				<a href="account-home--one-apprentice">One apprentice added</a>
-			</li>
-			<li>
-				<a href="account-home--three-apprentices">3 apprentices added</a>
-			</li>
-			<li>
-				<a href="account-home--many-apprentices">Many apprentices added (without training provider)</a>
-			</li>
-		</ul>
-	</div>
-
-	<div class="govuk-grid-column-one-half">
-		<h2 class="govuk-heading-s">
-			Levy employers
-		</h2>
-
-		<ul class="govuk-list govuk-list--bullet">
-			<li>
-				<strike>Add PAYE scheme prompt</strike>
-			</li>
-			<li>
-				<strike>Sign agreement prompt</strike>
-			</li>
-			<li>
-				<strike>Reserve funding prompt (no provider added)</strike>
-			</li>
-			<li>
-				<strike>Reserve funding prompt (provider added)</strike>
-			</li>
-			<li>
-				<strike>Funding reserved</strike>
-			</li>
-			<li>
-				<strike>One apprentice (approve details prompt)</strike>
-			</li>
-			<li>
-				<strike>One apprentice added</strike>
-			</li>
-			<li>
-				<strike>3 apprentices added</strike>
-			</li>
-			<li>
-				<strike>Many apprentices added</strike>
-			</li>
-			<li>
-				<a href="account-home--many-apprentices--one-provider">Many apprentices added (one training provider)</a>
 			</li>
 		</ul>
 	</div>

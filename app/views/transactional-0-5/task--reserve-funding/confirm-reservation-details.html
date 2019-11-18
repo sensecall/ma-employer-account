@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{%- from "../macros/alert.njk" import appAlert %}
+			{{ appAlert({
+				titleHtml: "<h2 class='govuk-heading-l govuk-!-margin-bottom-0'>Government funding is available for your apprenticeship</h2>"
+			}) }}
+
+			{{ govukSummaryList({
+				rows:
+				[
+				{
+					key:
+					{
+						text: "Employer"
+					},
+					value:
+					{
+						text: data['employer']
+					},
+					actions:
+					{
+						items: 
+						[
+						{
+
+						}
+						]
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship training start date"
+					},
+					value:
+					{
+						html: "January 2020"
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-start-month",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training start date"
+						}
+						]
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship training course"
+					},
+					value:
+					{
+						html: data['course-name']
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-course",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training course"
+						}
+						]
+					}
+				}
+				]
+			}) }}
+
+			{{ govukRadios({
+				idPrefix: "confirm-reservation-details",
+				name: "confirm-reservation-details",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you want to reserve funding for this apprenticeship training now?",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--l govuk-!-margin-top-4"
+					}
+				},
+				hint:
+				{
+					text: "You are reserving funding for part, or all of the training cost for this apprenticeship. You may need to pay up to a maximum of 5% of the total training cost."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes, reserve funding now"
+				},
+				{
+					value: "no",
+					text: "No, return to list"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Save and continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

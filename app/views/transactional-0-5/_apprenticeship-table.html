@@ -1,0 +1,96 @@
+{% set trainingProviderHtml %}
+{% if data['provider-name'] %}
+<p>
+	{{data['provider-name']}}
+</p>
+<p>
+	{% if data['provider-permissions'] %}
+	You have set permissions for the provider
+	{% else %}
+	You need to set permissions
+	{% endif %}
+</p>
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
+{% set apprenticeshipTrainingHtml %}
+{% if data['course-name'] %}
+<p>
+	{{data['course-name']}}
+</p>
+<p>
+	{% if data['reservation-confirmed'] == 'true' %}
+	You have reserved funding
+	{% else %}
+	You have not reserved funding yet
+	{% endif %}
+</p>
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
+{% from "summary-list/macro.njk" import govukSummaryList %}
+{{ govukSummaryList({
+	rows:
+	[
+	{
+		key:
+		{
+			text: "The training provider"
+		},
+		value:
+		{
+			html: trainingProviderHtml
+		},
+		actions:
+		{
+			
+		}
+	},
+	{
+		key:
+		{
+			text: "Apprenticeship training"
+		},
+		value:
+		{
+			html: apprenticeshipTrainingHtml
+		},
+		actions:
+		{
+			
+		}
+	},
+	{
+		key:
+		{
+			text: "Recruit an apprentice"
+		},
+		value:
+		{
+			html: "<a href='#'>View your vacancy</a>" if data['create-vacancy'] == 'done' else "Not completed"
+		},
+		actions:
+		{
+			
+		}
+	},
+	{
+		key:
+		{
+			text: "Apprentice details"
+		},
+		value:
+		{
+			text: "Not completed" if data['apprentice-details'] != 'done'
+		},
+		actions:
+		{
+			
+		}
+	}
+	]
+}) }}
