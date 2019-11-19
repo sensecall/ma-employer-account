@@ -5,9 +5,9 @@
 </p>
 <p>
 	{% if data['provider-permissions'] %}
-	You have set permissions for the provider
+	<span class="govuk-tag">Completed</span>
 	{% else %}
-	You need to set permissions
+	<span class="govuk-tag" style="background: #777">In progress</span>
 	{% endif %}
 </p>
 {% else %}
@@ -28,7 +28,7 @@ Not added yet
 	{% endif %}
 </p>
 {% else %}
-Not added yet
+<span class="govuk-tag" style="background: #777">Not started</span>
 {% endif %}
 {% endset %}
 

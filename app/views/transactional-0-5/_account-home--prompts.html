@@ -58,9 +58,7 @@
 		{% endif %}
 	</h2>
 
-	<p class="govuk-body-l">
-		You’ll need to choose a training provider, add the course details, reserve funding, find an apprentice and enter their details.
-	</p>
+	{% include './_apprenticeship-table.html' %}
 
 	<p>
 		{% if data['started'] == 'true' %}
@@ -68,7 +66,7 @@
 			Continue
 		</a>
 		{% else %}
-		<a href="task-list" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-button--start govuk-!-margin-bottom-0">
+		<a href="task--training-provider/introduction" {% include './_new-tab-shortcut.html' %} class="govuk-button govuk-button--start govuk-!-margin-bottom-0">
 			Start now
 		</a>
 		{% endif %}
