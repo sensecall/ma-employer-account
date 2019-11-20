@@ -34,8 +34,8 @@
 			</p>
 
 			{{ govukCharacterCount({
-				name: "with-hint",
-				id: "with-hint",
+				name: "vacancy-name",
+				id: "vacancy-name",
 				maxlength: 100,
 				rows: 1,
 				hint:
@@ -44,6 +44,8 @@
 				}
 			}) }}
 			{% endcall %}
+
+			<input type="hidden" value="true" name="vacancy-created">
 
 			{{govukButton({
 				text: "Save and continue"

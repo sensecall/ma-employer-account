@@ -2,10 +2,15 @@
 <span class="govuk-tag" style="background: #777">Not completed</span>
 {% endset %}
 
+{% set notRequiredTag %}
+<span class="govuk-tag" style="background: #777">Not required</span>
+{% endset %}
+
 {% set completedTag %}
 <span class="govuk-tag">Completed</span>
 {% endset %}
 
+<!-- PROVIDER HTML -->
 {% set trainingProviderHtml %}
 {% if data['provider-name'] %}
 <p>
@@ -15,30 +20,34 @@
 	{{completedTag | safe}}
 </p>
 {% else %}
-{{notCompletedTag | safe}}
+<a href="task--training-provider/introduction">
+	{{notCompletedTag | safe}}
+</a>
 {% endif %}
 {% endset %}
+<!-- END -->
 
+<!-- TRAINING HTML -->
 {% set apprenticeshipTrainingHtml %}
 {% if data['course-name'] %}
 <p>
 	{{data['course-name']}}
 </p>
 <p>
-	{% if data['reservation-confirmed'] == 'true' %}
 	{{completedTag | safe}}
-	{% else %}
-	{{notCompletedTag | safe}}
-	{% endif %}
 </p>
 {% else %}
-{{notCompletedTag | safe}}
+<a href="task--reserve-funding/introduction">
+	{{notCompletedTag | safe}}
+</a>
 {% endif %}
 {% endset %}
+<!-- END -->
 
-
+<!-- VACANCY HTML -->
 {% set vacancyHtml %}
-{% if data['vacancy-created'] == 'true' %}
+{% if data['vacancy-created'] %}
+{% if data['vacancy-name'] %}
 <p>
 	<a href='#'>VACANCY NAME</a>
 </p>
@@ -46,10 +55,34 @@
 	{{completedTag | safe}}
 </p>
 {% else %}
-{{notCompletedTag | safe}}
+<p>
+	{{notRequiredTag | safe}}
+</p>
+{% endif %}
+{% else %}
+<a href="task--recruitment/recruitment-check">
+	{{notCompletedTag | safe}}
+</a>
 {% endif %}
 {% endset %}
+<!-- END -->
 
+<!-- APPRENTICE HTML -->
+{% set apprenticeDetailsHtml %}
+{% if data['apprentice-added'] %}
+<p>
+	{{data['apprentice-name']}}
+</p>
+<p>
+	{{completedTag | safe}}
+</p>
+{% else %}
+<a href="task--apprentice-details/apprentice-details-check">
+	{{notCompletedTag | safe}}
+</a>
+{% endif %}
+{% endset %}
+<!-- END -->
 
 {% from "summary-list/macro.njk" import govukSummaryList %}
 {{ govukSummaryList({
@@ -104,7 +137,7 @@
 		},
 		value:
 		{
-			text: notCompletedTag|safe if data['apprentice-details'] != 'done'
+			text: apprenticeDetailsHtml | safe
 		},
 		actions:
 		{

@@ -57,10 +57,10 @@ router.post('/set-up-an-apprenticeship', (req, res) => {
 	let reservedFunding = (req.session.data['reserved-funding'] == 'true') ? true : false
 
 	// created-vacancy
-	let recruitment = (req.session.data['vacancy-created'] == 'true') ? true : false
+	let recruitment = (req.session.data['vacancy-created']) ? true : false
 
 	// apprentice-details
-	let apprenticeDetails = (req.session.data['provider-name']) ? true : false
+	let apprenticeDetails = (req.session.data['apprentice-added']) ? true : false
 
 	if(!providerAdded){
 		res.redirect('task--training-provider/introduction')
@@ -68,7 +68,7 @@ router.post('/set-up-an-apprenticeship', (req, res) => {
 		res.redirect('task--reserve-funding/introduction')
 	} else if(providerAdded && reservedFunding && !recruitment){
 		res.redirect('task--recruitment/recruitment-check')
-	} else if(providerAdded && reservedFunding && !recruitment){
+	} else if(providerAdded && reservedFunding && recruitment && !apprenticeDetails){
 		res.redirect('task--apprentice-details/apprentice-details-check')
 	}
 })
@@ -166,7 +166,19 @@ router.post('/task--recruitment/recruitment-check', (req, res) => {
 	if(req.session.data['recruitment-check'] == 'yes'){
 		res.redirect('recruitment-start')
 	} else {
+		req.session.data['started'] == 'true'
+		req.session.data['vacancy-created'] = 'n/a'
+		delete req.session.data['vacancy-name']
 		res.redirect('../task--apprentice-details/apprentice-details-check')
+	}
+})
+
+// vacancy name
+router.post('/task--recruitment/vacancy-name', (req, res) => {
+	if(req.session.data['vacancy-name']){
+		res.redirect('vacancy-created')
+	} else {
+		res.redirect('vacancy-name')
 	}
 })
 
