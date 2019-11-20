@@ -47,14 +47,29 @@ router.post('/login', (req, res) => {
 
 // set up an apprenticeship
 router.post('/set-up-an-apprenticeship', (req, res) => {
-	if(req.session.data['started'] == 'true'){
-		if(req.session.data['provider-name']){
-			res.redirect('task--reserve-funding/introduction')
-		} else {
-			res.redirect('task--training-provider/introduction')
-		}
-	} else {
-		res.redirect('set-up-start')
+	// started
+	let started = (req.session.data['started'] == 'true') ? true : false
+
+	// provider-added
+	let providerAdded = (req.session.data['provider-name']) ? true : false
+
+	// reserved-funding
+	let reservedFunding = (req.session.data['reserved-funding'] == 'true') ? true : false
+
+	// created-vacancy
+	let recruitment = (req.session.data['vacancy-created'] == 'true') ? true : false
+
+	// apprentice-details
+	let apprenticeDetails = (req.session.data['provider-name']) ? true : false
+
+	if(!providerAdded){
+		res.redirect('task--training-provider/introduction')
+	} else if(providerAdded && !reservedFunding){
+		res.redirect('task--reserve-funding/introduction')
+	} else if(providerAdded && reservedFunding && !recruitment){
+		res.redirect('task--recruitment/recruitment-check')
+	} else if(providerAdded && reservedFunding && !recruitment){
+		res.redirect('task--apprentice-details/apprentice-details-check')
 	}
 })
 
@@ -129,6 +144,14 @@ router.post('/task--training-provider/choose-provider', (req, res) => {
 	}
 })
 
+router.post('/task--training-provider/error', (req, res) => {
+	if(req.session.data['reserved-funding'] == 'true'){
+		res.redirect('../task--recruitment/recruitment-check')
+	} else {
+		res.redirect('../task--reserve-funding/introduction')
+	}
+})
+
 router.post('/task--training-provider/confirm-provider', (req, res) => {
 	req.session.data['choose-provider'] = 'done'
 	req.session.data['training-provider-permissions'] = ''
@@ -137,6 +160,27 @@ router.post('/task--training-provider/confirm-provider', (req, res) => {
 	res.redirect('provider-confirmed')
 })
 
+
+// recruitment
+router.post('/task--recruitment/recruitment-check', (req, res) => {
+	if(req.session.data['recruitment-check'] == 'yes'){
+		res.redirect('recruitment-start')
+	} else {
+		res.redirect('../task--apprentice-details/apprentice-details-check')
+	}
+})
+
+// apprentice details
+router.post('/task--apprentice-details/apprentice-details-check', (req, res) => {
+	if(req.session.data['apprentice-details-check'] == 'yes'){
+		res.redirect('introduction')
+	} else {
+		res.redirect('../account-home')
+	}
+})
+
+
+// whats next
 router.post('/whats-next', (req, res) => {
 	let userAction = req.session.data['whats-next']
 	if(userAction == 'set-permissions'){
@@ -145,7 +189,7 @@ router.post('/whats-next', (req, res) => {
 	} else if(userAction == 'add-another'){
 		deleteData(req,'whats-next')
 		res.redirect('task--training-provider/choose-provider')
-	} else if(userAction == 'return-to-homepage'){
+	} else {
 		deleteData(req,'whats-next')
 		res.redirect('account-home')
 	}

@@ -36,6 +36,21 @@
 {% endif %}
 {% endset %}
 
+
+{% set vacancyHtml %}
+{% if data['vacancy-created'] == 'true' %}
+<p>
+	<a href='#'>VACANCY NAME</a>
+</p>
+<p>
+	{{completedTag | safe}}
+</p>
+{% else %}
+{{notCompletedTag | safe}}
+{% endif %}
+{% endset %}
+
+
 {% from "summary-list/macro.njk" import govukSummaryList %}
 {{ govukSummaryList({
 	rows:
@@ -75,7 +90,7 @@
 		},
 		value:
 		{
-			html: "<a href='#'>View your vacancy</a>" if data['create-vacancy'] == 'done' else notCompletedTag | safe
+			html: vacancyHtml | safe
 		},
 		actions:
 		{

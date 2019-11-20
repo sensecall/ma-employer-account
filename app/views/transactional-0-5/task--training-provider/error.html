@@ -16,28 +16,33 @@
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<h1 class="govuk-heading-xl">
-			You need to find a training provider
-		</h1>
-
-		<p>
-			If you need help with this, you can <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/" target="_blank">find a training provider (opens in new tab or window)</a> based on the apprenticeship training.
-		</p>
-
-		<p>
-			You can complete other sections, but will need the following information that you usually get from your training provider:
-		</p>
-
-		<ul class="govuk-list govuk-list--bullet">
-			<li>the apprenticeship training course</li>
-			<li>the apprenticeship training start date</li>
-		</ul>
-
-
-		{{govukButton({
-			text: "Return to all sections",
-			href: "../task-list"
-		})}}
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				You need to find a training provider
+			</h1>
+			
+			<p>
+				If you need help with this, you can <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/" target="_blank">find a training provider (opens in new tab or window)</a> based on the apprenticeship training.
+			</p>
+			
+			<p>
+				You can complete other sections, but will need the following information that you usually get from your training provider:
+			</p>
+			
+			<ul class="govuk-list govuk-list--bullet">
+				<li>the apprenticeship training course</li>
+				<li>the apprenticeship training start date</li>
+			</ul>
+			
+			
+			{{govukButton({
+				text: "Continue"
+			})}}
+			
+			<p>
+				<a href="../account-home">Return to account home page</a>
+			</p>
+		</form>
 	</div>
 </div>
 {% endblock %}
