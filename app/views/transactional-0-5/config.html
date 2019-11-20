@@ -13,21 +13,21 @@ Configure prototype
 
 {% block content %}
 <div class="govuk-grid-row">
-	<form>
+	<form action="set-config" method="get">
 		<div class="govuk-grid-column-two-thirds">
 			<h1 class="govuk-heading-xl">
 				{{serviceName}}
 			</h1>
 
 			{{ govukInput({
-				value: data['employer-name'],
 				label:
 				{
 					text: "Employer name"
 				},
 				classes: "govuk-!-width-two-thirds",
 				id: "employer-name",
-				name: "employer-name"
+				name: "employer-name",
+				value: data['employer-name']
 			}) }}
 
 			{{ govukInput({
@@ -40,6 +40,18 @@ Configure prototype
 				id: "employer-email",
 				name: "employer-email"
 			}) }}
+
+			{{ govukInput({
+				value: data['employer-user-name'],
+				label:
+				{
+					text: "Employer user name"
+				},
+				classes: "govuk-!-width-two-thirds",
+				id: "employer-user-name",
+				name: "employer-user-name"
+			}) }}
+
 
 			{{ govukInput({
 				value: data['provider-name'],
@@ -73,21 +85,39 @@ Configure prototype
 				legend:
 				{
 					text: "Scenarios",
-					classes: "govuk-fieldset__legend--m",
+					classes: "govuk-fieldset__legend--l",
 					isPageHeading: true
 				}
 			}) %}
 			{{ govukCheckboxes({
-				idPrefix: "waste",
-				name: "waste",
+				idPrefix: "logged-in",
+				name: "logged-in",
 				items:
 				[
 				{
-					value: "carcasses",
-					text: "Added PAYE"
-				},
+					value: "true",
+					text: "Logged in"
+				}
+				]
+			}) }}
+			{{ govukCheckboxes({
+				idPrefix: "add-paye-now",
+				name: "add-paye-now",
+				items:
+				[
 				{
-					value: "mines",
+					value: "yes",
+					text: "Added PAYE"
+				}
+				]
+			})}}
+			{{ govukCheckboxes({
+				idPrefix: "sign-agreement-now",
+				name: "sign-agreement-now",
+				items:
+				[
+				{
+					value: "yes",
 					text: "Signed agreement"
 				}
 				]

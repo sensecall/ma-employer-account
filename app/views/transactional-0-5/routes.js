@@ -1,6 +1,21 @@
 const express = require('express')
 const router = express.Router()
 
+
+function deleteData(req,param){
+	req.session.data[param] = ''
+}
+
+
+// config
+router.get('/set-config', (req, res) => {
+	if(req.session.data['logged-in'] == 'true'){
+		res.redirect(`/${req.version}/account-home`)
+	} else {
+		res.redirect(`/${req.version}/service-start`)
+	}
+})
+
 // Home page redirect
 router.get('/', (req, res) => {
 	res.redirect(`/${req.version}/service-start`)
@@ -29,32 +44,30 @@ router.post('/login', (req, res) => {
 	res.redirect('account-home')
 })
 
+
+// set up an apprenticeship
+router.post('/set-up-an-apprenticeship', (req, res) => {
+	if(req.session.data['started'] == 'true'){
+		if(req.session.data['provider-name']){
+			res.redirect('task--reserve-funding/introduction')
+		} else {
+			res.redirect('task--training-provider/introduction')
+		}
+	} else {
+		res.redirect('set-up-start')
+	}
+})
+
+
 // Questions
 router.post('/task--reserve-funding/choose-course', (req, res) => {
+	req.session.data['started'] == 'true'
+	
 	if (req.session.data['know-course'] == 'yes' && req.session.data['course-name']){
-		res.redirect('confirm-course')
+		res.redirect('choose-start-month')
 	} else {
 		req.session.data['course-name'] = ''
 		res.redirect('course-warning')
-	}
-})
-
-// Questions
-router.post('/task--reserve-funding/confirm-course', (req, res) => {
-	if (req.session.data['confirm-course'] == 'yes'){
-		req.session.data['started'] == 'true'
-		res.redirect('../task-list')
-	} else {
-		res.redirect('choose-course')
-	}
-})
-
-router.post('/task--reserve-funding/know-start-month', (req, res) => {
-	if (req.session.data['know-start-month'] == 'yes'){
-		res.redirect('choose-start-month')
-	} else {
-		req.session.data['start-month'] = ''
-		res.redirect('start-month-warning')
 	}
 })
 
@@ -62,7 +75,7 @@ router.post('/task--reserve-funding/choose-start-month', (req, res) => {
 	req.session.data['started'] == 'true'
 
 	if (req.session.data['start-month']){
-		res.redirect('../task-list')
+		res.redirect('confirm-reservation-details')
 	} else {
 		req.session.data['start-month'] = ''
 		res.redirect('start-month-warning')
@@ -80,7 +93,19 @@ router.post('/task--reserve-funding/confirm-reservation-details', (req, res) => 
 	}
 })
 
-// Training provider
+// check provider
+router.post('/task--training-provider/provider-check', (req, res) => {
+	if (req.session.data['found-provider'] == 'yes'){
+		res.redirect('choose-provider')
+	} else {
+		req.session.data['provider-name'] = ''
+		req.session.data['training-provider-permissions'] = ''
+		req.session.data['provider-permissions'] = ''
+		res.redirect('error')
+	}
+})
+
+// choose provider
 router.get('/task--training-provider/choose-provider', (req, res) => {
 	if(req.session.data['provider-name'] != ''){
 		req.session.data['old-provider-name'] = req.session.data['provider-name']
@@ -94,7 +119,7 @@ router.get('/task--training-provider/choose-provider', (req, res) => {
 })
 
 router.post('/task--training-provider/choose-provider', (req, res) => {
-	if (req.session.data['found-provider'] == 'yes'){
+	if (req.session.data['provider-name']){
 		res.redirect('confirm-provider')
 	} else {
 		req.session.data['provider-name'] = ''
@@ -109,14 +134,28 @@ router.post('/task--training-provider/confirm-provider', (req, res) => {
 	req.session.data['training-provider-permissions'] = ''
 	req.session.data['provider-permissions'] = ''
 	req.session.data['started'] == 'true'
-	res.redirect('../task-list')
+	res.redirect('provider-confirmed')
+})
+
+router.post('/whats-next', (req, res) => {
+	let userAction = req.session.data['whats-next']
+	if(userAction == 'set-permissions'){
+		deleteData(req,'whats-next')
+		res.redirect('task--training-provider/provider-permissions')
+	} else if(userAction == 'add-another'){
+		deleteData(req,'whats-next')
+		res.redirect('task--training-provider/choose-provider')
+	} else if(userAction == 'return-to-homepage'){
+		deleteData(req,'whats-next')
+		res.redirect('account-home')
+	}
 })
 
 router.post('/task--training-provider/provider-permissions', (req, res) => {
 	req.session.data['training-provider-permissions'] = 'done'
 	req.session.data['started'] == 'true'
 	req.session.data['alert-text'] = 'You have added ' + req.session.data["provider-name"] + ' to your account'
-	res.redirect('../task-list')
+	res.redirect('permissions-success')
 })
 
 router.post('/add-apprentice-details', (req, res) => {

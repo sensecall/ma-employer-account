@@ -10,7 +10,7 @@
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<form method="post">
+		<form method="post" action="../whats-next">
 			{{ govukPanel({
 				titleText: "You have successfully reserved funding for apprenticeship training"
 			}) }}
@@ -18,25 +18,6 @@
 			{{ govukSummaryList({
 				rows:
 				[
-				{
-					key:
-					{
-						text: "Employer"
-					},
-					value:
-					{
-						text: data['employer']
-					},
-					actions:
-					{
-						items: 
-						[
-						{
-
-						}
-						]
-					}
-				},
 				{
 					key:
 					{
@@ -84,23 +65,40 @@
 
 			<hr class="govuk-section-break govuk-section-break--xl">
 
-			<h2 class="govuk-heading-l">
-				Making changes 
-			</h2>
-
-			<p>
-				You can add or change the apprenticeship training when you add an apprentice’s details.
-			</p>
-
-			<p>
-				You will need to reserve new funding to change the apprenticeship training start date to outside of the 3-month window you originally selected. 
-			</p>
-
-			<input type="hidden" value="true" name="reserve-funding">
+			{{ govukRadios({
+				idPrefix: "whats-next",
+				name: "whats-next",
+				fieldset: 
+				{
+					legend:
+					{
+						text: "What's next?",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--m"
+					}
+				},
+				items: [
+				{
+					value: "recruit-an-apprentice",
+					text: "Recruit an apprentice"
+				},
+				{
+					value: "find-training-provider",
+					text: "Find a training provider"
+				},
+				{
+					value: "add-apprentices-details",
+					text: "Add apprentice's details"
+				},
+				{
+					value: "return-to-homepage",
+					text: "Go to homepage"
+				}
+				]
+			}) }}
 
 			{{govukButton({
-				text: "Return to all sections",
-				href: "../task-list"
+				text: "Return to all sections"
 			})}}
 		</form>
 	</div>

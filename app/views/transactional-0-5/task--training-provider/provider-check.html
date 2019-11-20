@@ -15,22 +15,21 @@
 
 {% block content %}
 
-{% set courseHtml %}
+{% set providerHtml %}
 <div class="govuk-form-group">
 	<label class="govuk-label" for="choose-apprenticeship">
-		Search for a course
+		Search for a provider
 	</label>
 
-	<select id="course-name" name="course-name">
+	<select id="provider-name" name="provider-name">
 		<option value=""></option>
-		{% for apprenticeship in data['apprenticeships'].apprenticeships %}
-		{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
-		<option value="{{optionValue}}" {{"selected" if optionValue === data['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+		{% for provider in data['providers'].providers %}
+		<option value="{{provider.name}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
 		{% endfor %}
 	</select>
 
 	<p class="govuk-!-margin-top-2">
-		<a href="#course-name" id="clear-search">Clear search</a>
+		<a href="#provider-name" id="clear-search">Clear search</a>
 	</p>
 </div>
 {% endset -%}
@@ -39,13 +38,13 @@
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			{{ govukRadios({
-				idPrefix: "know-course",
-				name: "know-course",
+				idPrefix: "found-provider",
+				name: "found-provider",
 				fieldset:
 				{
 					legend:
 					{
-						text: "Do you know which apprenticeship training your apprentice will take?",
+						text: "Have you found a training provider to deliver your apprentice's training?",
 						isPageHeading: true,
 						classes: "govuk-fieldset__legend--xl"
 					}
@@ -58,30 +57,26 @@
 				{
 					value: "yes",
 					text: "Yes",
-					conditional:
-					{
-						html: courseHtml
-					},
-					checked: data['know-course'] === 'yes'
+					checked: data['found-provider'] === 'yes'
 				},
 				{
 					value: "no",
-					text: "No",
-					checked: data['know-course'] === 'no'
+					text: "No, I don't know yet",
+					checked: data['found-provider'] === 'no'
 				}
 				]
 			}) }}
 
-			{{ govukDetails({
-				summaryText: "Can I change the course?",
-				text: "You can change the course when you add an apprentice's details."
-			}) }}	
-
-
 			{{govukButton({
-				text: "Save and continue"
+				text: "Continue"
 			})}}
 		</form>
+
+		{% if data['provider-name'] %}
+		<p>
+			<a href="../task-list">Cancel and return to all sections</a>
+		</p>
+		{% endif %}
 	</div>
 </div>
 {% endblock %}
@@ -90,14 +85,14 @@
 <script>
 	$(document).ready(function(){
 		accessibleAutocomplete.enhanceSelectElement({
-			selectElement: document.querySelector('#course-name'),
+			selectElement: document.querySelector('#provider-name'),
 			showAllValues: true,
 			defaultValue: ''
 		})
 
 		$('#clear-search').on('click', function(e) {
 			e.preventDefault();
-			$('#course-name').val("");
+			$('#provider-name').val("");
 		})
 	})
 </script>

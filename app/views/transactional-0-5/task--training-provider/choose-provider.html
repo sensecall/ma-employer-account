@@ -15,61 +15,34 @@
 
 {% block content %}
 
-{% set providerHtml %}
-<div class="govuk-form-group">
-	<label class="govuk-label" for="choose-apprenticeship">
-		Search for a provider
-	</label>
-
-	<select id="provider-name" name="provider-name">
-		<option value=""></option>
-		{% for provider in data['providers'].providers %}
-		<option value="{{provider.name}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
-		{% endfor %}
-	</select>
-
-	<p class="govuk-!-margin-top-2">
-		<a href="#provider-name" id="clear-search">Clear search</a>
-	</p>
-</div>
-{% endset -%}
-
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
-			{{ govukRadios({
-				idPrefix: "found-provider",
-				name: "found-provider",
-				fieldset:
+			{% call govukFieldset({
+				legend:
 				{
-					legend:
-					{
-						text: "Have you found a training provider to deliver your apprentice's training?",
-						isPageHeading: true,
-						classes: "govuk-fieldset__legend--l"
-					}
-				},
-				hint:
-				{
-					text: ""
-				},
-				items: [
-				{
-					value: "yes",
-					text: "Yes",
-					conditional:
-					{
-						html: providerHtml
-					},
-					checked: data['found-provider'] === 'yes'
-				},
-				{
-					value: "no",
-					text: "No, I don't know yet",
-					checked: data['found-provider'] === 'no'
+					text: "Search for a training provider",
+					classes: "govuk-fieldset__legend--xl",
+					isPageHeading: true
 				}
-				]
-			}) }}
+			}) %}
+			<div class="govuk-form-group govuk-!-width-full">
+				<label class="govuk-label" for="choose-apprenticeship">
+					Search providers
+				</label>
+
+				<select id="provider-name" name="provider-name">
+					<option value=""></option>
+					{% for provider in data['providers'].providers %}
+					<option value="{{provider.name}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#provider-name" id="clear-search">Clear search</a>
+				</p>
+			</div>
+			{% endcall %}
 
 			{{govukButton({
 				text: "Continue"

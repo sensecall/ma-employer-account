@@ -1,17 +1,21 @@
+{% set notCompletedTag %}
+<span class="govuk-tag" style="background: #777">Not completed</span>
+{% endset %}
+
+{% set completedTag %}
+<span class="govuk-tag">Completed</span>
+{% endset %}
+
 {% set trainingProviderHtml %}
 {% if data['provider-name'] %}
 <p>
 	{{data['provider-name']}}
 </p>
 <p>
-	{% if data['provider-permissions'] %}
-	<span class="govuk-tag">Completed</span>
-	{% else %}
-	<span class="govuk-tag" style="background: #777">In progress</span>
-	{% endif %}
+	{{completedTag | safe}}
 </p>
 {% else %}
-Not added yet
+{{notCompletedTag | safe}}
 {% endif %}
 {% endset %}
 
@@ -22,13 +26,13 @@ Not added yet
 </p>
 <p>
 	{% if data['reservation-confirmed'] == 'true' %}
-	You have reserved funding
+	{{completedTag | safe}}
 	{% else %}
-	You have not reserved funding yet
+	{{notCompletedTag | safe}}
 	{% endif %}
 </p>
 {% else %}
-<span class="govuk-tag" style="background: #777">Not started</span>
+{{notCompletedTag | safe}}
 {% endif %}
 {% endset %}
 
@@ -71,7 +75,7 @@ Not added yet
 		},
 		value:
 		{
-			html: "<a href='#'>View your vacancy</a>" if data['create-vacancy'] == 'done' else "Not completed"
+			html: "<a href='#'>View your vacancy</a>" if data['create-vacancy'] == 'done' else notCompletedTag | safe
 		},
 		actions:
 		{
@@ -85,7 +89,7 @@ Not added yet
 		},
 		value:
 		{
-			text: "Not completed" if data['apprentice-details'] != 'done'
+			text: notCompletedTag|safe if data['apprentice-details'] != 'done'
 		},
 		actions:
 		{

@@ -13,11 +13,10 @@
 		<form method="post" action="../whats-next">
 			{% set panelHtml %}
 			<h2 class="govuk-heading-xl govuk-!-margin-bottom-4" style="text-align: center">
-				Permissions updated
+				Training provider added
 			</h2>
 			<p style="text-align: center">
-				You've successfully updated permissions for <b>{{data['provider-name']}}</b>.<br>
-				This training provider will receive notification shortly.
+				You've successfully added <b>{{data['provider-name']}}</b>.
 			</p>
 			{% endset %}
 
@@ -40,6 +39,10 @@
 				},
 				items: [
 				{
+					value: "set-permissions",
+					text: "Set permissions for this training provider"
+				},
+				{
 					value: "add-another",
 					text: "Add another training provider"
 				},
@@ -49,6 +52,7 @@
 				}
 				]
 			}) }}
+
 
 			{{govukButton({
 				text: "Continue"
