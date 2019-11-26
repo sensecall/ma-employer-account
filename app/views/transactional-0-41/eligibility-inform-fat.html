@@ -3,6 +3,8 @@
 {% block header %}
 {% include "includes/cookie-banner.html" %}
 {% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,21 +17,25 @@
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<h1 class="govuk-heading-xl">
-			You need to know the training course and training provider
+		<h1 class="govuk-heading-l">
+			You need to know the training course and training provider 
 		</h1>
 
 		<p>
-			Minim enim deserunt cupidatat amet sed dolore cupidatat amet ut irure do eiusmod ea reprehenderit elit ut qui cupidatat laborum aliquip adipisicing incididunt magna.
+			Based on your answer, you need to know the apprenticeship course and choose the training provider who will deliver the training.
 		</p>
 
 		<p>
-			Do in sed laborum sint in ut veniam labore do et dolore nulla fugiat qui cupidatat incididunt laborum enim eu adipisicing cillum commodo.
+			You can use <a href="#">Find apprenticeship training</a> to:
 		</p>
+		<ul class="govuk-list govuk-list--bullet">
+			<li>search for apprenticeship training</li>
+			<li>find your training provider's contact details.</li>
+		</ul>
 
 		{{govukButton({
-			classes: "govuk-!-margin-bottom-2 govuk-!-margin-top-6",
 			text: "Find apprenticeship training",
+			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-1",
 			href: "https://findapprenticeshiptraining.apprenticeships.education.gov.uk/",
 			attributes:
 			{
@@ -37,7 +43,7 @@
 			}
 		})}}
 
-		<p class="govuk-!-font-size-16 govuk-!-margin-top-2">
+		<p class="govuk-!-font-size-16 govuk-!-margin-top-1">
 			Opens in a new window or tab
 		</p>
 	</div>
