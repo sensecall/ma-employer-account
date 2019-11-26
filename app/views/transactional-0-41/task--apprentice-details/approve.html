@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full-width">
+		<form method="post">
+			<h2 class="govuk-heading-xl">
+				Approve apprentice details
+			</h2>
+
+			<p>
+				<b>Organisation:</b> {{data['employer']}}
+			</p>
+
+			<p>
+				<b>Reference:</b> PRO123
+			</p>
+
+			<p>
+				<b>Message from {{data['provider-name']}}</b>
+			</p>
+
+			<p class="govuk-inset-text">
+				No message added.
+			</p>
+
+			<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+			{{ govukTable({
+				caption: "1x " + data['course-name'],
+				captionClasses: "govuk-heading-m",
+				firstCellIsHeader: false,
+				head: [
+				{
+					text: "Name"
+				},
+				{
+					text: "Date of birth"
+				},
+				{
+					text: "Training dates"
+				},
+				{
+					text: "Price"
+				}
+				],
+				rows: [
+				[
+				{
+					text: data['first-name'] + " " + data['last-name']
+				},
+				{
+					text: data['dob-day'] + " " + data['dob-month'] + " " + data['dob-year']
+				},
+				{
+					text: data['start-date-month'] + " " + data['start-date-year'] + " " + data['finish-date-month'] + " " + data['finish-date-year']
+				},
+				{
+					text: "£" + data['cost']
+				}
+				],
+				[
+				{
+					text: "Total apprenticeship training price (excluding VAT)",
+					classes: "govuk-!-font-weight-bold govuk-!-padding-top-6",
+					colspan: 3
+				},
+				{
+					text: "£" + data['cost']
+				}
+				]
+				]
+			}) }}
+
+			<p class="govuk-!-margin-top-5 govuk-!-margin-bottom-8">
+				<a href="#">Add another apprentice</a>
+			</p>
+
+			{{ govukRadios({
+				idPrefix: "approve-details",
+				name: "approve-details",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Approve these details?",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--m"
+					}
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes, approve and notify training provider"
+				},
+				{
+					value: "no",
+					text: "No, request changes from training provider"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Save and submit"
+			})}}
+
+			<p>
+				<a href="#">Save and exit</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

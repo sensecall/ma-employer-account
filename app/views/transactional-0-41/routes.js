@@ -215,6 +215,30 @@ router.post('/task--apprentice-details/apprentice-details-check', (req, res) => 
 	}
 })
 
+router.post('/task--apprentice-details/confirm-provider', (req, res) => {
+	if(req.session.data['confirm-provider'] == 'yes'){
+		res.redirect('permission')
+	} else {
+		res.redirect('add-provider')
+	}
+})
+
+router.post('/task--apprentice-details/permission', (req, res) => {
+	if(req.session.data['add-permissions'] == 'employer'){
+		res.redirect('add-apprentice-details')
+	} else {
+		res.redirect('permission')
+	}
+})
+
+router.post('/task--apprentice-details/approve', (req, res) => {
+	if(req.session.data['approve-details'] == 'yes'){
+		res.redirect('submitted')
+	} else {
+		res.redirect('approve')
+	}
+})
+
 
 // whats next
 router.post('/whats-next', (req, res) => {

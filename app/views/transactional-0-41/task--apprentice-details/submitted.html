@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full-width">
+		<form method="post">
+			{{ govukPanel({
+				titleText: "Apprentice details approved and sent to training provider"
+			}) }}
+
+			{{ govukSummaryList({
+				classes: 'govuk-!-margin-bottom-9',
+				rows: [
+				{
+					key:
+					{
+						text: "Reference"
+					},
+					value:
+					{
+						text: "PRO123"
+					}
+				},
+				{
+					key:
+					{
+						text: "Training provider"
+					},
+					value:
+					{
+						text: data['provider-name']
+					}
+				},
+				{
+					key:
+					{
+						text: "Approved by"
+					},
+					value:
+					{
+						html: data['employer-name']
+					}
+				}
+				]
+			}) }}
+
+			<h2 class="govuk-heading-m">
+				What's next?
+			</h2>
+
+			<p>
+				Your training provider will review these apprentice details and either confirm the information is correct or contact you to suggest changes.
+			</p>
+
+			<p>
+				<a href="#">Go back to view apprentice records.</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}
