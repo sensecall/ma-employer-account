@@ -16,13 +16,12 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-	<div class="govuk-grid-column-two-thirds">
+	<div class="govuk-grid-column-two-thirds">	
+		{% if data['eligibility-recruit'] == 'existing' %}
 		<h1 class="govuk-heading-l">
-			Set up an apprenticeship
+			Set up an apprenticeship for an existing employee
 		</h1>
 
-		
-		{% if data['eligibility-recruit'] == 'existing' %}
 		<p>
 			Based on your answers, you're setting up an apprenticeship for an existing employee.
 		</p>
@@ -47,7 +46,13 @@
 			classes: "govuk-!-margin-top-6",
 			href: "task--apprentice-details/start"
 		})}}
+		
 		{% else %}
+		
+		<h1 class="govuk-heading-l">
+			Set up an apprenticeship for a new employee
+		</h1>
+		
 		<p>
 			Based on your answers, you're setting up an apprenticeship for a new apprentice.
 		</p>

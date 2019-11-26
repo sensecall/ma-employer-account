@@ -26,31 +26,27 @@
 				{
 					legend:
 					{
-						text: "Do you know which course the apprentice will take and the name of the training provider that will deliver the training?",
+						text: "Which details do you know about the apprenticeship?",
 						isPageHeading: true,
 						classes: "govuk-fieldset__legend--l govuk-!-margin-top-6"
 					}
 				},
-				hint:
-				{
-					text: "Here is some help text."
-				},
 				items: [
 				{
+					value: "no",
+					text: "The training provider"
+				},
+				{
+					value: "no",
+					text: "The apprenticeship training course"
+				},
+				{
 					value: "yes",
-					text: "Yes, I know the course and the provider"
+					text: "Both the training provider and the apprenticeship training course"
 				},
 				{
 					value: "no",
-					text: "I know the course"
-				},
-				{
-					value: "no",
-					text: "I know the provider"
-				},
-				{
-					value: "no",
-					text: "No, I don't know the course or the provider"
+					text: "None of the above"
 				}
 				]
 			}) }}
