@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "eligibility-start-date",
+				name: "eligibility-start-date",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you the approximate month that the apprentice will start their training?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--l govuk-!-margin-top-6"
+					}
+				},
+				hint:
+				{
+					text: "Here is some help text."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes"
+				},
+				{
+					value: "no",
+					text: "No"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "What do you want to call this vacancy?",
+					classes: "govuk-fieldset__legend--xl",
+					isPageHeading: true
+				}
+			}) %}
+			
+			<p>
+				Use a title that relates to the apprenticeship training for this vacancy, this will help it get found in the Find an Apprenticeship search.
+			</p>
+
+			{{ govukCharacterCount({
+				name: "vacancy-name",
+				id: "vacancy-name",
+				maxlength: 100,
+				rows: 1,
+				hint:
+				{
+					text: "Must include the word ‘apprentice’ or ‘apprenticeship’ "
+				}
+			}) }}
+			{% endcall %}
+
+			<input type="hidden" value="true" name="vacancy-created">
+
+			{{govukButton({
+				text: "Save and continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

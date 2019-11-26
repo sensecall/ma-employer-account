@@ -38,7 +38,7 @@ router.use(/\/interim-([0-9]+)-([0-9]+)/, (req, res, next) => {
 	require(`./views/interim-${req.params[0]}-${req.params[1]}/routes`)(req, res, next);
 })
 
-router.use(/\/transactional-([0-9]+)-([0-9]+)/, (req, res, next) => {
+router.use(/\/transactional-([0-99]+)-([0-99]+)/, (req, res, next) => {
 	require(`./views/transactional-${req.params[0]}-${req.params[1]}/routes`)(req, res, next);
 })
 

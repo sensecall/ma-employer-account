@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+
+{% set serviceName %}
+Configure prototype
+{% endset %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<form action="set-config" method="get">
+		<div class="govuk-grid-column-two-thirds">
+			<h1 class="govuk-heading-xl">
+				{{serviceName}}
+			</h1>
+
+			{{ govukInput({
+				label:
+				{
+					text: "Employer name"
+				},
+				classes: "govuk-!-width-two-thirds",
+				id: "employer-name",
+				name: "employer-name",
+				value: data['employer-name']
+			}) }}
+
+			{{ govukInput({
+				value: data['employer-email'],
+				label:
+				{
+					text: "Employer email"
+				},
+				classes: "govuk-!-width-two-thirds",
+				id: "employer-email",
+				name: "employer-email"
+			}) }}
+
+			{{ govukInput({
+				value: data['employer-user-name'],
+				label:
+				{
+					text: "Employer user name"
+				},
+				classes: "govuk-!-width-two-thirds",
+				id: "employer-user-name",
+				name: "employer-user-name"
+			}) }}
+
+
+			{{ govukInput({
+				value: data['provider-name'],
+				label:
+				{
+					text: "Provider name"
+				},
+				classes: "govuk-!-width-two-thirds",
+				id: "provider-name",
+				name: "provider-name"
+			}) }}
+			{{ govukInput({
+				value: data['provider-ukprn'],
+				label:
+				{
+					text: "Provider UKPRN"
+				},
+				classes: "govuk-!-width-one-third",
+				id: "provider-ukprn",
+				name: "provider-ukprn"
+			}) }}
+
+			{{ govukButton({
+				text: "Continue"
+			}) }}
+
+		</div>
+
+		<div class="govuk-grid-column-one-third">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Scenarios",
+					classes: "govuk-fieldset__legend--l",
+					isPageHeading: true
+				}
+			}) %}
+			{{ govukCheckboxes({
+				idPrefix: "logged-in",
+				name: "logged-in",
+				items:
+				[
+				{
+					value: "true",
+					text: "Logged in"
+				}
+				]
+			}) }}
+			{{ govukCheckboxes({
+				idPrefix: "add-paye-now",
+				name: "add-paye-now",
+				items:
+				[
+				{
+					value: "yes",
+					text: "Added PAYE"
+				}
+				]
+			})}}
+			{{ govukCheckboxes({
+				idPrefix: "sign-agreement-now",
+				name: "sign-agreement-now",
+				items:
+				[
+				{
+					value: "yes",
+					text: "Signed agreement"
+				}
+				]
+			}) }}
+
+			{% set textHtml %}
+			{{ govukInput({
+				id: "contact-by-text",
+				name: "contact-by-text",
+				type: "tel",
+				classes: "govuk-!-width-full",
+				label: {
+				text: "Select course"
+			}
+		}) }}
+		{% endset -%}
+
+		{{ govukCheckboxes({
+			idPrefix: "citizenship-conditional",
+			name: "citizen",
+			items:
+			[
+			{
+				value: "text message",
+				text: "Chosen course",
+				conditional:
+				{
+					html: textHtml
+				}
+			}
+			]
+		}) }}
+		{% endcall %}
+	</div>
+</form>
+</div>
+{% endblock %}

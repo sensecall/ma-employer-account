@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Contact your training provider
+		</h1>
+
+		<p>
+			Minim enim deserunt cupidatat amet sed dolore cupidatat amet ut irure do eiusmod ea reprehenderit elit ut qui cupidatat laborum aliquip adipisicing incididunt magna.
+		</p>
+
+		<p>
+			Do in sed laborum sint in ut veniam labore do et dolore nulla fugiat qui cupidatat incididunt laborum enim eu adipisicing cillum commodo.
+		</p>
+	</div>
+
+	<div class="govuk-grid-column-one-third">
+	</div>
+</div>
+{% endblock %}

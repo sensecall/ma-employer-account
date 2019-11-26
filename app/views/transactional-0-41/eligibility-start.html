@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-l">
+			Set up an apprenticeship
+		</h1>
+
+		
+		{% if data['eligibility-recruit'] == 'existing' %}
+		<p>
+			Based on your answers, you're setting up an apprenticeship for an existing employee.
+		</p>
+
+		<h2 class="govuk-heading-m">
+			What you'll need:
+		</h2>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>the apprenticeship training course name</li>
+			<li>the month the apprentice will start their training</li>
+			<li>the name of your chosen training provider</li>
+			<li>the cost of the apprenticeship training, which has been agreed with your training provider</li>
+		</ul>
+
+		<p class="govuk-inset-text">
+			It takes about 15 minutes to add the details needed to set up your employee's apprenticeship.
+		</p>
+
+		{{govukButton({
+			text: "Continue",
+			classes: "govuk-!-margin-top-6",
+			href: "task--apprentice-details/start"
+		})}}
+		{% else %}
+		<p>
+			Based on your answers, you're setting up an apprenticeship for a new apprentice.
+		</p>
+
+		<h2 class="govuk-heading-m">
+			What you'll need:
+		</h2>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>the apprenticeship training course name</li>
+			<li>the month the apprentice will start their training</li>
+			<li>the name of your chosen training provider</li>
+			<li>your employee's name</li>
+			<li>your employee's date of birth</li>
+			<li>the cost of the apprenticeship training, which you've agreed with your training provider</li>
+		</ul>
+
+		{{govukButton({
+			text: "Continue",
+			classes: "govuk-!-margin-top-6",
+			href: "task--reserve-funding/reserve-funding-start-page"
+		})}}
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post" action="../whats-next">
+			{{ govukPanel({
+				titleText: "You have successfully reserved funding for apprenticeship training"
+			}) }}
+
+			{{ govukSummaryList({
+				rows:
+				[
+				{
+					key:
+					{
+						text: "Apprenticeship training start date"
+					},
+					value:
+					{
+						html: "January 2020"
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-start-month",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training start date"
+						}
+						]
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship training course"
+					},
+					value:
+					{
+						html: data['course-name']
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-course",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training course"
+						}
+						]
+					}
+				}
+				]
+			}) }}
+
+			<hr class="govuk-section-break govuk-section-break--xl">
+
+			{{ govukRadios({
+				idPrefix: "whats-next",
+				name: "whats-next",
+				fieldset: 
+				{
+					legend:
+					{
+						text: "What's next?",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--m"
+					}
+				},
+				items: [
+				{
+					value: "recruit",
+					text: "Recruit an apprentice"
+				},
+				{
+					value: "find-training-provider",
+					text: "Find a training provider"
+				},
+				{
+					value: "add-apprentice-details",
+					text: "Add apprentice's details"
+				},
+				{
+					value: "return-to-homepage",
+					text: "Go to homepage"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Return to all sections"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

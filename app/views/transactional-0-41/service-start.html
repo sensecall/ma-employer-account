@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Create an account to manage apprenticeships
+		</h1>
+
+		<p>
+			You need to create or <a href="login">sign in</a> to an apprenticeship account, then you'll be able to get funding to pay for apprenticeship training and assessment costs.
+		</p>
+
+		<p>
+			You’ll use your account to:
+		</p>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>get apprenticeship funding</li>
+			<li>find and save apprenticeships</li>
+			<li>find, save and manage training providers</li>
+			<li>recruit apprentices</li>
+			<li>add and manage apprenticeships</li>
+		</ul>
+
+		{{ govukButton({
+			text: "Create account",
+			href: "g--found-provider",
+			classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-0 govuk-button--start"
+		}) }}
+	</div>
+
+	<div class="govuk-grid-column-one-third">
+	</div>
+</div>
+{% endblock %}
