@@ -59,7 +59,7 @@
 <!-- END -->
 
 <!-- RESERVED AND NOT CREATED VACANCY AND NO APPRENTICE DETAILS ADDED -->
-{% if data['reserved-funding'] == 'true' and data['vacancy-status'] == 'not-started' and not data['apprenticeship-status'] %}
+{% if data['reserved-funding'] == 'true' and not data['started-vacancy'] and not data['apprenticeship-status'] %}
 <section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
 		Continue setting up an apprenticeship
@@ -103,7 +103,7 @@
 <!-- END -->
 
 <!-- RESERVED AND CREATED VACANCY BUT NO DETAILS ADDED -->
-{% elif data['reserved-funding'] == 'true' and data['vacancy-status'] != 'not-started' and not data['apprenticeship-status'] %}
+{% elif data['reserved-funding'] == 'true' and data['started-vacancy'] and not data['apprenticeship-status'] %}
 <section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
 		Your apprenticeship advert
@@ -158,6 +158,30 @@
 <!-- END -->
 
 {% elif data['reserved-funding'] == 'true' and data['apprenticeship-status'] %}
+{% set apprenticeName %}
+{% if data['apprentice']['first-name'] and data['apprentice']['last-name'] %}
+{{data['apprentice']['first-name']}} {{data['apprentice']['last-name']}}
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
+{% set startMonth %}
+{% if data['apprenticeship-start-date-month'] and data['apprenticeship-start-date-year'] %}
+{{data['apprenticeship-start-date-month']}} {{data['apprenticeship-start-date-year']}}
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
+{% set finishMonth %}
+{% if data['apprenticeship-finish-date-month'] and data['apprenticeship-finish-date-year'] %}
+{{data['apprenticeship-finish-date-month']}} {{data['apprenticeship-finish-date-year']}}
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
 {% if data['apprenticeship-status'] == 'live' %}
 <section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
@@ -173,7 +197,7 @@
 			},
 			value:
 			{
-				text: data['apprentice']['first-name']
+				text: apprenticeName
 			}
 		},
 		{
@@ -203,7 +227,7 @@
 			},
 			value: 
 			{
-				text: data['start-month']
+				text: startMonth
 			}
 		},
 		{
@@ -213,7 +237,7 @@
 			},
 			value: 
 			{
-				text: data['finish-month']
+				text: finishMonth
 			}
 		}]
 	})}}
@@ -235,13 +259,9 @@
 	<p>
 		You’ve added the following details:
 	</p>
-	{% set apprenticeName %}
-	{% if data['apprentice']['first-name'] and data['apprentice']['last-name'] %}
-	{{data['apprentice']['first-name']}} {{data['apprentice']['last-name']}}
-	{% endif %}
-	{% endset %}
 
 	{{ govukSummaryList({
+		classes: 'govuk-!-margin-bottom-4',
 		rows:[
 		{
 			key: 
@@ -250,7 +270,7 @@
 			},
 			value:
 			{
-				text: apprenticeName or "Not added yet"
+				text: apprenticeName
 			}
 		},
 		{
@@ -272,28 +292,12 @@
 			{
 				text: data['provider-name'] or "Not added yet"
 			}
-		},
-		{
-			key: 
-			{
-				text: "Start month"
-			},
-			value: 
-			{
-				text: data['start-month'] or "Not added yet"
-			}
-		},
-		{
-			key: 
-			{
-				text: "Finish month"
-			},
-			value: 
-			{
-				text: data['finish-month'] or "Not added yet"
-			}
 		}]
 	})}}
+
+	<p class="govuk-!-margin-top-2">
+		You still need to add information to this apprentice record.
+	</p>
 
 
 	<form method="post" action="set-up-an-apprenticeship">

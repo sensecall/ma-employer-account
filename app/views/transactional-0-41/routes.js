@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-
+const moment = require('moment')
 
 function deleteData(req,param){
 	req.session.data[param] = ''
@@ -26,13 +26,15 @@ router.post('/config', (req, res) => {
 	if(req.session.data['started-add-approve']){
 		
 	} else {
+		delete req.session.data['apprentice']
 		delete req.session.data['apprenticeship-status']
 	}
 
-	if(req.session.data['apprentice-added'] == 'true'){
-		req.session.data['apprenticeship-status'] = 'live'
+	if(req.session.data['started-vacancy']){
+		
 	} else {
-		req.session.data['apprentice'] = ''
+		delete req.session.data['vacancy']
+		delete req.session.data['vacancy-status']
 	}
 
 	if(req.session.data['logged-in'] == 'true'){
@@ -285,6 +287,7 @@ router.post('/task--apprentice-details/add-apprentice-details', (req, res) => {
 
 router.post('/task--apprentice-details/approve', (req, res) => {
 	if(req.session.data['approve-details'] == 'yes'){
+		req.session.data['apprenticeship-status'] = 'submitted'
 		res.redirect('submitted')
 	} else {
 		res.redirect('approve')

@@ -68,10 +68,10 @@
 					text: data['apprentice-dob-day'] + " " + data['apprentice-dob-month'] + " " + data['apprentice-dob-year']
 				},
 				{
-					text: data['apprenticeship-start-date-month'] + " " + data['apprenticeship-start-date-year'] + " " + data['apprenticeship-finish-date-month'] + " " + data['apprenticeship-finish-date-year']
+					text: data['apprenticeship-start-date-month'] + " " + data['apprenticeship-start-date-year'] + " to " + data['apprenticeship-finish-date-month'] + " " + data['apprenticeship-finish-date-year']
 				},
 				{
-					text: "£" + data['apprenticeship']['cost']
+					text: "£" + data['apprenticeship-cost']
 				}
 				],
 				[
@@ -81,7 +81,7 @@
 					colspan: 3
 				},
 				{
-					text: "£" + data['apprenticeship']['cost']
+					text: "£" + data['apprenticeship-cost']
 				}
 				]
 				]

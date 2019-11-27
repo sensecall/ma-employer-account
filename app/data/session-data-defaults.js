@@ -41,13 +41,15 @@ module.exports = {
 	// apprenticeship details
 	'apprentice': {
 		"first-name": "Jay",
-		"last-name": "Smith",
-		"cost": 1200
+		"last-name": "Smith"
 	},
+	"apprenticeship-cost": 1200,
 	"apprentice-dob-day": "02",
 	"apprentice-dob-month": "02",
 	"apprentice-dob-year": "2001",
-	"start-month": "February 2020",
-	"finish-month": "March 2022",
-	"provider-name": "COVENTRY COLLEGE"
+	"provider-name": "COVENTRY COLLEGE",
+	'apprenticeship-start-date-month': "January",
+	'apprenticeship-start-date-year': 2020,
+	'apprenticeship-finish-date-month': 'February',
+	'apprenticeship-finish-date-year': 2021
 }
