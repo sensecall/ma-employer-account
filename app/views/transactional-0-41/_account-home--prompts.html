@@ -48,6 +48,116 @@
 
 <!-- START -->
 {% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['employer-type'] != 'levy' %}
+
+{% if data['reservation-confirmed'] == 'true' and not data['vacancy-created'] %}
+<section>
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Your apprenticeship
+	</h2>
+
+	<p class="govuk-!-margin-bottom-2">
+		You have reserved funding for apprenticeship training.
+	</p>
+
+	{{ govukSummaryList({
+		rows:[
+		{
+			key: 
+			{
+				text: "Course"
+			},
+			value:
+			{
+				text: data['course-name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Start month"
+			},
+			value: 
+			{
+				text: data['start-month']
+			}
+		}]
+	})}}
+
+
+	<form method="post" action="set-up-an-apprenticeship">
+		{{govukButton({
+			text: "Create an advert for this apprenticeship",
+			href: "task--recruitment/recruitment-start"
+		})}}
+
+		<p>
+			You can <a href="task--apprentice-details/add-apprentice-details">Add your apprentice's details</a> now if you don't need to create an apprenticeship vacancy.
+		</p>
+	</form>
+</section>
+{% elif data['reservation-confirmed'] == 'true' and data['vacancy-created'] %}
+<section>
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Your apprenticeship
+	</h2>
+
+	<p class="govuk-!-margin-bottom-2">
+		You have created a vacancy for your apprenticeship.
+	</p>
+
+	{{ govukSummaryList({
+		rows:[
+		{
+			key: 
+			{
+				text: "Course"
+			},
+			value:
+			{
+				text: data['course-name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Start month"
+			},
+			value: 
+			{
+				text: data['start-month']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Training provider"
+			},
+			value: 
+			{
+				text: "Your provider Co ltd"
+			}
+		},
+		{
+			key: 
+			{
+				text: "Vacancy"
+			},
+			value: 
+			{
+				html: '<a href="#">No applications yet</a>'
+			}
+		}]
+	})}}
+
+
+	<form method="post" action="set-up-an-apprenticeship">
+		{{govukButton({
+			text: "Go to your recruitment dashboard",
+			href: "task--recruitment/recruitment-start"
+		})}}
+	</form>
+</section>
+{% else %}
 <section class="govuk-!-padding-5" style="background: #f3f2f1">
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
 		{% if data['started'] == 'true' %}
@@ -78,5 +188,6 @@
 		{% endif %}
 	</form>
 </section>
+{% endif %}
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 {% endif %}

@@ -233,7 +233,11 @@ router.post('/task--apprentice-details/confirm-provider', (req, res) => {
 
 router.post('/task--apprentice-details/permission', (req, res) => {
 	if(req.session.data['add-permissions'] == 'employer'){
-		res.redirect('add-apprentice-details')
+		if(req.session.data['eligibility-recruit'] == 'existing' || req.session.data['reservation-confirmed'] != 'true'){
+			res.redirect('../task--reserve-funding/choose-course')
+		} else {
+			res.redirect('add-apprentice-details')
+		}
 	} else {
 		res.redirect('permission')
 	}
