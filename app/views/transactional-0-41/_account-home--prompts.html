@@ -66,7 +66,7 @@
 	</h2>
 
 	<p class="govuk-!-margin-bottom-2">
-		You have reserved funding for the following apprenticeship:
+		You've reserved funding for the following apprenticeship:
 	</p>
 
 	{{ govukSummaryList({
@@ -106,7 +106,7 @@
 {% elif data['reserved-funding'] == 'true' and data['vacancy-status'] != 'not-started' and not data['apprenticeship-status'] %}
 <section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
-		Your apprenticeship
+		Your apprenticeship advert
 	</h2>
 
 	<p class="govuk-!-margin-bottom-2">
@@ -118,37 +118,27 @@
 		{
 			key: 
 			{
-				text: "Course"
+				text: "Title"
 			},
 			value:
 			{
-				text: data['course-name']
+				text: data['vacancy-name']
 			}
 		},
 		{
 			key: 
 			{
-				text: "Start month"
+				text: "Closing date"
 			},
 			value: 
 			{
-				text: data['start-month']
+				text: data['end-month']
 			}
 		},
 		{
 			key: 
 			{
-				text: "Training provider"
-			},
-			value: 
-			{
-				text: "Your provider Co ltd"
-			}
-		},
-		{
-			key: 
-			{
-				text: "Vacancy"
+				text: "Applications"
 			},
 			value: 
 			{
@@ -239,8 +229,12 @@
 {% else %}
 <section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
-		Your apprentice
+		Continue setting up an apprenticeship
 	</h2>
+
+	<p>
+		You’ve added the following details:
+	</p>
 
 	{{ govukSummaryList({
 		rows:[
@@ -257,21 +251,21 @@
 		{
 			key: 
 			{
-				text: "Training provider"
-			},
-			value:
-			{
-				text: data['provider-name']
-			}
-		},
-		{
-			key: 
-			{
 				text: "Course"
 			},
 			value:
 			{
 				text: data['course-name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Training provider"
+			},
+			value:
+			{
+				text: data['provider-name']
 			}
 		},
 		{

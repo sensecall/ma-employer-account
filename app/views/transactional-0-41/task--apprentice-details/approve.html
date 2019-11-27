@@ -65,13 +65,13 @@
 					text: data['apprentice']['first-name'] + " " + data['apprentice']['last-name']
 				},
 				{
-					text: data['apprentice']['dob-day'] + " " + data['apprentice']['dob-month'] + " " + data['apprentice']['dob-year']
+					text: data['apprentice-dob-day'] + " " + data['apprentice-dob-month'] + " " + data['apprentice-dob-year']
 				},
 				{
-					text: data['start-date-month'] + " " + data['start-date-year'] + " " + data['finish-date-month'] + " " + data['finish-date-year']
+					text: data['apprenticeship-start-date-month'] + " " + data['apprenticeship-start-date-year'] + " " + data['apprenticeship-finish-date-month'] + " " + data['apprenticeship-finish-date-year']
 				},
 				{
-					text: "£" + data['cost']
+					text: "£" + data['apprenticeship']['cost']
 				}
 				],
 				[
@@ -81,7 +81,7 @@
 					colspan: 3
 				},
 				{
-					text: "£" + data['cost']
+					text: "£" + data['apprenticeship']['cost']
 				}
 				]
 				]
