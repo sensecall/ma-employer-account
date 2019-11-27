@@ -242,6 +242,7 @@ router.post('/task--recruitment/recruitment-check', (req, res) => {
 // vacancy name
 router.post('/task--recruitment/vacancy-name', (req, res) => {
 	if(req.session.data['vacancy-name']){
+		req.session.data['vacancy-status'] = 'submitted'
 		res.redirect('vacancy-created')
 	} else {
 		res.redirect('vacancy-name')

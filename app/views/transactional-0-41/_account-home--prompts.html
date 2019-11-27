@@ -235,6 +235,11 @@
 	<p>
 		You’ve added the following details:
 	</p>
+	{% set apprenticeName %}
+	{% if data['apprentice']['first-name'] and data['apprentice']['last-name'] %}
+	{{data['apprentice']['first-name']}} {{data['apprentice']['last-name']}}
+	{% endif %}
+	{% endset %}
 
 	{{ govukSummaryList({
 		rows:[
@@ -245,7 +250,7 @@
 			},
 			value:
 			{
-				text: data['apprentice']['first-name'] + ' ' + data['apprentice']['last-name']
+				text: apprenticeName or "Not added yet"
 			}
 		},
 		{
@@ -255,7 +260,7 @@
 			},
 			value:
 			{
-				text: data['course-name']
+				text: data['course-name'] or "Not added yet"
 			}
 		},
 		{
@@ -265,7 +270,7 @@
 			},
 			value:
 			{
-				text: data['provider-name']
+				text: data['provider-name'] or "Not added yet"
 			}
 		},
 		{
@@ -275,7 +280,7 @@
 			},
 			value: 
 			{
-				text: data['start-month']
+				text: data['start-month'] or "Not added yet"
 			}
 		},
 		{
@@ -285,7 +290,7 @@
 			},
 			value: 
 			{
-				text: data['finish-month']
+				text: data['finish-month'] or "Not added yet"
 			}
 		}]
 	})}}
@@ -293,8 +298,8 @@
 
 	<form method="post" action="set-up-an-apprenticeship">
 		{{govukButton({
-			text: "View apprentice details",
-			href: "task--recruitment/recruitment-start"
+			text: "Continue",
+			href: "task--apprentice-details/add-apprentice-details"
 		})}}
 	</form>
 </section>
