@@ -78,6 +78,14 @@ router.post('/set-up-an-apprenticeship', (req, res) => {
 
 // Eligibility
 router.post('/eligibility-course-provider', (req, res) => {
+	let course = req.session.data['course-name']
+	req.session.data['course-name'] = course.split("*")[1]
+	req.session.data['course-id'] = course.split("*")[0]
+
+	let provider = req.session.data['provider-name']
+	req.session.data['provider-name'] = provider.split("*")[0]
+	req.session.data['provider-ukprn'] = provider.split("*")[1]
+	
 	if (req.session.data['eligibility-course-provider'] == 'yes'){
 		res.redirect('eligibility-start-date')
 	} else {

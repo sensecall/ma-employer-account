@@ -19,6 +19,45 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
+			{% set courseHtml %}
+			<div class="govuk-form-group">
+				<label class="govuk-label" for="choose-apprenticeship">
+					Search for a course
+				</label>
+
+				<select id="course-name" name="course-name">
+					<option value=""></option>
+					{% for apprenticeship in data['apprenticeships'].apprenticeships %}
+					{% set optionValue %}{{apprenticeship.value}}*{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
+					<option value="{{optionValue}}" {{"selected" if optionValue === data['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#course-name" id="clear-search">Clear search</a>
+				</p>
+			</div>
+			{% endset %}
+
+			{% set providerHtml %}
+			<div class="govuk-form-group govuk-!-width-full">
+				<label class="govuk-label" for="choose-apprenticeship">
+					Search providers
+				</label>
+
+				<select id="provider-name" name="provider-name">
+					<option value=""></option>
+					{% for provider in data['providers'].providers %}
+					<option value="{{provider.name}}*{{provider.UKPRN}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#provider-name" id="clear-search">Clear search</a>
+				</p>
+			</div>
+			{% endset %}
+
 			{{ govukRadios({
 				idPrefix: "eligibility-course-provider",
 				name: "eligibility-course-provider",
@@ -33,12 +72,20 @@
 				},
 				items: [
 				{
-					value: "no",
-					text: "The training provider"
+					value: "provider-only",
+					text: "The training provider",
+					conditional:
+					{
+						html: providerHtml
+					}
 				},
 				{
-					value: "no",
-					text: "The apprenticeship training course"
+					value: "course-only",
+					text: "The apprenticeship training course",
+					conditional:
+					{
+						html: courseHtml
+					}
 				},
 				{
 					value: "yes",
@@ -57,4 +104,27 @@
 		</form>
 	</div>
 </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#course-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#provider-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#course-name').val("");
+		})
+	})
+</script>
 {% endblock %}

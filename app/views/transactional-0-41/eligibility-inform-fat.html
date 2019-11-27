@@ -17,10 +17,29 @@
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
+		{% if data['eligibility-course-provider'] == 'course-only' %}
+		<h1 class="govuk-heading-l">
+			You need to know the training provider 
+		</h1>
+		{% elif data['eligibility-course-provider'] == 'provider-only' %}
+		<h1 class="govuk-heading-l">
+			You need to know the course
+		</h1>
+		{% else %}
 		<h1 class="govuk-heading-l">
 			You need to know the training course and training provider 
 		</h1>
+		{% endif %}
 
+		{% if data['eligibility-course-provider'] == 'course-only' %}
+		<p>
+			Based on your answer, you need to choose the training provider who will deliver <b>{{data['course-name']}}</b>.
+		</p>
+		{% elif data['eligibility-course-provider'] == 'provider-only' %}
+		<p>
+			Based on your answer, you need to choose the course that the apprentice will take at <b>{{data['provider-name']}}</b>.
+		</p>
+		{% else %}
 		<p>
 			Based on your answer, you need to know the apprenticeship course and choose the training provider who will deliver the training.
 		</p>
@@ -28,11 +47,36 @@
 		<p>
 			You can use <a href="#">Find apprenticeship training</a> to:
 		</p>
+
 		<ul class="govuk-list govuk-list--bullet">
 			<li>search for apprenticeship training</li>
 			<li>find your training provider's contact details.</li>
 		</ul>
+		{% endif %}
 
+		{% if data['eligibility-course-provider'] == 'course-only' %}
+		{% set fatUrl %}https://findapprenticeshiptraining.apprenticeships.education.gov.uk/Apprenticeship/SearchForStandardProviders?standardId={{data['course-id']}}{% endset %}
+		{{govukButton({
+			text: "Find training provider",
+			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-1",
+			href: fatUrl,
+			attributes:
+			{
+				target: "_blank"
+			}
+		})}}
+		{% elif data['eligibility-course-provider'] == 'provider-only' %}
+		{% set fatUrl %}https://findapprenticeshiptraining.apprenticeships.education.gov.uk/Provider/{{data['provider-ukprn']}}{% endset %}
+		{{govukButton({
+			text: "Find course",
+			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-1",
+			href: fatUrl,
+			attributes:
+			{
+				target: "_blank"
+			}
+		})}}
+		{% else %}
 		{{govukButton({
 			text: "Find apprenticeship training",
 			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-1",
@@ -42,8 +86,9 @@
 				target: "_blank"
 			}
 		})}}
+		{% endif %}
 
-		<p class="govuk-!-font-size-16 govuk-!-margin-top-1">
+		<p class="govuk-!-font-size-14 govuk-!-margin-top-1" style="color: #777">
 			Opens in a new window or tab
 		</p>
 	</div>
