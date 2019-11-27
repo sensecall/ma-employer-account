@@ -167,38 +167,77 @@
 </section>
 <!-- END -->
 
-
-{% else %}
-<section class="govuk-!-padding-5" style="background: #f3f2f1">
+{% elif data['reservation-confirmed'] == 'true' and data['apprenticeship-status'] %}
+<section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
-		{% if data['started'] == 'true' %}
-		Your apprenticeship
-		{% else %}
-		Set up an apprenticeship
-		{% endif %}
+		Your apprentice
 	</h2>
 
-	{% if data['started'] == 'true' %}
-	{% include './_apprenticeship-table.html' %}
-	{% else %}
-	<p class="govuk-body-l">
-		You’ll need to choose a training provider, add the course details, reserve funding, find an apprentice and enter their details.
-	</p>
-	{% endif %}
+	{{ govukSummaryList({
+		rows:[
+		{
+			key: 
+			{
+				text: "Name"
+			},
+			value:
+			{
+				text: data['apprentice']['first-name'] + ' ' + data['apprentice']['last-name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Training provider"
+			},
+			value:
+			{
+				text: data['provider-name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Course"
+			},
+			value:
+			{
+				text: data['course-name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Start month"
+			},
+			value: 
+			{
+				text: data['start-month']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Finish month"
+			},
+			value: 
+			{
+				text: data['finish-month']
+			}
+		}]
+	})}}
+
 
 	<form method="post" action="set-up-an-apprenticeship">
-		{% if data['started'] == 'true' %}
 		{{govukButton({
-			text: "Continue setting up your apprenticeship"
+			text: "View apprentice details",
+			href: "task--recruitment/recruitment-start"
 		})}}
-		{% else %}
-		{{govukButton({
-			classes: 'govuk-button--start govuk-!-margin-bottom-2',
-			text: "Start now"
-		})}}
-		{% endif %}
 	</form>
 </section>
+<!-- END -->
 {% endif %}
+
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
 {% endif %}

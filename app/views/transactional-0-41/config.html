@@ -13,7 +13,7 @@ Prototype {{version}} config
 
 {% block content %}
 <div class="govuk-grid-row">
-	<form action="set-config" method="get">
+	<form method="post">
 		<div class="govuk-grid-column-two-thirds">
 			<h1 class="govuk-heading-l">
 				{{serviceName}}
@@ -30,44 +30,112 @@ Prototype {{version}} config
 				value: data['employer-name']
 			}) }}
 
+			<h3 class="govuk-heading-m">
+				Reservation
+			</h3>
+			{% set reserveHtml %}
+			<div class="govuk-form-group">
+				<label class="govuk-label" for="choose-apprenticeship">
+					Course
+				</label>
+
+				<select id="course-name" name="course-name">
+					<option value=""></option>
+					{% for apprenticeship in data['apprenticeships'].apprenticeships %}
+					{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
+					<option value="{{optionValue}}">{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#course-name" id="clear-search">Clear search</a>
+				</p>
+			</div>
+
 			{{ govukInput({
-				value: data['employer-email'],
+				value: data['start-month'],
 				label:
 				{
-					text: "Employer email"
+					text: "Start month"
+				},
+				classes: "govuk-!-width-one-third",
+				id: "start-month",
+				name: "start-month"
+			}) }}
+			{% endset -%}
+
+			{{ govukCheckboxes({
+				idPrefix: "reserved-funding",
+				name: "reserved-funding",
+				items:
+				[
+				{
+					value: "true",
+					text: "Reserved funding",
+					conditional:
+					{
+						html: reserveHtml
+					},
+					attributes:
+					{
+						checked: 'checked' if data['reserved-funding'] === 'true'
+					}
+				}
+				]
+			}) }}
+
+			<hr class="govuk-section-break govuk-section-break--xl">
+			<h3 class="govuk-heading-m">
+				Apprentice
+			</h3>
+			{% set apprenticeHtml %}
+			{{ govukInput({
+				value: data['apprentice']['first-name'],
+				label:
+				{
+					text: "First name"
 				},
 				classes: "govuk-!-width-two-thirds",
-				id: "employer-email",
-				name: "employer-email"
+				id: "start-month",
+				name: "apprentice[first-name]"
+			}) }}
+			{{ govukInput({
+				value: data['apprentice']['last-name'],
+				label:
+				{
+					text: "Last name"
+				},
+				classes: "govuk-!-width-two-thirds",
+				id: "start-month",
+				name: "apprentice[last-name]"
+			}) }}
+			{% endset -%}
+			
+			{{ govukCheckboxes({
+				idPrefix: "apprentice-added",
+				name: "apprentice-added",
+				items:
+				[
+				{
+					value: "true",
+					text: "Apprentice added",
+					conditional:
+					{
+						html: apprenticeHtml
+					},
+					attributes:
+					{
+						checked: 'checked' if data['reserved-funding'] === 'true'
+					}
+				}
+				]
 			}) }}
 
 			{{ govukInput({
-				value: data['employer-user-name'],
+				value: data['provider'],
 				label:
 				{
-					text: "Employer user name"
-				},
-				classes: "govuk-!-width-two-thirds",
-				id: "employer-user-name",
-				name: "employer-user-name"
-			}) }}
-
-
-			{{ govukInput({
-				value: data['provider-name'],
-				label:
-				{
-					text: "Provider name"
-				},
-				classes: "govuk-!-width-two-thirds",
-				id: "provider-name",
-				name: "provider-name"
-			}) }}
-			{{ govukInput({
-				value: data['provider-ukprn'],
-				label:
-				{
-					text: "Provider UKPRN"
+					text: "Provider"
 				},
 				classes: "govuk-!-width-one-third",
 				id: "provider-ukprn",
@@ -130,46 +198,6 @@ Prototype {{version}} config
 					attributes:
 					{
 						checked: 'checked' if data['sign-agreement-now'] == 'yes'
-					}
-				}
-				]
-			}) }}
-
-			{% set courseHtml %}
-			<div class="govuk-form-group">
-				<label class="govuk-label" for="choose-apprenticeship">
-					Search for a course
-				</label>
-
-				<select id="course-name" name="course-name">
-					<option value=""></option>
-					{% for apprenticeship in data['apprenticeships'].apprenticeships %}
-					{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
-					<option value="{{optionValue}}" {{"selected" if optionValue === data['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
-					{% endfor %}
-				</select>
-
-				<p class="govuk-!-margin-top-2">
-					<a href="#course-name" id="clear-search">Clear search</a>
-				</p>
-			</div>
-			{% endset -%}
-
-			{{ govukCheckboxes({
-				idPrefix: "reserved-funding",
-				name: "reserved-funding",
-				items:
-				[
-				{
-					value: "true",
-					text: "Reserved funding",
-					conditional:
-					{
-						html: courseHtml
-					},
-					attributes:
-					{
-						checked: 'checked' if data['reserved-funding'] === 'true'
 					}
 				}
 				]

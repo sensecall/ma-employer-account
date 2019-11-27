@@ -36,5 +36,18 @@ module.exports = {
 	'apprenticeships': apprenticeships,
 	'providers': providers,
 	'employer-name': "Aardvark Zebra Ltd",
-	'started': 'false'
+	'started': 'false',
+
+	// apprenticeship details
+	'apprentice': {
+		"first-name": "Jay",
+		"last-name": "Smith",
+		"cost": 1200
+	},
+	"apprentice-dob-day": "02",
+	"apprentice-dob-month": "02",
+	"apprentice-dob-year": "2001",
+	"start-month": "February 2020",
+	"finish-month": "March 2022",
+	"provider-name": "COVENTRY COLLEGE"
 }

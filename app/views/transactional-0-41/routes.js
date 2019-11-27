@@ -8,14 +8,23 @@ function deleteData(req,param){
 
 
 // config
-router.get('/set-config', (req, res) => {
+router.post('/config', (req, res) => {
+	let d = req.session.data
+	req.session.data = {}
+	req.session.data = d
+
 	if(req.session.data['reserved-funding'] == 'true'){
 		req.session.data['reservation-confirmed'] = 'true'
-		req.session.data['start-month'] = 'January 2020'
 	} else {
 		delete req.session.data['reservation-confirmed']
 		delete req.session.data['course-name']
 		delete req.session.data['start-month']
+	}
+
+	if(req.session.data['apprentice-added'] == 'true'){
+		req.session.data['apprenticeship-status'] = 'live'
+	} else {
+		req.session.data['apprentice'] = ''
 	}
 
 	if(req.session.data['logged-in'] == 'true'){
