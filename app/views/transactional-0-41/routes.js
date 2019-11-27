@@ -16,9 +16,9 @@ router.get('/config', (req, res) => {
 
 router.post('/config', (req, res) => {
 	if(req.session.data['reserved-funding'] == 'true'){
-		req.session.data['reservation-confirmed'] = 'true'
+		req.session.data['reserved-funding'] = 'true'
 	} else {
-		delete req.session.data['reservation-confirmed']
+		delete req.session.data['reserved-funding']
 		delete req.session.data['course-name']
 		delete req.session.data['start-month']
 	}
@@ -165,7 +165,7 @@ router.post('/task--reserve-funding/choose-start-month', (req, res) => {
 
 router.post('/task--reserve-funding/confirm-reservation-details', (req, res) => {
 	if (req.session.data['confirm-reservation-details'] == 'yes'){
-		req.session.data['reservation-confirmed'] = 'true'
+		req.session.data['reserved-funding'] = 'true'
 		req.session.data['alert-text'] = 'You have reserved funds for apprenticeship training'
 		res.redirect('reservation-success')
 	} else {
@@ -267,7 +267,7 @@ router.post('/task--apprentice-details/confirm-provider', (req, res) => {
 
 router.post('/task--apprentice-details/permission', (req, res) => {
 	if(req.session.data['add-permissions'] == 'employer'){
-		if(req.session.data['eligibility-recruit'] == 'existing' || req.session.data['reservation-confirmed'] != 'true'){
+		if(req.session.data['eligibility-recruit'] == 'existing' || req.session.data['reserved-funding'] != 'true'){
 			res.redirect('../task--reserve-funding/choose-course')
 		} else {
 			res.redirect('add-apprentice-details')
