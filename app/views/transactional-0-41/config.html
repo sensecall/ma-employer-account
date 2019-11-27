@@ -86,9 +86,68 @@ Prototype {{version}} config
 
 			<hr class="govuk-section-break govuk-section-break--xl">
 			<h3 class="govuk-heading-m">
-				Apprentice
+				Vacancy & recruitment
 			</h3>
-			{% set apprenticeHtml %}
+			{{ govukSelect({
+				id: "vacancy-status",
+				name: "vacancy-status",
+				classes: "govuk-!-width-full",
+				label:
+				{
+					text: "Vacancy status"
+				},
+				items: [
+				{
+					value: "not-started",
+					text: "Not started"
+				},
+				{
+					value: "draft",
+					text: "Draft"
+				},
+				{
+					value: "submitted",
+					text: "Submitted"
+				},
+				{
+					value: "live",
+					text: "Live"
+				}
+				]
+			}) }}
+
+			<hr class="govuk-section-break govuk-section-break--xl">
+			<h3 class="govuk-heading-m">
+				Add & approve
+			</h3>
+			{% set apprenticeshipHtml %}
+			{{ govukSelect({
+				id: "apprenticeship-status",
+				name: "apprenticeship-status",
+				classes: "govuk-!-width-full",
+				label:
+				{
+					text: "Apprenticeship status"
+				},
+				items: [
+				{
+					value: "draft",
+					text: "Draft"
+				},
+				{
+					value: "with-provider",
+					text: "With provider"
+				},
+				{
+					value: "live",
+					text: "Live"
+				}
+				]
+			}) }}
+
+			<h3 class="govuk-heading-s">
+				Apprentice details
+			</h3>
 			{{ govukInput({
 				value: data['apprentice']['first-name'],
 				label:
@@ -112,16 +171,16 @@ Prototype {{version}} config
 			{% endset -%}
 			
 			{{ govukCheckboxes({
-				idPrefix: "apprentice-added",
-				name: "apprentice-added",
+				idPrefix: "started-add-approve",
+				name: "started-add-approve",
 				items:
 				[
 				{
 					value: "true",
-					text: "Apprentice added",
+					text: "Started adding details",
 					conditional:
 					{
-						html: apprenticeHtml
+						html: apprenticeshipHtml
 					},
 					attributes:
 					{
@@ -131,21 +190,9 @@ Prototype {{version}} config
 				]
 			}) }}
 
-			{{ govukInput({
-				value: data['provider'],
-				label:
-				{
-					text: "Provider"
-				},
-				classes: "govuk-!-width-one-third",
-				id: "provider-ukprn",
-				name: "provider-ukprn"
-			}) }}
-
-			{{ govukButton({
-				text: "Continue"
-			}) }}
-
+			{{govukButton({
+				text: "Save"
+			})}}
 		</div>
 
 		<div class="govuk-grid-column-one-third">
@@ -199,34 +246,6 @@ Prototype {{version}} config
 					{
 						checked: 'checked' if data['sign-agreement-now'] == 'yes'
 					}
-				}
-				]
-			}) }}
-
-			{{ govukSelect({
-				id: "vacancy-status",
-				name: "vacancy-status",
-				classes: "govuk-!-width-full",
-				label:
-				{
-					text: "Vacancy status"
-				},
-				items: [
-				{
-					value: "not-started",
-					text: "Not started"
-				},
-				{
-					value: "draft",
-					text: "Draft"
-				},
-				{
-					value: "submitted",
-					text: "Submitted"
-				},
-				{
-					value: "live",
-					text: "Live"
 				}
 				]
 			}) }}

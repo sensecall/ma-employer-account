@@ -8,17 +8,25 @@ function deleteData(req,param){
 
 
 // config
-router.post('/config', (req, res) => {
-	let d = req.session.data
-	req.session.data = {}
-	req.session.data = d
 
+router.get('/config', (req, res) => {
+	req.session.data = {}
+	res.render(`${req.version}/config`)
+})
+
+router.post('/config', (req, res) => {
 	if(req.session.data['reserved-funding'] == 'true'){
 		req.session.data['reservation-confirmed'] = 'true'
 	} else {
 		delete req.session.data['reservation-confirmed']
 		delete req.session.data['course-name']
 		delete req.session.data['start-month']
+	}
+
+	if(req.session.data['started-add-approve']){
+		
+	} else {
+		delete req.session.data['apprenticeship-status']
 	}
 
 	if(req.session.data['apprentice-added'] == 'true'){
