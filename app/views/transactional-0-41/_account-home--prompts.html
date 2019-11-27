@@ -21,6 +21,7 @@
 	</div>
 </div>
 {% endif %}
+<!-- END -->
 
 <!-- SIGN AGREEMENT -->
 {% if data['sign-agreement-now'] != 'yes' and data['add-paye-now'] == 'yes' %}
@@ -45,11 +46,20 @@
 	</div>
 </div>
 {% endif %}
+<!-- END -->
 
-<!-- START -->
+
+<!-- START CTA LOGIC -->
+<!-- ADDED PAYE, SIGNED AGREEMENT and NON-LEVY -->
 {% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['employer-type'] != 'levy' %}
 
-{% if data['reservation-confirmed'] == 'true' and not data['vacancy-created'] %}
+<!-- NEW EMPLOYEE -->
+{% if data['eligibility-recruit'] == 'new' %}
+{% endif %}
+<!-- END -->
+
+<!-- RESERVED AND NOT CREATED VACANCY AND NO APPRENTICE DETAILS ADDED -->
+{% if data['reservation-confirmed'] == 'true' and not data['vacancy-created'] and not data['apprenticeship-status'] %}
 <section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
 		Your apprenticeship
@@ -83,19 +93,17 @@
 		}]
 	})}}
 
-
 	<form method="post" action="set-up-an-apprenticeship">
 		{{govukButton({
-			text: "Create an advert for this apprenticeship",
-			href: "task--recruitment/recruitment-start"
+			text: "Continue setting up your apprenticeship",
+			href: "continue-set-up"
 		})}}
-
-		<p>
-			You can <a href="task--apprentice-details/add-apprentice-details">Add your apprentice's details</a> now if you don't need to create an apprenticeship vacancy.
-		</p>
 	</form>
 </section>
-{% elif data['reservation-confirmed'] == 'true' and data['vacancy-created'] %}
+<!-- END -->
+
+<!-- RESERVED AND CREATED VACANCY BUT NO DETAILS ADDED -->
+{% elif data['reservation-confirmed'] == 'true' and data['vacancy-created'] and not data['apprenticeship-status'] %}
 <section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
 		Your apprenticeship
@@ -157,6 +165,9 @@
 		})}}
 	</form>
 </section>
+<!-- END -->
+
+
 {% else %}
 <section class="govuk-!-padding-5" style="background: #f3f2f1">
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">

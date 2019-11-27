@@ -18,7 +18,7 @@
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<form action="approve">
+		<form method="post">
 			<h2 class="govuk-heading-xl">
 				Add apprentice details
 			</h2>
@@ -54,8 +54,8 @@
 				{
 					text: "First name"
 				},
-				id: "first-name",
-				name: "first-name",
+				id: "apprentice[first-name]",
+				name: "apprentice[first-name]",
 				classes: "govuk-input--width-20"
 			}) }}
 
@@ -64,15 +64,15 @@
 				{
 					text: "Last name"
 				},
-				id: "last-name",
-				name: "last-name",
+				id: "apprentice[last-name]",
+				name: "apprentice[last-name]",
 				classes: "govuk-input--width-20"
 			}) }}
 			{% endcall %}
 
 			{{ govukDateInput({
-				id: "dob",
-				namePrefix: "dob",
+				id: "apprentice[dob]",
+				namePrefix: "apprentice[dob]",
 				fieldset:
 				{
 					legend:
@@ -119,8 +119,8 @@
 
 
 			{{ govukDateInput({
-				id: "start-date",
-				namePrefix: "start-date",
+				id: "apprenticeship[start-date]",
+				namePrefix: "apprenticeship[start-date]",
 				fieldset:
 				{
 					legend:
@@ -150,8 +150,8 @@
 			}) }}
 
 			{{ govukDateInput({
-				id: "finish-date",
-				namePrefix: "finish-date",
+				id: "apprenticeship[finish-date]",
+				namePrefix: "apprenticeship[finish-date]",
 				fieldset:
 				{
 					legend:
@@ -192,8 +192,8 @@
 				{
 					text: "Enter the price, including any end-point assessment costs, in whole pounds. For example, for £1,500 enter 1500"
 				},
-				id: "cost",
-				name: "cost"
+				id: "apprenticeship[cost]",
+				name: "apprenticeship[cost]"
 			}) }}
 
 			{{ govukInput({
@@ -206,8 +206,8 @@
 				{
 					html: "You can add a reference, such as employee number or location."
 				},
-				id: "reference",
-				name: "reference"
+				id: "apprenticeship[reference]",
+				name: "apprenticeship[reference]"
 			}) }}
 
 			<p>

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% set serviceName %}
-Configure prototype
+Prototype {{version}} config
 {% endset %}
 
 {% block beforeContent %}
@@ -15,7 +15,7 @@ Configure prototype
 <div class="govuk-grid-row">
 	<form action="set-config" method="get">
 		<div class="govuk-grid-column-two-thirds">
-			<h1 class="govuk-heading-xl">
+			<h1 class="govuk-heading-l">
 				{{serviceName}}
 			</h1>
 
@@ -85,7 +85,7 @@ Configure prototype
 				legend:
 				{
 					text: "Scenarios",
-					classes: "govuk-fieldset__legend--l",
+					classes: "govuk-fieldset__legend--m",
 					isPageHeading: true
 				}
 			}) %}
@@ -96,7 +96,11 @@ Configure prototype
 				[
 				{
 					value: "true",
-					text: "Logged in"
+					text: "Logged in",
+					attributes:
+					{
+						checked: 'checked' if data['logged-in'] == 'true'
+					}
 				}
 				]
 			}) }}
@@ -107,7 +111,11 @@ Configure prototype
 				[
 				{
 					value: "yes",
-					text: "Added PAYE"
+					text: "Added PAYE",
+					attributes:
+					{
+						checked: 'checked' if data['add-paye-now'] == 'yes'
+					}
 				}
 				]
 			})}}
@@ -118,40 +126,102 @@ Configure prototype
 				[
 				{
 					value: "yes",
-					text: "Signed agreement"
+					text: "Signed agreement",
+					attributes:
+					{
+						checked: 'checked' if data['sign-agreement-now'] == 'yes'
+					}
 				}
 				]
 			}) }}
 
-			{% set textHtml %}
-			{{ govukInput({
-				id: "contact-by-text",
-				name: "contact-by-text",
-				type: "tel",
-				classes: "govuk-!-width-full",
-				label: {
-				text: "Select course"
-			}
-		}) }}
-		{% endset -%}
+			{% set courseHtml %}
+			<div class="govuk-form-group">
+				<label class="govuk-label" for="choose-apprenticeship">
+					Search for a course
+				</label>
 
-		{{ govukCheckboxes({
-			idPrefix: "citizenship-conditional",
-			name: "citizen",
-			items:
-			[
-			{
-				value: "text message",
-				text: "Chosen course",
-				conditional:
+				<select id="course-name" name="course-name">
+					<option value=""></option>
+					{% for apprenticeship in data['apprenticeships'].apprenticeships %}
+					{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
+					<option value="{{optionValue}}" {{"selected" if optionValue === data['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#course-name" id="clear-search">Clear search</a>
+				</p>
+			</div>
+			{% endset -%}
+
+			{{ govukCheckboxes({
+				idPrefix: "reserved-funding",
+				name: "reserved-funding",
+				items:
+				[
 				{
-					html: textHtml
+					value: "true",
+					text: "Reserved funding",
+					conditional:
+					{
+						html: courseHtml
+					},
+					attributes:
+					{
+						checked: 'checked' if data['reserved-funding'] === 'true'
+					}
 				}
-			}
-			]
-		}) }}
-		{% endcall %}
-	</div>
-</form>
+				]
+			}) }}
+
+			{{ govukSelect({
+				id: "vacancy-status",
+				name: "vacancy-status",
+				classes: "govuk-!-width-full",
+				label:
+				{
+					text: "Vacancy status"
+				},
+				items: [
+				{
+					value: "not-started",
+					text: "Not started"
+				},
+				{
+					value: "draft",
+					text: "Draft"
+				},
+				{
+					value: "submitted",
+					text: "Submitted"
+				},
+				{
+					value: "live",
+					text: "Live"
+				}
+				]
+			}) }}
+			{% endcall %}
+		</div>
+	</form>
 </div>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#course-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#course-name').val("");
+		})
+	})
+</script>
 {% endblock %}

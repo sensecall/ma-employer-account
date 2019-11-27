@@ -9,6 +9,15 @@ function deleteData(req,param){
 
 // config
 router.get('/set-config', (req, res) => {
+	if(req.session.data['reserved-funding'] == 'true'){
+		req.session.data['reservation-confirmed'] = 'true'
+		req.session.data['start-month'] = 'January 2020'
+	} else {
+		delete req.session.data['reservation-confirmed']
+		delete req.session.data['course-name']
+		delete req.session.data['start-month']
+	}
+
 	if(req.session.data['logged-in'] == 'true'){
 		res.redirect(`/${req.version}/account-home`)
 	} else {
@@ -18,7 +27,7 @@ router.get('/set-config', (req, res) => {
 
 // Home page redirect
 router.get('/', (req, res) => {
-	res.redirect(`/${req.version}/service-start`)
+	res.redirect(`/${req.version}/config`)
 })
 
 // add paye external linking
@@ -105,6 +114,14 @@ router.post('/eligibility-recruit', (req, res) => {
 	res.redirect('eligibility-start')
 })
 
+// continue set up
+router.post('/continue-set-up', (req, res) => {
+	if (req.session.data['continue-set-up'] == 'no'){
+		res.redirect('task--apprentice-details/add-apprentice-details')
+	} else {
+		res.redirect('task--recruitment/recruitment-start')
+	}
+})
 
 // Questions
 router.post('/task--reserve-funding/choose-course', (req, res) => {
@@ -241,6 +258,11 @@ router.post('/task--apprentice-details/permission', (req, res) => {
 	} else {
 		res.redirect('permission')
 	}
+})
+
+router.post('/task--apprentice-details/add-apprentice-details', (req, res) => {
+	req.session.data['apprenticeship-status'] = 'draft'
+	res.redirect('approve')
 })
 
 router.post('/task--apprentice-details/approve', (req, res) => {

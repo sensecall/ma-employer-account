@@ -62,10 +62,10 @@
 				rows: [
 				[
 				{
-					text: data['first-name'] + " " + data['last-name']
+					text: data['apprentice']['first-name'] + " " + data['apprentice']['last-name']
 				},
 				{
-					text: data['dob-day'] + " " + data['dob-month'] + " " + data['dob-year']
+					text: data['apprentice']['dob-day'] + " " + data['apprentice']['dob-month'] + " " + data['apprentice']['dob-year']
 				},
 				{
 					text: data['start-date-month'] + " " + data['start-date-year'] + " " + data['finish-date-month'] + " " + data['finish-date-year']
@@ -120,7 +120,7 @@
 			})}}
 
 			<p>
-				<a href="#">Save and exit</a>
+				<a href="/{{version}}/account-home">Save and exit</a>
 			</p>
 		</form>
 	</div>

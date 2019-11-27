@@ -27,6 +27,11 @@ module.exports = {
 	'signAgreementURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/registration/agreement',
 	'recruitmentURL': 'https://esfa:educ4tion@das-registration-prototype.herokuapp.com/recruitment/recruitment',
 	
+	// states
+	'add-paye-now': 'yes',
+	'sign-agreement-now': 'yes',
+	'reserved-funding': '',
+
 	// Other
 	'apprenticeships': apprenticeships,
 	'providers': providers,

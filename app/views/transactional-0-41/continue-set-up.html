@@ -20,25 +20,25 @@
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			{{ govukRadios({
-				idPrefix: "eligibility-recruit",
-				name: "eligibility-recruit",
+				idPrefix: "continue-set-up",
+				name: "continue-set-up",
 				fieldset:
 				{
 					legend:
 					{
-						text: "Are you setting this apprenticeship up for an existing employee?",
+						text: "Do you need to create a vacancy for this apprenticeship?",
 						isPageHeading: true,
-						classes: "govuk-fieldset__legend--l govuk-!-margin-top-6"
+						classes: "govuk-fieldset__legend--l govuk-!-margin-top-4"
 					}
 				},
 				items: [
 				{
-					value: "existing",
+					value: "yes",
 					text: "Yes"
 				},
 				{
-					value: "new",
-					text: "No - I’m going to hire someone new"
+					value: "no",
+					text: "No"
 				}
 				]
 			}) }}
