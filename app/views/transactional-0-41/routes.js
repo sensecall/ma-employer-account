@@ -19,8 +19,7 @@ router.post('/config', (req, res) => {
 		req.session.data['reserved-funding'] = 'true'
 	} else {
 		delete req.session.data['reserved-funding']
-		delete req.session.data['course-name']
-		delete req.session.data['start-month']
+		delete req.session.data['reservation']
 	}
 
 	if(req.session.data['started-add-approve']){

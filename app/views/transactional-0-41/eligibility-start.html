@@ -23,51 +23,48 @@
 		</h1>
 
 		<p>
-			Based on your answers, you're setting up an apprenticeship for an existing employee.
+			We’ll ask you to:
 		</p>
-
-		<h2 class="govuk-heading-m">
-			What you'll need:
-		</h2>
-
 		<ul class="govuk-list govuk-list--bullet">
-			<li>the apprenticeship training course name</li>
-			<li>the month the apprentice will start their training</li>
-			<li>the name of your chosen training provider</li>
-			<li>your employee's name</li>
-			<li>your employee's date of birth</li>
-			<li>the cost of the apprenticeship training, which you've agreed with your training provider</li>
+			<li>reserve funding for apprenticeship training and assessment (if you have not already)</li>
+			<li>add the apprentice’s details</li>
 		</ul>
 
-		<p class="govuk-inset-text">
-			It takes about 15 minutes to add the details needed to set up your employee's apprenticeship.
+		<h2 class="govuk-heading-m">
+			What you'll need
+		</h2>
+		<p>
+			You’ll need to know:
 		</p>
+		<ul class="govuk-list govuk-list--bullet">
+			<li>the name of the apprenticeship training course</li>
+			<li>which month the apprentice will start their training</li>
+			<li>your training provider’s UK Provider Reference Number (UKPRN)</li>
+			<li>the apprentice’s name and date of birth</li>
+			<li>the cost of the apprenticeship training (as agreed with your training provider)</li>
+		</ul>
 
 		{{govukButton({
 			text: "Continue",
 			classes: "govuk-!-margin-top-6",
 			href: "task--apprentice-details/start"
 		})}}
-		
+
 		{% else %}
-		
+
 		<h1 class="govuk-heading-l">
 			Set up an apprenticeship for a new employee
 		</h1>
-		
-		<p>
-			Based on your answers, you're setting up an apprenticeship for a new apprentice.
-		</p>
 
 		<h2 class="govuk-heading-m">
-			What you'll need:
+			What you'll need to do:
 		</h2>
 
-		<ul class="govuk-list govuk-list--bullet">
-			<li>the apprenticeship training course name</li>
-			<li>the month the apprentice will start their training</li>
-			<li>the name of your chosen training provider</li>
-		</ul>
+		<ol class="govuk-list govuk-list--number">
+			<li>Reserve funding for apprenticeship training and assessment.</li>
+			<li>Create a vacancy (if you want to advertise your apprenticeship).</li>
+			<li>Add the apprentice’s details.</li>
+		</ol>
 
 		{{govukButton({
 			text: "Continue",

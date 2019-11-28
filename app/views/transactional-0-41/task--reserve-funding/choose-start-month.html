@@ -19,7 +19,7 @@
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			{{ govukRadios({
-				idPrefix: "reservation-start-month-",
+				idPrefix: "reservation-start-month",
 				name: "reservation[start-month]",
 				fieldset:
 				{
@@ -38,17 +38,17 @@
 				{
 					value: "January 2020",
 					text: "January 2020",
-					checked: data['start-month'] === 'January 2020'
+					checked: data['reservation']['start-month'] === 'January 2020'
 				},
 				{
 					value: "February 2020",
 					text: "February 2020",
-					checked: data['start-month'] === 'February 2020'
+					checked: data['reservation']['start-month'] === 'February 2020'
 				},
 				{
 					value: "March 2020",
 					text: "March 2020",
-					checked: data['start-month'] === 'March 2020'
+					checked: data['reservation']['start-month'] === 'March 2020'
 				}
 				]
 			}) }}
