@@ -17,11 +17,11 @@
 
 {% set courseHtml %}
 <div class="govuk-form-group">
-	<label class="govuk-label" for="choose-apprenticeship">
+	<label class="govuk-label" for="course-name">
 		Search for a course
 	</label>
 
-	<select id="course-name" name="course-name">
+	<select id="course-name" name="reservation[course-name]">
 		<option value=""></option>
 		{% for apprenticeship in data['apprenticeships'].apprenticeships %}
 		{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}

@@ -19,7 +19,6 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
-			{% set radio %}
 			{{ govukRadios({
 				idPrefix: "eligibility-start-date",
 				name: "eligibility-start-date",
@@ -48,9 +47,6 @@
 				}
 				]
 			}) }}
-			{% endset %}
-
-			{{radio}}
 
 			{{govukButton({
 				text: "Continue"

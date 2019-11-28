@@ -21,43 +21,21 @@
 				{
 					key:
 					{
-						text: "Apprenticeship training start date"
+						text: "Apprenticeship training course"
 					},
 					value:
 					{
-						html: "January 2020"
-					},
-					actions:
-					{
-						items:
-						[
-						{
-							href: "choose-start-month",
-							text: "Change",
-							visuallyHiddenText: "apprenticeship training start date"
-						}
-						]
+						html: data['reservation']['course-name']
 					}
 				},
 				{
 					key:
 					{
-						text: "Apprenticeship training course"
+						text: "Apprenticeship training start date"
 					},
 					value:
 					{
-						html: data['course-name']
-					},
-					actions:
-					{
-						items:
-						[
-						{
-							href: "choose-course",
-							text: "Change",
-							visuallyHiddenText: "apprenticeship training course"
-						}
-						]
+						html: data['reservation']['start-month']
 					}
 				}
 				]
