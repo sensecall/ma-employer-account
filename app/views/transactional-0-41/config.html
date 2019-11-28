@@ -178,29 +178,95 @@ Prototype {{version}} config
 				]
 			}) }}
 
-			<h3 class="govuk-heading-s">
+			<h3 class="govuk-heading-s govuk-!-margin-bottom-2">
 				Apprentice details
 			</h3>
-			{{ govukInput({
-				value: data['apprentice']['first-name'],
-				label:
-				{
-					text: "First name"
-				},
-				classes: "govuk-!-width-two-thirds",
-				id: "start-month",
-				name: "apprentice[first-name]"
-			}) }}
-			{{ govukInput({
-				value: data['apprentice']['last-name'],
-				label:
-				{
-					text: "Last name"
-				},
-				classes: "govuk-!-width-two-thirds",
-				id: "start-month",
-				name: "apprentice[last-name]"
-			}) }}
+			<div class="govuk-grid-row govuk-!-margin-bottom-6">
+				<div class="govuk-grid-column-one-half">
+					{{ govukInput({
+						value: data['apprentice']['first-name'],
+						label:
+						{
+							text: "First name"
+						},
+						classes: "govuk-!-width-two-thirds",
+						id: "start-month",
+						name: "apprentice[first-name]"
+					}) }}
+				</div>
+				<div class="govuk-grid-column-one-half">
+					{{ govukInput({
+						value: data['apprentice']['last-name'],
+						label:
+						{
+							text: "Last name"
+						},
+						classes: "govuk-!-width-full",
+						id: "start-month",
+						name: "apprentice[last-name]"
+					}) }}
+				</div>
+			</div>
+
+			<div class="govuk-grid-row govuk-!-margin-bottom-6">
+				<div class="govuk-grid-column-one-half">
+					{{ govukDateInput({
+						id: "apprenticeship-start-date",
+						namePrefix: "apprenticeship-start-date",
+						fieldset:
+						{
+							legend:
+							{
+								text: "Planned training start date",
+								isPageHeading: false,
+								classes: "govuk-fieldset__legend--s"
+							}
+						},
+						items:
+						[
+						{
+							name: "month",
+							id: "month",
+							classes: "govuk-input--width-3"
+						},
+						{
+							name: "year",
+							id: "year",
+							classes: "govuk-input--width-5"
+						}
+						]
+					}) }}
+				</div>
+
+				<div class="govuk-grid-column-one-half">
+					{{ govukDateInput({
+						id: "apprenticeship-finish-date",
+						namePrefix: "apprenticeship-finish-date",
+						fieldset:
+						{
+							legend:
+							{
+								text: "Planned training end date",
+								isPageHeading: false,
+								classes: "govuk-fieldset__legend--s"
+							}
+						},
+						items:
+						[
+						{
+							name: "month",
+							id: "month",
+							classes: "govuk-input--width-3"
+						},
+						{
+							name: "year",
+							id: "year",
+							classes: "govuk-input--width-5"
+						}
+						]
+					}) }}
+				</div>
+			</div>
 			{% endset -%}
 
 			{{ govukCheckboxes({

@@ -256,23 +256,9 @@ Not added yet
 		Continue setting up an apprenticeship
 	</h2>
 
-	<p>
-		You’ve added the following details:
-	</p>
-
 	{{ govukSummaryList({
 		classes: 'govuk-!-margin-bottom-4',
 		rows:[
-		{
-			key: 
-			{
-				text: "Name"
-			},
-			value:
-			{
-				text: apprenticeName
-			}
-		},
 		{
 			key: 
 			{
@@ -292,20 +278,23 @@ Not added yet
 			{
 				text: data['provider-name'] or "Not added yet"
 			}
+		},
+		{
+			key: 
+			{
+				text: "Status"
+			},
+			value:
+			{
+				html: '<span class="govuk-tag" style="background: #888">Draft</span>'
+			}
 		}]
 	})}}
 
-	<p class="govuk-!-margin-top-2">
-		You still need to add information to this apprentice record.
-	</p>
-
-
-	<form method="post" action="set-up-an-apprenticeship">
-		{{govukButton({
-			text: "Continue",
-			href: "task--apprentice-details/add-apprentice-details"
-		})}}
-	</form>
+	{{govukButton({
+		text: "Add more details",
+		href: "task--apprentice-details/add-apprentice-details"
+	})}}
 </section>
 {% endif %}
 <!-- END -->

@@ -58,38 +58,26 @@
 		{% set fatUrl %}https://findapprenticeshiptraining.apprenticeships.education.gov.uk/Apprenticeship/SearchForStandardProviders?standardId={{data['course-id']}}{% endset %}
 		{{govukButton({
 			text: "Find training provider",
-			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-1",
-			href: fatUrl,
-			attributes:
-			{
-				target: "_blank"
-			}
+			classes: "govuk-!-margin-top-4",
+			href: fatUrl
 		})}}
 		{% elif data['eligibility-course-provider'] == 'provider-only' %}
 		{% set fatUrl %}https://findapprenticeshiptraining.apprenticeships.education.gov.uk/Provider/{{data['provider-ukprn']}}{% endset %}
 		{{govukButton({
 			text: "Find course",
-			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-1",
-			href: fatUrl,
-			attributes:
-			{
-				target: "_blank"
-			}
+			classes: "govuk-!-margin-top-4",
+			href: fatUrl
 		})}}
 		{% else %}
 		{{govukButton({
 			text: "Find apprenticeship training",
-			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-1",
-			href: "https://findapprenticeshiptraining.apprenticeships.education.gov.uk/",
-			attributes:
-			{
-				target: "_blank"
-			}
+			classes: "govuk-!-margin-top-4",
+			href: "https://findapprenticeshiptraining.apprenticeships.education.gov.uk/"
 		})}}
 		{% endif %}
 
-		<p class="govuk-!-font-size-14 govuk-!-margin-top-1" style="color: #777">
-			Opens in a new window or tab
+		<p class="govuk-!-margin-top-">
+			<a href="account-home">Return to account homepage</a>
 		</p>
 	</div>
 

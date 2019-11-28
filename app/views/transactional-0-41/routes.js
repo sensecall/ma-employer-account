@@ -287,7 +287,7 @@ router.post('/task--apprentice-details/add-apprentice-details', (req, res) => {
 
 router.post('/task--apprentice-details/approve', (req, res) => {
 	if(req.session.data['approve-details'] == 'yes'){
-		req.session.data['apprenticeship-status'] = 'submitted'
+		req.session.data['apprenticeship-status'] = 'live'
 		res.redirect('submitted')
 	} else {
 		res.redirect('approve')
