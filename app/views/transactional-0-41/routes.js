@@ -34,7 +34,6 @@ router.post('/config', (req, res) => {
 		
 	} else {
 		delete req.session.data['vacancy']
-		delete req.session.data['vacancy-status']
 	}
 
 	if(req.session.data['logged-in'] == 'true'){
@@ -146,10 +145,10 @@ router.post('/continue-set-up', (req, res) => {
 router.post('/task--reserve-funding/choose-course', (req, res) => {
 	req.session.data['started'] == 'true'
 	
-	if (req.session.data['know-course'] == 'yes' && req.session.data['course-name']){
+	if (req.session.data['know-course'] == 'yes' && req.session.data['reservation']['course-name']){
 		res.redirect('choose-start-month')
 	} else {
-		req.session.data['course-name'] = ''
+		delete req.session.data['reservation']['course-name']
 		res.redirect('course-warning')
 	}
 })
@@ -157,10 +156,10 @@ router.post('/task--reserve-funding/choose-course', (req, res) => {
 router.post('/task--reserve-funding/choose-start-month', (req, res) => {
 	req.session.data['started'] == 'true'
 
-	if (req.session.data['start-month']){
+	if (req.session.data['reservation']['start-month']){
 		res.redirect('confirm-reservation-details')
 	} else {
-		req.session.data['start-month'] = ''
+		delete req.session.data['reservation']
 		res.redirect('start-month-warning')
 	}
 })
@@ -236,15 +235,16 @@ router.post('/task--recruitment/recruitment-check', (req, res) => {
 	} else {
 		req.session.data['started'] == 'true'
 		req.session.data['vacancy-created'] = 'n/a'
-		delete req.session.data['vacancy-name']
+		delete req.session.data['vacancy']['name']
 		res.redirect('../task--apprentice-details/apprentice-details-check')
 	}
 })
 
 // vacancy name
 router.post('/task--recruitment/vacancy-name', (req, res) => {
-	if(req.session.data['vacancy-name']){
-		req.session.data['vacancy-status'] = 'submitted'
+	if(req.session.data['vacancy']['name']){
+		req.session.data['vacancy']['end-date'] = '20 January 2020'
+		req.session.data['vacancy']['status'] = 'live'
 		res.redirect('vacancy-created')
 	} else {
 		res.redirect('vacancy-name')

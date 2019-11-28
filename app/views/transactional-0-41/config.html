@@ -87,23 +87,23 @@ Prototype {{version}} config
 				},
 				classes: "govuk-!-width-full",
 				id: "vacancy-name",
-				name: "vacancy-name"
+				name: "vacancy[name]"
 			}) }}
 
 			{{ govukInput({
-				value: data['vacancy-end-date'],
+				value: data['vacancy']['end-date'],
 				label:
 				{
 					text: "Vacancy end date"
 				},
 				classes: "govuk-!-width-two-thirds",
 				id: "vacancy-end-date",
-				name: "vacancy-end-date"
+				name: "vacancy[end-date]"
 			}) }}
 
 			{{ govukSelect({
 				id: "vacancy-status",
-				name: "vacancy-status",
+				name: "vacancy[status]",
 				classes: "govuk-!-width-one-third",
 				label:
 				{
@@ -126,14 +126,14 @@ Prototype {{version}} config
 			}) }}
 
 			{{ govukInput({
-				value: data['vacancy-applications'],
+				value: data['vacancy']['applications'],
 				label:
 				{
 					text: "Number of applications"
 				},
 				classes: "govuk-input--width-2",
 				id: "vacancy-applications",
-				name: "vacancy-applications"
+				name: "vacancy[applications]"
 			}) }}
 			{% endset %}
 
