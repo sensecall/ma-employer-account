@@ -110,7 +110,7 @@
 					<option value=""></option>
 					{% for apprenticeship in data['apprenticeships'].apprenticeships %}
 					{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
-					<option value="{{optionValue}}" {{"selected" if optionValue === data['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+					<option value="{{optionValue}}" {{"selected" if optionValue === data['reservation']['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -133,12 +133,14 @@
 				{
 					name: "month",
 					id: "month",
-					classes: "govuk-input--width-2"
+					classes: "govuk-input--width-2",
+					value: data['reservation']['start-month']|date().format('MM')
 				},
 				{
 					name: "year",
 					id: "year",
-					classes: "govuk-input--width-4"
+					classes: "govuk-input--width-4",
+					value: data['reservation']['start-month']|date().format('YYYY')
 				}
 				],
 				hint:

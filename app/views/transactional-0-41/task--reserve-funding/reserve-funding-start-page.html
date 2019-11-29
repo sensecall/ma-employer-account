@@ -16,24 +16,25 @@
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<h1 class="govuk-heading-xl">
-			Reserve funding to train and assess an apprentice
-		</h1>
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Reserve funding to train and assess an apprentice
+			</h1>
 
-		<p>
-			To reserve funding, you will need:
-		</p>
+			<p>
+				To reserve funding, you will need:
+			</p>
 
-		<ul class="govuk-list govuk-list--bullet">
-			<li>the month you expect the apprenticeship training to start</li>
-			<li>the <a href="#">apprenticeship training course</a> the apprentice will take, which can be changed later</li>
-		</ul>
+			<ul class="govuk-list govuk-list--bullet">
+				<li>the month you expect the apprenticeship training to start</li>
+				<li>the <a href="#">apprenticeship training course</a> the apprentice will take, which can be changed later</li>
+			</ul>
 
-		{{govukButton({
-			text: "Reserve funding",
-			classes: "govuk-!-margin-top-6",
-			href: "choose-course"
-		})}}
+			{{govukButton({
+				text: "Reserve funding",
+				classes: "govuk-!-margin-top-6"
+			})}}
+		</form>
 	</div>
 </div>
 {% endblock %}

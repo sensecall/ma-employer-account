@@ -1,3 +1,6 @@
+const moment = require('moment')
+const numeralFilter = require('nunjucks-numeral-filter');
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -5,7 +8,7 @@ module.exports = function (env) {
    * gov.uk core filters by creating filter methods of the same name.
    * @type {Object}
    */
-  var filters = {}
+   var filters = {}
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
@@ -36,14 +39,22 @@ module.exports = function (env) {
     For more on filters and how to write them see the Nunjucks
     documentation.
 
-  ------------------------------------------------------------------ */
+    ------------------------------------------------------------------ */
+
+    filters.date = function(date,format) {
+      return moment(date).format(format)
+    }
+
+    filters.addToDate = function(date,q,m) {
+      return moment(date).add(q,m)
+    }
+
+    env.addFilter('numeral', numeralFilter);
 
 
-  
 
-  
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
-  ------------------------------------------------------------------ */
-  return filters
-}
+    ------------------------------------------------------------------ */
+    return filters
+  }

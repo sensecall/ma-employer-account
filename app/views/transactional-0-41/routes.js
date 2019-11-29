@@ -32,7 +32,7 @@ router.post('/config', (req, res) => {
 	if(req.session.data['started-vacancy']){
 		
 	} else {
-		delete req.session.data['vacancy']
+		req.session.data['vacancy'] = {}
 	}
 
 	if(req.session.data['logged-in'] == 'true'){
@@ -101,6 +101,12 @@ router.post('/set-up-an-apprenticeship', (req, res) => {
 	}
 })
 
+// recruit to add
+router.post('/recruit-to-add', (req, res) => {
+	req.session.data['apprentice'] = {}
+	res.redirect('task--apprentice-details/add-apprentice-details')
+})
+
 
 // Eligibility
 router.post('/eligibility-course-provider', (req, res) => {
@@ -134,10 +140,18 @@ router.post('/eligibility-recruit', (req, res) => {
 // continue set up
 router.post('/continue-set-up', (req, res) => {
 	if (req.session.data['continue-set-up'] == 'no'){
-		res.redirect('task--apprentice-details/add-apprentice-details')
+		req.session.data['apprentice'] = {}
+		res.redirect('task--apprentice-details/start')
 	} else {
 		res.redirect('task--recruitment/recruitment-start')
 	}
+})
+
+
+// Reserve funding
+router.post('/task--reserve-funding/reserve-funding-start-page', (req, res) => {
+	delete req.session.data['reservation']
+	res.redirect('choose-course')
 })
 
 // Questions
@@ -298,19 +312,25 @@ router.post('/task--apprentice-details/approve', (req, res) => {
 router.post('/whats-next', (req, res) => {
 	let userAction = req.session.data['whats-next']
 	if(userAction == 'set-permissions'){
-		deleteData(req,'whats-next')
+		delete req.session.data['whats-next']
 		res.redirect('task--training-provider/provider-permissions')
 	} else if(userAction == 'add-another'){
-		deleteData(req,'whats-next')
+		delete req.session.data['whats-next']
 		res.redirect('task--training-provider/choose-provider')
 	} else if(userAction == 'add-apprentice-details'){
-		deleteData(req,'whats-next')
-		res.redirect('task--apprentice-details/add-apprentice-details')
+		delete req.session.data['whats-next']
+		req.session.data['apprentice'] = {}
+
+		if(req.session.data['eligibility-recruit'] == 'existing'){
+			res.redirect('task--apprentice-details/add-apprentice-details')
+		} else {
+			res.redirect('task--apprentice-details/start')
+		}
 	} else if(userAction == 'recruit'){
-		deleteData(req,'whats-next')
+		delete req.session.data['whats-next']
 		res.redirect('task--recruitment/recruitment-start')
 	} else {
-		deleteData(req,'whats-next')
+		delete req.session.data['whats-next']
 		res.redirect('account-home')
 	}
 })
