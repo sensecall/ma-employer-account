@@ -105,7 +105,7 @@ router.post('/set-up-an-apprenticeship', (req, res) => {
 // recruit to add
 router.post('/recruit-to-add', (req, res) => {
 	req.session.data['apprentice'] = {}
-	res.redirect('task--apprentice-details/add-apprentice-details')
+	res.redirect('task--apprentice-details/start')
 })
 
 

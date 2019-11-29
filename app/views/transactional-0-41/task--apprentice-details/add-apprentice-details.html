@@ -75,6 +75,7 @@
 			{{ govukDateInput({
 				id: "apprentice-dob",
 				namePrefix: "apprentice-dob",
+				value: data['apprentice-dob'],
 				fieldset:
 				{
 					legend:
@@ -134,13 +135,13 @@
 					name: "month",
 					id: "month",
 					classes: "govuk-input--width-2",
-					value: data['reservation']['start-month']|date().format('MM')
+					value: data['apprenticeship-start-date-month'] or data['reservation']['start-month']|date().format('MM')
 				},
 				{
 					name: "year",
 					id: "year",
 					classes: "govuk-input--width-4",
-					value: data['reservation']['start-month']|date().format('YYYY')
+					value: data['apprenticeship-start-date-year'] or data['reservation']['start-month']|date().format('YYYY')
 				}
 				],
 				hint:
