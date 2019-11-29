@@ -33,6 +33,7 @@ router.post('/config', (req, res) => {
 		
 	} else {
 		req.session.data['vacancy'] = {}
+		delete req.session.data['vacancy']
 	}
 
 	if(req.session.data['logged-in'] == 'true'){

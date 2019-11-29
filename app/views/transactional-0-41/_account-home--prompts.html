@@ -59,7 +59,7 @@
 <!-- END -->
 
 <!-- RESERVED AND NOT CREATED VACANCY AND NO APPRENTICE DETAILS ADDED -->
-{% if data['reserved-funding'] == 'true' and not data['vacancy'].length and not data['apprenticeship-status'] %}
+{% if data['reserved-funding'] == 'true' and not data['vacancy'] and not data['apprenticeship-status'] %}
 <section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
 		Continue setting up an apprenticeship
@@ -103,7 +103,7 @@
 <!-- END -->
 
 <!-- RESERVED AND CREATED VACANCY BUT NO DETAILS ADDED -->
-{% elif data['reserved-funding'] == 'true' and data['vacancy'].length and not data['apprenticeship-status'] %}
+{% elif data['reserved-funding'] == 'true' and data['vacancy'] and not data['apprenticeship-status'] %}
 <section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
 		Your apprenticeship advert
