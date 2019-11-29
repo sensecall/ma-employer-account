@@ -25,7 +25,10 @@ router.post('/config', (req, res) => {
 	if(req.session.data['started-add-approve']){
 		
 	} else {
-		delete req.session.data['apprentice']
+		req.session.data['apprentice'] = ''
+		req.session.data['apprentice-dob-day'] = ''
+		req.session.data['apprentice-dob-month'] = ''
+		req.session.data['apprentice-dob-year'] = ''
 		delete req.session.data['apprenticeship-status']
 	}
 
@@ -151,7 +154,7 @@ router.post('/continue-set-up', (req, res) => {
 
 // Reserve funding
 router.post('/task--reserve-funding/reserve-funding-start-page', (req, res) => {
-	delete req.session.data['reservation']
+	req.session.data['reservation']['course-name'] = ''
 	res.redirect('choose-course')
 })
 

@@ -41,7 +41,7 @@ Prototype {{version}} config
 					<option value=""></option>
 					{% for apprenticeship in data['apprenticeships'].apprenticeships %}
 					{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
-					<option value="{{optionValue}}">{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+					<option value="{{optionValue}}" {{"selected" if optionValue === data['reservation']['course-name']}}>{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
 					{% endfor %}
 				</select>
 
@@ -51,7 +51,7 @@ Prototype {{version}} config
 			</div>
 
 			{{ govukInput({
-				value: data['reservation']['start-month'],
+				value: data['reservation']['start-month'] or "February 2020",
 				label:
 				{
 					text: "Start month"
@@ -80,7 +80,7 @@ Prototype {{version}} config
 			
 			{% set vacancyHtml %}
 			{{ govukInput({
-				value: data['vacancy']['name'],
+				value: data['vacancy']['name'] or "Junior Business Administration apprenticeship",
 				label:
 				{
 					text: "Vacancy title"
