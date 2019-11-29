@@ -175,7 +175,7 @@ Not added yet
 
 {% set finishMonth %}
 {% if data['apprenticeship-finish-date-month'] and data['apprenticeship-finish-date-year'] %}
-{{data['apprenticeship-finish-date-month']}} {{data['apprenticeship-finish-date-year']}}
+{{data['apprenticeship-finish-date-month']|date().format('MMMM')}} {{data['apprenticeship-finish-date-year']}}
 {% else %}
 Not added yet
 {% endif %}

@@ -300,6 +300,14 @@ router.post('/task--apprentice-details/add-apprentice-details', (req, res) => {
 })
 
 router.post('/task--apprentice-details/approve', (req, res) => {
+	req.session.data['apprentice']['first-name'] = req.session.data['apprentice']['first-name'] || 'Jo'
+	req.session.data['apprentice']['last-name'] = req.session.data['apprentice']['last-name'] || 'Smith'
+	req.session.data['apprentice-dob-day'] = req.session.data['apprentice-dob-day'] || '21'
+	req.session.data['apprentice-dob-month'] = req.session.data['apprentice-dob-month'] || '11'
+	req.session.data['apprentice-dob-year'] = req.session.data['apprentice-dob-year'] || '1999'
+	req.session.data['apprenticeship-finish-date-month'] = req.session.data['apprenticeship-finish-date-month'] || '03'
+	req.session.data['apprenticeship-finish-date-year'] = req.session.data['apprenticeship-finish-date-year'] || '2022'
+
 	if(req.session.data['approve-details'] == 'yes'){
 		req.session.data['apprenticeship-status'] = 'live'
 		res.redirect('submitted')

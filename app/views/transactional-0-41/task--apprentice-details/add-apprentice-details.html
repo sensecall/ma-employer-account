@@ -85,6 +85,27 @@
 						classes: "govuk-fieldset__legend--s"
 					}
 				},
+				items:
+				[
+				{
+					name: "day",
+					id: "day",
+					classes: "govuk-input--width-2",
+					value: data['apprentice-dob-day']
+				},
+				{
+					name: "month",
+					id: "month",
+					classes: "govuk-input--width-2",
+					value: data['apprentice-dob-month']
+				},
+				{
+					name: "year",
+					id: "year",
+					classes: "govuk-input--width-4",
+					value: data['apprentice-dob-year']
+				}
+				],
 				hint:
 				{
 					text: "For example, 31 3 1980"
@@ -167,12 +188,14 @@
 				{
 					name: "month",
 					id: "month",
-					classes: "govuk-input--width-2"
+					classes: "govuk-input--width-2",
+					value: data['apprenticeship-finish-date-month']
 				},
 				{
 					name: "year",
 					id: "year",
-					classes: "govuk-input--width-4"
+					classes: "govuk-input--width-4",
+					value: data['apprenticeship-finish-date-year']
 				}
 				],
 				hint:
