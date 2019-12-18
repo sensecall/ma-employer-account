@@ -161,6 +161,7 @@ router.post('/task--reserve-funding/reserve-funding-start-page', (req, res) => {
 // Questions
 router.post('/task--reserve-funding/choose-course', (req, res) => {
 	req.session.data['started'] == 'true'
+	req.session.data['reservation']['start-month'] == ''
 	
 	if (req.session.data['know-course'] == 'yes' && req.session.data['reservation']['course-name']){
 		res.redirect('choose-start-month')
@@ -172,6 +173,7 @@ router.post('/task--reserve-funding/choose-course', (req, res) => {
 
 router.post('/task--reserve-funding/choose-start-month', (req, res) => {
 	req.session.data['started'] == 'true'
+	req.session.data['reservation']['end-month'] = moment(req.session.data['reservation']['start-month']).add(2,'months').format('MMMM YYYY')
 
 	if (req.session.data['reservation']['start-month']){
 		res.redirect('confirm-reservation-details')

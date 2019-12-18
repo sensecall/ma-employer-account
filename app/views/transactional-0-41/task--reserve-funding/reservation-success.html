@@ -3,7 +3,8 @@
 {% block header %}
 {% include "includes/cookie-banner.html" %}
 {% include "includes/ma-header.html" %}
-<!-- {% include "includes/ma-navbar.html" %} -->
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
 {% endblock %}
 
 {% block content %}
@@ -15,27 +16,58 @@
 				titleText: "You have successfully reserved funding for apprenticeship training"
 			}) }}
 
+			{% set courseHtml %}
+			{{data['reservation']['course-name']}}
+			<br>
+			{{ govukDetails({
+				summaryText: "Can I change the course?",
+				text: "You can change the course when you add an apprentice's details."
+			}) }}
+			{% endset %}
+
 			{{ govukSummaryList({
 				rows:
 				[
 				{
 					key:
 					{
-						text: "Apprenticeship training course"
+						text: "Employer"
 					},
 					value:
 					{
-						html: data['reservation']['course-name']
+						html: data['employer-name']
+					},
+					actions:
+					{
+						items: []
 					}
 				},
 				{
 					key:
 					{
-						text: "Apprenticeship training start date"
+						text: "Apprenticeship start date"
 					},
 					value:
 					{
-						html: data['reservation']['start-month']
+						html: data['reservation']['start-month'] + " to " + data['reservation']['end-month']
+					},
+					actions:
+					{
+						items: []
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship training"
+					},
+					value:
+					{
+						html: courseHtml
+					},
+					actions:
+					{
+						items: []
 					}
 				}
 				]

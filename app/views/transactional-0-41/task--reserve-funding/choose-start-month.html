@@ -3,7 +3,8 @@
 {% block header %}
 {% include "includes/cookie-banner.html" %}
 {% include "includes/ma-header.html" %}
-<!-- {% include "includes/ma-navbar.html" %} -->
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -54,7 +55,7 @@
 			}) }}
 
 			{{govukButton({
-				text: "Continue"
+				text: "Save and continue"
 			})}}
 		</form>
 	</div>

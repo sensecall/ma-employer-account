@@ -3,7 +3,8 @@
 {% block header %}
 {% include "includes/cookie-banner.html" %}
 {% include "includes/ma-header.html" %}
-<!-- {% include "includes/ma-navbar.html" %} -->
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -32,7 +33,42 @@
 				{
 					key:
 					{
-						text: "Apprenticeship training course"
+						text: "Employer"
+					},
+					value:
+					{
+						html: data['employer-name']
+					},
+					actions:
+					{
+						items: []
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship start date"
+					},
+					value:
+					{
+						html: data['reservation']['start-month'] + " to " + data['reservation']['end-month']
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-start-month",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training start date"
+						}
+						]
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship training"
 					},
 					value:
 					{
@@ -46,27 +82,6 @@
 							href: "choose-course",
 							text: "Change",
 							visuallyHiddenText: "apprenticeship training course"
-						}
-						]
-					}
-				},
-				{
-					key:
-					{
-						text: "Apprenticeship training start date"
-					},
-					value:
-					{
-						html: data['reservation']['start-month']
-					},
-					actions:
-					{
-						items:
-						[
-						{
-							href: "choose-start-month",
-							text: "Change",
-							visuallyHiddenText: "apprenticeship training start date"
 						}
 						]
 					}
