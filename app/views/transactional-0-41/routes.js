@@ -19,7 +19,10 @@ router.post('/config', (req, res) => {
 		req.session.data['reserved-funding'] = 'true'
 	} else {
 		delete req.session.data['reserved-funding']
+		req.session.data['reserved-funding'] = 'false'
+
 		delete req.session.data['reservation']
+		req.session.data['reservation'] = []
 	}
 
 	if(req.session.data['started-add-approve']){
@@ -154,6 +157,7 @@ router.post('/continue-set-up', (req, res) => {
 
 // Reserve funding
 router.post('/task--reserve-funding/reserve-funding-start-page', (req, res) => {
+	req.session.data['reservation'] = {}
 	req.session.data['reservation']['course-name'] = ''
 	res.redirect('choose-course')
 })
