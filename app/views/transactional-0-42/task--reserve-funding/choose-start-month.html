@@ -31,31 +31,27 @@
 						classes: "govuk-fieldset__legend--xl"
 					}
 				},
-				hint:
-				{
-					text: "The apprentice can start their apprenticeship training anytime in the month you choose, or the following 2 months."
-				},
 				items: [
 				{
-					value: "January 2020",
-					text: "January 2020",
+					value: "Between January and March 2020",
+					text: "Between January and March 2020",
 					checked: data['reservation']['start-month'] === 'January 2020'
 				},
 				{
-					value: "February 2020",
-					text: "February 2020",
+					value: "Between February and April 2020",
+					text: "Between February and April 2020",
 					checked: data['reservation']['start-month'] === 'February 2020'
 				},
 				{
-					value: "March 2020",
-					text: "March 2020",
+					value: "Between March and May 2020",
+					text: "Between March and May 2020",
 					checked: data['reservation']['start-month'] === 'March 2020'
 				}
 				]
 			}) }}
 
 			{{govukButton({
-				text: "Save and continue"
+				text: "Continue"
 			})}}
 		</form>
 	</div>
