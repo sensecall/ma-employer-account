@@ -18,8 +18,22 @@ GOV.UK Prototype Kit
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<h3 class="govuk-heading-l">
-			<span class="govuk-tag" style="background: green">Testing</span> Transactional
+			Transactional journey
+			<span class="govuk-caption-l">Currently being tested</span>
 		</h3>
+
+		<div class="govuk-!-margin-top-5 govuk-!-margin-bottom-5">
+			<p class="govuk-!-margin-bottom-0"><span class="govuk-tag">Current</span></p>
+			<h3 class="govuk-heading-m">
+				<a href="transactional-0-42">Version 0-42</a>
+				<span class="govuk-caption-m govuk-!-margin-top-2">20th January 2020</span>
+			</h3>
+		</div>
+
+		<h3 class="govuk-heading-m">
+			Other
+		</h3>
+
 		<ul class="govuk-list">
 			<li>
 				<a href="transactional-0-1">Version 0-1</a> (skip to <a href="transactional-0-1/task-list">task list</a>)
@@ -36,15 +50,24 @@ GOV.UK Prototype Kit
 			<li>
 				<a href="transactional-0-5/config">Version 0-5</a> (account setup <a href="transactional-0-5/account-home?add-paye-now=yes&sign-agreement-now=yes&reserved-funding=&employer-type=non-levy&return-to-task-list=false">link</a>)
 			</li>
-			<li class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
-				<span class="govuk-tag">Current</span>&nbsp;&nbsp; <b><a href="transactional-0-41">Version 0-41</a></b>
+			<li>
+				<a href="transactional-0-41">Version 0-41</a>
 			</li>
 		</ul>
 
 		<hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
 
-		<h3 class="govuk-heading-l">
-			Based on interim design
+		{{ govukWarningText({
+			text: "Everything below this point has been superseded by new designs",
+			iconFallbackText: "Warning"
+		}) }}
+
+		<h2 class="govuk-heading-l">
+			Archived
+		</h2>
+
+		<h3 class="govuk-heading-m">
+			<span class="govuk-tag" style="background: crimson">Archived</span>&nbsp;&nbsp;Based on interim design
 		</h3>
 
 		<ul class="govuk-list govuk-list--bullet">
@@ -76,11 +99,6 @@ GOV.UK Prototype Kit
 		<h3 class="govuk-heading-m">
 			<span class="govuk-tag" style="background: crimson">Archived</span>&nbsp;&nbsp;Based on panel design
 		</h3>
-
-		{{ govukWarningText({
-			text: "For reference only – superseded by new designs",
-			iconFallbackText: "Warning"
-		}) }}
 
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-one-half">

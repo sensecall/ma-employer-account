@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Recruitment
+		</h1>
+
+		<p class="govuk-body-l">
+			Recruit an apprentice by creating a vacancy. Vacancies will be advertised on <a href="https://www.gov.uk/apply-apprenticeship" target="_blank">Find an apprenticeship</a>.
+		</p>
+
+		<h2 class="govuk-heading-m">
+			What you will need
+		</h2>
+
+		<p>
+			Before you create your vacancy, you’ll need to choose appropriate <a href="#">apprenticeship training</a> and get some information from your training provider. If you don’t have a training provider yet, you can <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/" target="_blank">find a provider</a>.
+		</p>
+
+		<p>
+			You’ll need the following:
+		</p>
+
+		<ul class="govuk-list--bullet govuk-list">
+			<li>The name of the apprenticeship training</li>
+			<li>The training provider ID (UKPRN)</li>
+			<li>The duration of the apprenticeship</li>
+			<li>The amount of hours spent working and training</li>
+			<li>The amount you’d like to pay your apprentice</li>
+		</ul>
+
+		<p class="govuk-inset-text">
+			It should take no longer than 30 minutes to create your first vacancy
+		</p>
+
+		{% set recruitUrl %}https://esfa:educ4tion@das-recruit-prototype.herokuapp.com/raa-v2/0-2-1/testing/create/title?training_level={{data['course-name']}}&change=yes&VacancyId=00000000-0000-0000-0000-000000000000&clientsFilter=new&has_training_provider=yes&newProviderName={{data['provider-name']}}&providerName={{data['provider-name']}}&UKPRN=10030120&hasError=true{% endset %}
+
+		{{govukButton({
+			text: "Start now",
+			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-2 govuk-button--start",
+			href: "vacancy-name"
+		})}}
+	</div>
+</div>
+{% endblock %}

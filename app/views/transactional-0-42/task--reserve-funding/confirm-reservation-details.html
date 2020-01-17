@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% set panelHtml %}
+			<h2 class="govuk-heading-xl govuk-!-margin-bottom-0" style="text-align: center;">Apprenticeship funding is available to train and assess your apprentice</h2>
+			{% endset %}
+
+			{%- from "../macros/alert.njk" import appAlert %}
+			{{ appAlert({
+				titleHtml: panelHtml
+			}) }}
+
+			{{ govukSummaryList({
+				rows:
+				[
+				{
+					key:
+					{
+						text: "Employer"
+					},
+					value:
+					{
+						html: data['employer-name']
+					},
+					actions:
+					{
+						items: []
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship start date"
+					},
+					value:
+					{
+						html: data['reservation']['start-month'] + " to " + data['reservation']['end-month']
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-start-month",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training start date"
+						}
+						]
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship training"
+					},
+					value:
+					{
+						html: data['reservation']['course-name']
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-course",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training course"
+						}
+						]
+					}
+				}
+				]
+			}) }}
+
+			{{ govukRadios({
+				idPrefix: "confirm-reservation-details",
+				name: "confirm-reservation-details",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you want to reserve funding now?",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--m govuk-!-margin-top-4"
+					}
+				},	
+				items: [
+				{
+					value: "yes",
+					text: "Yes, reserve funding now"
+				},
+				{
+					value: "no",
+					text: "No, return to account"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Confirm"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}
