@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Reserve funding to train and assess an apprentice
+			</h1>
+
+			<p>
+				Apprenticeship funding can pay for part or all of the cost of training and assessing an apprentice (up to the funding band maximum). You may need to pay up to 5% of the total cost.
+			</p>
+
+			<p>
+				You need to reserve funding to guarantee that we'll be able to pay your training provider for apprenticeship training and assessment.
+			</p>
+
+			<p>
+				You'll need to know:
+			</p>
+
+			<ul class="govuk-list govuk-list--bullet">
+				<li>approximately when you expect the apprenticeship training to start</li>
+				<li>the <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/" target="_blank">apprenticeship training course</a> the apprentice will take</li>
+			</ul>
+
+			{{govukButton({
+				text: "Continue",
+				classes: "govuk-!-margin-top-6"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}
