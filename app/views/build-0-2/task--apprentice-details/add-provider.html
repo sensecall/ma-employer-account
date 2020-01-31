@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form action="confirm-provider">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Add training provider details",
+					classes: "govuk-fieldset__legend--xl",
+					isPageHeading: true
+				}
+			}) %}
+
+			{{ govukInput({
+				label:
+				{
+					text: "UK Provider Reference Number",
+					classes: "govuk-!-font-weight-bold govuk-!-margin-bottom-4 govuk-!-margin-top-5"
+				},
+				name: "ukprn",
+				id: "ukprn",
+				maxlength: 100,
+				rows: 1
+			}) }}
+			{% endcall %}
+
+			<input name="provider-name" value="COVENTRY COLLEGE" type="hidden">
+
+			{{ govukDetails({
+				summaryText: "What is a UK Provider Reference Number?",
+				text: "A UK Provider Reference Number (UKPRN) is a unique, 8-digit number that identifies a training provider. Your training provider can tell you their UKPRN."
+			}) }}
+
+			{{govukButton({
+				text: "Save and continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

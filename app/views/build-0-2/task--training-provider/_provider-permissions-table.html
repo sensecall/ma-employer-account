@@ -1,0 +1,62 @@
+<h2 class="govuk-heading-m">
+	Reserve funding and add apprentice records
+</h2>
+
+<p class="govuk-body">
+	With your permission, training providers can reserve funding and add apprentice records on your behalf.
+</p>
+
+<div class="govuk-form-group">
+	<div class="govuk-radios">
+		<div class="govuk-radios__item">
+			<input class="govuk-radios__input" id="permission-reserve-funding" name="provider-permissions[permission-reserve-funding]" type="radio" value="yes" {{"checked" if data['provider-permissions']['permission-reserve-funding'] == "yes"}}>
+			<label class="govuk-label govuk-radios__label" for="permission-reserve-funding">
+				Allow
+			</label>
+		</div>
+
+		<div class="govuk-radios__item">
+			<input class="govuk-radios__input" id="permission-reserve-funding-2" name="provider-permissions[permission-reserve-funding]" type="radio" value="no" {{"checked" if data['provider-permissions']['permission-reserve-funding'] == "no"}}>
+			<label class="govuk-label govuk-radios__label" for="permission-reserve-funding-2">
+				Do not allow
+			</label>
+		</div>
+	</div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h2 class="govuk-heading-m">
+	Recruit apprentices
+</h2>
+
+<p class="govuk-body">
+	With your permission, training providers can create and manage vacancies, and also receive and manage applications on your behalf. 
+</p>
+
+<div class="govuk-form-group">
+	<div class="govuk-radios">
+		<div class="govuk-radios__item">
+			<input class="govuk-radios__input" id="permission-recruit-apprentices" name="provider-permissions[permission-recruit-apprentices]" type="radio" value="yes" {{"checked" if data['provider-permissions']['permission-recruit-apprentices'] == "yes"}}>
+			<label class="govuk-label govuk-radios__label" for="permission-recruit-apprentices">
+				Allow
+			</label>
+		</div>
+
+		<div class="govuk-radios__item">
+			<input class="govuk-radios__input" id="permission-recruit-apprentices-2" name="provider-permissions[permission-recruit-apprentices]" type="radio" value="yes-1" {{"checked" if data['provider-permissions']['permission-recruit-apprentices'] == "yes-1"}}>
+			<label class="govuk-label govuk-radios__label" for="permission-recruit-apprentices-2">
+				Allow, but review vacancies before they go live
+			</label>
+		</div>
+
+		<div class="govuk-radios__item">
+			<input class="govuk-radios__input" id="permission-recruit-apprentices-3" name="provider-permissions[permission-recruit-apprentices]" type="radio" value="no" {{"checked" if data['provider-permissions']['permission-recruit-apprentices'] == "no"}}>
+			<label class="govuk-label govuk-radios__label" for="permission-recruit-apprentices-3">
+				Do not allow
+			</label>
+		</div>
+	</div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">

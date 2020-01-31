@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl govuk-!-margin-bottom-6 govuk-!-margin-top-6">
+			You've logged out
+		</h1>
+
+		<p>
+			{{govukButton({
+				text: "Continue",
+				href: "service-start"
+			})}}
+		</p>
+	</div>
+
+	<div class="govuk-grid-column-one-third">
+	</div>
+</div>
+{% endblock %}

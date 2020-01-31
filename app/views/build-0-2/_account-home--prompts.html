@@ -20,6 +20,7 @@
 		</section>
 	</div>
 </div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 {% endif %}
 <!-- END -->
 
@@ -45,6 +46,7 @@
 		</section>
 	</div>
 </div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 {% endif %}
 <!-- END -->
 
@@ -100,64 +102,156 @@
 		})}}
 	</form>
 </section>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 <!-- END -->
 
 <!-- RESERVED AND CREATED VACANCY BUT NO DETAILS ADDED -->
 {% elif data['reserved-funding'] == 'true' and data['vacancy'] and not data['apprenticeship-status'] %}
-<!-- <section>
-	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
-		Your apprenticeship advert
-	</h2>
+<!-- DO NOTHING -->
 
-	<p class="govuk-!-margin-bottom-2">
-		You have created a vacancy for your apprenticeship.
-	</p>
+{% elif data['reserved-funding'] == 'true' and data['apprenticeship-status'] %}
+{% set apprenticeName %}
+{% if data['apprentice']['first-name'] and data['apprentice']['last-name'] %}
+{{data['apprentice']['first-name']}} {{data['apprentice']['last-name']}}
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
+{% set startMonth %}
+{% if data['apprenticeship-start-date-month'] and data['apprenticeship-start-date-year'] %}
+{{data['apprenticeship-start-date-month']|date().format('MMMM')}} {{data['apprenticeship-start-date-year']}}
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
+{% set finishMonth %}
+{% if data['apprenticeship-finish-date-month'] and data['apprenticeship-finish-date-year'] %}
+{{data['apprenticeship-finish-date-month']|date().format('MMMM')}} {{data['apprenticeship-finish-date-year']}}
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
+{% if data['apprenticeship-status'] == 'live' %}
+<section>
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Your apprentice
+	</h2>
 
 	{{ govukSummaryList({
 		rows:[
 		{
 			key: 
 			{
-				text: "Title"
+				text: "Name"
 			},
 			value:
 			{
-				text: data['vacancy']['name']
+				text: apprenticeName
 			}
 		},
 		{
 			key: 
 			{
-				text: "Closing date"
+				text: "Training provider"
 			},
-			value: 
+			value:
 			{
-				text: data['vacancy']['end-date']
+				text: data['provider-name']
 			}
 		},
 		{
 			key: 
 			{
-				text: "Applications"
+				text: "Course"
+			},
+			value:
+			{
+				text: data['course-name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Start month"
 			},
 			value: 
 			{
-				html: '<a href="#">'+data['vacancy']['applications']+' applications</a>' if data['vacancy']['applications'] else '<a href="#">No applications yet</a>'
+				text: startMonth
+			}
+		},
+		{
+			key: 
+			{
+				text: "Finish month"
+			},
+			value: 
+			{
+				text: finishMonth
 			}
 		}]
 	})}}
 
 
-	<form method="post" action="recruit-to-add">
+	<form method="post" action="set-up-an-apprenticeship">
 		{{govukButton({
-			text: "Add apprentice details"
+			text: "View apprentice details",
+			href: "#"
 		})}}
 	</form>
-</section> -->
+</section>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+{% else %}
+<section>
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Continue setting up an apprenticeship
+	</h2>
+
+	{{ govukSummaryList({
+		classes: 'govuk-!-margin-bottom-4',
+		rows:[
+		{
+			key: 
+			{
+				text: "Course"
+			},
+			value:
+			{
+				text: data['course-name'] or "Not added yet"
+			}
+		},
+		{
+			key: 
+			{
+				text: "Training provider"
+			},
+			value:
+			{
+				text: data['provider-name'] or "Not added yet"
+			}
+		},
+		{
+			key: 
+			{
+				text: "Status"
+			},
+			value:
+			{
+				html: '<span class="govuk-tag" style="background: #888">Draft</span>'
+			}
+		}]
+	})}}
+
+	{{govukButton({
+		text: "Add more details",
+		href: "task--apprentice-details/add-apprentice-details"
+	})}}
+</section>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+{% endif %}
 <!-- END -->
-
-{% elif data['reserved-funding'] == 'true' and data['apprenticeship-status'] %}
-
 
 {% else %}
 <section class="govuk-!-padding-5" style="background: #f3f2f1">
@@ -172,13 +266,9 @@
 	{{govukButton({
 		text: "Start now",
 		classes: "govuk-button--start",
-		href: "task--reserve-funding/reserve-funding-start-page"
+		href: "eligibility-course-provider"
 	})}}
 </section>
-{% endif %}
-
-{% if data['vacancy'] or data['apprentice'] %}
-{% else %}
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 {% endif %}
 

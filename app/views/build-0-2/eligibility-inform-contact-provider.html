@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-l">
+			You cannot set up an apprenticeship yet
+		</h1>
+
+		<p>
+			You must know the approximate training start date before you can reserve funding for apprenticeship training and assessment.
+		</p>
+
+		<p>
+			Ask your training provider when the apprenticeship training will start. You can get their contact details from <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/">find apprenticeship training</a>.
+		</p>
+
+		{{govukButton({
+			text: "Return to account home",
+			classes: "govuk-!-margin-top-4",
+			href: "account-home"
+		})}}
+	</div>
+</div>
+{% endblock %}

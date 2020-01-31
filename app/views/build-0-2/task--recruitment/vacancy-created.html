@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-l">
+			{{data['vacancy']['name']}}
+		</h1>
+
+		<form method="post" action="../whats-next">
+			{% set panelHtml %}
+			<h2 class="govuk-heading-xl govuk-!-margin-bottom-4" style="text-align: center">
+				Permissions updated
+			</h2>
+			<p style="text-align: center">
+				You've successfully updated permissions for <b>{{data['provider-name']}}</b>.<br>
+				This training provider will receive notification shortly.
+			</p>
+			{% endset %}
+
+			{{ govukPanel({
+				titleText: "Vacancy submitted for approval",
+				html: "The vacancy reference number is
+				<b>VAC1000006124</b>"
+			}) }}
+
+			<h2 class="govuk-heading-m">
+				Next steps
+			</h2>
+
+			<p>
+				We’ll check the vacancy and tell you within one working day on the dashboard if you need to make any edits. Visit <a href="#">Manage your recruitment emails</a> if you’d also like to get an email.
+			</p>
+
+			<p>
+				When the vacancy is approved, it will appear on the Find an apprenticeship service.
+			</p>
+
+			{{govukButton({
+				text: "Return to dashboard",
+				href: "../recruit-dashboard"
+			})}}
+
+			<p>
+				<a href="#">Create another vacancy</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}
