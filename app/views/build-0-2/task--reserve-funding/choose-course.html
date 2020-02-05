@@ -41,7 +41,7 @@
 		<form method="post">
 			{{ govukRadios({
 				idPrefix: "know-course",
-				name: "know-course",
+				name: "reservation[know-course]",
 				fieldset:
 				{
 					legend:
@@ -63,12 +63,12 @@
 					{
 						html: courseHtml
 					},
-					checked: data['know-course'] === 'yes'
+					checked: data['reservation']['know-course'] === 'yes'
 				},
 				{
 					value: "no",
 					text: "No",
-					checked: data['know-course'] === 'no'
+					checked: data['reservation']['know-course'] === 'no'
 				}
 				]
 			}) }}

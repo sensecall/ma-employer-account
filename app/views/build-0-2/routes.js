@@ -162,10 +162,10 @@ router.post('/task--reserve-funding/choose-course', (req, res) => {
 	req.session.data['started'] == 'true'
 	req.session.data['reservation']['start-month'] == ''
 	
-	if (req.session.data['know-course'] == 'yes' && req.session.data['reservation']['course-name']){
+	if (req.session.data['reservation']['know-course'] == 'yes' && req.session.data['reservation']['course-name']){
 		res.redirect('choose-start-month')
 	} else {
-		delete req.session.data['reservation']['course-name']
+		delete req.session.data['reservation']
 		res.redirect('course-warning')
 	}
 })
@@ -178,6 +178,8 @@ router.post('/task--reserve-funding/choose-start-month', (req, res) => {
 		res.redirect('confirm-reservation-details')
 	} else {
 		delete req.session.data['reservation']
+		req.session.data['reservation'] = []
+
 		res.redirect('start-month-warning')
 	}
 })
@@ -188,7 +190,9 @@ router.post('/task--reserve-funding/confirm-reservation-details', (req, res) => 
 		req.session.data['alert-text'] = 'You have reserved funds for apprenticeship training'
 		res.redirect('reservation-success')
 	} else {
-		req.session.data['started'] == 'true'
+		delete req.session.data['reservation']
+		req.session.data['reservation'] = []
+
 		res.redirect('../account-home')
 	}
 })
