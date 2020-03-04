@@ -128,7 +128,14 @@ router.post('/eligibility-course-provider', (req, res) => {
 })
 
 // Eligibility - course
+router.get('/eligibility-course', (req, res) => {	
+	req.session.data['course-name'] = ''
+	res.render(`${req.version}/eligibility-course`)
+})
+
 router.post('/eligibility-course', (req, res) => {	
+	req.session.data['eligibility-course-name'] = req.session.data['course-name'].split("*")[1]
+
 	if (req.session.data['eligibility-course'] == 'yes'){
 		res.redirect('eligibility-provider')
 	} else {
