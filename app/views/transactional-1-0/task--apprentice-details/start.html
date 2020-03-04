@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-6">
+			Add apprentice details
+		</h1>
+
+		<p class="govuk-body">
+			Add details of one or more apprentices to your account, and authorise payments to their training provider.
+		</p>
+
+		<h2 class="govuk-heading-m">
+			Before you start
+		</h2>
+
+		<p>
+			You must:
+		</p>
+
+		<ul class="govuk-list--bullet govuk-list">
+			<li>know the names of your apprentices</li>
+			<li>know your training provider's UK Provider Reference Number (UKPRN) - your training provider can tell you this</li>
+			<li>make sure the organisation that's named on the contract you have with your training provider is in your account - <a href="#">view organisations in this account</a></li>
+			<li>make sure the PAYE scheme that each apprentice is paid through is in your account - <a href="#">view PAYE schemes in this account</a></li>
+		</ul>
+
+		{% set recruitUrl %}https://esfa:educ4tion@das-recruit-prototype.herokuapp.com/raa-v2/0-2-1/testing/create/title?training_level={{data['course-name']}}&change=yes&VacancyId=00000000-0000-0000-0000-000000000000&clientsFilter=new&has_training_provider=yes&newProviderName={{data['provider-name']}}&providerName={{data['provider-name']}}&UKPRN=10030120&hasError=true{% endset %}
+
+		{{govukButton({
+			text: "Start now",
+			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-2 govuk-button--start",
+			href: "add-provider"
+		})}}
+	</div>
+</div>
+{% endblock %}

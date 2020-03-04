@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">	
+		{% if data['eligibility-recruit'] == 'existing' %}
+		<h1 class="govuk-heading-l">
+			Set up an apprenticeship for an existing employee
+		</h1>
+
+		<p>
+			We’ll ask you to:
+		</p>
+		<ul class="govuk-list govuk-list--bullet">
+			<li>reserve funding for apprenticeship training and assessment (if you have not already)</li>
+			<li>add the apprentice’s details</li>
+		</ul>
+
+		<h2 class="govuk-heading-m">
+			What you'll need
+		</h2>
+		<p>
+			You’ll need to know:
+		</p>
+		<ul class="govuk-list govuk-list--bullet">
+			<li>the name of the apprenticeship training course</li>
+			<li>which month the apprentice will start their training</li>
+			<li>your training provider’s UK Provider Reference Number (UKPRN)</li>
+			<li>the apprentice’s name and date of birth</li>
+			<li>the cost of the apprenticeship training (as agreed with your training provider)</li>
+		</ul>
+
+		{{govukButton({
+			text: "Continue",
+			classes: "govuk-!-margin-top-6",
+			href: "task--apprentice-details/start"
+		})}}
+
+		{% else %}
+		<div class="app-inverted app-inverted--card">
+		<h1 class="govuk-heading-l app-heading-l--inverted">
+			Set up an apprenticeship
+		</h1>
+
+		<h2 class="govuk-heading-m app-heading-m--inverted">
+			You'll need to know:
+		</h2>
+
+		<ol class="govuk-list govuk-list--number app-body--inverted">
+			<li>the apprenticeship training course</li>
+			<li>the approximate date of the apprentice's training</li>
+			<li>the name of your training provider</li>
+		</ol>
+
+		{{govukButton({
+			text: "Continue",
+			classes: "govuk-!-margin-top-6 app-button--inverted",
+			href: "task--recruitment/found-training-yet"
+		})}}
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

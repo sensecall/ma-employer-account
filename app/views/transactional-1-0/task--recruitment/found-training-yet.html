@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Have you already found apprenticeship training?
+			</h1>
+
+			<p>
+				If you are looking to take on apprentices, you will need to provide training through an registered provider. If you haven't found training yet, we can help you to find it.
+			</p>
+
+			{{ govukRadios({
+				idPrefix: "found-training",
+				name: "found-training",
+				items: [
+				{
+					value: "yes",
+					text: "Yes, I found appropriate training"
+				},
+				{
+					value: "no",
+					text: "No, help me find one"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue",
+				classes: "govuk-!-margin-right-2 govuk-!-display-inline-block"
+			})}}
+
+			<p class="govuk-!-display-inline-block govuk-!-margin-top-1">
+				<a href="../account-home">Cancel</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

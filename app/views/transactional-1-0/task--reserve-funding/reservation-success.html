@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		{% set panelHtml %}
+		<h2 class="govuk-heading-xl govuk-!-margin-bottom-0" style="text-align: center;">You have successfully reserved funding for apprenticeship training</h2>
+		{% endset %}
+
+		{%- from "../macros/alert.njk" import appAlert %}
+		{{ appAlert({
+			titleHtml: panelHtml
+		}) }}
+
+		{% set dateHtml %}
+		{{data['reservation']['start-month']}}
+		<br>
+		{{ govukDetails({
+			summaryText: "How can I change the start date?",
+			text: "You must start again and reserve new funding.",
+			classes: "govuk-!-margin-top-1"
+		}) }}
+		{% endset %}
+
+		{% set courseHtml %}
+		{{data['reservation']['course-name']}}
+		<br>
+		{{ govukDetails({
+			summaryText: "How can I change the course?",
+			text: "You can change the course when you add an apprentice's details.",
+			classes: "govuk-!-margin-top-1"
+		}) }}
+		{% endset %}
+
+		{{ govukSummaryList({
+			rows:
+			[
+			{
+				key:
+				{
+					text: "Employer"
+				},
+				value:
+				{
+					html: data['employer-name']
+				},
+				actions:
+				{
+					items: []
+				}
+			},
+			{
+				key:
+				{
+					text: "Apprenticeship start date"
+				},
+				value:
+				{
+					html: dateHtml
+				},
+				actions:
+				{
+					items: []
+				}
+			},
+			{
+				key:
+				{
+					text: "Apprenticeship training"
+				},
+				value:
+				{
+					html: courseHtml
+				},
+				actions:
+				{
+					items: []
+				}
+			}
+			]
+		}) }}
+
+		{{govukButton({
+			text: "Continue",
+			href: "../task--recruitment/vacancy-name"
+		})}}
+	</div>
+</div>
+{% endblock %}
