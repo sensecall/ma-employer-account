@@ -6,9 +6,7 @@ function deleteData(req,param){
 	req.session.data[param] = ''
 }
 
-
 // config
-
 router.get('/config', (req, res) => {
 	req.session.data = {}
 	res.render(`${req.version}/config`)
@@ -71,7 +69,6 @@ router.post('/login', (req, res) => {
 
 	res.redirect('account-home')
 })
-
 
 // set up an apprenticeship
 router.post('/set-up-an-apprenticeship', (req, res) => {
@@ -197,6 +194,8 @@ router.post('/task--reserve-funding/choose-course', (req, res) => {
 	}
 })
 
+
+// choose start month
 router.post('/task--reserve-funding/choose-start-month', (req, res) => {
 	req.session.data['started'] == 'true'
 	req.session.data['reservation']['end-month'] = moment(req.session.data['reservation']['start-month']).add(2,'months').format('MMMM YYYY')

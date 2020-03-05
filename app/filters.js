@@ -49,6 +49,57 @@ module.exports = function (env) {
       return moment(date).add(q,m)
     }
 
+    filters.reservationMonths = function(count, inputName){
+      var monthFormat = "MMMM YYYY"
+      var currentMonth = moment().format(monthFormat)
+
+      var months = [{
+        value: 'before-now',
+        text: "Before " + currentMonth,
+        attributes:
+        {
+          required: "required"
+        }
+      },
+      {
+        value: currentMonth,
+        text: "Between " + moment(currentMonth).startOf('month').format(monthFormat) + " and " + moment(currentMonth).add(2, 'months').startOf('month').format(monthFormat),
+        attributes:
+        {
+          required: "required"
+        }
+      }]
+
+      function addMonths(m){
+        if(months.length < m + 1){
+          var date = moment(months[months.length-1]["value"]).add(1, 'months').format(monthFormat);
+          var month = {
+            value: date,
+            text: "Between " + moment(date).startOf('month').format(monthFormat) + " and " + moment(date).add(2, 'months').startOf('month').format(monthFormat),
+            hint:
+            {
+              text: ""
+            }
+          }
+
+          months.push(month)
+          addMonths(m)
+        }
+      }
+
+      addMonths(count)
+
+      months.push({
+        divider: "or"
+      },
+      {
+        value: "dont-know",
+        text: "I don't know"
+      })
+
+      return months
+    }
+
     env.addFilter('numeral', numeralFilter);
 
 

@@ -46,6 +46,7 @@ module.exports = {
 	'reservation': {
 		'course-name': 'Business Administrator, Level: 3 (Standard)'
 	},
+	'reservation-months': 4,
 	"apprenticeship-cost": 1200,
 	"apprentice-dob-day": "02",
 	"apprentice-dob-month": "02",

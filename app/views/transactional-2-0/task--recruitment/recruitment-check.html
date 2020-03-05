@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set providerHtml %}
+<div class="govuk-form-group">
+	<label class="govuk-label" for="choose-apprenticeship">
+		Search for a provider
+	</label>
+
+	<select id="provider-name" name="provider-name">
+		<option value=""></option>
+		{% for provider in data['providers'].providers %}
+		<option value="{{provider.name}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
+		{% endfor %}
+	</select>
+
+	<p class="govuk-!-margin-top-2">
+		<a href="#provider-name" id="clear-search">Clear search</a>
+	</p>
+</div>
+{% endset -%}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "recruitment-check",
+				name: "recruitment-check",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you want to advertise your apprenticeship?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
+				},
+				hint:
+				{
+					text: ""
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes"
+				},
+				{
+					value: "maybe",
+					text: "Maybe later"
+				},
+				{
+					value: "no",
+					text: "No"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+
+		{% if data['provider-name'] %}
+		<p>
+			<a href="../task-list">Cancel and return to all sections</a>
+		</p>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#provider-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#provider-name').val("");
+		})
+	})
+</script>
+{% endblock %}
