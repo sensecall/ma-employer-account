@@ -53,14 +53,15 @@ module.exports = function (env) {
       var monthFormat = "MMMM YYYY"
       var currentMonth = moment().format(monthFormat)
 
-      var months = [{
-        value: 'before-now',
-        text: "Before " + currentMonth,
-        attributes:
-        {
-          required: "required"
-        }
-      },
+      var months = [
+      // {
+      //   value: 'before-now',
+      //   text: "Before " + currentMonth,
+      //   attributes:
+      //   {
+      //     required: "required"
+      //   }
+      // },
       {
         value: currentMonth,
         text: "Between " + moment(currentMonth).startOf('month').format(monthFormat) + " and " + moment(currentMonth).add(2, 'months').startOf('month').format(monthFormat),
@@ -71,7 +72,7 @@ module.exports = function (env) {
       }]
 
       function addMonths(m){
-        if(months.length < m + 1){
+        if(months.length <= m-1){
           var date = moment(months[months.length-1]["value"]).add(1, 'months').format(monthFormat);
           var month = {
             value: date,
@@ -93,7 +94,7 @@ module.exports = function (env) {
         divider: "or"
       },
       {
-        value: "dont-know",
+        value: "unknown",
         text: "I don't know"
       })
 

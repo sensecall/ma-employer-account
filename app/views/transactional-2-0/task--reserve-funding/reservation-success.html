@@ -16,7 +16,7 @@
 		}) }}
 
 		{% set dateHtml %}
-		{{data['reservation']['start-month']}}
+		Between {{data['reservation']['start-month']}} and {{data['reservation']['end-month']}}
 		<br>
 		{{ govukDetails({
 			summaryText: "How can I change the start date?",
