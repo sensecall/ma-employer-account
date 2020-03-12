@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "eligibility-recruit",
+				name: "eligibility-recruit",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Are you setting up this apprenticeship for an existing employee?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl govuk-!-margin-top-6"
+					}
+				},
+				items: [
+				{
+					value: "existing",
+					text: "Yes"
+				},
+				{
+					value: "new",
+					text: "No - I’m going to hire someone new"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

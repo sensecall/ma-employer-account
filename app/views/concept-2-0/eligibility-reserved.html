@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-account-header.html" %} -->
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			
+			<h3 class="govuk-heading-xl">You've reserved apprenticeship funding</h3>
+			<p>
+				Funding has been for the following apprenticeship:
+			</p>
+			{{ govukSummaryList({
+				classes: "govuk-!-margin-bottom-4",
+				rows:
+				[
+				{
+					key:
+					{
+						text: "Apprenticeship training"
+					},
+					value:
+					{
+						html: data['reservation']['course-name']
+					},
+					actions:
+					{
+						items: []
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship start date"
+					},
+					value:
+					{
+						html: data['reservation']['start-month'] + " to " + data['reservation']['end-month']
+					},
+					actions:
+					{
+						items: []
+					}
+				}
+				]
+			}) }}
+
+			{{govukDetails({
+				classes: "govuk-!-margin-bottom-8",
+				summaryText: "How does apprenticeship funding work?",
+				html: "<p>Before you can set up an apprenticeship, you need to <a href='#'>find apprenticeship training</a> and choose a training provider.</p><p>Try again once you've chosen a course and have found a training provider to deliver it.</p>"
+			})}}
+
+			{% if data['eligibility-recruit'] == 'new' %}
+			<h2 class="govuk-heading-m">
+				Continue to advertise your apprenticeship vacancy
+			</h2>
+
+			<p>
+				Now you've reserved funding to pay for apprenticeship training and assessment, you can create an advert to attract candidates to apply for your apprenticeship.
+			</p>
+			{{govukButton({
+				text: "Continue to create an advert",
+				href: "task--recruitment/recruitment-start"
+			})}}
+			{% else %}
+			<h2 class="govuk-heading-m">
+				Continue to add your employee's details
+			</h2>
+
+			<p>
+				Now you've reserved funding to pay for apprenticeship training and assessment you can add your employee's details.
+			</p>
+			{{govukButton({
+				text: "Add your employee's details",
+				href: "task--apprentice-details/start"
+			})}}
+			{% endif %}
+
+			<p>
+				Or you can <a href="account-home">return to your account home</a>.
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

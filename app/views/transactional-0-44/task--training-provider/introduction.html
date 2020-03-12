@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			The training provider
+		</h1>
+
+		<h2 class="govuk-heading-m">
+			What is a training provider?
+		</h2>
+
+		<p>
+			A training provider is the organisation that will deliver the apprentice's training course, sometimes called "off-the-job training".
+		</p>
+
+		<p>
+			The training provider could be:
+		</p>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>a college</li>
+			<li>a university</li>
+			<li>an academy</li>
+			<li>a training company</li>
+			<li>your organisation</li>
+		</ul>
+
+		{{govukButton({
+			text: "Continue with this section",
+			classes: "govuk-!-margin-top-6",
+			href: "provider-check?training-provider-intro=done&started=true"
+		})}}
+
+		<p>
+			<a href="../account-home">Return to your account</a>
+		</p>
+	</div>
+</div>
+{% endblock %}

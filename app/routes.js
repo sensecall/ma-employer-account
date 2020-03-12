@@ -43,6 +43,10 @@ router.use(/\/transactional-([0-99]+)-([0-99]+)/, (req, res, next) => {
 	require(`./views/transactional-${req.params[0]}-${req.params[1]}/routes`)(req, res, next);
 })
 
+router.use(/\/concept-([0-99]+)-([0-99]+)/, (req, res, next) => {
+	require(`./views/concept-${req.params[0]}-${req.params[1]}/routes`)(req, res, next);
+})
+
 router.use(/\/mvp-([0-9]+)-([0-9]+)/, (req, res, next) => {
 	require(`./views/mvp-${req.params[0]}-${req.params[1]}/routes`)(req, res, next);
 })

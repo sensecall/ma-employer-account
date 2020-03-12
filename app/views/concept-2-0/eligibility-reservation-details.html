@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-account-header.html" %} -->
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			
+			<h3 class="govuk-heading-xl">Check your apprenticeship details</h3>
+			{{ govukSummaryList({
+				classes: "govuk-!-margin-bottom-8",
+				rows:
+				[
+				{
+					key:
+					{
+						text: "Employer"
+					},
+					value:
+					{
+						html: data['employer-name']
+					},
+					actions:
+					{
+						items: []
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship start date"
+					},
+					value:
+					{
+						html: data['reservation']['start-month'] + " to " + data['reservation']['end-month']
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-start-month",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training start date"
+						}
+						]
+					}
+				},
+				{
+					key:
+					{
+						text: "Apprenticeship training"
+					},
+					value:
+					{
+						html: data['reservation']['course-name']
+					},
+					actions:
+					{
+						items:
+						[
+						{
+							href: "choose-course",
+							text: "Change",
+							visuallyHiddenText: "apprenticeship training course"
+						}
+						]
+					}
+				}
+				]
+			}) }}
+
+			<h2 class="govuk-heading-m">
+				Confirm and reserve funding for this apprenticeship
+			</h2>
+
+			<p>
+				You need to reserve funding to guarantee that we'll be able to pay your training provider for apprenticeship training and assessment. 
+			</p>
+
+			{{govukButton({
+				text: "Reserve funding and continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

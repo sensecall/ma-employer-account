@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% set providerHtml %}
+			<div class="govuk-form-group govuk-!-width-full">
+				<label class="govuk-label" for="choose-apprenticeship">
+					Search providers
+				</label>
+
+				<select id="provider-name" name="provider-name">
+					<option value=""></option>
+					{% for provider in data['providers'].providers %}
+					<option value="{{provider.name}}*{{provider.UKPRN}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#provider-name" id="clear-search">Clear search</a>
+				</p>
+			</div>
+			{% endset %}
+
+			{{ govukRadios({
+				idPrefix: "eligibility-course",
+				name: "eligibility-course",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you know which course your apprentice will take?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl govuk-!-margin-top-6"
+					}
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes"
+				},				
+				{
+					value: "no",
+					text: "No"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#course-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#provider-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#course-name').val("");
+		})
+	})
+</script>
+{% endblock %}

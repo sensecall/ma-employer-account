@@ -1,0 +1,172 @@
+{% set notCompletedTag %}
+<span class="govuk-tag" style="background: #777">Not completed</span>
+{% endset %}
+
+{% set notRequiredTag %}
+<span class="govuk-tag" style="background: #777">Not required</span>
+{% endset %}
+
+{% set completedTag %}
+<span class="govuk-tag">Completed</span>
+{% endset %}
+
+<!-- PROVIDER HTML -->
+{% set trainingProviderHtml %}
+{% if data['provider-name'] %}
+<p>
+	{{data['provider-name']}}
+</p>
+<p>
+	{{completedTag | safe}}
+</p>
+{% else %}
+<a href="task--training-provider/introduction">
+	{{notCompletedTag | safe}}
+</a>
+{% endif %}
+{% endset %}
+<!-- END -->
+
+<!-- TRAINING HTML -->
+{% set apprenticeshipTrainingHtml %}
+{% if data['course-name'] %}
+<p>
+	{{data['course-name']}}
+</p>
+<p>
+	{{completedTag | safe}}
+</p>
+{% else %}
+<a href="task--reserve-funding/introduction">
+	{{notCompletedTag | safe}}
+</a>
+{% endif %}
+{% endset %}
+<!-- END -->
+
+<!-- VACANCY HTML -->
+{% set vacancyHtml %}
+{% if data['vacancy-created'] %}
+{% if data['vacancy-name'] %}
+<p>
+	<a href='#'>VACANCY NAME</a>
+</p>
+<p>
+	{{completedTag | safe}}
+</p>
+{% else %}
+<p>
+	{{notRequiredTag | safe}}
+</p>
+{% endif %}
+{% else %}
+<a href="task--recruitment/recruitment-check">
+	{{notCompletedTag | safe}}
+</a>
+{% endif %}
+{% endset %}
+<!-- END -->
+
+<!-- APPRENTICE HTML -->
+{% set apprenticeDetailsHtml %}
+{% if data['apprentice-added'] %}
+<p>
+	{{data['apprentice-name']}}
+</p>
+<p>
+	{{completedTag | safe}}
+</p>
+{% else %}
+<a href="task--apprentice-details/apprentice-details-check">
+	{{notCompletedTag | safe}}
+</a>
+{% endif %}
+{% endset %}
+<!-- END -->
+
+{% from "summary-list/macro.njk" import govukSummaryList %}
+{{ govukSummaryList({
+	rows:
+	[
+	{
+		key:
+		{
+			text: "Choose training provider"
+		},
+		value:
+		{
+			html: trainingProviderHtml
+		},
+		actions:
+		{
+			items: [
+			{
+				href: "#",
+				text: "Manage",
+				visuallyHiddenText: "training providers"
+			}
+			]
+		}
+	},
+	{
+		key:
+		{
+			text: "Apprenticeship training"
+		},
+		value:
+		{
+			html: apprenticeshipTrainingHtml
+		},
+		actions:
+		{
+			items: [
+			{
+				href: "#",
+				text: "Manage",
+				visuallyHiddenText: "funding reservations"
+			}
+			]
+		}
+	},
+	{
+		key:
+		{
+			text: "Recruit an apprentice"
+		},
+		value:
+		{
+			html: vacancyHtml | safe
+		},
+		actions:
+		{
+			items: [
+			{
+				href: "#",
+				text: "Manage",
+				visuallyHiddenText: "vacancies"
+			}
+			]
+		}
+	},
+	{
+		key:
+		{
+			text: "Apprentice details"
+		},
+		value:
+		{
+			text: apprenticeDetailsHtml | safe
+		},
+		actions:
+		{
+			items: [
+			{
+				href: "#",
+				text: "Manage",
+				visuallyHiddenText: "funding reservations"
+			}
+			]
+		}
+	}
+	]
+}) }}

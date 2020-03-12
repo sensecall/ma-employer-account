@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Recruiting an apprentice
+		</h1>
+
+		<p>
+			You can create a free advert for your apprenticeship vacancy using the Recruit an apprentice service.
+		</p>
+
+		<p>
+			Your training provider may offer to advertise your apprenticeship vacancy on your behalf. Contact your training provider for more details.
+		</p>
+
+		{% set recruitUrl %}https://esfa:educ4tion@das-recruit-prototype.herokuapp.com/raa-v2/0-2-1/testing/create/title?training_level={{data['course-name']}}&change=yes&VacancyId=00000000-0000-0000-0000-000000000000&clientsFilter=new&has_training_provider=yes&newProviderName={{data['provider-name']}}&providerName={{data['provider-name']}}&UKPRN=10030120&hasError=true{% endset %}
+
+		{{govukButton({
+			text: "Continue with this section",
+			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-2",
+			href: "../account-home?vacancy-created=true",
+			attributes: 
+			{
+				onclick: "window.open('" + recruitUrl | safe + "');"
+			}
+		})}}
+
+		<p class="govuk-!-font-size-16" style="color: #888">
+			Opens in new tab or window
+		</p>
+
+		<p>
+			<a href="../account-home">Come back to this section later</a>
+		</p>
+	</div>
+</div>
+{% endblock %}
