@@ -173,45 +173,6 @@
 			</p>
 		</div>
 	</div>
-
-	{% if data['sign-agreement-now'] == 'yes' %}
-	<div class="govuk-grid-column-one-third">
-		<div class="govuk-tabs" data-module="tabs">
-			<ul class="govuk-tabs__list">
-				<li class="govuk-tabs__list-item govuk-!-margin-left-2">
-					<a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#tab-tasks">
-						<b>Tasks</b>
-					</a>
-				</li>
-			</ul>
-
-			<section class="govuk-tabs__panel" id="tab-tasks">
-				<ul class="task-list">
-					{% if data['add-paye-now'] == 'yes' and data['sign-agreement-now'] != 'yes' %}
-					<li>
-						<p>
-							1 agreement to sign
-						</p>
-						<p class="govuk-!-margin-top-2 govuk-body-s">
-							<a href="#">View agreements</a>
-						</p>
-					</li>
-					{% else %}
-					<li>
-						<p>							
-							You do not have any tasks
-						</p>
-					</li>
-					{% endif %}
-				</ul>
-			</section>
-
-			<section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab-activity">
-				No activity
-			</section>
-		</div>
-	</div>
-	{% endif %}
 </div>
 
 {% endblock %}
