@@ -40,4 +40,25 @@ router.post('/vacancy-employer-name', (req, res) => {
 	res.redirect('vacancy-work-location')
 })
 
+// work location
+router.post('/vacancy-work-location', (req, res) => {
+	res.redirect('vacancy-important-dates')
+})
+
+// important dates
+router.post('/vacancy-important-dates', (req, res) => {
+	res.redirect('vacancy-duration-hours')
+})
+
+// duration-hours
+router.post('/vacancy-duration-hours', (req, res) => {
+	res.redirect('vacancy-pay')
+})
+
+// pay
+router.post('/vacancy-pay', (req, res) => {
+	res.redirect('vacancy-go-to-preview')
+})
+
+
 module.exports = router

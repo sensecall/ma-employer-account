@@ -1,0 +1,93 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Important dates
+			</h1>
+			
+			{{ govukDateInput({
+				classes: "govuk-!-margin-bottom-4",
+				id: "passport-issued",
+				namePrefix: "passport-issued",
+				fieldset:
+				{
+					legend:
+					{
+						html: "Application closing date <span class='govuk-visually-hidden'>(in numeric format DD MM YYYY)</span>",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--m"
+					}
+				},
+				hint:
+				{
+					text: "For example, 27 12 2020"
+				}
+			}) }}
+			
+			{{ govukDateInput({
+				classes: "govuk-!-margin-bottom-4",
+				id: "passport-issued",
+				namePrefix: "passport-issued",
+				fieldset:
+				{
+					legend:
+					{
+						html: "When do you expect the apprentice to start? <span class='govuk-visually-hidden'>(in numeric format DD MM YYYY)</span>",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--m"
+					}
+				},
+				hint:
+				{
+					text: "For example, 27 12 2020"
+				}
+			}) }}
+
+			{{ govukCheckboxes({
+				idPrefix: "disability-confident",
+				name: "disability-confident",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Disability Confident (optional)",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--m"
+					}
+				},
+				items: [
+				{
+					value: "yes",
+					html: 'This vacancy is <a href="https://www.gov.uk/government/collections/disability-confident-campaign" class="govuk-link" rel="noopener" target="_blank" title="Disability Confident employer scheme and guidance (opens in a new window)">Disability Confident</a>.'
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Save and continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

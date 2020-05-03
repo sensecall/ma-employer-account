@@ -49,8 +49,8 @@ module.exports = function (env) {
       return moment(date).add(q,m)
     }
 
-    filters.formatDate = function(date,format) {
-      return moment(date).format(format)
+    filters.today = function(format) {
+      return moment().format(format)
     }
 
     filters.reservationMonths = function(count, inputName){
