@@ -1,0 +1,44 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Preview your advert
+			</h1>
+			
+			<p>
+				Review the details that will appear in your vacancy. Once this is approved it will appear on <a href="#">find an apprentice service (opens in new tab)</a>.
+			</p>
+
+			<p>
+				You can change any of the details. 
+			</p>
+
+			{{govukButton({
+				text: "Preview advert",
+				href: "vacancy-preview"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}
