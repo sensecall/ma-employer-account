@@ -26,24 +26,49 @@
 				Important dates
 			</h1>
 			
-			{{ govukDateInput({
-				classes: "govuk-!-margin-bottom-4",
-				id: "passport-issued",
-				namePrefix: "passport-issued",
-				fieldset:
-				{
-					legend:
-					{
-						html: "Application closing date <span class='govuk-visually-hidden'>(in numeric format DD MM YYYY)</span>",
-						isPageHeading: false,
-						classes: "govuk-fieldset__legend--m"
-					}
-				},
-				hint:
-				{
-					text: "For example, 27 12 2020"
-				}
-			}) }}
+			<div class="govuk-form-group">
+				<fieldset class="govuk-fieldset" aria-describedby="closing-date-hint" role="group">
+					<legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+						Application closing date <span class="govuk-visually-hidden">(in numeric format DD MM YYYY)</span>
+					</legend>
+
+					<span id="closing-date-hint" class="govuk-hint">
+						For example, 27 12 2020
+					</span>
+
+					<div class="govuk-date-input govuk-!-margin-bottom-4" id="closing-date">
+						<div class="govuk-date-input__item">
+							<div class="govuk-form-group">
+								<label class="govuk-label govuk-date-input__label" for="closing-date-day">
+									Day
+								</label>
+
+								<input class="govuk-input govuk-date-input__input govuk-input--width-2" id="closing-date-day" name="vacancy[closing-date][day]" type="number" pattern="[0-9]*">
+							</div>
+						</div>
+
+						<div class="govuk-date-input__item">
+							<div class="govuk-form-group">
+								<label class="govuk-label govuk-date-input__label" for="closing-date-month">
+									Month
+								</label>
+
+								<input class="govuk-input govuk-date-input__input govuk-input--width-2" id="closing-date-month" name="vacancy[closing-date][month]" type="number" pattern="[0-9]*">
+							</div>
+						</div>
+
+						<div class="govuk-date-input__item">
+							<div class="govuk-form-group">
+								<label class="govuk-label govuk-date-input__label" for="closing-date-year">
+									Year
+								</label>
+
+								<input class="govuk-input govuk-date-input__input govuk-input--width-4" id="closing-date-year" name="vacancy[closing-date][year]" type="number" pattern="[0-9]*">
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
 			
 			{{ govukDateInput({
 				classes: "govuk-!-margin-bottom-4",

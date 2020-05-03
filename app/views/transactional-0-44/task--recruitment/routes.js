@@ -8,6 +8,11 @@ router.post('/vacancy-name', (req, res) => {
 
 // course
 router.post('/vacancy-course', (req, res) => {
+	let course = req.session.data['vacancy']['course-name']
+	req.session.data['vacancy']['course'] = {}
+	req.session.data['vacancy']['course']['name'] = course.split("*")[1]
+	req.session.data['vacancy']['course']['id'] = course.split("*")[2]
+
 	res.redirect('vacancy-confirm-course')
 })
 

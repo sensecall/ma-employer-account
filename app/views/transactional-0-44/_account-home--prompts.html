@@ -113,6 +113,13 @@
 		You’ve created an advert for your apprenticeship.
 	</p>
 
+	{% set vacancyClosingDate %}
+	{{ [data['vacancy']['closing-date']['year'],
+	data['vacancy']['closing-date']['month'],
+	data['vacancy']['closing-date']['day']
+	] | join('-') | date('DD MMMM YYYY')}}
+	{% endset %}
+
 	{{ govukSummaryList({
 		rows:[
 		{
@@ -132,7 +139,7 @@
 			},
 			value: 
 			{
-				text: data['vacancy']['end-date']
+				text: vacancyClosingDate
 			}
 		},
 		{
@@ -142,7 +149,7 @@
 			},
 			value: 
 			{
-				html: '<a href="#">'+data['vacancy']['applications']+' applications</a>' if data['vacancy']['applications'] else '<a href="#">No applications yet</a>'
+				html: '<a href="#">'+data['vacancy']['applications']+' applications</a>' if data['vacancy']['applications'] else '<a href="recruit-dashboard">No applications yet</a>'
 			}
 		},
 		{
