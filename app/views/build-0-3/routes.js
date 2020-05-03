@@ -6,13 +6,9 @@ function deleteData(req,param){
 	req.session.data[param] = ''
 }
 
-// RECRUIT
-router.use(/\/task--recruitment/, (req, res, next) => {
-	require(`./task--recruitment/routes`)(req, res, next);
-})
-
 
 // config
+
 router.get('/config', (req, res) => {
 	req.session.data = {}
 	res.render(`${req.version}/config`)
@@ -286,6 +282,17 @@ router.post('/task--recruitment/recruitment-check', (req, res) => {
 		req.session.data['vacancy-created'] = 'n/a'
 		delete req.session.data['vacancy']['name']
 		res.redirect('../task--apprentice-details/apprentice-details-check')
+	}
+})
+
+// vacancy name
+router.post('/task--recruitment/vacancy-name', (req, res) => {
+	if(req.session.data['vacancy']['name']){
+		req.session.data['vacancy']['end-date'] = '20 January 2020'
+		req.session.data['vacancy']['status'] = 'live'
+		res.redirect('vacancy-created')
+	} else {
+		res.redirect('vacancy-name')
 	}
 })
 

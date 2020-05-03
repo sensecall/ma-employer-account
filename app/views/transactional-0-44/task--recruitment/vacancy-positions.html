@@ -22,30 +22,17 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
-			{% call govukFieldset({
-				legend:
+			{{ govukInput({
+				name: "vacancy[positions]",
+				id: "vacancy-positions",
+				classes: "govuk-input--width-5",
+				label:
 				{
-					text: "What do you want to call this advert?",
-					classes: "govuk-fieldset__legend--xl",
-					isPageHeading: true
-				}
-			}) %}
-			
-			<p>
-				Use a title that relates to the apprenticeship training for this advert, this will help it get found in the Find an Apprenticeship search.
-			</p>
-
-			{{ govukCharacterCount({
-				name: "vacancy[name]",
-				id: "vacancy-name",
-				maxlength: 100,
-				rows: 1,
-				hint:
-				{
-					text: "Must include the word ‘apprentice’ or ‘apprenticeship’ "
+					text: "How many positions are there for this apprenticeship?",
+					isPageHeading: true,
+					classes: "govuk-label--xl govuk-!-margin-bottom-8"
 				}
 			}) }}
-			{% endcall %}
 
 			{{govukButton({
 				text: "Save and continue"

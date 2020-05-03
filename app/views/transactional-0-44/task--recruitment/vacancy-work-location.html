@@ -1,0 +1,130 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Where will the apprentice work?",
+					classes: "govuk-fieldset__legend--xl",
+					isPageHeading: true
+				}
+			}) %}
+
+			{% set addressHtml %}
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Enter the address where the apprentice will work",
+					classes: "govuk-fieldset__legend--s",
+					isPageHeading: false
+				}
+			}) %}
+			{{ govukInput({
+				label:
+				{
+					text: "Address line 1",
+					classes: "govuk-visually-hidden"
+				},
+				id: "trading-name",
+				name: "trading-name"
+			}) }}
+			{{ govukInput({
+				label:
+				{
+					text: "Address line 2",
+					classes: "govuk-visually-hidden"
+				},
+				id: "trading-name",
+				name: "trading-name"
+			}) }}
+			{{ govukInput({
+				label:
+				{
+					text: "Address line 3",
+					classes: "govuk-visually-hidden"
+				},
+				id: "trading-name",
+				name: "trading-name"
+			}) }}
+			{% endcall %}
+
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Postcode",
+					classes: "govuk-fieldset__legend--s",
+					isPageHeading: false
+				}
+			}) %}
+			{{ govukInput({
+				label:
+				{
+					text: "Postcode",
+					classes: "govuk-visually-hidden"
+				},
+				id: "trading-name",
+				name: "trading-name"
+			}) }}
+			{% endcall %}
+			{% endset %}
+
+			{{ govukRadios({
+				idPrefix: "chosen-provider",
+				name: "chosen-provider",
+				items: [
+				{
+					value: data['employer']['address'],
+					text: data['employer']['address']
+				},
+				{
+					value: "other",
+					text: "A different location",
+					conditional:
+					{
+						html: addressHtml
+					}
+				}
+				]
+			}) }}
+			{% endcall %}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#provider-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+	})
+</script>
+{% endblock %}

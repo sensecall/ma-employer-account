@@ -59,13 +59,13 @@
 			{% endset %}
 
 			{{ govukRadios({
-				idPrefix: "eligibility-course",
-				name: "eligibility-course",
+				idPrefix: "eligibility-provider",
+				name: "eligibility-provider",
 				fieldset:
 				{
 					legend:
 					{
-						text: "Do you know which course your apprentice will take?",
+						text: "Have you chosen a training provider to deliver the apprenticeship training?",
 						isPageHeading: true,
 						classes: "govuk-fieldset__legend--xl govuk-!-margin-top-6"
 					}
@@ -73,11 +73,7 @@
 				items: [
 				{
 					value: "yes",
-					text: "Yes",
-					conditional:
-					{
-						html: courseHtml
-					}
+					text: "Yes"
 				},				
 				{
 					value: "no",

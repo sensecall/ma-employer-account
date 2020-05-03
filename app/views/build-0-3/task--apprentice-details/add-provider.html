@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %}
 
 {% block header %}
@@ -7,8 +6,6 @@
 {% include "includes/ma-account-header.html" %}
 {% include "includes/ma-navbar.html" %}
 {% endblock %}
-
-{% set currentPage = 'recruit' %}
 
 {% block beforeContent %}
 {{ govukBackLink({
@@ -21,31 +18,35 @@
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<form method="post">
+		<form action="confirm-provider">
 			{% call govukFieldset({
 				legend:
 				{
-					text: "What do you want to call this advert?",
+					text: "Add training provider details",
 					classes: "govuk-fieldset__legend--xl",
 					isPageHeading: true
 				}
 			}) %}
-			
-			<p>
-				Use a title that relates to the apprenticeship training for this advert, this will help it get found in the Find an Apprenticeship search.
-			</p>
 
-			{{ govukCharacterCount({
-				name: "vacancy[name]",
-				id: "vacancy-name",
-				maxlength: 100,
-				rows: 1,
-				hint:
+			{{ govukInput({
+				label:
 				{
-					text: "Must include the word ‘apprentice’ or ‘apprenticeship’ "
-				}
+					text: "UK Provider Reference Number",
+					classes: "govuk-!-font-weight-bold govuk-!-margin-bottom-4 govuk-!-margin-top-5"
+				},
+				name: "ukprn",
+				id: "ukprn",
+				maxlength: 100,
+				rows: 1
 			}) }}
 			{% endcall %}
+
+			<input name="provider-name" value="COVENTRY COLLEGE" type="hidden">
+
+			{{ govukDetails({
+				summaryText: "What is a UK Provider Reference Number?",
+				text: "A UK Provider Reference Number (UKPRN) is a unique, 8-digit number that identifies a training provider. Your training provider can tell you their UKPRN."
+			}) }}
 
 			{{govukButton({
 				text: "Save and continue"

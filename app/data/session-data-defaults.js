@@ -36,6 +36,9 @@ module.exports = {
 	'apprenticeships': apprenticeships,
 	'providers': providers,
 	'employer-name': "Aardvark Zebra Ltd",
+	"employer": {
+		"address": "57 Norton Road, Stoke, ST4 2UY"
+	},
 	'started': 'false',
 
 	// apprenticeship details

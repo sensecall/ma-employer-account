@@ -7,8 +7,6 @@
 {% include "includes/ma-navbar.html" %}
 {% endblock %}
 
-{% set currentPage = 'recruit' %}
-
 {% block beforeContent %}
 {{ govukBackLink({
 	text: "Back",
@@ -19,43 +17,35 @@
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<h1 class="govuk-heading-xl">
-			Create an advert
+		<h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-6">
+			Add an apprentice
 		</h1>
 
-		<p class="govuk-body-l">
-			Recruit an apprentice by creating an advert. Adverts will be advertised on <a href="https://www.gov.uk/apply-apprenticeship" target="_blank">Find an apprenticeship</a>.
+		<p class="govuk-body">
+			Add details of one or more apprentices to your account, and authorise payments to their training provider.
 		</p>
 
 		<h2 class="govuk-heading-m">
-			What you will need
+			Before you start
 		</h2>
 
 		<p>
-			Before you create your advert, you’ll need to choose appropriate <a href="#">apprenticeship training</a> and get some information from your training provider. If you don’t have a training provider yet, you can <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/" target="_blank">find a provider</a>.
-		</p>
-
-		<p>
-			You’ll need the following:
+			You must:
 		</p>
 
 		<ul class="govuk-list--bullet govuk-list">
-			<li>the name of the apprenticeship training and training provider</li>
-			<li>the duration of the apprenticeship</li>
-			<li>the amount of hours spent working and training</li>
-			<li>the amount you’d like to pay your apprentice</li>
+			<li>know the names of your apprentices</li>
+			<li>know your training provider's UK Provider Reference Number (UKPRN) - your training provider can tell you this</li>
+			<li>make sure the organisation that's named on the contract you have with your training provider is in your account - <a href="#">view organisations in this account</a></li>
+			<li>make sure the PAYE scheme that each apprentice is paid through is in your account - <a href="#">view PAYE schemes in this account</a></li>
 		</ul>
-
-		<p class="govuk-inset-text">
-			It should take no longer than 30 minutes to create your first advert
-		</p>
 
 		{% set recruitUrl %}https://esfa:educ4tion@das-recruit-prototype.herokuapp.com/raa-v2/0-2-1/testing/create/title?training_level={{data['course-name']}}&change=yes&VacancyId=00000000-0000-0000-0000-000000000000&clientsFilter=new&has_training_provider=yes&newProviderName={{data['provider-name']}}&providerName={{data['provider-name']}}&UKPRN=10030120&hasError=true{% endset %}
 
 		{{govukButton({
 			text: "Start now",
 			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-2 govuk-button--start",
-			href: "vacancy-name"
+			href: "add-provider"
 		})}}
 	</div>
 </div>

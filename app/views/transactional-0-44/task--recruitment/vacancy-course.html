@@ -25,24 +25,22 @@
 			{% call govukFieldset({
 				legend:
 				{
-					text: "What do you want to call this advert?",
+					text: "What training will the apprentice take?",
 					classes: "govuk-fieldset__legend--xl",
 					isPageHeading: true
 				}
 			}) %}
 			
 			<p>
-				Use a title that relates to the apprenticeship training for this advert, this will help it get found in the Find an Apprenticeship search.
+				 If you haven't found appropriate training for the vacancy, you can <a href="#">Find apprenticeship training here (opens in new tab)</a>. 
 			</p>
 
-			{{ govukCharacterCount({
+			{{ govukInput({
 				name: "vacancy[name]",
 				id: "vacancy-name",
-				maxlength: 100,
-				rows: 1,
 				hint:
 				{
-					text: "Must include the word ‘apprentice’ or ‘apprenticeship’ "
+					text: "Enter apprenticeship training title"
 				}
 			}) }}
 			{% endcall %}

@@ -1,0 +1,331 @@
+<!-- ADD PAYE SCHEME -->
+{% if data['add-paye-now'] != 'yes' and data['sign-agreement-now'] != 'yes' %}
+<div class="das-minimal-section__wrapper">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				Add your PAYE scheme to access your account
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Add your organisation’s PAYE scheme and sign your agreement with the Education and Skills Funding Agency to get funding for apprenticeship training.
+			</p>
+
+			<p>
+				<a href="add-paye" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+					Add your PAYE scheme
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}
+<!-- END -->
+
+<!-- SIGN AGREEMENT -->
+{% if data['sign-agreement-now'] != 'yes' and data['add-paye-now'] == 'yes' %}
+<div class="das-minimal-section__wrapper das-section-dashboard">
+	<div class="das-minimal-section das-minimal-section--action">
+		<section class="das-section-dashboard-last">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				Sign your agreement to access apprenticeship funding
+			</h2>
+
+
+			<p class="das-minimal-section__description">
+				Sign your agreement with the Education and Skills Funding Agency to access funding for apprenticeship training. 
+			</p>
+
+			<p>
+				<a href="sign-agreement" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+					Sign your agreement
+				</a>
+			</p>
+		</section>
+	</div>
+</div>
+{% endif %}
+<!-- END -->
+
+
+<!-- START CTA LOGIC -->
+<!-- ADDED PAYE, SIGNED AGREEMENT and NON-LEVY -->
+{% if data['sign-agreement-now'] == 'yes' and data['add-paye-now'] == 'yes' and data['employer-type'] != 'levy' %}
+
+<!-- NEW EMPLOYEE -->
+{% if data['eligibility-recruit'] == 'new' %}
+{% endif %}
+<!-- END -->
+
+<!-- RESERVED AND NOT CREATED VACANCY AND NO APPRENTICE DETAILS ADDED -->
+{% if data['reserved-funding'] == 'true' and not data['vacancy'] and not data['apprenticeship-status'] %}
+<section>
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Continue setting up an apprenticeship
+	</h2>
+
+	<p class="govuk-!-margin-bottom-2">
+		You've reserved funding for the following apprenticeship:
+	</p>
+
+	{{ govukSummaryList({
+		rows:[
+		{
+			key: 
+			{
+				text: "Course"
+			},
+			value:
+			{
+				text: data['reservation']['course-name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Start date"
+			},
+			value: 
+			{
+				text: data['reservation']['start-month'] + " to " + data['reservation']['end-month']
+			}
+		}]
+	})}}
+
+	<form method="post" action="set-up-an-apprenticeship">
+		{{govukButton({
+			text: "Continue",
+			href: "continue-set-up"
+		})}}
+	</form>
+</section>
+<!-- END -->
+
+<!-- RESERVED AND CREATED VACANCY BUT NO DETAILS ADDED -->
+{% elif data['reserved-funding'] == 'true' and data['vacancy'] and not data['apprenticeship-status'] %}
+<section>
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Your apprenticeship advert
+	</h2>
+
+	<p class="govuk-!-margin-bottom-2">
+		You’ve created an advert for your apprenticeship.
+	</p>
+
+	{{ govukSummaryList({
+		rows:[
+		{
+			key: 
+			{
+				text: "Title"
+			},
+			value:
+			{
+				text: data['vacancy']['name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Closing date"
+			},
+			value: 
+			{
+				text: data['vacancy']['end-date']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Applications"
+			},
+			value: 
+			{
+				html: '<a href="#">'+data['vacancy']['applications']+' applications</a>' if data['vacancy']['applications'] else '<a href="#">No applications yet</a>'
+			}
+		},
+		{
+			key: 
+			{
+				text: "Status"
+			},
+			value: 
+			{
+				html: '<span class="govuk-tag" style="background:#00703c">Live</span>'
+			}
+		}]
+	})}}
+
+
+	<form method="post" action="recruit-to-add">
+		{{govukButton({
+			text: "Add apprentice details"
+		})}}
+	</form>
+</section>
+<!-- END -->
+
+{% elif data['reserved-funding'] == 'true' and data['apprenticeship-status'] %}
+{% set apprenticeName %}
+{% if data['apprentice']['first-name'] and data['apprentice']['last-name'] %}
+{{data['apprentice']['first-name']}} {{data['apprentice']['last-name']}}
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
+{% set startMonth %}
+{% if data['apprenticeship-start-date-month'] and data['apprenticeship-start-date-year'] %}
+{{data['apprenticeship-start-date-month']|date().format('MMMM')}} {{data['apprenticeship-start-date-year']}}
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
+{% set finishMonth %}
+{% if data['apprenticeship-finish-date-month'] and data['apprenticeship-finish-date-year'] %}
+{{data['apprenticeship-finish-date-month']|date().format('MMMM')}} {{data['apprenticeship-finish-date-year']}}
+{% else %}
+Not added yet
+{% endif %}
+{% endset %}
+
+{% if data['apprenticeship-status'] == 'live' %}
+<section>
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Your apprentice
+	</h2>
+
+	{{ govukSummaryList({
+		rows:[
+		{
+			key: 
+			{
+				text: "Name"
+			},
+			value:
+			{
+				text: apprenticeName
+			}
+		},
+		{
+			key: 
+			{
+				text: "Training provider"
+			},
+			value:
+			{
+				text: data['provider-name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Course"
+			},
+			value:
+			{
+				text: data['course-name']
+			}
+		},
+		{
+			key: 
+			{
+				text: "Start month"
+			},
+			value: 
+			{
+				text: startMonth
+			}
+		},
+		{
+			key: 
+			{
+				text: "Finish month"
+			},
+			value: 
+			{
+				text: finishMonth
+			}
+		}]
+	})}}
+
+
+	<form method="post" action="set-up-an-apprenticeship">
+		{{govukButton({
+			text: "View apprentice details",
+			href: "#"
+		})}}
+	</form>
+</section>
+{% else %}
+<section>
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Continue setting up an apprenticeship
+	</h2>
+
+	{{ govukSummaryList({
+		classes: 'govuk-!-margin-bottom-4',
+		rows:[
+		{
+			key: 
+			{
+				text: "Course"
+			},
+			value:
+			{
+				text: data['course-name'] or "Not added yet"
+			}
+		},
+		{
+			key: 
+			{
+				text: "Training provider"
+			},
+			value:
+			{
+				text: data['provider-name'] or "Not added yet"
+			}
+		},
+		{
+			key: 
+			{
+				text: "Status"
+			},
+			value:
+			{
+				html: '<span class="govuk-tag" style="background: #888">Draft</span>'
+			}
+		}]
+	})}}
+
+	{{govukButton({
+		text: "Add more details",
+		href: "task--apprentice-details/add-apprentice-details"
+	})}}
+</section>
+{% endif %}
+<!-- END -->
+
+{% else %}
+<section class="govuk-!-padding-5" style="background: #f3f2f1">
+	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
+		Set up an apprenticeship
+	</h2>
+
+	<p>
+		You can set up an apprenticeship for an existing employee or recruit someone new.
+	</p>
+
+	{{govukButton({
+		text: "Start now",
+		classes: "govuk-button--start",
+		href: "eligibility-course"
+	})}}
+</section>
+{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+{% endif %}
