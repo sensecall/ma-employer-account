@@ -18,22 +18,57 @@
 {% endblock %}
 
 {% block content %}
+<style type="text/css">
+	.preview-empty {
+		border-left: 5px solid #2e358b;
+		min-height: 80px;
+		padding-left: 15px;
+	}
 
+	.info-summary {
+		border: 5px solid #2e358b;
+	}
+
+	.info-summary, .warning-summary, .highlight-summary {
+		margin-top: 30px;
+		margin-bottom: 30px;
+		padding: 20px 15px 15px;
+	}
+
+	.info-summary__header-bar {
+		background: #2e358b;
+		margin-bottom: 0;
+		padding: 20px;
+	}
+	.info-summary__header-bar h2 {
+		margin-bottom: 0;
+		color: #fff;
+	}
+
+	.button-secondary {
+		background-color: #BFC1C3;
+		box-shadow: none;
+		color: #0B0C0C !important;
+		display: inline-block;
+		padding: 7px 15px;
+		text-decoration: none;
+	}
+</style>
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-full">
-		
+
 	</div>
 
 	<div class="govuk-grid-column-full">
-		
-		
+
+
 		<div class="info-summary__header-bar">
 			<h2 class="govuk-heading-m">6 required sections to complete</h2>
 		</div>
-		
+
 		<div class="info-summary govuk-!-margin-top-0" role="alert">
-			
+
 
 			<div>
 				<p class="govuk-body">Sections you will need to complete:</p>
@@ -43,7 +78,7 @@
 					<li><a class="govuk-link summary-link" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/preview/#Skills">Desired skills and personal qualities</a></li>
 					<li><a class="govuk-link summary-link" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/preview/#Qualifications">Qualifications</a></li>
 					<li><a class="govuk-link summary-link" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/preview/#EmployerDescription">Employer description</a></li>
-					
+
 					<li><a class="govuk-link summary-link" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/preview/#applicationProcess">Application process</a></li>
 				</ul>
 			</div>
@@ -66,7 +101,7 @@
 	<div class="govuk-grid-column-two-thirds">
 		<div class=" govuk-!-margin-bottom-6">
 			<h2 class="govuk-heading-xl govuk-!-margin-bottom-6" id="Title">
-				
+
 				asdasd apprentice
 				<span class="govuk-caption-xl">T&amp;A CONSERVATORIES &amp; HOME IMPROVEMENTS LTD</span>
 			</h2>
@@ -78,18 +113,18 @@
 	<div class="govuk-grid-column-two-thirds">
 		<div class="preview-empty">
 			<h3 class="govuk-heading-s govuk-!-margin-top-0" id="ShortDescription">
-				
+
 				Brief overview
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-ShortDescription" data-valmsg-for="ShortDescription" data-valmsg-replace="true"></span>
-			
+
 			<a class="button-secondary" data-automation="link-overview" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/description/?wizard=False">Add<span class="govuk-visually-hidden">brief overview</span></a>
 		</div>
 	</div>
 	<div class="govuk-grid-column-one-third">
 		<div class="">
 			<h3 class="govuk-heading-s govuk-!-margin-top-0" id="ClosingDate">
-				
+
 				Closing Date
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-ClosingDate" data-valmsg-for="ClosingDate" data-valmsg-replace="true"></span>
@@ -108,31 +143,31 @@
 		<ul class="govuk-list">
 			<li class="">
 				<h3 class="govuk-heading-s govuk-!-margin-top-4" id="YearlyWage">
-					
+
 					Annual wage
 				</h3>
 				<span class="govuk-error-message field-validation-valid" id="error-message-HasWage" data-valmsg-for="HasWage" data-valmsg-replace="true"></span>
 				<span class="govuk-error-message field-validation-valid" id="error-message-WageText" data-valmsg-for="WageText" data-valmsg-replace="true"></span>
 				<p class="govuk-body">£23,212</p>
 				<span class="govuk-error-message field-validation-valid" id="error-message-WageInfo" data-valmsg-for="WageInfo" data-valmsg-replace="true"></span>
-				
+
 				<a class="govuk-body govuk-link" data-automation="link-salary" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/wage/?wizard=False">Change<span class="govuk-visually-hidden">yearly wage</span></a>
 			</li>
 			<li class="">
 				<h3 class="govuk-heading-s govuk-!-margin-top-4" id="WorkingWeek">
-					
+
 					Working week
 				</h3>
 				<span class="govuk-error-message field-validation-valid" id="error-message-WorkingWeekDescription" data-valmsg-for="WorkingWeekDescription" data-valmsg-replace="true"></span>
 				<p class="govuk-body">For example, Monday to Friday 9am to 5pm, shifts, may work evenings and weekendsFor example, Monday to Friday 9am to 5pm, shifts, may work evenings and weekendsFor example, Monday to Friday 9am to 5pm, shifts, may work evenings and weekends</p>
 				<span class="govuk-error-message field-validation-valid" id="error-message-HoursPerWeek" data-valmsg-for="HoursPerWeek" data-valmsg-replace="true"></span>
 				<p class="govuk-body">Total hours per week: 23</p>
-				
+
 				<a class="govuk-body govuk-link" data-automation="link-working-week" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/duration/?wizard=False">Change<span class="govuk-visually-hidden">working week</span></a>
 			</li>
 			<li class="">
 				<h3 class="govuk-heading-s govuk-!-margin-top-4" id="ExpectedDuration">
-					
+
 					Expected duration
 				</h3>
 				<span class="govuk-error-message field-validation-valid" id="error-message-ExpectedDuration" data-valmsg-for="ExpectedDuration" data-valmsg-replace="true"></span>
@@ -142,7 +177,7 @@
 			</li>
 			<li class="">
 				<h3 class="govuk-heading-s govuk-!-margin-top-4" id="PossibleStartDate">
-					
+
 					Possible start date
 				</h3>
 				<span class="govuk-error-message field-validation-valid" id="error-message-PossibleStartDate" data-valmsg-for="PossibleStartDate" data-valmsg-replace="true"></span>
@@ -151,7 +186,7 @@
 			</li>
 			<li class="">
 				<h3 class="govuk-heading-s govuk-!-margin-top-4" id="TrainingLevel">
-					
+
 					Apprenticeship level
 				</h3>
 				<span class="govuk-error-message field-validation-valid" id="error-message-HasProgramme" data-valmsg-for="HasProgramme" data-valmsg-replace="true"></span>
@@ -162,10 +197,10 @@
 				</p>
 				<a class="govuk-body govuk-link" data-automation="link-apprenticeship-level" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/training/?wizard=False">Change<span class="govuk-visually-hidden">apprenticeship level</span></a>
 			</li>
-			
+
 			<li class="">
 				<h3 class="govuk-heading-s govuk-!-margin-top-4" id="NumberOfPositions">
-					
+
 					Positions
 				</h3>
 				<span class="govuk-error-message field-validation-valid" id="error-message-NumberOfPositions" data-valmsg-for="NumberOfPositions" data-valmsg-replace="true"></span>
@@ -178,17 +213,17 @@
 		<div class="preview-empty">
 			<h3 class="govuk-heading-s">Description of the apprenticeship</h3>
 			<p class="govuk-body">What will the apprentice be doing?</p>
-			
+
 			<span class="govuk-error-message field-validation-valid" id="error-message-VacancyDescription" data-valmsg-for="VacancyDescription" data-valmsg-replace="true"></span>
-			
+
 			<p class="govuk-body">What training will the apprentice take and what qualification will the apprentice get at the end?</p>
-			
+
 			<span class="govuk-error-message field-validation-valid" id="error-message-TrainingDescription" data-valmsg-for="TrainingDescription" data-valmsg-replace="true"></span>
-			
+
 			<p class="govuk-body">What is the expected career progression after this apprenticeship?</p>
-			
+
 			<span class="govuk-error-message field-validation-valid" id="error-message-OutcomeDescription" data-valmsg-for="OutcomeDescription" data-valmsg-replace="true"></span>
-			
+
 
 			<a class="button-secondary" data-automation="link-vacancy-description" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/vacancy-description/">Add<span class="govuk-visually-hidden">full vacancy description</span></a>
 		</div>
@@ -209,22 +244,22 @@
 	<div class="govuk-grid-column-one-half">
 		<div class="preview-empty">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="Skills">
-				
+
 				Desired skills and personal qualities
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-Skills" data-valmsg-for="Skills" data-valmsg-replace="true"></span>
-			
+
 			<a class="button-secondary" data-automation="link-skills" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/skills/">Add<span class="govuk-visually-hidden">desired skills and personal qualities</span></a>
 		</div>
 	</div>
 	<div class="govuk-grid-column-one-half">
 		<div class="preview-empty">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="ThingsToConsider">
-				
+
 				Things to consider (optional)
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-ThingsToConsider" data-valmsg-for="ThingsToConsider" data-valmsg-replace="true"></span>
-			
+
 			<a class="button-secondary" data-automation="link-things-to-consider" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/considerations/">Add<span class="govuk-visually-hidden">things to consider</span></a>
 		</div>
 	</div>
@@ -233,11 +268,11 @@
 	<div class="govuk-grid-column-full">
 		<div class="preview-empty">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="Qualifications">
-				
+
 				Qualifications
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-Qualifications" data-valmsg-for="Qualifications" data-valmsg-replace="true"></span>
-			
+
 			<a class="button-secondary" data-automation="link-qualifications" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/qualifications/">Add<span class="govuk-visually-hidden">qualifications</span></a>
 		</div>
 	</div>
@@ -256,16 +291,16 @@
 	<div class="govuk-grid-column-two-thirds">
 		<div class="preview-empty">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="EmployerDescription">
-				
+
 				Description
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-EmployerDescription" data-valmsg-for="EmployerDescription" data-valmsg-replace="true"></span>
-			
+
 			<a class="button-secondary" data-automation="link-description" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/about-employer/">Add<span class="govuk-visually-hidden">employer description</span></a>
 		</div>
 		<div class="">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="EmployerName">
-				
+
 				Employer
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-EmployerName" data-valmsg-for="EmployerName" data-valmsg-replace="true"></span>
@@ -274,37 +309,37 @@
 		</div>
 		<div class="">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="DisabilityConfident">
-				
+
 				Disability Confident (optional)
 			</h3>
-			
-			
+
+
 
 			<p class="govuk-hint">This vacancy is not Disability Confident<br>This will not appear on the vacancy when it goes live</p>
 			<a class="govuk-body govuk-link" data-automation="link-standard" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/dates/?wizard=False">Change<span class="govuk-visually-hidden">disability confident</span></a>
 		</div>
 		<div class="preview-empty">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="EmployerWebsiteUrl">
-				
+
 				Website (optional)
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-EmployerWebsiteUrl" data-valmsg-for="EmployerWebsiteUrl" data-valmsg-replace="true"></span>
-			
+
 			<a class="button-secondary" data-automation="link-website" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/about-employer/">Add<span class="govuk-visually-hidden">website</span></a>
 		</div>
 	</div>
 	<div class="govuk-grid-column-one-third">
 		<div class="preview-empty">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="EmployerContact">
-				
+
 				Contact details (optional)
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-EmployerContactName" data-valmsg-for="EmployerContactName" data-valmsg-replace="true"></span>
-			
+
 			<span class="govuk-error-message field-validation-valid" id="error-message-EmployerContactEmail" data-valmsg-for="EmployerContactEmail" data-valmsg-replace="true"></span>
-			
+
 			<span class="govuk-error-message field-validation-valid" id="error-message-EmployerContactTelephone" data-valmsg-for="EmployerContactTelephone" data-valmsg-replace="true"></span>
-			
+
 			<a class="button-secondary" data-automation="link-employer-contact-details" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/employer-contact-details/">Add<span class="govuk-visually-hidden">contact details</span></a>
 		</div>
 	</div>
@@ -313,7 +348,7 @@
 	<div class="govuk-grid-column-one-half">
 		<div class="">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="EmployerAddress">
-				
+
 				Location
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-EmployerAddressElements" data-valmsg-for="EmployerAddressElements" data-valmsg-replace="true"></span>
@@ -344,7 +379,7 @@
 	<div class="govuk-grid-column-two-thirds">
 		<div class="">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="Provider">
-				
+
 				Training provider
 			</h3>
 			<span class="govuk-error-message field-validation-valid" id="error-message-ProviderName" data-valmsg-for="ProviderName" data-valmsg-replace="true"></span>
@@ -355,7 +390,7 @@
 	<div class="govuk-grid-column-one-third">
 		<div class="">
 			<h3 class="govuk-heading-s govuk-!-margin-top-4" id="Training">
-				
+
 				Apprenticeship Standard
 			</h3>
 			<p class="govuk-body">
@@ -374,14 +409,14 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-full">
 		<h2 class="govuk-heading-l">Application process</h2>
-		
+
 		<div class="preview-empty">
 			<h2 id="ApplicationMethod" class="govuk-heading-s govuk-!-margin-top-4">How will the candidates apply for this vacancy?</h2>
 			<span class="govuk-error-message field-validation-valid" id="error-message-ApplicationMethod" data-valmsg-for="ApplicationMethod" data-valmsg-replace="true"></span>
 			<a class="button-secondary" data-automation="link-application-method" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/application-process/">Add<span class="govuk-visually-hidden">application method</span></a>
 		</div>
-		
-		
+
+
 	</div>
 </div>
 <div class="govuk-grid-row">
@@ -393,14 +428,14 @@
 	<div class="govuk-grid-column-full">
 		<div class="govuk-form-group inline">
 			<div class="govuk-form-group">
-				<form class="form-inline" action="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/preview/" method="post">
-					<input type="submit" value="Submit vacancy" class="govuk-button" data-automation="submit-button">
-					<input name="_csrfToken" type="hidden" value="CfDJ8Ckj-rFtmjBHtK2iXrK98ypFhf05I6rEzbHEl5PitPDxcHa92GZe6byMvqtTT952chfg2rxssLtycqmJfXsxChjAN8zs_DBTtfBcrQ9DSK85ns6bHHGiOp2qXAPkKl1Dmjh7qIcMtqI8kg_A9aJ3iWX3uRv9gjSZxlNo--fncmrXz3SWjRVXNmPQPE6iIVtuRA"></form>
-					<a class="govuk-link das-button-link" href="/accounts/MDDRWW/vacancies/" data-automation="dashboard-link">Return to dashboard</a>
-					<a class="govuk-button delete-button" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/delete/" data-automation="delete-button">Delete</a>
-				</div>
+				<form method="post">
+					<input type="submit" value="Submit vacancy" class="govuk-button">
+				</form>
+				<a class="govuk-link das-button-link" href="/accounts/MDDRWW/vacancies/" data-automation="dashboard-link">Return to dashboard</a>
+				<a class="govuk-button delete-button" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/delete/" data-automation="delete-button">Delete</a>
 			</div>
 		</div>
 	</div>
-	
-	{% endblock %}
+</div>
+
+{% endblock %}

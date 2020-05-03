@@ -60,5 +60,10 @@ router.post('/vacancy-pay', (req, res) => {
 	res.redirect('vacancy-go-to-preview')
 })
 
+// preview
+router.post('/vacancy-preview', (req, res) => {
+	res.redirect('vacancy-created')
+})
+
 
 module.exports = router

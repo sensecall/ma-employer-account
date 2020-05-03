@@ -32,17 +32,26 @@
 			}) %}
 			
 			<p>
-				 If you haven't found appropriate training for the vacancy, you can <a href="#">Find apprenticeship training here (opens in new tab)</a>. 
+				If you haven't found appropriate training for the vacancy, you can <a href="#">Find apprenticeship training here (opens in new tab)</a>. 
 			</p>
 
-			{{ govukInput({
-				name: "vacancy[name]",
-				id: "vacancy-name",
-				hint:
-				{
-					text: "Enter apprenticeship training title"
-				}
-			}) }}
+			<div class="govuk-form-group">
+				<label class="govuk-hint" for="choose-apprenticeship">
+					Enter apprenticeship training title
+				</label>
+
+				<select id="course-name" name="course-name">
+					<option value=""></option>
+					{% for apprenticeship in data['apprenticeships'].apprenticeships %}
+					{% set optionValue %}{{apprenticeship.value}}*{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
+					<option value="{{optionValue}}" {{"selected" if optionValue === data['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#clear-search" id="clear-search">Clear search</a>
+				</p>
+			</div>
 			{% endcall %}
 
 			{{govukButton({
@@ -51,4 +60,21 @@
 		</form>
 	</div>
 </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#course-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+
+		$('#clear-search').on('click', function(e) {
+			$('#course-name').val("");
+			e.preventDefault();
+		})
+	})
+</script>
 {% endblock %}
