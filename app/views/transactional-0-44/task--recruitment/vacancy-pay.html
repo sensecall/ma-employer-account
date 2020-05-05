@@ -37,6 +37,8 @@
 				<a href="https://www.gov.uk/national-minimum-wage-rates" rel="noopener" target="_blank" class="govuk-link">National Minimum Wage for apprentices.</a>.
 			</p>
 
+			{% set hours = data['vacancy']['hours'] or '30' %}
+
 			{% set providerHtml %}
 			<div class="govuk-form-group govuk-!-width-full">
 				<label class="govuk-label" for="choose-apprenticeship">
@@ -62,7 +64,7 @@
 			</p>
 
 			<p class="govuk-hint">
-				On the vacancy, this will be displayed as a yearly wage of £5,441.80 to £10,429.12.
+				On the vacancy, this will be displayed as a yearly wage of £{{ (hours * 52 * 4.55) | numeral().format('0,0.00') }} to £{{ (hours * 52 * 8.72) | numeral().format('0,0.00') }}.
 			</p>
 			{% endset %}
 
@@ -72,7 +74,7 @@
 			</p>
 
 			<p class="govuk-hint">
-				On the vacancy, this will be displayed as a yearly wage of £4,963.40.
+				On the vacancy, this will be displayed as a yearly wage of £{{ (hours * 52 * 4.15) | numeral().format('0,0.00') }}.
 			</p>
 			{% endset %}
 
