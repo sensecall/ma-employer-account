@@ -1,0 +1,83 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+				Set your email preferences
+			</h1>
+
+			<p class="govuk-!-margin-bottom-8">
+				As this is the first time you have submitted an advert, you need to set your email preferences.
+			</p>
+
+			{{ govukRadios({
+				fieldset:
+				{
+					legend:
+					{
+						text: "Which emails do you want to receive about your apprenticeship adverts?",
+						classes: "govuk-fieldset__legend--l",
+						isPageHeading: true
+					}
+				},
+				hint:
+				{
+					text: "You'll get emails when we approve or reject an advert and when you get new applications."
+				},
+				idPrefix: "emails",
+				name: "vacancy[emails]",
+				items: [
+				{
+					value: "minimum-wage",
+					text: "Emails only for adverts I created"
+				},
+				{
+					value: "apprentice-minimum-wage",
+					text: "Emails about all adverts for my organisation"
+				},
+				{
+					value: "custom-wage",
+					text: "I do not want to receive any emails"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Save and submit your advert"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#provider-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+	})
+</script>
+{% endblock %}

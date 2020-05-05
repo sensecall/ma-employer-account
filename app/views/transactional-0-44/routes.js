@@ -18,9 +18,18 @@ router.get('/config', (req, res) => {
 	res.render(`${req.version}/config`)
 })
 
+function createReservation(req,res){
+	if(! req.session.data['reservation']['course-name']){
+		req.session.data['reservation']['course-name'] = 'Business Administrator, Level: 3 (Standard)'
+	}
+	req.session.data['reservation']['start-month'] = moment().format('MMMM YYYY')
+	req.session.data['reservation']['end-month'] = moment().add(2, 'months').format('MMMM YYYY')
+	req.session.data['reserved-funding'] = 'true'
+}
+
 router.post('/config', (req, res) => {
 	if(req.session.data['reserved-funding'] == 'true'){
-		req.session.data['reserved-funding'] = 'true'
+		createReservation(req,res)
 	} else {
 		delete req.session.data['reserved-funding']
 		req.session.data['reserved-funding'] = 'false'

@@ -49,17 +49,6 @@ Prototype {{version}} config
 					<a href="#course-name" id="clear-search">Clear search</a>
 				</p>
 			</div>
-
-			{{ govukInput({
-				value: data['reservation']['start-month'] or "February 2020",
-				label:
-				{
-					text: "Start month"
-				},
-				classes: "govuk-!-width-one-third",
-				id: "start-month",
-				name: "reservation[start-month]"
-			}) }}
 			{% endset -%}
 
 			{{ govukCheckboxes({
