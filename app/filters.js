@@ -106,6 +106,10 @@ module.exports = function (env) {
     }
 
     env.addFilter('numeral', numeralFilter);
+    
+    filters.formatNumber = function(number,format) {
+      return numeral(number).format(format)
+    }
 
 
 

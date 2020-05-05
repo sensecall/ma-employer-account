@@ -143,7 +143,6 @@
 		<ul class="govuk-list">
 			<li class="">
 				<h3 class="govuk-heading-s govuk-!-margin-top-4" id="YearlyWage">
-
 					Annual wage
 				</h3>
 				<span class="govuk-error-message field-validation-valid" id="error-message-HasWage" data-valmsg-for="HasWage" data-valmsg-replace="true"></span>
@@ -171,7 +170,7 @@
 					Expected duration
 				</h3>
 				<span class="govuk-error-message field-validation-valid" id="error-message-ExpectedDuration" data-valmsg-for="ExpectedDuration" data-valmsg-replace="true"></span>
-				<p class="govuk-body">12 Months</p>
+				<p class="govuk-body">12 months</p>
 				<a class="govuk-body govuk-link" data-automation="link-duration" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/duration/?wizard=False">Change<span class="govuk-visually-hidden">expected duration</span></a>
 
 			</li>
@@ -411,7 +410,7 @@
 		<h2 class="govuk-heading-l">Application process</h2>
 
 		<div class="preview-empty">
-			<h2 id="ApplicationMethod" class="govuk-heading-s govuk-!-margin-top-4">How will the candidates apply for this vacancy?</h2>
+			<h2 id="ApplicationMethod" class="govuk-heading-s govuk-!-margin-top-4">How will the candidates apply for this apprenticeship?</h2>
 			<span class="govuk-error-message field-validation-valid" id="error-message-ApplicationMethod" data-valmsg-for="ApplicationMethod" data-valmsg-replace="true"></span>
 			<a class="button-secondary" data-automation="link-application-method" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/application-process/">Add<span class="govuk-visually-hidden">application method</span></a>
 		</div>
@@ -429,10 +428,25 @@
 		<div class="govuk-form-group inline">
 			<div class="govuk-form-group">
 				<form method="post">
-					<input type="submit" value="Submit vacancy" class="govuk-button">
+					<input type="submit" value="Submit advert" class="govuk-button">
 				</form>
-				<a class="govuk-link das-button-link" href="/accounts/MDDRWW/vacancies/" data-automation="dashboard-link">Return to dashboard</a>
-				<a class="govuk-button delete-button" href="/accounts/MDDRWW/vacancies/f9cae285-7ab3-4559-8462-34c964357b9a/delete/" data-automation="delete-button">Delete</a>
+				
+				<style type="text/css">
+					.govuk-button--warning {
+						color: #fff;
+						background-color: #d4351c;
+						-webkit-box-shadow: 0 2px 0 #55150b;
+						box-shadow: 0 2px 0 #55150b;
+					}
+				</style>
+				{{govukButton({
+					text: "Delete advert",
+					classes: "govuk-button--warning"
+				})}}
+
+				<p>
+					<a class="govuk-link" href="/accounts/MDDRWW/vacancies/" data-automation="dashboard-link">Return to dashboard</a>
+				</p>
 			</div>
 		</div>
 	</div>

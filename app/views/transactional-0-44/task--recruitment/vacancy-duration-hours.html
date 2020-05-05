@@ -28,11 +28,13 @@
 			
 			<div class="govuk-form-group">
 				<label class="govuk-label govuk-label--s" for="passport-issued">
-					How long is the whole apprenticeship, including work and training? <span class="govuk-visually-hidden">(enter a numeric value and then select Month(s) or Year(s) in the next field)</span>
+					How many months will the apprenticeship last for, including work and training?
 				</label>
 
 				<span id="passport-issued-hint" class="govuk-hint">
-					The apprenticeship must last at least 12 months<br> For Able seafarer (deck), Typical length is 18 months
+					The apprenticeship must last for at least 12 months.
+					<br>
+					For {{data['vacancy']['course']['name']}}, Typical length is 18 months.
 				</span>
 
 				<input class="govuk-input govuk-!-margin-bottom-4 govuk-input--width-2 govuk-!-display-inline" id="passport-issued" name="" type="text" aria-describedby="passport-issued-hint">
@@ -44,7 +46,7 @@
 			{{ govukCharacterCount({
 				name: "more-detail",
 				id: "more-detail",
-				maxlength: 200,
+				maxlength: 250,
 				label:
 				{
 					text: "Details of working week",
@@ -52,7 +54,7 @@
 				},
 				hint: 
 				{
-					text: "For example, Monday to Friday 9am to 5pm, shifts, may work evenings and weekends"
+					text: "For example, Monday to Friday 9am to 5pm, shifts, may work evenings and weekends."
 				}
 			}) }}
 
@@ -61,13 +63,17 @@
 					How many hours will the apprentice work each week, including training?
 				</label>
 
-				<input class="govuk-input govuk-!-margin-bottom-4 govuk-input--width-2 govuk-!-display-inline" id="passport-issued" name="" type="text" aria-describedby="passport-issued-hint">
+				<input class="govuk-input govuk-!-margin-bottom-4 govuk-input--width-2 govuk-!-display-inline" id="passport-issued" name="vacancy[hours]" type="text" aria-describedby="passport-issued-hint">
 				<span class="govuk-!-display-inline govuk-body">hours</span>
 			</div>
 
 			{{govukButton({
 				text: "Save and continue"
 			})}}
+
+			<p>
+				<a href="../recruit-dashboard">Cancel</a>
+			</p>
 		</form>
 	</div>
 </div>

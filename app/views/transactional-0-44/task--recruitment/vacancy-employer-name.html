@@ -25,23 +25,51 @@
 			{% call govukFieldset({
 				legend:
 				{
-					text: "What employer name do you want to go on the vacancy?",
+					text: "Which employer name do you want on your advert?",
 					classes: "govuk-fieldset__legend--xl",
 					isPageHeading: true
 				}
 			}) %}
 
-			{% set inputHtml %}
-			<div class="govuk-form-group govuk-!-width-full">
-				{{ govukInput({
-					label:
-					{
-						text: "Trading name"
-					},
-					id: "trading-name",
-					name: "trading-name"
-				}) }}
-			</div>
+			{% set tradingNameHtml %}
+			{{ govukInput({
+				label:
+				{
+					text: "Trading name"
+				},
+				id: "trading-name",
+				name: "trading-name"
+			}) }}
+			{% endset %}
+
+			{% set anonymousHtml %}
+			{{ govukInput({
+				label:
+				{
+					text: "Enter a brief description of what the employer does",
+					classes: "govuk-!-padding-top-4"
+				},
+				hint:
+				{
+					text: "For example, a car manufacturer or clothing retailer."
+				},
+				id: "employer-description",
+				name: "employer-description"
+			}) }}
+
+			{{ govukCharacterCount({
+				label:
+				{
+					text: "Why do you want your advert to be anonymous?"
+				},
+				hint:
+				{
+					text: "This information will not show on your advert. We’ll use it to help us decide whether you can be anonymous. "
+				},
+				maxlength: 200,
+				id: "anonymous-reason",
+				name: "anonymous-reason"
+			}) }}
 			{% endset %}
 
 			{{ govukRadios({
@@ -50,14 +78,14 @@
 				items: [
 				{
 					value: data['employer-name'],
-					text: data['employer-name']
+					text: data['employer-name'] + " (registered name)"
 				},
 				{
 					value: "trading-name",
 					text: "A trading name",
 					conditional:
 					{
-						html: inputHtml
+						html: tradingNameHtml
 					}
 				},
 				{
@@ -65,10 +93,14 @@
 				},
 				{
 					value: "no",
-					text: "Do not display a name (Be anonymous)",
+					text: "I do not want an employer name on my advert",
 					hint:
 					{
-						text: "This could mean fewer people see your vacancy"
+						text: "This could mean less people view your advert."
+					},
+					conditional:
+					{
+						html: anonymousHtml
 					}
 				}
 				]
@@ -76,8 +108,12 @@
 			{% endcall %}
 
 			{{govukButton({
-				text: "Continue"
+				text: "Save and continue"
 			})}}
+
+			<p>
+				<a href="../recruit-dashboard">Cancel</a>
+			</p>
 		</form>
 	</div>
 </div>
