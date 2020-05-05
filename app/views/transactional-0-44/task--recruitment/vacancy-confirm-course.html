@@ -23,18 +23,18 @@
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			<h1 class="govuk-heading-xl">
-				Confirm apprenticeship training
+				Confirm training course 
 			</h1>
 			
 			<div class="govuk-!-padding-3 govuk-!-margin-bottom-6" style="background: #f4f4f4;">
 				<h2 class="govuk-heading-m">
 					{{data['vacancy']['course']['name']}}
-					<span class="govuk-caption-m">Level 2 (GCSE)</span>
+					<span class="govuk-caption-m">{{data['vacancy']['course']['level']}}</span>
 					<span class="govuk-caption-m">Typical duration: 18 months</span>
-					<span class="govuk-caption-m">Standard</span>
+					{% if data['vacancy']['course']['standard'] %}<span class="govuk-caption-m">Standard</span>{% endif %}
 				</h2>
 				<p class="govuk-!-margin-bottom-0">
-					<a href="#">Change apprenticeship training</a>
+					<a href="#">Change course</a>
 				</p>
 			</div>
 
@@ -43,7 +43,7 @@
 			})}}
 
 			<p>
-				<a href="#">Cancel</a>
+				<a href="../recruit-dashboard">Cancel</a>
 			</p>
 		</form>
 	</div>

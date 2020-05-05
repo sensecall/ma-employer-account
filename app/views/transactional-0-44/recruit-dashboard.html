@@ -31,7 +31,7 @@ Manage apprentices
 				{% if data.user=="employer"%}
 				<a href="create/create-vacancy" class="govuk-button" data-module="govuk-button">Create a new advert</a>
 				{%else%}
-				<a href="create/employers-select" class="govuk-button" data-module="govuk-button">Create a new advert</a>
+				<a href="task--recruitment/vacancy-name" class="govuk-button" data-module="govuk-button">Create a new advert</a>
 				{%endif%}
 			</div>
 		</div>
@@ -81,11 +81,9 @@ Manage apprentices
 			<span class="data-id">{{vacancy.VAC}}</span>
 			<span class="data-orgs">{{vacancy.employer}}</span>
 			<span class="data-name">{{vacancy.title}} Apprentice</span>
-			<!-- <span class="data-orgs">{%set employer = data.employers | random %}{{employer.businessName}}</span> -->
 		</div>
 		{% endfor %}
 
-		<!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
 
 		<!-- Vacancy -->
 		<div class="govuk-grid-row raa-card--row">
@@ -97,112 +95,111 @@ Manage apprentices
 							Draft adverts
 						</h3>
 
-						<p class="govuk-body raa-card--description">Adverts that need completing and sending for review.</p>
-            <!-- <p class="govuk-body raa-card--description">./adverts published on Find an Apprenctice service</p>
-              <ul class="raa-card--tasks govuk-list">
-                <li>
-                  <a class="govuk-link" href="adverts?status=closing">6 adverts are closing soon</a>
-                </li>
-                <li>
-                  <a class="govuk-link" href="adverts?status=closing-no-applications">3 adverts are closing soon and have no applications</a>
-                </li>
-            </ul> -->
-        </div>
-    </div>
-</div>
+						<p class="govuk-body raa-card--description">
+							Adverts that you need to complete and send for review.
+						</p>
+					</div>
+				</div>
+			</div>
 
-<div class="govuk-grid-column-one-third">
-	<div class="raa-card">
-		<div class="raa-card--content">
-			<h3 class="govuk-heading-m raa-card--heading">
-				<span class="raa-card--stat">1</span>
-				<a class="card-link" href="adverts?filter=pending review">
-					Pending review
+			<div class="govuk-grid-column-one-third">
+				<div class="raa-card">
+					<div class="raa-card--content">
+						<h3 class="govuk-heading-m raa-card--heading">
+							<span class="raa-card--stat">1</span>
+							<a class="card-link" href="adverts?filter=pending review">
+								Pending review
+							</a>
+						</h3>
+
+						<p class="govuk-body raa-card--description">
+							Adverts that you’ve sent for review.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="govuk-grid-column-one-third">
+				<div class="raa-card raa-card--inactive">
+					<div class="raa-card--content">
+						<h3 class="govuk-heading-m raa-card--heading">
+							<span class="raa-card--stat">0</span>
+							Rejected adverts
+						</h3>
+
+						<p class="govuk-body raa-card--description">
+							Adverts that you need to edit and resubmit.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="govuk-grid-row raa-card--row">
+			<div class="govuk-grid-column-one-third">
+				<div class="raa-card raa-card--inactive">
+					<div class="raa-card--content">
+						<h3 class="govuk-heading-m raa-card--heading">
+							<span class="raa-card--stat">0</span>
+							Live adverts
+						</h3>
+						<p class="govuk-body raa-card--description">Your adverts on the Find an apprenticeship service.</p>
+					</div>
+				</div>
+			</div>
+			<div class="govuk-grid-column-one-third">
+				<div class="raa-card raa-card--inactive">
+					<div class="raa-card--content">
+						<h3 class="govuk-heading-m raa-card--heading">
+							<span class="raa-card--stat">0</span>
+							New applications
+						</h3>
+						<p class="govuk-body raa-card--description">Applications from the Find an apprenticeship service.</p>
+					</div>
+				</div>
+			</div>
+			<div class="govuk-grid-column-one-third">
+				<div class="raa-card raa-card--inactive">
+					<div class="raa-card--content">
+						<h3 class="govuk-heading-m raa-card--heading">
+							<span class="raa-card--stat">0</span>
+							Closed adverts
+						</h3>
+						<p class="govuk-body raa-card--description">Adverts that have passed the closing date. You can copy these adverts to republish them.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="govuk-grid-column-full">
+				<a href="adverts?filter=any" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state" name="button">
+					View all of your adverts (14)
 				</a>
-			</h3>
-
-			<p class="govuk-body raa-card--description">Adverts that have been sent for review.</p>
-			<!-- <p class="govuk-body raa-card--description"></p> -->
-              <!-- <ul class="raa-card--tasks govuk-list">
-                <li>
-                  <a class="ga-track-anchor-click" href="adverts?status=new" data-ga-event-category="link - click" >6 new applications to look at </a>
-                </li>
-            </ul> -->
-        </div>
-    </div>
-</div>
-
-<div class="govuk-grid-column-one-third">
-	<div class="raa-card raa-card--inactive">
-		<div class="raa-card--content">
-			<h3 class="govuk-heading-m raa-card--heading">
-				<span class="raa-card--stat">0</span>
-				Rejected adverts
-			</h3>
-
-			<p class="govuk-body raa-card--description">Rejected adverts will need to be edited and resubmitted.</p>
-		</div>
-	</div>
-</div>
-</div>
-
-<div class="govuk-grid-row raa-card--row">
-	<div class="govuk-grid-column-one-third">
-		<div class="raa-card raa-card--inactive">
-			<div class="raa-card--content">
-				<h3 class="govuk-heading-m raa-card--heading">
-					<span class="raa-card--stat">0</span>
-					Live adverts
-				</h3>
-				<p class="govuk-body raa-card--description">Adverts on Find an apprencticeship service.</p>
 			</div>
 		</div>
-	</div>
-	<div class="govuk-grid-column-one-third">
-		<div class="raa-card raa-card--inactive">
-			<div class="raa-card--content">
-				<h3 class="govuk-heading-m raa-card--heading">
-					<span class="raa-card--stat">0</span>
-					New applications
+		<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+		<!-- Other actions  -->
+		<div class="govuk-grid-row">
+			{% if data.user=="provider"%}
+			<div class="govuk-grid-column-one-third ">
+				<h3 class="govuk-heading-s"><a class="govuk-link  govuk-link--no-visited-state" href="reports/dashboard">Reports</a></h3>
+				<p class="govuk-body">Create a report about applicants or adverts</p>
+			</div>
+			{% endif %}
+			<div class="govuk-grid-column-one-third ">
+				<h3 class="govuk-heading-s">
+					<a href="notifications/notification-preferences{{'-new' if data.has_notifications == 'yes' }}">
+						Set your email preferences
+					</a>
 				</h3>
-				<p class="govuk-body raa-card--description">Applications from Find an apprenticeship service.</p>
+				<p class="govuk-body">
+					Choose the emails you 
+					receive about your adverts and 
+					applications. 
+				</p>
 			</div>
 		</div>
-	</div>
-	<div class="govuk-grid-column-one-third">
-		<div class="raa-card raa-card--inactive">
-			<div class="raa-card--content">
-				<h3 class="govuk-heading-m raa-card--heading">
-					<span class="raa-card--stat">0</span>
-					Closed adverts
-				</h3>
-				<p class="govuk-body raa-card--description">Adverts that have passed the closing date. You can clone these adverts to republish them.</p>
-			</div>
-		</div>
-	</div>
 
-	<div class="govuk-grid-column-full">
-		<a href="adverts?filter=any" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold govuk-link--no-visited-state" name="button">View your advert</a>
-	</div>
-</div>
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-<!-- Other actions  -->
-<div class="govuk-grid-row">
-	{% if data.user=="provider"%}
-	<div class="govuk-grid-column-one-third ">
-		<h3 class="govuk-heading-s"><a class="govuk-link  govuk-link--no-visited-state" href="reports/dashboard">Reports</a></h3>
-		<p class="govuk-body">Create a report about applicants or adverts</p>
-	</div>
-	{% endif %}
-	<div class="govuk-grid-column-one-third ">
-		<h3 class="govuk-heading-s">
-			<a href="notifications/notification-preferences{{'-new' if data.has_notifications == 'yes' }}">Set your email preferences</a>
-		</h3>
-		<p class="govuk-body">Choose the emails you receive about your adverts and applications.</p>
-	</div>
-</div>
-
-</div> <!-- govuk-grid-column-full -->
+	</div> <!-- govuk-grid-column-full -->
 </div> <!-- govuk-grid-row -->
 <script src="/public/javascripts/accessible-autocomplete.min.js"></script>
 <script type="text/javascript">

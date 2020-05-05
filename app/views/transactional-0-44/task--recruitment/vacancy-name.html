@@ -25,14 +25,14 @@
 			{% call govukFieldset({
 				legend:
 				{
-					text: "What do you want to call this advert?",
+					text: "What do you want to call your advert?",
 					classes: "govuk-fieldset__legend--xl",
 					isPageHeading: true
 				}
 			}) %}
 			
 			<p>
-				Use a title that relates to the apprenticeship training for this advert, this will help it get found in the Find an Apprenticeship search.
+				To make sure your advert appears in search results, use a title that relates to the apprenticeship training.
 			</p>
 
 			{{ govukCharacterCount({
@@ -42,7 +42,7 @@
 				rows: 1,
 				hint:
 				{
-					text: "Must include the word ‘apprentice’ or ‘apprenticeship’ "
+					text: "You must include the word ‘apprentice’ or ‘apprenticeship’."
 				}
 			}) }}
 			{% endcall %}
@@ -50,6 +50,10 @@
 			{{govukButton({
 				text: "Save and continue"
 			})}}
+
+			<p>
+				<a href="../recruit-dashboard">Cancel</a>
+			</p>
 		</form>
 	</div>
 </div>

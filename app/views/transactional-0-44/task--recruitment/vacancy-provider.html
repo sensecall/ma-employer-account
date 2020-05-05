@@ -25,17 +25,30 @@
 			{% call govukFieldset({
 				legend:
 				{
-					text: "Have you found a training provider?",
+					text: "Which training provider will deliver the apprenticeship training?",
 					classes: "govuk-fieldset__legend--xl",
 					isPageHeading: true
 				}
 			}) %}
 
-			{% set providerHtml %}
-			<div class="govuk-form-group govuk-!-width-full">
-				<label class="govuk-label" for="choose-apprenticeship">
+			<p>
+				You’ll need to use a registered training provider who offers “{{data['vacancy']['course']['name']}}, {{data['vacancy']['course']['level']}}” training.
+			</p>
+
+			<p>
+				If you have not found a training provider yet, you can use the <a href="#">Find apprenticeship training service (opens in a new tab or window)</a>.
+			</p>
+
+			<div class="govuk-form-group govuk-!-width-full govuk-!-margin-top-6">
+				<label class="govuk-label--m" for="provider-name">
 					Search providers
 				</label>
+
+				<p class="govuk-hint govuk-!-margin-top-1">
+					Enter the training provider name or reference number (UKPRN).
+					<br>
+					UKPRN is 8 numbers. For example 12345678.
+				</p>
 
 				<select id="provider-name" name="vacancy[provider][name]">
 					<option value=""></option>
@@ -48,36 +61,18 @@
 					<a href="#provider-name" id="clear-search">Clear search</a>
 				</p>
 			</div>
-			{% endset %}
-			
+			{% endcall %}
+
+			{{govukButton({
+				text: "Save and continue",
+				classes: "govuk-!-margin-top-3"
+			})}}
+
 			<p>
-				You will need to use a registered training provider who offers "{{data['vacancy']['course']['name']}}" training. 
+				<a href="../recruit-dashboard">Cancel</a>
 			</p>
-
-			{{ govukRadios({
-				idPrefix: "chosen-provider",
-				name: "chosen-provider",
-				items: [
-				{
-					value: "yes",
-					text: "Yes",
-					conditional: {
-					html: providerHtml
-				}
-			},
-			{
-				value: "no",
-				text: "No, I will choose one later"
-			}
-			]
-		}) }}
-		{% endcall %}
-
-		{{govukButton({
-			text: "Save and continue"
-		})}}
-	</form>
-</div>
+		</form>
+	</div>
 </div>
 {% endblock %}
 
