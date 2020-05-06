@@ -31,23 +31,7 @@
 						classes: "govuk-fieldset__legend--xl"
 					}
 				},
-				items: [
-				{
-					value: "Between January and March 2020",
-					text: "Between January and March 2020",
-					checked: data['reservation']['start-month'] === 'January 2020'
-				},
-				{
-					value: "Between February and April 2020",
-					text: "Between February and April 2020",
-					checked: data['reservation']['start-month'] === 'February 2020'
-				},
-				{
-					value: "Between March and May 2020",
-					text: "Between March and May 2020",
-					checked: data['reservation']['start-month'] === 'March 2020'
-				}
-				]
+				items: 3 | reservationMonths(false)
 			}) }}
 
 			{{govukButton({

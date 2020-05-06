@@ -53,11 +53,14 @@ module.exports = function (env) {
       return moment().format(format)
     }
 
-    filters.reservationMonths = function(count, inputName){
+
+    // reservation months maker
+    filters.reservationMonths = function(count, unknown){
       var monthFormat = "MMMM YYYY"
       var currentMonth = moment().format(monthFormat)
 
       var months = [
+      // Before Now
       // {
       //   value: 'before-now',
       //   text: "Before " + currentMonth,
@@ -94,17 +97,20 @@ module.exports = function (env) {
 
       addMonths(count)
 
-      months.push({
-        divider: "or"
-      },
-      {
-        value: "unknown",
-        text: "I don't know"
-      })
+      // don't know
+      if(unknown)
+        months.push({
+          divider: "or"
+        },
+        {
+          value: "unknown",
+          text: "I don't know"
+        })
 
       return months
     }
 
+    // format numbers using numeral
     env.addFilter('numeral', numeralFilter);
     
     filters.formatNumber = function(number,format) {

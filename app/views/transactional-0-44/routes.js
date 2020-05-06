@@ -210,13 +210,15 @@ router.post('/task--reserve-funding/choose-course', (req, res) => {
 	}
 })
 
+// choose start month
 router.post('/task--reserve-funding/choose-start-month', (req, res) => {
 	req.session.data['started'] == 'true'
 	req.session.data['reservation']['end-month'] = moment(req.session.data['reservation']['start-month']).add(2,'months').format('MMMM YYYY')
 
-	if (req.session.data['reservation']['start-month']){
+	if (req.session.data['reservation']['start-month'] != 'unknown'){
 		res.redirect('confirm-reservation-details')
 	} else {
+		req.session.data['reservation'] = {}
 		delete req.session.data['reservation']
 		res.redirect('start-month-warning')
 	}
