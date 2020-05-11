@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const NotifyClient = require('notifications-node-client').NotifyClient,
+    notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
 // vacancy name
 router.post('/vacancy-name', (req, res) => {
@@ -69,6 +71,9 @@ router.post('/vacancy-pay', (req, res) => {
 // preview
 router.post('/vacancy-preview', (req, res) => {
 	// res.redirect('vacancy-emails')
+
+	notify.sendEmail('4930d0be-bc97-4775-97d0-b4d4077de89c', req.session.data['employer-email'])
+
 	res.redirect('vacancy-created')
 })
 

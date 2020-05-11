@@ -30,6 +30,17 @@ Prototype {{version}} config
 				value: data['employer-name']
 			}) }}
 
+			{{ govukInput({
+				label:
+				{
+					text: "Employer email (optional)"
+				},
+				classes: "govuk-!-width-two-thirds",
+				id: "employer-email",
+				name: "employer-email",
+				value: data['employer-email']
+			}) }}
+
 			
 			{% set reserveHtml %}
 			<div class="govuk-form-group">
