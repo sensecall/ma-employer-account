@@ -70,10 +70,16 @@ router.post('/vacancy-pay', (req, res) => {
 
 // preview
 router.post('/vacancy-preview', (req, res) => {
-	// res.redirect('vacancy-emails')
-
-	notify.sendEmail('4930d0be-bc97-4775-97d0-b4d4077de89c', req.session.data['employer-email'])
-
+	req.session.data['vacancy']['id'] = 'A1B2C3D4E5'
+	// res.redirect('vacancy-emails'
+	notify.sendEmail('4930d0be-bc97-4775-97d0-b4d4077de89c', req.session.data['employer-email'], {
+		personalisation: {
+			"first name": req.session.data['employer']['first-name'],
+			"last name":  req.session.data['employer']['last-name'],
+			"advert title":  req.session.data['vacancy']['name'],
+			"advert reference number":  req.session.data['vacancy']['id']
+		}
+	})
 	res.redirect('vacancy-created')
 })
 

@@ -38,6 +38,16 @@ router.post('/config', (req, res) => {
 		req.session.data['reservation'] = []
 	}
 
+	// PAYE
+	if(req.session.data['add-paye-now'] != 'yes'){
+		req.session.data['add-paye-now'] = 'no'
+	}
+
+	// agreement
+	if(req.session.data['sign-agreement-now'] != 'yes'){
+		req.session.data['sign-agreement-now'] = 'no'
+	}
+
 	if(req.session.data['started-add-approve']){
 		
 	} else {
@@ -48,11 +58,12 @@ router.post('/config', (req, res) => {
 		delete req.session.data['apprenticeship-status']
 	}
 
-	if(req.session.data['started-vacancy']){
-		
-	} else {
-		req.session.data['vacancy'] = {}
+	if(req.session.data['started-vacancy'] != 'true'){
+		req.session.data['vacancy'] = ''
+		req.session.data['vacancy']['name'] = ''
 		delete req.session.data['vacancy']
+	} else {
+		
 	}
 
 	if(req.session.data['logged-in'] == 'true'){

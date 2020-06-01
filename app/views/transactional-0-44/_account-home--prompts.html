@@ -13,7 +13,7 @@
 			</p>
 
 			<p>
-				<a href="add-paye" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+				<a href="{{data['paye-redirect'] or 'add-paye'}}" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
 					Add your PAYE scheme
 				</a>
 			</p>
@@ -38,7 +38,7 @@
 			</p>
 
 			<p>
-				<a href="sign-agreement" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
+				<a href="{{data['agreement-redirect'] or 'sign-agreement'}}" {% include './_new-tab-shortcut.html' %} class="govuk-!-font-weight-bold">
 					Sign your agreement
 				</a>
 			</p>
@@ -103,7 +103,7 @@
 <!-- END -->
 
 <!-- RESERVED AND CREATED VACANCY BUT NO DETAILS ADDED -->
-{% elif data['reserved-funding'] == 'true' and data['vacancy'] and not data['apprenticeship-status'] %}
+{% elif data['vacancy'] and not data['apprenticeship-status'] %}
 <section>
 	<h2 class="govuk-heading-l govuk-!-margin-top-2 govuk-!-margin-bottom-4">
 		Your apprenticeship advert
@@ -118,6 +118,14 @@
 	data['vacancy']['closing-date']['month'],
 	data['vacancy']['closing-date']['day']
 	] | join('-') | date('DD MMMM YYYY')}}
+	{% endset %}
+
+	{% set vacancyStatus %}
+	{% if data['vacancy']['status'] == 'live' %}
+	<span class="govuk-tag" style="background:#00703c">Live</span>
+	{% else %}
+	<span class="govuk-tag" style="background:#777">Draft</span>
+	{% endif %}
 	{% endset %}
 
 	{{ govukSummaryList({
@@ -159,16 +167,22 @@
 			},
 			value: 
 			{
-				html: '<span class="govuk-tag" style="background:#00703c">Live</span>'
+				html: vacancyStatus
 			}
 		}]
 	})}}
 
 
 	<form method="post" action="recruit-to-add">
+		{% if data['vacancy']['status'] == 'live' %}
 		{{govukButton({
 			text: "Add apprentice details"
 		})}}
+		{% else %}
+		{{govukButton({
+			text: "Continue"
+		})}}
+		{% endif %}
 	</form>
 </section>
 <!-- END -->

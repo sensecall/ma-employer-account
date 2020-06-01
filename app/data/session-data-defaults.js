@@ -37,7 +37,9 @@ module.exports = {
 	'providers': providers,
 	'employer-name': "Aardvark Zebra Ltd",
 	"employer": {
-		"address": "57 Norton Road, Stoke, ST4 2UY"
+		"address": "57 Norton Road, Stoke, ST4 2UY",
+		"first-name": "Jay",
+		"last-name": "Smith"
 	},
 	'started': 'false',
 
@@ -49,6 +51,7 @@ module.exports = {
 	'reservation': {
 		'course-name': 'Business Administrator, Level: 3 (Standard)'
 	},
+	'started-vacancy': 'false',
 	'reservation-months': 4,
 	"apprenticeship-cost": 1200,
 	"apprentice-dob-day": "02",
