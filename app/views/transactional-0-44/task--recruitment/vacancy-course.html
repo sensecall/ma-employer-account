@@ -25,19 +25,19 @@
 			{% call govukFieldset({
 				legend:
 				{
-					text: "Which training course will your apprentice take?",
+					text: "What training will the apprentice take?",
 					classes: "govuk-fieldset__legend--xl",
 					isPageHeading: true
 				}
 			}) %}
 			
 			<p>
-				If you have not found a training course yet, you can use the <a href="#">Find apprenticeship training service (opens in a new tab or window)</a>. 
+				If you have not found training for this apprenticeship, you can use the <a href="#">Find apprenticeship training service (opens in a new tab or window)</a>. 
 			</p>
 
 			<div class="govuk-form-group">
-				<label class="govuk-hint" for="choose-apprenticeship">
-					Search for a course
+				<label class="govuk-hint" for="course-name">
+					Enter apprenticeship training title
 				</label>
 
 				<select id="course-name" name="vacancy[course-name]">
