@@ -55,5 +55,10 @@ router.use(/\/build-([0-9]+)-([0-9]+)/, (req, res, next) => {
 	require(`./views/build-${req.params[0]}-${req.params[1]}/routes`)(req, res, next);
 })
 
+// change of provider
+router.use(/\/change-provider-([0-99]+)-([0-99]+)/, (req, res, next) => {
+	require(`./views/change-provider-${req.params[0]}-${req.params[1]}/routes`)(req, res, next);
+})
+
 
 module.exports = router

@@ -1,0 +1,262 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h2 class="govuk-heading-xl">
+				Add apprentice details
+			</h2>
+
+			<div class="govuk-inset-text">
+				<p>
+					You must add the apprentice's first and last names - fill in as many other fields as you can. You'll be able to return later to make changes or add more information.
+				</p>
+
+				<p>
+					You'll only be able to authorise payments for this apprentice once all the fields have been completed - either by yourself or your training provider.
+				</p>
+			</div>
+
+			<h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+				Provider
+			</h3>
+			<p class="govuk-!-margin-bottom-6">
+				{{data['provider-name']}}
+			</p>
+
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Apprentice name",
+					classes: "govuk-fieldset__legend--s",
+					isPageHeading: false
+				}
+			}) %}
+
+			{{ govukInput({
+				label:
+				{
+					text: "First name"
+				},
+				id: "apprentice[first-name]",
+				name: "apprentice[first-name]",
+				value: data['apprentice']['first-name'],
+				classes: "govuk-input--width-20"
+			}) }}
+
+			{{ govukInput({
+				label:
+				{
+					text: "Last name"
+				},
+				id: "apprentice[last-name]",
+				name: "apprentice[last-name]",
+				value: data['apprentice']['last-name'],
+				classes: "govuk-input--width-20"
+			}) }}
+			{% endcall %}
+
+			{{ govukDateInput({
+				id: "apprentice-dob",
+				namePrefix: "apprentice-dob",
+				value: data['apprentice-dob'],
+				fieldset:
+				{
+					legend:
+					{
+						text: "Date of birth",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--s"
+					}
+				},
+				items:
+				[
+				{
+					name: "day",
+					id: "day",
+					classes: "govuk-input--width-2",
+					value: data['apprentice-dob-day']
+				},
+				{
+					name: "month",
+					id: "month",
+					classes: "govuk-input--width-2",
+					value: data['apprentice-dob-month']
+				},
+				{
+					name: "year",
+					id: "year",
+					classes: "govuk-input--width-4",
+					value: data['apprentice-dob-year']
+				}
+				],
+				hint:
+				{
+					text: "For example, 31 3 1980"
+				}
+			}) }}
+
+			<h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+				Unique learner number
+			</h3>
+			<p class="govuk-!-margin-bottom-6 govuk-caption-m">
+				This will be added by your training provider.
+			</p>
+			
+			<div class="govuk-form-group">
+				<label class="govuk-label govuk-!-font-weight-bold" for="choose-apprenticeship">
+					Apprenticeship training course
+				</label>
+
+				<span class="govuk-hint">
+					Start typing the name of the course or choose an option from the list
+				</span>
+
+				<select id="course-name" name="course-name">
+					<option value=""></option>
+					{% for apprenticeship in data['apprenticeships'].apprenticeships %}
+					{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
+					<option value="{{optionValue}}" {{"selected" if optionValue === data['reservation']['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+
+			{{ govukDateInput({
+				id: "apprenticeship-start-date",
+				namePrefix: "apprenticeship-start-date",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Planned training start date",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--s"
+					}
+				},
+				items:
+				[
+				{
+					name: "month",
+					id: "month",
+					classes: "govuk-input--width-2",
+					value: data['apprenticeship-start-date-month'] or data['reservation']['start-month']|date().format('MM')
+				},
+				{
+					name: "year",
+					id: "year",
+					classes: "govuk-input--width-4",
+					value: data['apprenticeship-start-date-year'] or data['reservation']['start-month']|date().format('YYYY')
+				}
+				],
+				hint:
+				{
+					text: "For example, 3 2019"
+				}
+			}) }}
+
+			{{ govukDateInput({
+				id: "apprenticeship-finish-date",
+				namePrefix: "apprenticeship-finish-date",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Planned training end date",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--s"
+					}
+				},
+				items:
+				[
+				{
+					name: "month",
+					id: "month",
+					classes: "govuk-input--width-2",
+					value: data['apprenticeship-finish-date-month']
+				},
+				{
+					name: "year",
+					id: "year",
+					classes: "govuk-input--width-4",
+					value: data['apprenticeship-finish-date-year']
+				}
+				],
+				hint:
+				{
+					text: "For example, 4 2020"
+				}
+			}) }}
+
+			{{ govukInput({
+				type: "number",
+				classes: "govuk-input--width-5",
+				label:
+				{
+					classes: "govuk-!-font-weight-bold",
+					text: "Total agreed apprenticeship price (excluding VAT)"
+				},
+				hint:
+				{
+					text: "Enter the price, including any end-point assessment costs, in whole pounds. For example, for £1,500 enter 1500"
+				},
+				id: "apprenticeship[cost]",
+				name: "apprenticeship[cost]"
+			}) }}
+
+			{{ govukInput({
+				label:
+				{
+					classes: "govuk-!-font-weight-bold",
+					text: "Reference (optional)"
+				},
+				hint:
+				{
+					html: "You can add a reference, such as employee number or location."
+				},
+				id: "apprenticeship[reference]",
+				name: "apprenticeship[reference]"
+			}) }}
+
+			<p>
+				{{ govukButton ({
+					text: "Save and continue"
+				})}}
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#course-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#course-name').val("");
+		})
+	})
+</script>
+{% endblock %}

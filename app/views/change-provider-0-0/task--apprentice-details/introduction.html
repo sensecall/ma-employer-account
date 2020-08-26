@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			The apprentice
+		</h1>
+
+		<p>
+			If you’re an employer who wants to take on an apprentice, you need to know:
+		</p>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>
+				apprentices are aged 16 or over (to any age)
+			</li>
+			<li>
+				they combine working with studying to gain skills and knowledge in a specific job
+			</li>
+			<li>
+				they can be new or current employees who are looking to upskill
+			</li>
+		</ul>
+
+		<p>
+			Your apprentice should:
+		</p>
+
+		<ul class="govuk-list govuk-list--bullet">
+			<li>
+				work with experienced staff
+			</li>
+			<li>
+				learn job-specific skills
+			</li>
+			<li>
+				study whilst doing their apprenticeship
+			</li>
+		</ul>
+
+		{% set apprenticeDetailsUrl %}https://esfa:educ4tion@das-add-and-approve-prototype.herokuapp.com/approve/sprint-19/research/employer/recruit-data/add--confirm-provider?provider-name={{data['provider-name']}}&ukprn=10001921&course-name={{data['course-name']}}{% endset %}
+
+		{{govukButton({
+			text: "Continue with this section",
+			classes: "govuk-!-margin-top-6 govuk-!-margin-bottom-2",
+			href: "../task-list?apprentice-intro=done&apprentice-details=done&started=true",
+			attributes:
+			{
+				onclick: "window.open('" + apprenticeDetailsUrl | safe + "');"
+			}
+		})}}
+
+		<p class="govuk-!-font-size-16" style="color: #888">
+			Opens in new tab or window
+		</p>
+
+		<p>
+			<a href="../task-list">Come back to this section later</a>
+		</p>
+	</div>
+</div>
+{% endblock %}

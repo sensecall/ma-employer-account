@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds-from-desktop">
+		<h1 class="govuk-heading-xl">Confirm the information before sending your request</h1>
+
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Apprentice name
+				</dt>
+				<dd class="govuk-summary-list__value">
+					Darren Diamond
+				</dd>
+
+				<dd class="govuk-summary-list__actions">
+					<a href="#">
+						<span class="govuk-visually-hidden"> name</span>
+					</a>
+				</dd>
+			</div>
+		</dl>
+
+		<h2 class="govuk-heading-m">Current details</h2>
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Current training provider
+				</dt>
+				<dd class="govuk-summary-list__value">
+					ABC Training Ltd
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="#">
+						<!-- Left intentionally blank -->
+						<span class="govuk-visually-hidden"> date of birth</span>
+					</a>
+				</dd>
+			</div>
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Current start date
+				</dt>
+				<dd class="govuk-summary-list__value">
+					May 2019
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="#">
+						<span class="govuk-visually-hidden"> contact details</span>
+					</a>
+				</dd>
+			</div>
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Current end date
+				</dt>
+				<dd class="govuk-summary-list__value">
+					July 2020
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="#">
+						<span class="govuk-visually-hidden"> contact details</span>
+					</a>
+				</dd>
+			</div>
+		</dl>
+
+		<h2 class="govuk-heading-m">Requested changes</h2>
+		<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					New training provider
+				</dt>
+				<dd class="govuk-summary-list__value">
+					Tyrell Corp Training
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="#">
+						Change
+						<span class="govuk-visually-hidden"> contact information</span>
+					</a>
+				</dd>
+			</div>
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					Training restart date
+				</dt>
+				<dd class="govuk-summary-list__value">
+					February 2001
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="#">
+						Change
+						<span class="govuk-visually-hidden"> contact details</span>
+					</a>
+				</dd>
+			</div>
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					New end date
+				</dt>
+				<dd class="govuk-summary-list__value">
+					February 2001
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="#">
+						Change
+						<span class="govuk-visually-hidden"> contact details</span>
+					</a>
+				</dd>
+			</div>
+
+			<div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+					New price
+				</dt>
+				<dd class="govuk-summary-list__value">
+					£233
+				</dd>
+				<dd class="govuk-summary-list__actions">
+					<a href="#">
+						Change
+						<span class="govuk-visually-hidden"> contact details</span>
+					</a>
+				</dd>
+			</div>
+		</dl>
+
+		<form method="post" novalidate="">
+			<input type="hidden" name="answers-checked" value="true">
+			<button type="submit" class="govuk-button">
+				Save and send
+			</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

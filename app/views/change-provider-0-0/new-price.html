@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% set priceKnown %}
+			{{ govukInput({
+				id: "yes-price-known",
+				name: "yes-price-known",
+				classes: "govuk-!-width-one-third",
+				label:
+				{
+					text: "What's the new price?"
+				}
+			}) }}
+			{% endset -%}
+
+			{{ govukRadios({
+				idPrefix: "know-price-conditional",
+				name: "know-price",
+				fieldset: 
+				{
+					legend: 
+					{
+						text: "Is the new price the same as the old one?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
+				},
+
+				items: [
+				{
+					value: "no",
+					text: "No, it's changed",
+					conditional: 
+					{
+						html: priceKnown
+					}
+				},
+				{
+					value: "Yes",
+					text: "Yes, it's the same"
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				classes: "govuk-!-margin-top-4",
+				text: "Save and continue"
+			})}}
+
+			<p class="govuk-body"><a class="govuk-link" href="is-the-cost-the-same-for-all">Skip this step</a></p>
+		</form>
+	</div>
+</div>
+{% endblock %}
