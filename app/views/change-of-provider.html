@@ -1,0 +1,48 @@
+{% extends "./layout.html" %}
+
+{% set serviceName %}
+MA employer account prototype
+{% endset -%}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+	Change of provider
+	<span class="govuk-caption-l">Continuous improvement team</span>
+</h1>
+
+<p class="govuk-body-l govuk-!-margin-bottom-8">
+	Changes to the Manage apprenticeships services to allow employers to change an apprentice's training provider.
+</p>
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h4 class="govuk-heading-m govuk-!-margin-bottom-2">
+			<a href="change-provider-1-0">Version 1-0</a><br>
+			<span class="govuk-caption-m">August 2020</span>
+		</h4>
+		<p>
+			Changes based on Approvals journey and content audit.
+		</p>
+
+		<h4 class="govuk-heading-m govuk-!-margin-bottom-2">
+			<a href="change-provider-0-0">Version 0-0</a><br>
+			<span class="govuk-caption-m">August 2020</span>
+		</h4>
+		<p>
+			Picking up from where Approvals left off.
+		</p>
+	</div>
+</div>
+
+{% endblock %}

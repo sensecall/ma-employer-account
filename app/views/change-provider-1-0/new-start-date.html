@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<div class="govuk-form-group">
+				{% call govukFieldset({
+					legend:
+					{
+						text: "When does the apprentice start with the new training provider?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
+				}) %}
+
+				<p class="govuk-body">
+					This date must be on or after the stop date.
+				</p>
+
+				<hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+				<table class="govuk-table">
+					<tbody class="govuk-table__body">
+						<tr class="govuk-table__row">
+							<th scope="row" class="govuk-table__header">Stop Date</th>
+							<td class="govuk-table__cell">April 2020</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<span id="start-date-hint" class="govuk-hint">
+					For example, 04 2020
+				</span>
+
+				<div class="govuk-date-input" id="start-date">
+					<div class="govuk-date-input__item">
+						<div class="govuk-form-group">
+							<label class="govuk-label govuk-date-input__label" for="start-date-month">
+								Month
+							</label>
+							<input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-date-month" name="start-date-month" type="text" pattern="[0-9]*" inputmode="numeric">
+						</div>
+					</div>
+					<div class="govuk-date-input__item">
+						<div class="govuk-form-group">
+							<label class="govuk-label govuk-date-input__label" for="start-date-year">
+								Year
+							</label>
+							<input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-date-year" name="start-date-year" type="text" pattern="[0-9]*" inputmode="numeric">
+						</div>
+					</div>
+				</div>
+
+				{% endcall %}
+			</div>
+			
+			{{govukButton({
+				classes: "govuk-!-margin-top-4",
+				text: "Save and continue"
+			})}}
+
+			<p class="govuk-body"><a class="govuk-link" href="is-the-cost-the-same-for-all">Skip this step</a></p>
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,428 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+	items: [
+	{
+		text: "Home",
+		href: "account-home"
+	},
+	{
+		text: "Apprentices"
+	}
+	]
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<h1 class="govuk-heading-xl">Manage your apprentices</h1>
+
+<form method="get" action="/BB8W4N/apprentices">
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds">
+			<div class="govuk-form-group">
+				<label for="searchTerm" class="govuk-label">Search by apprentice name</label>
+				<div class="das-search-form__group">
+					<input class="govuk-input das-search-form__input" id="searchTerm" name="searchTerm" type="text">
+					<div class="das-search-form__button-wrap">
+						<button class="govuk-button das-search-form__button" type="submit">Search</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+			<div class="das-pane govuk-!-margin-bottom-3">
+				<div class="govuk-grid-row">
+					<div class="govuk-grid-column-one-third">
+						<div class="govuk-form-group">
+							<label class="govuk-label" for="selectedProvider">Training provider</label>
+							<select class="govuk-select govuk-!-width-full" id="selectedProvider" name="selectedProvider">
+								<option label="All" aria-label="All training providers" value="">All</option>
+								<option label="BARKING AND DAGENHAM COLLEGE" value="BARKING AND DAGENHAM COLLEGE">BARKING AND DAGENHAM COLLEGE</option>
+								<option label="BOOM TRAINING LIMITED" value="BOOM TRAINING LIMITED">BOOM TRAINING LIMITED</option>
+								<option label="SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)" value="SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)">SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)</option>
+							</select>
+						</div>
+					</div>
+					<div class="govuk-grid-column-one-third">
+						<div class="govuk-form-group">
+							<label class="govuk-label" for="selectedCourse">Apprenticeship training course</label>
+							<select class="govuk-select govuk-!-width-full" id="selectedCourse" name="selectedCourse">
+								<option label="All" aria-label="All courses" value="">All</option>
+								<option label="Abattoir Worker, Level: 2 (Standard)" value="Abattoir Worker, Level: 2 (Standard)">Abattoir Worker, Level: 2 (Standard)</option>
+								<option label="Able Seafarer (Deck), Level: 2 (Standard)" value="Able Seafarer (Deck), Level: 2 (Standard)">Able Seafarer (Deck), Level: 2 (Standard)</option>
+								<option label="Accounting, Level: 2" value="Accounting, Level: 2">Accounting, Level: 2</option>
+								<option label="Accounting, Level: 3" value="Accounting, Level: 3">Accounting, Level: 3</option>
+								<option label="Activity Leadership: Leadership, Level: 2" value="Activity Leadership: Leadership, Level: 2">Activity Leadership: Leadership, Level: 2</option>
+								<option label="Advanced butcher, Level: 3 (Standard)" value="Advanced butcher, Level: 3 (Standard)">Advanced butcher, Level: 3 (Standard)</option>
+								<option label="Aviation ground operative, Level: 2 (Standard)" value="Aviation ground operative, Level: 2 (Standard)">Aviation ground operative, Level: 2 (Standard)</option>
+								<option label="Barbering, Level: 2" value="Barbering, Level: 2">Barbering, Level: 2</option>
+								<option label="Beauty Therapist, Level: 2 (Standard)" value="Beauty Therapist, Level: 2 (Standard)">Beauty Therapist, Level: 2 (Standard)</option>
+								<option label="Children and Young People's Workforce, Level: 2" value="Children and Young People's Workforce, Level: 2">Children and Young People's Workforce, Level: 2</option>
+								<option label="Domestic Heating: Oil-Fired, Solid Fuel or Environmental Options, Level: 3" value="Domestic Heating: Oil-Fired, Solid Fuel or Environmental Options, Level: 3">Domestic Heating: Oil-Fired, Solid Fuel or Environmental Options, Level: 3</option>
+								<option label="Driving Goods Vehicles: Van Driver, Level: 2" value="Driving Goods Vehicles: Van Driver, Level: 2">Driving Goods Vehicles: Van Driver, Level: 2</option>
+								<option label="Food and Drink: Meat and Poultry Industry Skills, Level: 3" value="Food and Drink: Meat and Poultry Industry Skills, Level: 3">Food and Drink: Meat and Poultry Industry Skills, Level: 3</option>
+								<option label="Gas network craftsperson, Level: 3 (Standard)" value="Gas network craftsperson, Level: 3 (Standard)">Gas network craftsperson, Level: 3 (Standard)</option>
+								<option label="IS Business Analyst, Level: 4 (Standard)" value="IS Business Analyst, Level: 4 (Standard)">IS Business Analyst, Level: 4 (Standard)</option>
+								<option label="IT Application Specialist, Level: 3" value="IT Application Specialist, Level: 3">IT Application Specialist, Level: 3</option>
+								<option label="Junior Estate Agent, Level: 2 (Standard)" value="Junior Estate Agent, Level: 2 (Standard)">Junior Estate Agent, Level: 2 (Standard)</option>
+								<option label="Playwork, Level: 3" value="Playwork, Level: 3">Playwork, Level: 3</option>
+								<option label="Policing: Defence Policing, Level: 3" value="Policing: Defence Policing, Level: 3">Policing: Defence Policing, Level: 3</option>
+								<option label="Providing Financial Services: General Insurance, Level: 2" value="Providing Financial Services: General Insurance, Level: 2">Providing Financial Services: General Insurance, Level: 2</option>
+							</select>
+						</div>
+					</div>
+					<div class="govuk-grid-column-one-third">
+						<div class="govuk-form-group">
+							<label class="govuk-label" for="selectedEndDate">Planned end date</label>
+							<select class="govuk-select govuk-!-width-full" id="selectedEndDate" name="selectedEndDate">
+								<option label="All" aria-label="All end dates" value="">All</option>
+								<option label="Jun 2018" value="2018-06-01">2018-06-01</option>
+								<option label="Dec 2019" value="2019-12-01">2019-12-01</option>
+								<option label="Jan 2020" value="2020-01-01">2020-01-01</option>
+								<option label="Feb 2020" value="2020-02-01">2020-02-01</option>
+								<option label="Mar 2020" value="2020-03-01">2020-03-01</option>
+								<option label="May 2020" value="2020-05-01">2020-05-01</option>
+								<option label="Jun 2020" value="2020-06-01">2020-06-01</option>
+								<option label="Oct 2020" value="2020-10-01">2020-10-01</option>
+								<option label="Nov 2020" value="2020-11-01">2020-11-01</option>
+								<option label="Dec 2020" value="2020-12-01">2020-12-01</option>
+								<option label="Jan 2021" value="2021-01-01">2021-01-01</option>
+								<option label="Feb 2021" value="2021-02-01">2021-02-01</option>
+								<option label="Mar 2021" value="2021-03-01">2021-03-01</option>
+								<option label="Apr 2021" value="2021-04-01">2021-04-01</option>
+								<option label="May 2021" value="2021-05-01">2021-05-01</option>
+								<option label="Jun 2021" value="2021-06-01">2021-06-01</option>
+								<option label="Jul 2021" value="2021-07-01">2021-07-01</option>
+								<option label="Aug 2021" value="2021-08-01">2021-08-01</option>
+								<option label="Sep 2021" value="2021-09-01">2021-09-01</option>
+								<option label="Oct 2021" value="2021-10-01">2021-10-01</option>
+								<option label="Dec 2021" value="2021-12-01">2021-12-01</option>
+								<option label="Jan 2022" value="2022-01-01">2022-01-01</option>
+							</select>
+						</div>
+					</div>
+				</div><div class="govuk-grid-row">
+					<div class="govuk-grid-column-one-third">
+						<div class="govuk-form-group">
+							<label class="govuk-label" for="selectedStatus">Status</label>
+							<select class="govuk-select govuk-!-width-full" id="selectedStatus" name="selectedStatus">
+								<option label="All" aria-label="All statuses" value="">All</option>
+								<option label="Waiting to start" value="WaitingToStart">Waiting to start</option>
+								<option label="Live" value="Live">Live</option>
+								<option label="Paused" value="Paused">Paused</option>
+								<option label="Stopped" value="Stopped">Stopped</option>
+								<option label="Completed" value="Completed">Completed</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<button class="govuk-button govuk-!-margin-0" type="submit">Apply filters</button>
+			</div>
+		</div>
+	</div>
+</form>
+<div class="govuk-grid-row govuk-!-margin-bottom-2">
+	<div class="govuk-grid-column-two-thirds">
+		<p class="govuk-body">185 apprentice records, 22 with alerts</p>
+
+	</div>
+	<div class="govuk-grid-column-one-third das-!-text-align-right--from-tablet">
+		<a class="govuk-body govuk-link" aria-label="Download all data" href="/BB8W4N/apprentices/download">Download all data (CSV)</a>
+	</div>
+</div>
+<table class="govuk-table das-table--responsive das-table--double-arrows">
+	<thead class="govuk-table__head">
+		<tr class="govuk-table__row">
+			<th scope="col" class="govuk-table__header">
+				<a class="das-table__sort" title="Sort the table by name" href="/BB8W4N/apprentices?ReverseSort=False&amp;SortField=FirstName">
+					Apprentice name
+				</a>
+			</th>
+			<th scope="col" class="govuk-table__header">
+				<a class="das-table__sort" title="Sort the table by name" href="/BB8W4N/apprentices?ReverseSort=False&amp;SortField=CourseName">
+					Apprenticeship training course
+				</a>
+			</th>
+			<th scope="col" class="govuk-table__header">
+				<a class="das-table__sort" title="Sort the table by name" href="/BB8W4N/apprentices?ReverseSort=False&amp;SortField=StartDate">
+					Planned start date
+				</a>
+			</th>
+			<th scope="col" class="govuk-table__header">
+				<a class="das-table__sort" title="Sort the table by name" href="/BB8W4N/apprentices?ReverseSort=False&amp;SortField=EndDate">
+					Planned end date
+				</a>
+			</th>
+			<th scope="col" class="govuk-table__header">
+				<a class="das-table__sort" title="Sort the table by name" href="/BB8W4N/apprentices?ReverseSort=False&amp;SortField=ProviderName">
+					Training provider
+				</a>
+			</th>
+			<th scope="col" class="govuk-table__header">
+				<a class="das-table__sort" title="Sort the table by name" href="/BB8W4N/apprentices?ReverseSort=False&amp;SortField=ApprenticeshipStatus">
+					Status
+				</a>
+			</th>
+			<th scope="col" class="govuk-table__header">
+				<a class="das-table__sort" title="Sort the table by name" href="/BB8W4N/apprentices?ReverseSort=False&amp;SortField=DataLockStatus">
+					Alerts
+				</a>
+			</th>
+		</tr>
+	</thead>
+	<tbody class="govuk-table__body">
+		<tr class="govuk-table__row">
+			<td class="govuk-table__cell" data-label="Apprentice name">
+				<a class="govuk-link" href="apprentice">
+					Demo User
+				</a>
+			</td>
+			<td class="govuk-table__cell" data-label="Apprenticeship training course">
+				Able seafarer (deck), Level: 2 (Standard)
+			</td>
+			<td class="govuk-table__cell" data-label="Planned start date">
+				Aug 2019
+			</td>
+			<td class="govuk-table__cell" data-label="Planned end date">
+				Nov 2020
+			</td>
+			<td class="govuk-table__cell" data-label="Training provider">
+				SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)
+			</td>
+			<td class="govuk-table__cell" data-label="Status">
+				Live
+			</td>
+			<td class="govuk-table__cell" data-label="Alerts">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/66469P/details">
+					Changes requested
+				</a>
+			</td>
+		</tr>
+		<tr class="govuk-table__row">
+			<td class="govuk-table__cell" data-label="Apprentice name">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/9GBW66/details">
+					Mark Smith
+				</a>
+			</td>
+			<td class="govuk-table__cell" data-label="Apprenticeship training course">
+				Gas network craftsperson, Level: 3 (Standard)
+			</td>
+			<td class="govuk-table__cell" data-label="Planned start date">
+				Jun 2017
+			</td>
+			<td class="govuk-table__cell" data-label="Planned end date">
+				Jun 2020
+			</td>
+			<td class="govuk-table__cell" data-label="Training provider">
+				SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)
+			</td>
+			<td class="govuk-table__cell" data-label="Status">
+				Live
+			</td>
+			<td class="govuk-table__cell" data-label="Alerts">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/9GBW66/details">
+					Changes pending
+				</a>
+			</td>
+		</tr>
+		<tr class="govuk-table__row">
+			<td class="govuk-table__cell" data-label="Apprentice name">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/PNX764/details">
+					Test User
+				</a>
+			</td>
+			<td class="govuk-table__cell" data-label="Apprenticeship training course">
+				Abattoir Worker, Level: 2 (Standard)
+			</td>
+			<td class="govuk-table__cell" data-label="Planned start date">
+				Jan 2020
+			</td>
+			<td class="govuk-table__cell" data-label="Planned end date">
+				Jan 2021
+			</td>
+			<td class="govuk-table__cell" data-label="Training provider">
+				SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)
+			</td>
+			<td class="govuk-table__cell" data-label="Status">
+				Live
+			</td>
+			<td class="govuk-table__cell" data-label="Alerts">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/PNX764/details">
+					Changes for review
+				</a>
+			</td>
+		</tr>
+		<tr class="govuk-table__row">
+			<td class="govuk-table__cell" data-label="Apprentice name">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/79PK99/details">
+					Test User
+				</a>
+			</td>
+			<td class="govuk-table__cell" data-label="Apprenticeship training course">
+				Abattoir Worker, Level: 2 (Standard)
+			</td>
+			<td class="govuk-table__cell" data-label="Planned start date">
+				Dec 2019
+			</td>
+			<td class="govuk-table__cell" data-label="Planned end date">
+				Dec 2020
+			</td>
+			<td class="govuk-table__cell" data-label="Training provider">
+				SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)
+			</td>
+			<td class="govuk-table__cell" data-label="Status">
+				Live
+			</td>
+			<td class="govuk-table__cell" data-label="Alerts">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/79PK99/details">
+					Changes pending
+				</a>
+			</td>
+		</tr>
+		<tr class="govuk-table__row">
+			<td class="govuk-table__cell" data-label="Apprentice name">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/XDXBN4/details">
+					Test User
+				</a>
+			</td>
+			<td class="govuk-table__cell" data-label="Apprenticeship training course">
+				Junior Estate Agent, Level: 2 (Standard)
+			</td>
+			<td class="govuk-table__cell" data-label="Planned start date">
+				Jun 2019
+			</td>
+			<td class="govuk-table__cell" data-label="Planned end date">
+				Jun 2020
+			</td>
+			<td class="govuk-table__cell" data-label="Training provider">
+				SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)
+			</td>
+			<td class="govuk-table__cell" data-label="Status">
+				Live
+			</td>
+			<td class="govuk-table__cell" data-label="Alerts">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/XDXBN4/details">
+					Changes pending
+				</a>
+			</td>
+		</tr>
+		<tr class="govuk-table__row">
+			<td class="govuk-table__cell" data-label="Apprentice name">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/XDX476/details">
+					Watt James
+				</a>
+			</td>
+			<td class="govuk-table__cell" data-label="Apprenticeship training course">
+				Gas network craftsperson, Level: 3 (Standard)
+			</td>
+			<td class="govuk-table__cell" data-label="Planned start date">
+				Jun 2017
+			</td>
+			<td class="govuk-table__cell" data-label="Planned end date">
+				Jun 2020
+			</td>
+			<td class="govuk-table__cell" data-label="Training provider">
+				SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)
+			</td>
+			<td class="govuk-table__cell" data-label="Status">
+				Live
+			</td>
+			<td class="govuk-table__cell" data-label="Alerts">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/XDX476/details">
+					Changes pending
+				</a>
+			</td>
+		</tr>
+		<tr class="govuk-table__row">
+			<td class="govuk-table__cell" data-label="Apprentice name">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/JK78XX/details">
+					abc def
+				</a>
+			</td>
+			<td class="govuk-table__cell" data-label="Apprenticeship training course">
+				Activity Leadership: Leadership, Level: 2
+			</td>
+			<td class="govuk-table__cell" data-label="Planned start date">
+				Feb 2019
+			</td>
+			<td class="govuk-table__cell" data-label="Planned end date">
+				Feb 2020
+			</td>
+			<td class="govuk-table__cell" data-label="Training provider">
+				BARKING AND DAGENHAM COLLEGE
+			</td>
+			<td class="govuk-table__cell" data-label="Status">
+				Stopped
+			</td>
+			<td class="govuk-table__cell" data-label="Alerts">
+			</td>
+		</tr>
+		<tr class="govuk-table__row">
+			<td class="govuk-table__cell" data-label="Apprentice name">
+				<a class="govuk-link" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/8NX4BX/details">
+					Demo User1
+				</a>
+			</td>
+			<td class="govuk-table__cell" data-label="Apprenticeship training course">
+				Accounting, Level: 2
+			</td>
+			<td class="govuk-table__cell" data-label="Planned start date">
+				Aug 2019
+			</td>
+			<td class="govuk-table__cell" data-label="Planned end date">
+				May 2020
+			</td>
+			<td class="govuk-table__cell" data-label="Training provider">
+				SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)
+			</td>
+			<td class="govuk-table__cell" data-label="Status">
+				Stopped
+			</td>
+			<td class="govuk-table__cell" data-label="Alerts">
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<nav role="navigation" aria-label="Pagination">
+	<div class="das-pagination__summary">
+		Showing 1 to 100 of 185
+		apprentice records, 22 with alerts
+	</div>
+	<ul class="das-pagination">
+		<li class="das-pagination__item">
+			<a class="das-pagination__link current" aria-current="aria-current" aria-label="Page 1" href="/BB8W4N/apprentices?PageNumber=1">
+				1
+			</a>
+		</li>
+		<li class="das-pagination__item">
+			<a class="das-pagination__link " aria-label="Page 2" href="/BB8W4N/apprentices?PageNumber=2">
+				2
+			</a>
+		</li>
+		<li class="das-pagination__item">
+			<a class="das-pagination__link " aria-label="Next page" href="/BB8W4N/apprentices?PageNumber=2">
+				Next
+			</a>
+		</li>
+	</ul>
+</nav>
+
+
+
+
+{% endblock %}

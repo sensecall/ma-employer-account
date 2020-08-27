@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds-from-desktop">
+		<h1 class="govuk-heading-xl">Confirm the information before sending your request</h1>
+
+		{{ govukTable({
+			caption: "Apprenticeship details",
+			captionClasses: "govuk-heading-m",
+			firstCellIsHeader: true,
+			head: [
+			{
+				text: ""
+			},
+			{
+				text: "Requested changes",
+				format: "numeric"
+			},
+			{
+				text: "Current details",
+				format: "numeric"
+			}
+			],
+			rows: [
+			[
+			{
+				text: "Training provider"
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">XYZ Solutions LLC</ins>',
+				format: "numeric"
+			},
+			{
+				html: '<del style="background: #ffc0c0">ABC Training Ltd</del>',
+				format: "numeric"
+			}
+			],
+			[
+			{
+				text: "Start date"
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">October 2020</ins>',
+				format: "numeric"
+			},
+			{
+				html: '<del style="background: #ffc0c0">May 2020</del>',
+				format: "numeric"
+			}
+			],
+			[
+			{
+				text: "End date"
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">August 2023</ins>',
+				format: "numeric"
+			},
+			{
+				html: '<del style="background: #ffc0c0">July 2022</del>',
+				format: "numeric"
+			}
+			]
+			]
+		}) }}
+
+		<form method="post" novalidate="">
+			<input type="hidden" name="answers-checked" value="true">
+			<button type="submit" class="govuk-button">
+				Save and send
+			</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
