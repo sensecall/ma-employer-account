@@ -101,7 +101,7 @@
 </div> -->
 
 <div class="govuk-grid-row">
-	<div class="govuk-grid-column-two-thirds-from-desktop">
+	<div class="govuk-grid-column-full">
 		{{ govukTable({
 			caption: "Apprentice name: [name]",
 			captionClasses: "govuk-heading-l",
@@ -115,6 +115,9 @@
 			},
 			{
 				text: "Requested changes"
+			},
+			{
+				text: ""
 			}
 			],
 			rows: [
@@ -127,28 +130,40 @@
 			},
 			{
 				html: '<ins style="background: #cffdc6; text-decoration: none">XYZ Solutions LLC</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
 			}
 			],
 			[
 			{
-				text: "Start date"
+				text: "Planned training start date"
 			},
 			{
 				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">May 2020</del>'
 			},
 			{
 				html: '<ins style="background: #cffdc6; text-decoration: none">October 2020</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
 			}
 			],
 			[
 			{
-				text: "End date"
+				text: "Planned training end date"
 			},
 			{
 				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">July 2022</del>'
 			},
 			{
 				html: '<ins style="background: #cffdc6; text-decoration: none">August 2023</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
 			}
 			],
 			[
@@ -160,6 +175,10 @@
 			},
 			{
 				html: '<ins style="background: #fff; text-decoration: none">No changes</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
 			}
 			]
 			]
