@@ -448,4 +448,8 @@ router.post('/check-your-answers', (req, res) => {
 	res.redirect('confirmation')
 })
 
+router.post('/confirm-details', (req, res) => {
+	res.redirect('final-confirmation')
+})
+
 module.exports = router

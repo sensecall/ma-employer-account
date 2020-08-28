@@ -20,90 +20,16 @@
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<h1 class="govuk-heading-xl">Confirm the information before sending your request</h1>
+		<h1 class="govuk-heading-xl">
+			Check and approve the details
+		</h1>
 	</div>
 </div>
-
-<!-- <div class="govuk-grid-row">
-	<div class="govuk-grid-column-one-half">
-		{{ govukTable({
-			caption: "Current details",
-			captionClasses: "govuk-heading-m",
-			firstCellIsHeader: true,
-			rows: [
-			[
-			{
-				text: "Training provider"
-			},
-			{
-				html: '<del style="background: #ffc0c0">ABC Training Ltd</del>',
-				format: "numeric"
-			}
-			],
-			[
-			{
-				text: "Start date"
-			},
-			{
-				html: '<del style="background: #ffc0c0">May 2020</del>',
-				format: "numeric"
-			}
-			],
-			[
-			{
-				text: "End date"
-			},
-			{
-				html: '<del style="background: #ffc0c0">July 2022</del>',
-				format: "numeric"
-			}
-			]
-			]
-		}) }}
-	</div>
-
-	<div class="govuk-grid-column-one-half">
-		{{ govukTable({
-			caption: "Requested changes",
-			captionClasses: "govuk-heading-m",
-			firstCellIsHeader: true,
-			rows: [
-			[
-			{
-				text: "Training provider"
-			},
-			{
-				html: '<ins style="background: #cffdc6; text-decoration: none">XYZ Solutions LLC</ins>',
-				format: "numeric"
-			}
-			],
-			[
-			{
-				text: "Start date"
-			},
-			{
-				html: '<ins style="background: #cffdc6; text-decoration: none">October 2020</ins>',
-				format: "numeric"
-			}
-			],
-			[
-			{
-				text: "End date"
-			},
-			{
-				html: '<ins style="background: #cffdc6; text-decoration: none">August 2023</ins>',
-				format: "numeric"
-			}
-			]
-			]
-		}) }}
-	</div>
-</div> -->
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds-from-desktop">
 		{{ govukTable({
-			caption: "Apprentice name: [name]",
+			caption: "[NAME]'s details",
 			captionClasses: "govuk-heading-l",
 			firstCellIsHeader: true,
 			head: [
@@ -115,6 +41,9 @@
 			},
 			{
 				text: "Requested changes"
+			},
+			{
+				text: ""
 			}
 			],
 			rows: [
@@ -127,28 +56,40 @@
 			},
 			{
 				html: '<ins style="background: #cffdc6; text-decoration: none">XYZ Solutions LLC</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
 			}
 			],
 			[
 			{
-				text: "Start date"
+				text: "Planned training start date"
 			},
 			{
 				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">May 2020</del>'
 			},
 			{
 				html: '<ins style="background: #cffdc6; text-decoration: none">October 2020</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
 			}
 			],
 			[
 			{
-				text: "End date"
+				text: "Planned training end date"
 			},
 			{
 				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">July 2022</del>'
 			},
 			{
 				html: '<ins style="background: #cffdc6; text-decoration: none">August 2023</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
 			}
 			],
 			[
@@ -160,15 +101,23 @@
 			},
 			{
 				html: '<ins style="background: #fff; text-decoration: none">No changes</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
 			}
 			]
 			]
 		}) }}
 
+		<p>
+			Once you confirm these details, [apprentice name]’s training provider will change. 
+		</p>
+
 		<form method="post" novalidate="">
 			<input type="hidden" name="answers-checked" value="true">
 			<button type="submit" class="govuk-button">
-				Confirm and send
+				Confirm
 			</button>
 		</form>
 	</div>
