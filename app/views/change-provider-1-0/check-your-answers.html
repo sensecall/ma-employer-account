@@ -20,7 +20,9 @@
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
-		<h1 class="govuk-heading-xl">Confirm the information before sending your request</h1>
+		<h1 class="govuk-heading-xl">
+			Confirm and send request
+		</h1>
 	</div>
 </div>
 
@@ -103,7 +105,7 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-full">
 		{{ govukTable({
-			caption: "Apprentice name: [name]",
+			caption: "[NAME]'s details",
 			captionClasses: "govuk-heading-l",
 			firstCellIsHeader: true,
 			head: [
