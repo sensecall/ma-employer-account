@@ -104,6 +104,9 @@
 
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-full">
+		{% set startDate = data['change-provider']['start-date-year'] + '-' + data['change-provider']['start-date-month'] + '-01' %}
+		{% set endDate = data['change-provider']['end-date-year'] + '-' + data['change-provider']['end-date-month'] + '-01' %}
+
 		{{ govukTable({
 			caption: "Darren Diamond's details",
 			captionClasses: "govuk-heading-l",
@@ -131,7 +134,7 @@
 				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">ABC Training Ltd</del>'
 			},
 			{
-				html: '<ins style="background: #cffdc6; text-decoration: none">XYZ Solutions LLC</ins>'
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + data['change-provider']['provider']['name'] + '</ins>'
 			},
 			{
 				classes: "govuk-table__cell--numeric",
@@ -146,7 +149,7 @@
 				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">May 2020</del>'
 			},
 			{
-				html: '<ins style="background: #cffdc6; text-decoration: none">October 2020</ins>'
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + startDate | date('MMMM YYYY') + '</ins>'
 			},
 			{
 				classes: "govuk-table__cell--numeric",
@@ -161,7 +164,7 @@
 				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">July 2022</del>'
 			},
 			{
-				html: '<ins style="background: #cffdc6; text-decoration: none">August 2023</ins>'
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + endDate | date('MMMM YYYY') + '</ins>'
 			},
 			{
 				classes: "govuk-table__cell--numeric",
@@ -176,7 +179,7 @@
 				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">£5,000</del>'
 			},
 			{
-				html: '<ins style="background: #fff; text-decoration: none">No changes</ins>'
+				html: '<ins style="background: #fff; text-decoration: none">£' + data['change-provider']['new-price'] if data['change-provider']['new-price'] else 'No changes' + '</ins>'
 			},
 			{
 				classes: "govuk-table__cell--numeric",

@@ -24,8 +24,8 @@
 		<form method="post">
 			{% set priceKnown %}
 			{{ govukInput({
-				id: "yes-price-known",
-				name: "yes-price-known",
+				id: "price",
+				name: "change-provider[new-price]",
 				classes: "govuk-!-width-one-third",
 				label:
 				{
@@ -35,8 +35,8 @@
 			{% endset -%}
 
 			{{ govukRadios({
-				idPrefix: "know-price-conditional",
-				name: "know-price",
+				idPrefix: "price-changed",
+				name: "change-provider[price-changed]",
 				fieldset: 
 				{
 					legend: 
@@ -46,7 +46,6 @@
 						classes: "govuk-fieldset__legend--xl"
 					}
 				},
-
 				items: [
 				{
 					value: "yes",
