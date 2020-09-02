@@ -426,7 +426,7 @@ router.post('/choose-new-training-provider', (req, res) => {
 
 router.post('/enter-dates-and-cost', (req, res) => {
 	if(req.session.data['dates-cost'] == 'provider'){
-		res.redirect('new-start-date')	
+		res.redirect('confirmation')	
 	} else {
 		res.redirect('new-start-date')
 	}
