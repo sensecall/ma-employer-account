@@ -25,29 +25,38 @@
 			{% call govukFieldset({
 				legend:
 				{
-					text: "Choose the new training provider",
-					isPageHeading: true,
-					classes: "govuk-fieldset__legend--xl"
+					text: "Which training provider will deliver the apprenticeship training?",
+					classes: "govuk-fieldset__legend--xl",
+					isPageHeading: true
 				}
 			}) %}
+<!-- 
+			<p>
+				You’ll need to use a registered training provider who offers “{{data['change-provider']['course']['name']}}, {{data['change-provider']['course']['level']}}” training.
+			</p> -->
 
-			<p class="govuk-body">
-				Choose from training providers you’ve worked with before or <a href="#">add a new training provider</a>.
-			</p>
+			<div class="govuk-form-group govuk-!-width-full govuk-!-margin-top-6">
+				<label class="govuk-label--m" for="provider-name">
+					Search providers
+				</label>
 
-			{{ govukRadios({
-				idPrefix: "reason",
-				name: "withdrawal-request[reason]",
-				items: [
-				{
-					value: "Existing provider 1",
-					text: "Existing provider 1"
-				},
-				{
-					value: "Existing provider 2",
-					text: "Existing provider 2"
-				}]
-			})}}
+				<p class="govuk-hint govuk-!-margin-top-1">
+					Enter the training provider name or reference number (UKPRN).
+					<br>
+					UKPRN is 8 numbers. For example 12345678.
+				</p>
+
+				<select id="provider-name" name="change-provider[provider][name]">
+					<option value=""></option>
+					{% for provider in data['providers'].providers %}
+					<option value="{{provider.name}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#provider-name" id="clear-search">Clear search</a>
+				</p>
+			</div>
 			{% endcall %}
 
 			{{govukButton({
@@ -57,4 +66,16 @@
 		</form>
 	</div>
 </div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#provider-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+	})
+</script>
 {% endblock %}

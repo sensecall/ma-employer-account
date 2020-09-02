@@ -21,7 +21,7 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<h1 class="govuk-heading-xl">
-			Confirm and send request
+			Confirm details and send request to {{data['change-provider']['provider']['name']}}
 		</h1>
 	</div>
 </div>
@@ -105,7 +105,7 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-full">
 		{{ govukTable({
-			caption: "[NAME]'s details",
+			caption: "Darren Diamond's details",
 			captionClasses: "govuk-heading-l",
 			firstCellIsHeader: true,
 			head: [
@@ -185,6 +185,14 @@
 			]
 			]
 		}) }}
+	</div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-top-4">
+	<div class="govuk-grid-column-two-thirds">
+		<p>
+			{{data['change-provider']['provider']['name']}} will need to check these details and confirm that they’re happy to take on your apprentice. 
+		</p>
 
 		<form method="post" novalidate="">
 			<input type="hidden" name="answers-checked" value="true">
