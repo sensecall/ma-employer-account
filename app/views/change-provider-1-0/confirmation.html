@@ -37,7 +37,7 @@
 </div>
 {% endblock %}
 
-{% block pageScripts %}
+{% block footerShortcuts %}
 <div class="govuk-width-container">
 	<h3 class="govuk-heading-s">
 		Emails
@@ -45,10 +45,19 @@
 
 	<ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet">
 		<li>
-			<a href="employer-email">Approved by provider</a>
+			<a href="emails/employer-added-provider-accepted">Approved by provider</a>
 		</li>
 		<li>
-			<a href="employer-email">Changed by provider</a>
+			<a href="emails/employer-added-provider-changed">Changed by provider</a>
+		</li>
+		<li>
+			<a href="emails/employer-added-provider-rejected">Rejected by provider</a>
+		</li>
+		<li>
+			<a href="emails/provider-added">Added by provider</a>
+		</li>
+		<li>
+			<a href="emails/provider-request-rejected">Request rejected by provider</a>
 		</li>
 	</ul>
 </div>
