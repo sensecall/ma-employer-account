@@ -22,44 +22,19 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
-			{% set priceKnown %}
 			{{ govukInput({
-				id: "price",
-				name: "change-provider[new-price]",
-				classes: "govuk-!-width-one-third",
 				label:
 				{
-					text: "Enter the new price"
-				}
-			}) }}
-			{% endset -%}
-
-			{{ govukRadios({
-				idPrefix: "price-changed",
-				name: "change-provider[price-changed]",
-				fieldset: 
-				{
-					legend: 
-					{
-						text: "Is the training price changing?",
-						isPageHeading: true,
-						classes: "govuk-fieldset__legend--xl"
-					}
+					text: "What is the new training price?",
+					classes: "govuk-label--xl",
+					isPageHeading: true
 				},
-				items: [
-				{
-					value: "yes",
-					text: "Yes",
-					conditional: 
-					{
-						html: priceKnown
-					}
-				},
-				{
-					value: "no",
-					text: "No"
-				}
-				]
+				classes: "govuk-input--width-10",
+				id: "new-price",
+				name: "change-provider[new-price]",
+				inputmode: "numeric",
+				pattern: "[0-9]*",
+				spellcheck: false
 			}) }}
 
 			{{govukButton({
