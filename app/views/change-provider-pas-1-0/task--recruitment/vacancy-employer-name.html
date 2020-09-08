@@ -1,0 +1,132 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Which employer name do you want on your advert?",
+					classes: "govuk-fieldset__legend--xl",
+					isPageHeading: true
+				}
+			}) %}
+
+			{% set tradingNameHtml %}
+			{{ govukInput({
+				label:
+				{
+					text: "Enter trading name"
+				},
+				id: "trading-name",
+				name: "trading-name"
+			}) }}
+			{% endset %}
+
+			{% set anonymousHtml %}
+			{{ govukInput({
+				label:
+				{
+					text: "Enter a brief description of what the employer does",
+					classes: "govuk-!-padding-top-4"
+				},
+				hint:
+				{
+					text: "For example, a car manufacturer or clothing retailer."
+				},
+				id: "employer-description",
+				name: "employer-description"
+			}) }}
+
+			{{ govukCharacterCount({
+				label:
+				{
+					text: "Why do you want your advert to be anonymous?"
+				},
+				hint:
+				{
+					text: "This information will not show on your advert. We’ll use it to help us decide whether you can be anonymous. "
+				},
+				maxlength: 200,
+				id: "anonymous-reason",
+				name: "anonymous-reason"
+			}) }}
+			{% endset %}
+
+			{{ govukRadios({
+				idPrefix: "chosen-provider",
+				name: "chosen-provider",
+				items: [
+				{
+					value: data['employer-name'],
+					text: data['employer-name'] + " (registered name)"
+				},
+				{
+					value: "trading-name",
+					text: "A trading name",
+					conditional:
+					{
+						html: tradingNameHtml
+					}
+				},
+				{
+					divider: "or"
+				},
+				{
+					value: "no",
+					text: "I do not want an employer name on my advert (be anonymous)",
+					hint:
+					{
+						text: "This could mean fewer people view your advert."
+					},
+					conditional:
+					{
+						html: anonymousHtml
+					}
+				}
+				]
+			}) }}
+			{% endcall %}
+
+			{{govukButton({
+				text: "Save and continue"
+			})}}
+
+			<p>
+				<a href="../recruit-dashboard">Cancel</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#provider-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+	})
+</script>
+{% endblock %}

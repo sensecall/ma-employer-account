@@ -1,0 +1,111 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% set providerHtml %}
+			<div class="govuk-form-group govuk-!-width-full">
+				<!-- <label class="govuk-label--s" for="provider-name">
+					Search providers
+				</label> -->
+
+				<p class="govuk-hint govuk-!-margin-top-1">
+					Enter the training provider name or reference number (UKPRN).
+					<br>
+					UKPRN is 8 numbers. For example, 12345678.
+				</p>
+
+				<select id="provider-name" name="vacancy[provider][name]">
+					<option value=""></option>
+					{% for provider in data['providers'].providers %}
+					<option value="{{provider.name}}*{{provider.UKPRN}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#provider-name" id="clear-search">Clear search</a>
+				</p>
+			</div>
+			{% endset %}
+
+			<p class="govuk-hint govuk-!-font-size-24 govuk-!-margin-bottom-1">
+				{{data['vacancy']['name'] or 'Apprenticeship'}}
+			</p>
+			{{ govukRadios({
+				idPrefix: "how-contacted-conditional",
+				name: "how-contacted",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Have you found a training provider?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
+				},
+				hint:
+				{
+					html: "You’ll need to use a registered training provider who offers <b>\"" + (data['vacancy']['course']['name'] or 'COURSE NAME') + "\"</b> training."
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes",
+					conditional:
+					{
+						html: providerHtml
+					}
+				},
+				{
+					value: "no",
+					text: "No, I’ll choose one later",
+					conditional:
+					{
+						html: "<p>You’ll need to add a training provider before submitting the advert. If you need help, you can <a href='#'>find a training provider (opens in a new tab or window)</a> based on the apprenticeship training.</p>"
+					}
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Save and continue"
+			})}}
+
+			<p>
+				<a href="../recruit-dashboard">Cancel</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#provider-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+	})
+</script>
+{% endblock %}

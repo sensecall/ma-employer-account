@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+
+{% if data['sign-agreement-now'] == 'yes' %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+{% if data['sign-agreement-now'] == 'yes' %}
+<section class="das-section das-section--header das-section--header--has-border govuk-!-margin-bottom-8 govuk-!-padding-top-0">
+	<h1 class="govuk-heading-m das-account__title">Account ID: A1B2C3</h1>
+	<h2 class="govuk-heading-l das-account__account-name">{{data['employer-name']}}</h2>
+	
+	<!-- <a href="#" class="das-favourites-link govuk-body">
+		<span class="das-favourites-link__icon"><img src="https://das-at-frnt-end.azureedge.net/images/favourite-unchecked-black.svg" alt=""></span>
+		<span class="das-favourites-link__text">View saved favourites</span>
+	</a> -->
+</section>
+{% endif %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">	
+		{% if data['sign-agreement-now'] == 'yes' %}
+		<section class="das-section-dashboard">
+			<h2 class="das-section__heading govuk-heading-l govuk-!-margin-top-2">
+				Apprenticeships
+			</h2>
+			<p class="das-section__description">
+				Manage your apprentices, advertise apprenticeships and set training provider permissions.
+			</p>
+
+			<div class="das-cards">
+				<div class="govuk-grid-row">
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading">
+							<a href="apprentices">Apprentices</a>
+						</h3>
+
+						<p class="govuk-body-s">
+							Add apprentices, update details of existing apprentices and authorise payments to training providers.
+						</p>
+					</div>
+
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading">
+							<a href="recruit-dashboard">Your apprenticeship adverts</a>
+						</h3>
+						<p class="govuk-body-s">
+							Create adverts to post on Find an apprenticeship, view applications and view your previous adverts.
+						</p>
+					</div>
+				</div>
+
+				<div class="govuk-grid-row">
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading">
+							<a href="{{data['providerPermissionsURL']}}">Your training providers</a>
+						</h3>
+						<p class="govuk-body-s">
+							Add training providers and manage permissions to choose what they can do on your behalf.
+						</p>
+					</div>
+
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading">
+							<a href="#" class="govuk-link">Find apprenticeship training</a>
+						</h3>
+						<p class="govuk-body-s">
+							Search for apprenticeships and see details of approved providers who can deliver the training.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="das-section-dashboard">
+			<h2 class="das-section__heading govuk-heading-l">
+				Finances
+			</h2>
+			<p class="das-section__description">
+				Manage your apprenticeship funds.
+			</p>
+
+			<div class="das-cards">
+				{% if data['employer-type'] != 'levy' %}
+				<div class="govuk-grid-row">
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading">
+							<a href="#">Reserve apprenticeship funding</a>
+						</h3>
+
+						<p class="govuk-body-s">
+							Reserve funding for apprenticeship training and assessment.
+						</p>
+					</div>
+
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading">
+							<a href="#">Your funding reservations</a>
+						</h3>
+
+						<p class="govuk-body-s">
+							Use, view or delete funding reservations you’ve made.
+						</p>
+					</div>
+				</div>
+				{% endif %}
+				<div class="govuk-grid-row">
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading">
+							<a href="#">Your finances</a>
+						</h3>
+						<p class="govuk-body-s">
+							View your financial transactions, connect with other employers and receive transfer funds.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="das-section-dashboard--last govuk-!-margin-bottom-7">
+			<h2 class="das-section__heading govuk-heading-l">Account</h2>
+			<p class="das-section__description">Manage your account details and team.</p>
+
+			<div class="das-cards">
+				<div class="govuk-grid-row">
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading"><a href="#" class="govuk-link">Your organisations and agreements</a></h3>
+						<p class="govuk-body-s">Add your organisations that will make contracts with training providers.</p>
+					</div>
+
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading"><a href="#" class="govuk-link">Your team</a></h3>
+						<p class="govuk-body-s">Control what your team can do and invite new team members.</p>
+					</div>
+				</div>
+
+				<div class="govuk-grid-row">
+					<div class="das-card govuk-grid-column-one-half">
+						<h3 class="govuk-heading-m das-card__heading"><a href="#" class="govuk-link">PAYE schemes</a></h3>
+						<p class="govuk-body-s">Add or remove PAYE schemes.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		{% endif %}
+		
+		<div class="govuk-inset-text">
+			<h3 class="govuk-heading-m">
+				Help us improve this service
+			</h3>
+
+			<p>
+				<a href="#">Take our 3 minute survey</a> so that we can improve this service.
+			</p>
+		</div>
+	</div>
+
+	{% if data['sign-agreement-now'] == 'yes' %}
+	<div class="govuk-grid-column-one-third">
+		<!-- 
+		<div class="govuk-tabs" data-module="tabs">
+			<ul class="govuk-tabs__list">
+				<li class="govuk-tabs__list-item">
+					<a class="govuk-tabs__tab govuk-tabs__tab--selected" href="#tab-tasks">
+						Tasks
+					</a>
+				</li>
+
+				<li class="govuk-tabs__list-item">
+					<a class="govuk-tabs__tab" href="#tab-activity">
+						Activity
+					</a>
+				</li>
+			</ul>
+
+			<section class="govuk-tabs__panel" id="tab-tasks">
+				<ul class="task-list">
+					{% if data['add-paye-now'] == 'yes' and data['sign-agreement-now'] != 'yes' %}
+					<li>
+						<p>
+							1 agreement to sign
+						</p>
+						<p class="govuk-!-margin-top-2 govuk-body-s">
+							<a href="#">View agreements</a>
+						</p>
+					</li>
+					{% else %}
+					<li>
+						<p>							
+							You currently have no tasks
+						</p>
+					</li>
+					{% endif %}
+				</ul>
+			</section>
+
+			<section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="tab-activity">
+				No activity
+			</section>
+		</div>
+		 -->
+	</div>
+	{% endif %}
+</div>
+
+{% endblock %}

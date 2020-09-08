@@ -1,7 +1,5 @@
+
 {% extends "layout.html" %}
-
-
-{% set currentPage = 'home' %}
 
 {% block header %}
 {% include "includes/cookie-banner.html" %}
@@ -10,6 +8,8 @@
 {% include "includes/ma-navbar.html" %}
 {% endblock %}
 
+{% set currentPage = 'recruit' %}
+
 {% block beforeContent %}
 {{ govukBackLink({
 	text: "Back",
@@ -17,29 +17,26 @@
 }) }}
 {% endblock %}
 
-
 {% block content %}
+
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
-			{{ govukInput({
-				label:
-				{
-					text: "What is the agreed cost of completing the training with the new provider?",
-					classes: "govuk-label--xl govuk-!-margin-bottom-6",
-					isPageHeading: true
-				},
-				classes: "govuk-input--width-10",
-				id: "new-price",
-				name: "change-provider[new-price]",
-				inputmode: "numeric",
-				pattern: "[0-9]*",
-				spellcheck: false
-			}) }}
+			<h1 class="govuk-heading-xl">
+				Preview your advert
+			</h1>
+			
+			<p>
+				Review the details that will appear in your advert. You can still make changes if you need to.
+			</p>
+
+			<p>
+				Once we’ve approved your advert, it will appear on the <a href="#">Find apprenticeship training service (opens in new tab or window)</a>.
+			</p>
 
 			{{govukButton({
-				classes: "govuk-!-margin-top-4",
-				text: "Continue"
+				text: "Preview advert",
+				href: "vacancy-preview"
 			})}}
 		</form>
 	</div>

@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post" action="../whats-next">
+			{{ govukPanel({
+				titleText: "Advert submitted for review",
+				html: "Advert reference number
+				<b>" + data['vacancy']['id'] + "</b>",
+				classes: "govuk-!-margin-bottom-6"
+			}) }}
+
+			<h2 class="govuk-heading-m">
+				What happens next
+			</h2>
+			
+			<p>
+				We’ll review your advert within one working day.
+			</p>
+
+			<p>If we need you to make any changes, the advert will show in the ‘Rejected adverts’ section of <a href="../recruit-dashboard">your dashboard</a>. We’ll also send you an email to let you know (only if you’ve set up <a href="#">email notifications</a>).</p>
+
+			<p>Once we’ve approved your advert:</p>
+
+			<ul class="govuk-list govuk-list--bullet">
+				<li>
+					it will show in your ‘Live adverts’ 
+				</li>
+				<li>
+					we’ll post it on <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" target="_blank">Find an apprenticeship (opens in a new tab or window)</a>
+				</li>
+			</ul>
+
+			<h2 class="govuk-heading-m">
+				Hiring an apprentice
+			</h2>
+
+			<p>We’ll send you email notifications to let you know when you get new applications. </p>
+
+			<p>You’ll need to:</p>
+
+			<ul class="govuk-list govuk-list--bullet">
+				<li>
+					view the applications and decide if you want to interview any of the candidates
+				</li>
+				<li>
+					interview candidates, for example over the phone and face-to-face
+				</li>
+				<li>
+					contact the candidates to let them know the outcome of their interviews
+				</li>
+				<li>
+					add any successful candidates’ details to the ‘Apprentices’ section of your account
+				</li>
+			</ul>
+
+			{{govukButton({
+				text: "Return to account home",
+				href: "../account-home"
+			})}}
+
+			<p>
+				<a href="#">Create another advert</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

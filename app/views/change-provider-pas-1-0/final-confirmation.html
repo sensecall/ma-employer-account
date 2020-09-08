@@ -22,7 +22,7 @@
 				What happens next
 			</h2>
 			<p>
-				Darren Diamond will move to [training provider] and payments will start.
+				{{ data['change-provider']['provider']['name'] or "[Training provider]"}} is now {{ "Darren Diamond" }}'s training provider and will deliver their apprenticeship training.
 			</p>
 
 			<p>
@@ -30,13 +30,5 @@
 			</p>
 		</form>
 	</div>
-</div>
-{% endblock %}
-
-{% block pageScripts %}
-<div class="govuk-width-container">
-	<p class="govuk-!-font-size-14">
-		<a href="employer-email">Go to email</a>
-	</p>
 </div>
 {% endblock %}

@@ -1,0 +1,392 @@
+{% extends "layout.html" %}
+
+{% set serviceName %}
+Prototype {{version}} config
+{% endset %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<form method="post">
+		<div class="govuk-grid-column-two-thirds">
+			<h1 class="govuk-heading-l">
+				{{serviceName}}
+			</h1>
+
+			{{ govukInput({
+				label:
+				{
+					text: "Employer name"
+				},
+				classes: "govuk-!-width-two-thirds",
+				id: "employer-name",
+				name: "employer-name",
+				value: data['employer-name']
+			}) }}
+
+			{{ govukInput({
+				label:
+				{
+					text: "Employer email (optional)"
+				},
+				classes: "govuk-!-width-two-thirds",
+				id: "employer-email",
+				name: "employer-email",
+				value: data['employer-email']
+			}) }}
+
+			
+			{% set reserveHtml %}
+			<div class="govuk-form-group">
+				<label class="govuk-label" for="choose-apprenticeship">
+					Course
+				</label>
+
+				<select id="course-name" name="reservation[course-name]">
+					<option value=""></option>
+					{% for apprenticeship in data['apprenticeships'].apprenticeships %}
+					{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
+					<option value="{{optionValue}}" {{"selected" if optionValue === data['reservation']['course-name']}}>{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#course-name" id="clear-search">Clear search</a>
+				</p>
+			</div>
+			{% endset -%}
+
+			{{ govukCheckboxes({
+				idPrefix: "reserved-funding",
+				name: "reserved-funding",
+				items:
+				[
+				{
+					value: "true",
+					text: "Reserved funding",
+					conditional:
+					{
+						html: reserveHtml
+					}
+				}
+				]
+			}) }}
+			
+			{% set vacancyHtml %}
+			{{ govukInput({
+				value: data['vacancy']['name'] or "Junior Business Administration apprenticeship",
+				label:
+				{
+					text: "Vacancy title"
+				},
+				classes: "govuk-!-width-full",
+				id: "vacancy-name",
+				name: "vacancy[name]"
+			}) }}
+
+			{{ govukInput({
+				value: data['vacancy']['end-date'],
+				label:
+				{
+					text: "Vacancy end date"
+				},
+				classes: "govuk-!-width-two-thirds",
+				id: "vacancy-end-date",
+				name: "vacancy[end-date]"
+			}) }}
+
+			{{ govukSelect({
+				id: "vacancy-status",
+				name: "vacancy[status]",
+				classes: "govuk-!-width-one-third",
+				label:
+				{
+					text: "Vacancy status"
+				},
+				items: [
+				{
+					value: "draft",
+					text: "Draft"
+				},
+				{
+					value: "submitted",
+					text: "Submitted"
+				},
+				{
+					value: "live",
+					text: "Live"
+				}
+				]
+			}) }}
+
+			{{ govukInput({
+				value: data['vacancy']['applications'],
+				label:
+				{
+					text: "Number of applications"
+				},
+				classes: "govuk-input--width-2",
+				id: "vacancy-applications",
+				name: "vacancy[applications]"
+			}) }}
+			{% endset %}
+
+			{{ govukCheckboxes({
+				idPrefix: "started-vacancy",
+				name: "started-vacancy",
+				items:
+				[
+				{
+					value: "true",
+					text: "Vacancy",
+					conditional:
+					{
+						html: vacancyHtml
+					}
+				}
+				]
+			}) }}
+			
+			{% set apprenticeshipHtml %}
+			{{ govukSelect({
+				id: "apprenticeship-status",
+				name: "apprenticeship-status",
+				classes: "govuk-!-width-two-thirds",
+				label:
+				{
+					text: "Apprenticeship status"
+				},
+				items: [
+				{
+					value: "draft",
+					text: "Draft"
+				},
+				{
+					value: "with-provider",
+					text: "With provider"
+				},
+				{
+					value: "live",
+					text: "Live"
+				}
+				]
+			}) }}
+
+			<h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+				Apprentice details
+			</h3>
+			<div class="govuk-grid-row govuk-!-margin-bottom-6">
+				<div class="govuk-grid-column-one-half">
+					{{ govukInput({
+						value: data['apprentice']['first-name'],
+						label:
+						{
+							text: "First name"
+						},
+						classes: "govuk-!-width-two-thirds",
+						id: "start-month",
+						name: "apprentice[first-name]"
+					}) }}
+				</div>
+				<div class="govuk-grid-column-one-half">
+					{{ govukInput({
+						value: data['apprentice']['last-name'],
+						label:
+						{
+							text: "Last name"
+						},
+						classes: "govuk-!-width-full",
+						id: "start-month",
+						name: "apprentice[last-name]"
+					}) }}
+				</div>
+			</div>
+
+			<div class="govuk-grid-row govuk-!-margin-bottom-6">
+				<div class="govuk-grid-column-one-half">
+					{{ govukDateInput({
+						id: "apprenticeship-start-date",
+						namePrefix: "apprenticeship-start-date",
+						fieldset:
+						{
+							legend:
+							{
+								text: "Planned training start date",
+								isPageHeading: false,
+								classes: "govuk-fieldset__legend--s"
+							}
+						},
+						items:
+						[
+						{
+							name: "month",
+							id: "month",
+							classes: "govuk-input--width-3"
+						},
+						{
+							name: "year",
+							id: "year",
+							classes: "govuk-input--width-5"
+						}
+						]
+					}) }}
+				</div>
+
+				<div class="govuk-grid-column-one-half">
+					{{ govukDateInput({
+						id: "apprenticeship-finish-date",
+						namePrefix: "apprenticeship-finish-date",
+						fieldset:
+						{
+							legend:
+							{
+								text: "Planned training end date",
+								isPageHeading: false,
+								classes: "govuk-fieldset__legend--s"
+							}
+						},
+						items:
+						[
+						{
+							name: "month",
+							id: "month",
+							classes: "govuk-input--width-3"
+						},
+						{
+							name: "year",
+							id: "year",
+							classes: "govuk-input--width-5"
+						}
+						]
+					}) }}
+				</div>
+			</div>
+			{% endset -%}
+
+			{{ govukCheckboxes({
+				idPrefix: "started-add-approve",
+				name: "started-add-approve",
+				items:
+				[
+				{
+					value: "true",
+					text: "Apprentice details",
+					conditional:
+					{
+						html: apprenticeshipHtml
+					}
+				}
+				]
+			}) }}
+
+			{{govukButton({
+				text: "Save",
+				classes: "govuk-button--start govuk-!-margin-top-8  govuk-!-margin-bottom-2"
+			})}}
+
+			<div class="govuk-inset-text">
+				<h3 class="govuk-heading-s">
+					or use this URL:
+				</h3>
+				<p class="govuk-!-font-size-16">
+					<a href="" id="urlValue"></a>
+				</p>
+			</div>
+		</div>
+
+		<div class="govuk-grid-column-one-third">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Scenarios",
+					classes: "govuk-fieldset__legend--m",
+					isPageHeading: true
+				}
+			}) %}
+			{{ govukCheckboxes({
+				idPrefix: "logged-in",
+				name: "logged-in",
+				items:
+				[
+				{
+					value: "true",
+					text: "Logged in",
+					attributes:
+					{
+						checked: 'checked' if data['logged-in'] == 'true'
+					}
+				}
+				]
+			}) }}
+
+			{{ govukCheckboxes({
+				idPrefix: "add-paye-now",
+				name: "add-paye-now",
+				items:
+				[
+				{
+					value: "yes",
+					text: "Added PAYE",
+					attributes:
+					{
+						checked: 'checked' if data['add-paye-now'] == 'yes'
+					}
+				}
+				]
+			})}}
+			{{ govukCheckboxes({
+				idPrefix: "sign-agreement-now",
+				name: "sign-agreement-now",
+				items:
+				[
+				{
+					value: "yes",
+					text: "Signed agreement",
+					attributes:
+					{
+						checked: 'checked' if data['sign-agreement-now'] == 'yes'
+					}
+				}
+				]
+			}) }}
+			{% endcall %}
+		</div>
+	</form>
+</div>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#course-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#course-name').val("");
+		})
+
+		function updateUrl() {
+			var newUrl = window.location.href.replace("config", "account-home") + "?" + $('form').serialize();
+			$('#urlValue').html(newUrl).attr('href',newUrl)
+			console.log(newUrl)
+		}
+
+		updateUrl()
+
+		$('body').on('change keyup', ['input','select'], function(){
+			updateUrl()
+		})
+	})
+</script>
+{% endblock %}

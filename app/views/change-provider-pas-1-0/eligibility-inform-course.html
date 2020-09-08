@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			You cannot set up an apprenticeship yet
+		</h1>
+
+		{% if data['eligibility-course-provider'] == 'course-only' %}
+		{% set fatUrl %}https://findapprenticeshiptraining.apprenticeships.education.gov.uk/Apprenticeship/SearchForStandardProviders?standardId={{data['course-id']}}{% endset %}
+		<p>
+			This is because you do not know which training provider you’ll use.
+		</p>
+		<p>
+			You need to <a href="{{fatUrl}}">find a training provider</a> to deliver {{data['course-name']}}.
+		</p>
+		{% elif data['eligibility-course-provider'] == 'provider-only' %}
+		{% set fatUrl %}https://findapprenticeshiptraining.apprenticeships.education.gov.uk/Provider/{{data['provider-ukprn']}}{% endset %}
+		<p>
+			This is because you cannot reserve funding for apprenticeship training and assessment until you know which training course the apprentice will do.
+		</p>
+		<p>
+			You can view the apprenticeship training courses that {{data['provider-name']}} delivers on <a href="{{fatUrl}}">find apprenticeship training</a>.
+		</p>
+		{% else %}
+		<p>
+			Before you can set up an apprenticeship, you need to <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/">find apprenticeship training</a> and choose a training provider.
+		</p>
+
+		<p>
+			Try again once you've chosen a course and have found a training provider to deliver it.
+		</p>
+		{% endif %}
+		
+		{{govukButton({
+			text: "Return to account home",
+			classes: "govuk-!-margin-top-4",
+			href: "account-home"
+		})}}
+	</div>
+
+	<div class="govuk-grid-column-one-third">
+	</div>
+</div>
+{% endblock %}

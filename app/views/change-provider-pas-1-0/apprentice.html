@@ -1,0 +1,207 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+
+		<form method="post" class="form">
+
+			<h1 class="govuk-heading-xl">
+				Darren Diamond
+			</h1>
+
+			<!--only add a heading for a list if there is more than one list-->
+			<h2 class="govuk-heading-m">
+				Apprentice details
+				<!--<span style="float:right; text-align:right; font-weight:400; font-size:19px;"><a href="#">Edit</a></span>-->
+			</h2>
+			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Name
+					</dt>
+					<dd class="govuk-summary-list__value">
+						Darren Diamond
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="apprentice-details#name">
+							<span class="govuk-visually-hidden">Edit name</span>
+						</a>
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Unique learner number
+					</dt>
+					<dd class="govuk-summary-list__value">
+						123456789A
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="#">
+							<span class="govuk-visually-hidden"> </span>
+						</a>
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Date of birth
+					</dt>
+					<dd class="govuk-summary-list__value">
+						5 January 2002
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="#">
+							<span class="govuk-visually-hidden">Edit date of birth</span>
+						</a>
+					</dd>
+				</div>
+			</dl>
+
+			<h2 class="govuk-heading-m">
+				Apprenticeship details
+			</h2>
+
+			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Status
+					</dt>
+					<dd class="govuk-summary-list__value">
+						Live
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="change-apprentice-status">
+							<span class="govuk-visually-hidden">Edit status</span>
+						</a>
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Training provider
+					</dt>
+					<dd class="govuk-summary-list__value">
+						ABC TRAINING LTD
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="change-provider-warning">
+							Change<span class="govuk-visually-hidden"></span>
+						</a>
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Reference
+					</dt>
+					<dd class="govuk-summary-list__value">
+						VKKG8P
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="#">
+							<span class="govuk-visually-hidden">Edit reference</span>
+						</a>
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Apprenticeship training course
+					</dt>
+					<dd class="govuk-summary-list__value">
+						Bespoke Saddler, Level 5 (Standard)
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="#">
+							<span class="govuk-visually-hidden">Edit apprenticeship training course</span>
+						</a>
+					</dd>
+				</div>
+
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Planned training start date
+					</dt>
+					<dd class="govuk-summary-list__value">
+						February 2019
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="#">
+							<span class="govuk-visually-hidden">Edit planned training start date</span>
+						</a>
+					</dd>
+				</div>
+
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Planned training finish date
+					</dt>
+					<dd class="govuk-summary-list__value">
+						March 2021
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="#">
+							<span class="govuk-visually-hidden">Edit planned training finish date</span>
+						</a>
+					</dd>
+				</div>
+
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Total agreed apprenticeship price
+					</dt>
+					<dd class="govuk-summary-list__value">
+						£5,000 excluding VAT
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="#">
+							<span class="govuk-visually-hidden">Edit total agreed apprenticeship price (excluding VAT)</span>
+						</a>
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Reference
+					</dt>
+					<dd class="govuk-summary-list__value">
+
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="#">
+							<span class="govuk-visually-hidden">Edit reference</span>
+						</a>
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						End-point assessor
+					</dt>
+					<dd class="govuk-summary-list__value">
+						The end-point assessor has not been declared
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="#">
+							<span class="govuk-visually-hidden">Edit End-point assessor</span>
+						</a>
+					</dd>
+				</div>
+			</dl>
+		</form>
+	</div>
+</div>
+{% endblock %}

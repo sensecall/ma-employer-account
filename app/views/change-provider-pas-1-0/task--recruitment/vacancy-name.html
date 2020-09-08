@@ -1,7 +1,5 @@
+
 {% extends "layout.html" %}
-
-
-{% set currentPage = 'home' %}
 
 {% block header %}
 {% include "includes/cookie-banner.html" %}
@@ -10,6 +8,8 @@
 {% include "includes/ma-navbar.html" %}
 {% endblock %}
 
+{% set currentPage = 'recruit' %}
+
 {% block beforeContent %}
 {{ govukBackLink({
 	text: "Back",
@@ -17,43 +17,43 @@
 }) }}
 {% endblock %}
 
-
 {% block content %}
+
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			{% call govukFieldset({
 				legend:
 				{
-					text: "Select Darren Diamond’s current training provider",
-					isPageHeading: true,
-					classes: "govuk-fieldset__legend--xl"
+					text: "What do you want to call this advert?",
+					classes: "govuk-fieldset__legend--xl",
+					isPageHeading: true
 				}
 			}) %}
-
-			<p class="govuk-body">
-				Choose from training providers you’ve worked with before or <a href="#">add a new training provider.</a>
+			
+			<p>
+				To make sure your advert appears in search results, use a title that relates to the apprenticeship training.
 			</p>
 
-			{{ govukRadios({
-				idPrefix: "reason",
-				name: "withdrawal-request[reason]",
-				items: [
+			{{ govukCharacterCount({
+				name: "vacancy[name]",
+				id: "vacancy-name",
+				maxlength: 100,
+				rows: 1,
+				hint:
 				{
-					value: "Provider 1",
-					text: "Provider 1"
-				},
-				{
-					value: "Provider 2",
-					text: "Provider 2"
-				}]
-			})}}
+					text: "You must include the word ‘apprentice’ or ‘apprenticeship’."
+				}
+			}) }}
 			{% endcall %}
 
 			{{govukButton({
-				classes: "govuk-!-margin-top-4",
 				text: "Save and continue"
 			})}}
+
+			<p>
+				<a href="../recruit-dashboard">Cancel</a>
+			</p>
 		</form>
 	</div>
 </div>

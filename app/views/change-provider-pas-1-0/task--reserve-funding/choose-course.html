@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set courseHtml %}
+<div class="govuk-form-group">
+	<label class="govuk-label" for="course-name">
+		Search for a course
+	</label>
+
+	<select id="course-name" name="reservation[course-name]">
+		<option value=""></option>
+		{% for apprenticeship in data['apprenticeships'].apprenticeships %}
+		{% set optionValue %}{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
+		<option value="{{optionValue}}" {{"selected" if optionValue === data['reservation']['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+		{% endfor %}
+	</select>
+
+	<p class="govuk-!-margin-top-2">
+		<a href="#course-name" id="clear-search">Clear search</a>
+	</p>
+</div>
+{% endset -%}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukRadios({
+				idPrefix: "know-course",
+				name: "know-course",
+				fieldset:
+				{
+					legend:
+					{
+						text: "Do you know which apprenticeship training your apprentice will take?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
+				},
+				hint:
+				{
+					text: ""
+				},
+				items: [
+				{
+					value: "yes",
+					text: "Yes",
+					conditional:
+					{
+						html: courseHtml
+					},
+					checked: data['know-course'] === 'yes'
+				},
+				{
+					value: "no",
+					text: "No",
+					checked: data['know-course'] === 'no'
+				}
+				]
+			}) }}
+
+			<!-- {{ govukDetails({
+				summaryText: "Can I change the course?",
+				text: "You can change the course when you add an apprentice's details."
+			}) }}	 -->
+
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#course-name'),
+			showAllValues: true,
+			defaultValue: '',
+			autoselect: true,
+			confirmOnBlur: false
+		})
+
+		$('#clear-search').on('click', function(e) {
+			e.preventDefault();
+			$('#course-name').val("");
+		})
+	})
+</script>
+{% endblock %}

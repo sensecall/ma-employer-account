@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Start adding apprentices",
+					classes: "govuk-fieldset__legend--xl",
+					isPageHeading: true
+				}
+			}) %}
+
+			<p class="govuk-body-l govuk-!-margin-top-5">
+				You can start adding details of your apprentices or ask your training provider to add them for you.
+			</p>
+
+			<p class="govuk-body-l">
+				If you ask your training provider to add them, you need to check and agree the details before any payments are made.
+			</p>
+
+			{{ govukRadios({
+				idPrefix: "add-permissions",
+				name: "add-permissions",
+				items: [
+				{
+					value: "employer",
+					text: "I will add apprentices"
+				},
+				{
+					value: "provider",
+					text: "I would like my provider to add apprentices",
+					hint:
+					{
+						text: "Your provider will have to select or make a new funding reservation on your behalf if you choose this option"
+					}
+				}
+				]
+			}) }}
+			{% endcall %}
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

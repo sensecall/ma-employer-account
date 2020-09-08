@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="grid-row">
+	<div class="column-two-thirds">
+		<div class="app-inverted govuk-!-padding-8">
+			<h1 class="govuk-heading-l app-heading-l--inverted">Changing  training provider</h1>
+			<div class="app-body--inverted">
+				<p class="app-body--inverted">
+					You should only change your apprentice’s training provider if:
+				</p>
+				<ul class="govuk-list govuk-list--bullet app-body--inverted">
+					<li>
+						you’re not happy with their performance
+					</li>
+					<li>
+						they’ve stopped delivering the apprentice’s training course
+					</li>
+					<li>
+						they’re shutting down or have already shut down
+					</li>
+				</ul>
+
+				<p class="app-body--inverted">
+					You must contact the training provider before you request  the change in your account.
+				</p>
+			</div>
+
+
+
+
+			<a href="choose-new-training-provider" class="govuk-button app-button--inverted govuk-!-margin-top-2" data-module="govuk-button">
+				<b>Continue</b>
+			</a>
+
+
+			<p class="govuk-body-s govuk-!-margin-top-0">
+				<a class="app-link--inverted" href="#">Cancel and return to account home</a>
+			</p>
+
+		</div>
+	</div>
+</div>
+{% endblock %}

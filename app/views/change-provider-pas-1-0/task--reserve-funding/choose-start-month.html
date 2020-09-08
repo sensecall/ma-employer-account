@@ -1,8 +1,5 @@
 {% extends "layout.html" %}
 
-
-{% set currentPage = 'home' %}
-
 {% block header %}
 {% include "includes/cookie-banner.html" %}
 {% include "includes/ma-header.html" %}
@@ -12,33 +9,32 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-	text: "Back",
-	href: "javascript: window.history.go(-1)"
+  text: "Back",
+  href: "javascript: window.history.go(-1)"
 }) }}
 {% endblock %}
 
-
 {% block content %}
+
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
-			{{ govukInput({
-				label:
+			{{ govukRadios({
+				idPrefix: "reservation-start-month",
+				name: "reservation[start-month]",
+				fieldset:
 				{
-					text: "What is the agreed cost of completing the training with the new provider?",
-					classes: "govuk-label--xl govuk-!-margin-bottom-6",
-					isPageHeading: true
+					legend:
+					{
+						text: "When will the apprentice start their apprenticeship training?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
 				},
-				classes: "govuk-input--width-10",
-				id: "new-price",
-				name: "change-provider[new-price]",
-				inputmode: "numeric",
-				pattern: "[0-9]*",
-				spellcheck: false
+				items: 3 | reservationMonths(false)
 			}) }}
 
 			{{govukButton({
-				classes: "govuk-!-margin-top-4",
 				text: "Continue"
 			})}}
 		</form>
