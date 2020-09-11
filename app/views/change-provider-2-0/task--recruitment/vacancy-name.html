@@ -1,0 +1,60 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "What do you want to call this advert?",
+					classes: "govuk-fieldset__legend--xl",
+					isPageHeading: true
+				}
+			}) %}
+			
+			<p>
+				To make sure your advert appears in search results, use a title that relates to the apprenticeship training.
+			</p>
+
+			{{ govukCharacterCount({
+				name: "vacancy[name]",
+				id: "vacancy-name",
+				maxlength: 100,
+				rows: 1,
+				hint:
+				{
+					text: "You must include the word ‘apprentice’ or ‘apprenticeship’."
+				}
+			}) }}
+			{% endcall %}
+
+			{{govukButton({
+				text: "Save and continue"
+			})}}
+
+			<p>
+				<a href="../recruit-dashboard">Cancel</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

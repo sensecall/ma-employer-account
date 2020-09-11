@@ -1,0 +1,47 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-three-quarters">
+		<form method="post">
+			{{ govukInput({
+				name: "vacancy[positions]",
+				id: "vacancy-positions",
+				classes: "govuk-input--width-5",
+				label:
+				{
+					text: "How many positions are there for this apprenticeship?",
+					isPageHeading: true,
+					classes: "govuk-label--xl govuk-!-margin-bottom-8"
+				}
+			}) }}
+
+			{{govukButton({
+				text: "Save and continue"
+			})}}
+
+			<p>
+				<a href="../recruit-dashboard">Cancel</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

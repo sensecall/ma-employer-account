@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Confirm the training provider
+			</h1>
+			
+			<div class="govuk-!-padding-3 govuk-!-margin-bottom-6" style="background: #f4f4f4;">
+				<h2 class="govuk-heading-m">
+					{{data['vacancy']['provider']['name']}}
+					<span class="govuk-caption-m">{{data['vacancy']['provider']['address']}}</span>
+					<span class="govuk-caption-m">UKPRN: {{data['vacancy']['provider']['ukprn']}}</span>
+				</h2>
+				<p class="govuk-!-margin-bottom-0">
+					<a href="#">Change training provider</a>
+				</p>
+			</div>
+
+			{{govukButton({
+				text: "Confirm and continue"
+			})}}
+
+			<p>
+				<a href="#">Cancel</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

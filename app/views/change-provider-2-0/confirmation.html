@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukPanel({
+				titleText: "Change of training provider requested"
+			}) }}
+
+			<h2 class="govuk-heading-m govuk-!-margin-top-6">
+				What happens next
+			</h2>
+			<p>
+				We’ll ask the new training provider to check the details of this change. Once they've confirmed the apprentice's details, we’ll send you an email to ask you to approve the change of provider.
+			</p>
+
+			<p>
+				The apprentice will then move to the new training provider.
+			</p>
+
+			<p>
+				<a href="account-home" class="govuk-link govuk-link--no-visited-state">Return to account home</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block footerShortcuts %}
+<div class="govuk-width-container">
+	<h3 class="govuk-heading-s">
+		Emails
+	</h3>
+
+	<ul class="govuk-!-font-size-16 govuk-list govuk-list--bullet">
+		<li>
+			<a href="emails/employer-added-provider-accepted">Approved by provider</a>
+		</li>
+		<li>
+			<a href="emails/employer-added-provider-changed">Changed by provider</a>
+		</li>
+		<li>
+			<a href="emails/employer-added-provider-rejected">Rejected by provider</a>
+		</li>
+		<li>
+			<a href="emails/provider-added">Added by provider</a>
+		</li>
+		<li>
+			<a href="emails/provider-request-rejected">Request rejected by provider</a>
+		</li>
+	</ul>
+</div>
+{% endblock %}

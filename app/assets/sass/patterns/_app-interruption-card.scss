@@ -8,6 +8,12 @@
 .app-heading-xl--inverted {
   color: govuk-colour("white");
   background-color: govuk-colour("blue");
+
+  .govuk-warning-text__icon {
+    background-color: #fff;
+    border-color: #fff;
+    color: govuk-colour("blue")
+  }
 }
 
 // Inverted button styles from

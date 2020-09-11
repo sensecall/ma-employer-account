@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Check and approve the details
+		</h1>
+	</div>
+</div>
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+		{{ govukTable({
+			caption: "Darren Diamond's details",
+			captionClasses: "govuk-heading-l",
+			firstCellIsHeader: true,
+			head: [
+			{
+				text: ""
+			},
+			{
+				text: "Current details"
+			},
+			{
+				text: "Requested changes"
+			},
+			{
+				text: ""
+			}
+			],
+			rows: [
+			[
+			{
+				text: "Training provider"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">ABC Training Ltd</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + data['change-provider']['provider']['name'] + '</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
+			}
+			],
+			[
+			{
+				text: "Planned training start date"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">May 2020</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">October 2020</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
+			}
+			],
+			[
+			{
+				text: "Planned training end date"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">July 2022</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">August 2023</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
+			}
+			],
+			[
+			{
+				text: "Price"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">£5,000</del>'
+			},
+			{
+				html: '<ins style="background: #fff; text-decoration: none">No changes</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
+			}
+			]
+			]
+		}) }}
+	</div>
+</div>
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds-from-desktop">
+		<p>
+			Once you confirm these details, Darren Diamond’s training provider will change. 
+		</p>
+
+		<form method="post" novalidate="">
+			<input type="hidden" name="answers-checked" value="true">
+			<button type="submit" class="govuk-button">
+				Confirm
+			</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

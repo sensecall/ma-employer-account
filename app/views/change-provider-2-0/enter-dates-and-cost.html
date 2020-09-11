@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Who will enter the new course dates and price?",
+					isPageHeading: true,
+					classes: "govuk-fieldset__legend--xl"
+				}
+			}) %}
+
+			<!-- <p class="govuk-body">
+				Choose from training providers you’ve worked with before or <a href="#">add a new training provider.</a>
+			</p> -->
+
+			{{ govukRadios({
+				idPrefix: "dates-cost",
+				name: "dates-cost",
+				items: [
+				{
+					value: "employer",
+					text: "I’ll add them now"
+				},
+				{
+					value: "provider",
+					text: data['change-provider']['provider']['name'] + " will add them later"
+				}
+				]
+			})}}
+			{% endcall %}
+
+			{{govukButton({
+				classes: "govuk-!-margin-top-4",
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

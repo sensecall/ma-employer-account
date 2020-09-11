@@ -61,5 +61,9 @@ module.exports = {
 	'apprenticeship-start-date-month': "January",
 	'apprenticeship-start-date-year': 2020,
 	'apprenticeship-finish-date-month': 'February',
-	'apprenticeship-finish-date-year': 2021
+	'apprenticeship-finish-date-year': 2021,
+	'change-provider':
+	{
+		'apprentice-status': "live"
+	}
 }

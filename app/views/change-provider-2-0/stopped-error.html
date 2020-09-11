@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			You cannot change the training provider for this apprentice
+		</h1>
+
+		<p>
+			Before you can... you need to...
+		</p>
+
+		<p>
+			Try again once you've...
+		</p>
+		
+		{{govukButton({
+			text: "Return to account home",
+			classes: "govuk-!-margin-top-4",
+			href: "account-home"
+		})}}
+	</div>
+
+	<div class="govuk-grid-column-one-third">
+	</div>
+</div>
+</div>
+{% endblock %}
+
+
