@@ -459,6 +459,7 @@ router.post('/check-your-answers', (req, res) => {
 })
 
 router.post('/confirm-details', (req, res) => {
+	req.session.data['change-provider']['apprentice-status'] = "live"
 	res.redirect('final-confirmation')
 })
 

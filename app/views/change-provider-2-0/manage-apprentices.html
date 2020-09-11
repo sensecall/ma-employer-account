@@ -201,7 +201,11 @@
 				Nov 2020
 			</td>
 			<td class="govuk-table__cell" data-label="Training provider">
-				SOUTHAMPTON ENGINEERING TRAINING ASSOCIATION LIMITED (THE)
+				{% if data['change-provider']['apprentice-status'] == 'stopped-changing' %}
+				ABC TRAINING LTD
+				{% else %}
+				{{ data['change-provider']['provider']['name']}}
+				{% endif %}
 			</td>
 			<td class="govuk-table__cell" data-label="Status">
 				{% if data['change-provider']['apprentice-status'] == 'stopped-changing' %}
