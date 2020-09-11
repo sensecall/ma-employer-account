@@ -30,82 +30,6 @@
 	</div>
 </div>
 
-<!-- <div class="govuk-grid-row">
-	<div class="govuk-grid-column-one-half">
-		{{ govukTable({
-			caption: "Current details",
-			captionClasses: "govuk-heading-m",
-			firstCellIsHeader: true,
-			rows: [
-			[
-			{
-				text: "Training provider"
-			},
-			{
-				html: '<del style="background: #ffc0c0">ABC Training Ltd</del>',
-				format: "numeric"
-			}
-			],
-			[
-			{
-				text: "Start date"
-			},
-			{
-				html: '<del style="background: #ffc0c0">May 2020</del>',
-				format: "numeric"
-			}
-			],
-			[
-			{
-				text: "End date"
-			},
-			{
-				html: '<del style="background: #ffc0c0">July 2022</del>',
-				format: "numeric"
-			}
-			]
-			]
-		}) }}
-	</div>
-
-	<div class="govuk-grid-column-one-half">
-		{{ govukTable({
-			caption: "Requested changes",
-			captionClasses: "govuk-heading-m",
-			firstCellIsHeader: true,
-			rows: [
-			[
-			{
-				text: "Training provider"
-			},
-			{
-				html: '<ins style="background: #cffdc6; text-decoration: none">XYZ Solutions LLC</ins>',
-				format: "numeric"
-			}
-			],
-			[
-			{
-				text: "Start date"
-			},
-			{
-				html: '<ins style="background: #cffdc6; text-decoration: none">October 2020</ins>',
-				format: "numeric"
-			}
-			],
-			[
-			{
-				text: "End date"
-			},
-			{
-				html: '<ins style="background: #cffdc6; text-decoration: none">August 2023</ins>',
-				format: "numeric"
-			}
-			]
-			]
-		}) }}
-	</div>
-</div> -->
-
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-full">
 		{% set startDate = data['change-provider']['start-date-year'] + '-' + data['change-provider']['start-date-month'] + '-01' %}
@@ -113,7 +37,7 @@
 
 		{{ govukTable({
 			caption: "Darren Diamond's details",
-			captionClasses: "govuk-heading-l",
+			captionClasses: "govuk-heading-m govuk-!-margin-top-6",
 			firstCellIsHeader: true,
 			head: [
 			{
