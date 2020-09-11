@@ -25,7 +25,7 @@
 			{% call govukFieldset({
 				legend:
 				{
-					text: "Has Darren Diamond stopped training with [past training provider]?",
+					text: "Has Darren Diamond stopped training with {{data['provider']['name']}}?",
 					isPageHeading: true,
 					classes: "govuk-fieldset__legend--xl"
 				}
