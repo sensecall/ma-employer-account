@@ -36,10 +36,10 @@
 			</p>
 
 			<div class="govuk-form-group govuk-!-width-full">
-				<select id="provider-name" name="change-provider[provider][name]">
+				<select id="provider-name" name="change-provider[new-provider][name]">
 					<option value=""></option>
 					{% for provider in data['providers'].providers %}
-					<option value="{{provider.name}}" {{"selected" if provider.name === data['provider-name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
+					<option value="{{provider.name}}" {{"selected" if provider.name === data['change-provider']['new-provider']['name']}} >{{provider.name}} ({{provider.UKPRN}})</option>
 					{% endfor %}
 				</select>
 

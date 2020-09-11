@@ -103,9 +103,9 @@
 					</dt>
 					<dd class="govuk-summary-list__value">
 						{% if data['change-provider']['apprentice-status'] == 'stopped-changing' %}
-						ABC TRAINING LTD
+						{{ data['change-provider']['current-provider']['name'] }}
 						{% else %}
-						{{ data['change-provider']['provider']['name']}}
+						{{ data['change-provider']['new-provider']['name'] or data['change-provider']['current-provider']['name']}}
 						{% endif %}
 					</dd>
 					<dd class="govuk-summary-list__actions">

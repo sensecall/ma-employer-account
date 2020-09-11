@@ -21,11 +21,11 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<h1 class="govuk-heading-xl">
-			Confirm details and send request to {{data['change-provider']['provider']['name']}}
+			Confirm details and send request to {{data['change-provider']['new-provider']['name']}}
 		</h1>
 
 		<p>
-			{{data['change-provider']['provider']['name']}} will need to check these details and confirm that they’re happy to take on your apprentice. 
+			{{data['change-provider']['new-provider']['name']}} will need to check these details and confirm that they’re happy to take on your apprentice. 
 		</p>
 	</div>
 </div>
@@ -138,7 +138,7 @@
 				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">ABC Training Ltd</del>'
 			},
 			{
-				html: '<ins style="background: #cffdc6; text-decoration: none">' + data['change-provider']['provider']['name'] + '</ins>'
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + data['change-provider']['new-provider']['name'] + '</ins>'
 			},
 			{
 				classes: "govuk-table__cell--numeric",
@@ -198,7 +198,7 @@
 <div class="govuk-grid-row govuk-!-margin-top-4">
 	<div class="govuk-grid-column-two-thirds">
 		{{ govukWarningText({
-			text: "Once you confirm and send this request, the apprenticeship record and payments to ABC Training Ltd will be stopped.",
+			text: "Once you confirm and send this request, the apprenticeship record and payments to " + data['change-provider']['current-provider']['name'] + " will be stopped.",
 			iconFallbackText: "Warning"
 		}) }}
 

@@ -65,7 +65,7 @@ module.exports = {
 	'change-provider':
 	{
 		'apprentice-status': "live",
-		'provider':
+		'current-provider':
 		{
 			'name': "ABC TRAINING LTD"
 		}
