@@ -64,6 +64,10 @@ module.exports = {
 	'apprenticeship-finish-date-year': 2021,
 	'change-provider':
 	{
-		'apprentice-status': "live"
+		'apprentice-status': "live",
+		'provider':
+		{
+			'name': "ABC TRAINING LTD"
+		}
 	}
 }
