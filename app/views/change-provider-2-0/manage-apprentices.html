@@ -204,7 +204,7 @@
 				{% if data['change-provider']['apprentice-status'] == 'stopped-changing' %}
 				ABC TRAINING LTD
 				{% else %}
-				{{ data['change-provider']['provider']['name']}}
+				{{ data['change-provider']['provider']['name'] or "ABC TRAINING LTD"}}
 				{% endif %}
 			</td>
 			<td class="govuk-table__cell" data-label="Status">
