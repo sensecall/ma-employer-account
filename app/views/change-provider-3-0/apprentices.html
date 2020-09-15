@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+	items: [
+	{
+		text: "Home",
+		href: "account-home"
+	},
+	{
+		text: "Apprentices"
+	}
+	]
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">	
+		<section class="das-section-dashboard">
+			<h2 class="das-section__heading govuk-heading-xl govuk-!-margin-bottom-6">
+				Apprentices
+			</h2>
+		</section>
+		<hr class="das-section-break das-section-break--l das-section-break--heavy-grey">
+	</div>
+</div>
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<div class="das-cards">
+			<div class="govuk-grid-row">
+				<div class="das-card govuk-grid-column-one-half">
+					<h2 class="govuk-heading-m das-card__heading"><a id="AddApprentice" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/inform" class="govuk-link">Add an apprentice</a></h2>
+					<p>Add new apprentices or ask your training provider to add them.</p>
+					<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+				</div>
+
+				<div class="das-card govuk-grid-column-one-half">
+					<h2 class="govuk-heading-m das-card__heading"><a id="YourCohorts" href="/BB8W4N/unapproved/review" class="govuk-link">Apprentice requests</a></h2>
+					<p>Review, edit, approve and add more apprentices.</p>
+					<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+				</div>
+			</div>
+
+			<div class="govuk-grid-row">
+				<div class="das-card govuk-grid-column-one-half">
+					<h2 class="govuk-heading-m das-card__heading"><a id="ManageApprentices" href="manage-apprentices">Manage your apprentices</a></h2>
+					<p>View approved apprentices, update details of existing apprentices or stop and pause payments to training providers.</p>
+				</div>
+
+				<div class="das-card govuk-grid-column-one-half">
+					<h2 class="govuk-heading-m"><a id="SetPaymentOrder" href="https://pp-eas.apprenticeships.education.gov.uk/commitments/accounts/BB8W4N/apprentices/manage/paymentorder" class="govuk-link">Set payment order</a></h2>
+					<p>View and change the order in which your providers are paid from your available funds.</p>
+				</div>
+			</div>
+
+			<hr class="das-section-break das-section-break--l das-section-break--heavy-grey">
+
+			<div class="govuk-grid-row">
+				<div class="das-card govuk-grid-column-one-half">
+					<h2 class="govuk-heading-m das-card__heading"><a id="ReportPublicSectorTarget" href="https://pp-reporting.apprenticeships.education.gov.uk/accounts/BB8W4N/home" class="govuk-link">Report public sector apprenticeship target</a></h2>
+					<p>Submit data on your progress towards the public sector apprenticeship target</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

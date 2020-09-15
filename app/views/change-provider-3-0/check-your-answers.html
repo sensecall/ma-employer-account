@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Confirm details and send request to {{data['change-provider']['new-provider']['name']}}
+		</h1>
+
+		<p>
+			{{data['change-provider']['new-provider']['name']}} will need to check these details and confirm that they’re happy to take on your apprentice. 
+		</p>
+	</div>
+</div>
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+		{% set startDate = data['change-provider']['start-date-year'] + '-' + data['change-provider']['start-date-month'] + '-01' %}
+		{% set endDate = data['change-provider']['end-date-year'] + '-' + data['change-provider']['end-date-month'] + '-01' %}
+
+		{{ govukTable({
+			caption: "Darren Diamond's details",
+			captionClasses: "govuk-heading-m govuk-!-margin-top-6",
+			firstCellIsHeader: true,
+			head: [
+			{
+				text: ""
+			},
+			{
+				text: "Current details"
+			},
+			{
+				text: "Requested changes"
+			},
+			{
+				text: ""
+			}
+			],
+			rows: [
+			[
+			{
+				text: "Training provider"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">ABC Training Ltd</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + data['change-provider']['new-provider']['name'] + '</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
+			}
+			],
+			[
+			{
+				text: "Training start date"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">May 2020</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + startDate | date('MMMM YYYY') + '</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
+			}
+			],
+			[
+			{
+				text: "Training end date"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">July 2022</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + endDate | date('MMMM YYYY') + '</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
+			}
+			],
+			[
+			{
+				text: "Price"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">£5,000</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">£' + data['change-provider']['new-price'] + '</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
+			}
+			]
+			]
+		}) }}
+	</div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-top-4">
+	<div class="govuk-grid-column-two-thirds">
+		{{ govukWarningText({
+			text: "Once you confirm and send this request, the apprenticeship record and payments to " + data['change-provider']['current-provider']['name'] + " will be stopped.",
+			iconFallbackText: "Warning"
+		}) }}
+
+		<form method="post" novalidate="">
+			<input type="hidden" name="answers-checked" value="true">
+			<button type="submit" class="govuk-button">
+				Confirm and send
+			</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

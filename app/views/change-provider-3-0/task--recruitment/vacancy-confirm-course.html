@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			<h1 class="govuk-heading-xl">
+				Confirm apprenticeship training
+			</h1>
+			
+			<div class="govuk-!-padding-3 govuk-!-margin-bottom-6" style="background: #f4f4f4;">
+				<h2 class="govuk-heading-m">
+					{{data['vacancy']['course']['name']}}
+					<span class="govuk-caption-m">{{data['vacancy']['course']['level']}}</span>
+					<span class="govuk-caption-m">Typical duration: 18 months</span>
+					{% if data['vacancy']['course']['standard'] %}<span class="govuk-caption-m">Standard</span>{% endif %}
+				</h2>
+				<p class="govuk-!-margin-bottom-0">
+					<a href="#">Change apprenticeship training</a>
+				</p>
+			</div>
+
+			{{govukButton({
+				text: "Confirm and continue",
+				classes: "govuk-!-margin-bottom-5"
+			})}}
+
+			<p>
+				<a href="../recruit-dashboard">Cancel</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

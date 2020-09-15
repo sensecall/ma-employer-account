@@ -1,0 +1,84 @@
+
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% set currentPage = 'recruit' %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "What training will the apprentice take?",
+					classes: "govuk-fieldset__legend--xl",
+					isPageHeading: true
+				}
+			}) %}
+			
+			<p>
+				If you have not found training for this apprenticeship, you can use the <a href="#">Find apprenticeship training service (opens in a new tab or window)</a>. 
+			</p>
+
+			<div class="govuk-form-group">
+				<label class="govuk-hint" for="course-name">
+					Enter apprenticeship training title
+				</label>
+
+				<select id="course-name" name="vacancy[course-name]">
+					<option value=""></option>
+					{% for apprenticeship in data['apprenticeships'].apprenticeships %}
+					{% set optionValue %}{{apprenticeship.value}}*{{apprenticeship.name}}*Level: {{apprenticeship.level}}*{{' (Standard)' if apprenticeship.standard === true}}{% endset %}
+					<option value="{{optionValue}}" {{"selected" if optionValue === data['vacancy']['course-name']}} >{{apprenticeship.name}}, Level: {{apprenticeship.level}}{{" (Standard)" if apprenticeship.standard === true}}</option>
+					{% endfor %}
+				</select>
+
+				<p class="govuk-!-margin-top-2">
+					<a href="#clear-search" id="clear-search">Clear search</a>
+				</p>
+			</div>
+			{% endcall %}
+
+			{{govukButton({
+				text: "Save and continue"
+			})}}
+
+			<p>
+				<a href="../recruit-dashboard">Cancel</a>
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+	$(document).ready(function(){
+		accessibleAutocomplete.enhanceSelectElement({
+			selectElement: document.querySelector('#course-name'),
+			showAllValues: true,
+			defaultValue: ''
+		})
+
+		$('#clear-search').on('click', function(e) {
+			$('#course-name').val("");
+			e.preventDefault();
+		})
+	})
+</script>
+{% endblock %}

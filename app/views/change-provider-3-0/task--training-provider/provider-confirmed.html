@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+<!-- {% include "includes/ma-navbar.html" %} -->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post" action="../whats-next">
+			{% set panelHtml %}
+			<h2 class="govuk-heading-xl govuk-!-margin-bottom-4" style="text-align: center">
+				Training provider added
+			</h2>
+			<p style="text-align: center">
+				You've successfully added <b>{{data['provider-name']}}</b>.
+			</p>
+			{% endset %}
+
+			{%- from "../macros/alert.njk" import appAlert %}
+			{{ appAlert({
+				titleHtml: panelHtml
+			}) }}
+
+			{{ govukRadios({
+				idPrefix: "whats-next",
+				name: "whats-next",
+				fieldset: 
+				{
+					legend:
+					{
+						text: "What's next?",
+						isPageHeading: false,
+						classes: "govuk-fieldset__legend--m"
+					}
+				},
+				items: [
+				{
+					value: "set-permissions",
+					text: "Set permissions for this training provider"
+				},
+				{
+					value: "add-another",
+					text: "Add another training provider"
+				},
+				{
+					value: "return-to-homepage",
+					text: "Go back to homepage"
+				}
+				]
+			}) }}
+
+
+			{{govukButton({
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

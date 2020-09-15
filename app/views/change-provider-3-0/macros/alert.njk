@@ -1,0 +1,20 @@
+{% macro appAlert(params) %}
+<div class="app-alert app-alert--success {% for class in params.classes %}{{class}}{% endfor %}">
+
+	{% if params.titleText %}
+	<h2 class="app-alert__heading">
+		{{params.titleText}}
+	</h2>
+	{% elif params.titleHtml %}
+	{{params.titleHtml | safe}}
+	{% endif %}
+
+	{% if params.content %}
+	<div class="app-alert__content">
+		<p>
+			{{params.content}}
+		</p>
+	</div>
+	{% endif %}
+</div>
+{% endmacro %}

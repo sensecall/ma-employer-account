@@ -1,0 +1,45 @@
+{% extends "./layout-email.html" %}
+
+{% set serviceName = 'EMAIL' %}
+
+{% block page_title %}
+{{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <a href="https://www.gov.uk/government/organisations/education-and-skills-funding-agency" target="_blank">
+    <img src="/public/images/esfa-logo.png" width="180px" id="logo">
+  </a>
+
+  <h1 class="heading-large">
+    {{data['change-provider']['new-provider']['name']}} has reviewed your request 
+  </h1>
+
+  <p>
+    Dear [employer name]
+  </p>
+
+  <p>
+    {{data['change-provider']['new-provider']['name']}} has rejected your request to become Darren Diamond’s training provider and has not entered the new course dates or price. 
+  </p>
+
+  <p>
+    This could be because they were not expecting your request. You should contact {{data['change-provider']['new-provider']['name']}} to find out why.
+  </p>
+
+  <p>
+    You can change the training provider or apprenticeship details in your apprenticeship service account at <a href="../manage-apprentices">[[URL]].gov.uk/[[STRING]]</a>.
+  </p>
+
+  <p>
+    From
+    The Apprenticeship Service Team
+  </p>
+
+  <p>
+    This is an automated message - do not reply.
+  </p>
+</main>
+{% endblock %}

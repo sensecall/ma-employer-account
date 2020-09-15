@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			You need to wait until the apprentice has stopped training with {{data['change-provider']['current-provider']['name']}}
+		</h1>
+
+		<p>
+			You can change Darren Diamond's training provider once they've stopped training with {{data['change-provider']['current-provider']['name']}}.
+		</p>
+
+		<p>
+			If Darren Diamond has already stopped training, you can <a href="stopped-check">change your answer</a>.
+		</p>
+		
+		{{govukButton({
+			text: "Return to account home",
+			classes: "govuk-!-margin-top-4",
+			href: "account-home"
+		})}}
+	</div>
+
+	<div class="govuk-grid-column-one-third">
+	</div>
+</div>
+</div>
+{% endblock %}
+
+

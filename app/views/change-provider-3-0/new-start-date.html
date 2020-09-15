@@ -22,27 +22,13 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
-			{% call govukFieldset({
-				legend:
-				{
-					text: "Has Darren Diamond stopped training with " + data['change-provider']['current-provider']['name'] + "?",
-					isPageHeading: true,
-					classes: "govuk-fieldset__legend--xl"
-				}
-			}) %}
-
-			<!-- <p class="govuk-body">
-				Choose from training providers you’ve worked with before or <a href="#">add a new training provider.</a>
-			</p> -->
-
-			{% set stoppedDate %}
 			<div class="govuk-form-group">
 				{% call govukFieldset({
 					legend:
 					{
-						text: "When did Darren Diamond stop training with " + data['change-provider']['current-provider']['name'] + "?",
+						text: "What is the start date with the new training provider?",
 						isPageHeading: true,
-						classes: "govuk-fieldset__legend--s"
+						classes: "govuk-fieldset__legend--xl"
 					}
 				}) %}
 
@@ -75,27 +61,7 @@
 
 				{% endcall %}
 			</div>
-			{% endset %}
-			{{ govukRadios({
-				idPrefix: "stopped-check",
-				name: "stopped-check",
-				items: [
-				{
-					value: "true",
-					text: "Yes, they've stopped",
-					conditional:
-					{
-						html: stoppedDate
-					}
-				},
-				{
-					value: "false",
-					text: "No, they're still training"
-				}
-				]
-			})}}
-			{% endcall %}
-
+			
 			{{govukButton({
 				classes: "govuk-!-margin-top-4",
 				text: "Continue"
