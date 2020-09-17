@@ -35,58 +35,13 @@
 				Choose from training providers you’ve worked with before or <a href="#">add a new training provider.</a>
 			</p> -->
 
-			{% set stoppedDate %}
-			<div class="govuk-form-group">
-				{% call govukFieldset({
-					legend:
-					{
-						text: "When did Darren Diamond stop training with " + data['change-provider']['current-provider']['name'] + "?",
-						isPageHeading: true,
-						classes: "govuk-fieldset__legend--s"
-					}
-				}) %}
-
-				<!-- <p class="govuk-body govuk-!-margin-top-3">
-					This date must be on or after the current month (September 2020).
-				</p> -->
-
-				<span id="start-date-hint" class="govuk-hint">
-					For example, 04 2020
-				</span>
-
-				<div class="govuk-date-input" id="start-date">
-					<div class="govuk-date-input__item">
-						<div class="govuk-form-group">
-							<label class="govuk-label govuk-date-input__label" for="start-date-month">
-								Month
-							</label>
-							<input class="govuk-input govuk-date-input__input govuk-input--width-2" id="start-date-month" name="change-provider[start-date-month]" type="text" pattern="[0-9]*" inputmode="numeric">
-						</div>
-					</div>
-					<div class="govuk-date-input__item">
-						<div class="govuk-form-group">
-							<label class="govuk-label govuk-date-input__label" for="start-date-year">
-								Year
-							</label>
-							<input class="govuk-input govuk-date-input__input govuk-input--width-4" id="start-date-year" name="change-provider[start-date-year]" type="text" pattern="[0-9]*" inputmode="numeric">
-						</div>
-					</div>
-				</div>
-
-				{% endcall %}
-			</div>
-			{% endset %}
 			{{ govukRadios({
 				idPrefix: "stopped-check",
 				name: "stopped-check",
 				items: [
 				{
 					value: "true",
-					text: "Yes, they've stopped",
-					conditional:
-					{
-						html: stoppedDate
-					}
+					text: "Yes, they've stopped"
 				},
 				{
 					value: "false",

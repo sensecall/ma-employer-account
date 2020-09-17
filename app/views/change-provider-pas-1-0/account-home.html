@@ -1,18 +1,6 @@
-{% extends "layout.html" %}
-
+{% extends "./layout-pas.html" %}
 
 {% set currentPage = 'home' %}
-
-{% block header %}
-{% include "includes/cookie-banner.html" %}
-{% include "includes/ma-header.html" %}
-
-{% if data['sign-agreement-now'] == 'yes' %}
-{% include "includes/ma-account-header.html" %}
-{% include "includes/ma-navbar.html" %}
-{% endif %}
-
-{% endblock %}
 
 
 {% block content %}
