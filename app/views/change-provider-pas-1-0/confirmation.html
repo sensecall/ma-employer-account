@@ -7,7 +7,7 @@
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
 			{{ govukPanel({
-				titleText: "You’ve confirmed Darren Diamond's apprenticeship details",
+				titleText: "You’ve confirmed Darren Diamond's apprenticeship details" if data['change-provider-journey'] != 'provider' else "You've added Darren Diamond's apprenticeship details",
 				classes: "govuk-!-margin-top-8"
 			}) }}
 
@@ -15,7 +15,11 @@
 				What happens next
 			</h2>
 			<p>
-				
+				We’ll send these details to {{data['employer-name']}} to do a final review. 
+			</p>
+
+			<p>
+				If {{data['employer-name']}} approves these details, we’ll send you an email to let you know. Then, you’ll become Darren Diamond’s training provider and payments will start. 
 			</p>
 
 			<p>
