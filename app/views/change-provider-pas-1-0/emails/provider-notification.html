@@ -1,0 +1,45 @@
+{% extends "./layout-email.html" %}
+
+{% set serviceName = 'EMAIL' %}
+
+{% block page_title %}
+{{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <a href="https://www.gov.uk/government/organisations/education-and-skills-funding-agency" target="_blank">
+    <img src="/public/images/esfa-logo.png" width="180px" id="logo">
+  </a>
+
+  <h1 class="heading-large">
+    {{data['employer-name']}} has added details for you to review
+  </h1>
+
+  <p>
+    Dear [Training provider name]
+  </p>
+
+  <p>
+    {{data['employer-name']}} has requested that you become [apprentice name]’s training provider. 
+  </p>
+
+  <p>
+    You need to check and approve the details of this apprenticeship at <a href="../../change-provider-pas-1-0/login">[URL]</a>. You can make changes if any of the details are incorrect.
+  </p>
+
+  <p>
+    Once you’ve approved these details, {{data['employer-name']}} will do a final review. Then, you’ll become Darren Diamond’s training provider and payments will start.
+  </p>
+
+  <p>
+    From<br>
+    The Apprenticeship Service Team
+  </p>
+
+  <p>
+    This is an automated message - do not reply.
+  </p>
+</main>
+{% endblock %}

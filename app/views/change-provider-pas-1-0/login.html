@@ -1,17 +1,10 @@
 {% extends "layout.html" %}
 
+{% set serviceName = 'Information Management Services (IDAMS)' %}
+
 {% block header %}
 {% include "includes/cookie-banner.html" %}
 {% include "includes/ma-header.html" %}
-
-<!-- {% include "includes/ma-navbar.html" %} -->
-{% endblock %}
-
-{% block beforeContent %}
-{{ govukBackLink({
-	text: "Back",
-	href: "javascript: window.history.go(-1)"
-}) }}
 {% endblock %}
 
 {% block content %}
@@ -21,16 +14,11 @@
 			Sign in
 		</h1>
 
-		<p>
-			Sign in or <a href="#">create an account</a> to manage your apprenticeship funds.
-		</p>
-
 		<form method="post">
 			{{ govukInput({
 				label:
 				{
-					text: "Email address",
-					classes: "govuk-!-font-weight-bold"
+					text: "User ID or email address"
 				},
 				classes: "govuk-!-width-two-thirds",
 				id: "employer-email",
@@ -40,23 +28,29 @@
 			{{ govukInput({
 				label:
 				{
-					text: "Password",
-					classes: "govuk-!-font-weight-bold"
+					text: "Password"
 				},
 				classes: "govuk-!-width-two-thirds govuk-!-font-weight-bold",
 				id: "employer-password",
 				name: "employer-password"
 			}) }}
 
+			{% set url = "new-start-date" if data['change-provider-journey'] == 'provider' else "check-your-answers" %}
 
 			{{ govukButton({
-				text: "Continue"
+				text: "Sign in",
+				href: url
 			}) }}
 		</form>
 
-		<p>
-			<a href="#">Forgotten your password?</a>
-		</p>
+		<h2 class="govuk-heading-m">
+			Problems signing in?
+		</h2>
+
+		<ul class="govuk-list">
+			<li><a href="#">I forgot my password</a></li>
+			<li><a href="#">I don't have an account</a></li>
+		</ul>
 	</div>
 
 	<div class="govuk-grid-column-one-third">

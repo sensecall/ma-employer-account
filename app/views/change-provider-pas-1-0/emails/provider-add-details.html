@@ -1,0 +1,45 @@
+{% extends "./layout-email.html" %}
+
+{% set serviceName = 'EMAIL' %}
+
+{% block page_title %}
+{{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <a href="https://www.gov.uk/government/organisations/education-and-skills-funding-agency" target="_blank">
+    <img src="/public/images/esfa-logo.png" width="180px" id="logo">
+  </a>
+
+  <h1 class="heading-large">
+    {{data['employer-name']}} has requested that you add details on their behalf
+  </h1>
+
+  <p>
+    Dear [Training provider name]
+  </p>
+
+  <p>
+    {{data['employer-name']}} has requested that you become [apprentice name]’s training provider.
+  </p>
+
+  <p>
+    If you have agreed to become their new training provider, you need to add the new apprenticeship dates and price at <a href="../../change-provider-pas-1-0/login?change-provider-journey=provider">[URL].gov.uk</a>
+  </p>
+
+  <p>
+    Once you’ve added these details, {{data['employer-name']}} will do a final review. Then, you’ll become [apprentice name]’s training provider and payments will start.
+  </p>
+
+  <p>
+    From<br>
+    The Apprenticeship Service Team
+  </p>
+
+  <p>
+    This is an automated message - do not reply.
+  </p>
+</main>
+{% endblock %}

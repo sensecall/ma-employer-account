@@ -39,10 +39,10 @@
                 <a class="das-navigation__link {% if _currentPage == 'provider-home' %}das-navigation__link--current{% endif %}" href="provider-home">Home</a>
             </li>
             <li class="das-navigation__list-item">
-                <a class="das-navigation__link" href="#">Your cohorts</a>
+                <a class="das-navigation__link {% if _currentPage == 'cohorts' %}das-navigation__link--current{% endif %}" href="#">Your cohorts</a>
             </li>
             <li class="das-navigation__list-item">
-                <a class="das-navigation__link {% if _currentPage != 'provider-home' %}das-navigation__link--current{% endif %}" href="reserve-reservations-pro">Manage funding</a>
+                <a class="das-navigation__link" href="reserve-reservations-pro">Manage funding</a>
             </li>
             <li class="das-navigation__list-item">
                 <a class="das-navigation__link" href="#">Manage your apprentices</a>
@@ -50,13 +50,8 @@
             <li class="das-navigation__list-item">
                 <a class="das-navigation__link" href="#">Recruit apprentices</a>
             </li>
-            <li class="das-navigation__priority-list-item" id="priority-list-menu"><a
-                    class="das-navigation__priority-button" href="#">More</a>
-                <ul class="das-navigation__priority-list govuk-visually-hidden">
-                    <li class="das-navigation__list-item">
-                        <a class="das-navigation__link" href="#">Organisations and agreements</a>
-                    </li>
-                </ul>
+            <li class="das-navigation__list-item">
+                    <a class="das-navigation__link" href="#">More</a>
             </li>
         </ul>
     </div>
