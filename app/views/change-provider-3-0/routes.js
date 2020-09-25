@@ -435,7 +435,8 @@ router.post('/choose-new-training-provider', (req, res) => {
 router.post('/enter-dates-and-cost', (req, res) => {
 	if(req.session.data['dates-cost'] == 'provider'){
 		req.session.data['change-provider']['apprentice-status'] = "stopped-changing"
-		res.redirect('confirmation')	
+		req.session.data['change-provider']['status'] = "provider-adding-details"
+		res.redirect('confirmation')
 	} else {
 		res.redirect('new-start-date')
 	}
@@ -462,6 +463,7 @@ router.post('/confirm-details', (req, res) => {
 	req.session.data['change-provider']['apprentice-status'] = "live"
 	req.session.data['change-provider']['current-provider'] = req.session.data['change-provider']['new-provider']
 	req.session.data['change-provider']['new-provider'] = ''
+	req.session.data['change-provider']['status'] = "employer-confirmed-details"
 	
 	res.redirect('final-confirmation')
 })

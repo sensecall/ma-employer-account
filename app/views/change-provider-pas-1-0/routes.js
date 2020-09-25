@@ -445,6 +445,7 @@ router.post('/new-price', (req, res) => {
 })
 
 router.post('/check-your-answers', (req, res) => {
+	req.session.data['change-provider']['status'] = "provider-confirmed-details"
 	res.redirect('confirmation')
 })
 
