@@ -20,19 +20,82 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-	<div class="govuk-grid-column-two-thirds">
-
-		<form method="post" class="form">
-
-			<h1 class="govuk-heading-xl">
+	<div class="govuk-grid-column-full">
+		<h1 class="govuk-heading-xl">
 				Darren Diamond
 			</h1>
+
+			<p>
+				Edit details if there's a change in apprentice or apprenticeship circumstances.
+			</p>
+	</div>
+</div>
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post" class="form">
+			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Status
+					</dt>
+					<dd class="govuk-summary-list__value">
+						{% if data['change-provider']['apprentice-status'] == 'stopped-changing' %}
+						Stopped (changing provider)
+						{% elif data['change-provider']['apprentice-status'] == 'stopped' %}
+						Stopped
+						{% elif data['change-provider']['apprentice-status'] == 'live' %}
+						Live
+						{% endif %}
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						{% if data['change-provider']['apprentice-status'] == 'live' %}
+						<a href="change-apprentice-status">
+							Edit status
+						</a>
+						{% endif %}
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Training provider
+					</dt>
+					<dd class="govuk-summary-list__value">
+						{% if data['change-provider']['apprentice-status'] == 'stopped-changing' %}
+						{{ data['change-provider']['current-provider']['name'] }}
+						{% else %}
+						{{ data['change-provider']['new-provider']['name'] or data['change-provider']['current-provider']['name']}}
+						{% endif %}
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						{% if data['change-provider']['apprentice-status'] != 'stopped-changing' %}
+						<a href="change-provider-warning">
+							Change<span class="govuk-visually-hidden"></span>
+						</a>
+						{% endif %}
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Cohort reference
+					</dt>
+					<dd class="govuk-summary-list__value">
+						VKKG8P
+					</dd>
+					<dd class="govuk-summary-list__actions">
+						<a href="#">
+							<span class="govuk-visually-hidden">Edit reference</span>
+						</a>
+					</dd>
+				</div>
+			</dl>
 
 			<!--only add a heading for a list if there is more than one list-->
 			<h2 class="govuk-heading-m">
 				Apprentice details
 				<!--<span style="float:right; text-align:right; font-weight:400; font-size:19px;"><a href="#">Edit</a></span>-->
 			</h2>
+
 			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
 				<div class="govuk-summary-list__row">
 					<dt class="govuk-summary-list__key">
@@ -82,66 +145,10 @@
 			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
 				<div class="govuk-summary-list__row">
 					<dt class="govuk-summary-list__key">
-						Status
-					</dt>
-					<dd class="govuk-summary-list__value">
-						{% if data['change-provider']['apprentice-status'] == 'stopped-changing' %}
-						Stopped (changing provider)
-						{% elif data['change-provider']['apprentice-status'] == 'stopped' %}
-						Stopped
-						{% elif data['change-provider']['apprentice-status'] == 'live' %}
-						Live
-						{% endif %}
-					</dd>
-					<dd class="govuk-summary-list__actions">
-						<a href="change-apprentice-status">
-							<span class="govuk-visually-hidden">Edit status</span>
-						</a>
-					</dd>
-				</div>
-				<div class="govuk-summary-list__row">
-					<dt class="govuk-summary-list__key">
-						Training provider
-					</dt>
-					<dd class="govuk-summary-list__value">
-						{% if data['change-provider']['apprentice-status'] == 'stopped-changing' %}
-						{{ data['change-provider']['current-provider']['name'] }}
-						{% else %}
-						{{ data['change-provider']['new-provider']['name'] or data['change-provider']['current-provider']['name']}}
-						{% endif %}
-					</dd>
-					<dd class="govuk-summary-list__actions">
-						{% if data['change-provider']['apprentice-status'] != 'stopped-changing' %}
-						<a href="change-provider-warning">
-							Change<span class="govuk-visually-hidden"></span>
-						</a>
-						{% endif %}
-					</dd>
-				</div>
-				<div class="govuk-summary-list__row">
-					<dt class="govuk-summary-list__key">
-						Reference
-					</dt>
-					<dd class="govuk-summary-list__value">
-						VKKG8P
-					</dd>
-					<dd class="govuk-summary-list__actions">
-						<a href="#">
-							<span class="govuk-visually-hidden">Edit reference</span>
-						</a>
-					</dd>
-				</div>
-				<div class="govuk-summary-list__row">
-					<dt class="govuk-summary-list__key">
 						Apprenticeship training course
 					</dt>
 					<dd class="govuk-summary-list__value">
 						Bespoke Saddler, Level 5 (Standard)
-					</dd>
-					<dd class="govuk-summary-list__actions">
-						<a href="#">
-							<span class="govuk-visually-hidden">Edit apprenticeship training course</span>
-						</a>
 					</dd>
 				</div>
 
@@ -152,11 +159,6 @@
 					<dd class="govuk-summary-list__value">
 						February 2019
 					</dd>
-					<dd class="govuk-summary-list__actions">
-						<a href="#">
-							<span class="govuk-visually-hidden">Edit planned training start date</span>
-						</a>
-					</dd>
 				</div>
 
 				<div class="govuk-summary-list__row">
@@ -165,11 +167,6 @@
 					</dt>
 					<dd class="govuk-summary-list__value">
 						March 2021
-					</dd>
-					<dd class="govuk-summary-list__actions">
-						<a href="#">
-							<span class="govuk-visually-hidden">Edit planned training finish date</span>
-						</a>
 					</dd>
 				</div>
 
@@ -180,23 +177,13 @@
 					<dd class="govuk-summary-list__value">
 						£5,000 excluding VAT
 					</dd>
-					<dd class="govuk-summary-list__actions">
-						<a href="#">
-							<span class="govuk-visually-hidden">Edit total agreed apprenticeship price (excluding VAT)</span>
-						</a>
-					</dd>
 				</div>
 				<div class="govuk-summary-list__row">
 					<dt class="govuk-summary-list__key">
 						Reference
 					</dt>
 					<dd class="govuk-summary-list__value">
-
-					</dd>
-					<dd class="govuk-summary-list__actions">
-						<a href="#">
-							<span class="govuk-visually-hidden">Edit reference</span>
-						</a>
+						ABC123
 					</dd>
 				</div>
 				<div class="govuk-summary-list__row">
@@ -205,11 +192,6 @@
 					</dt>
 					<dd class="govuk-summary-list__value">
 						The end-point assessor has not been declared
-					</dd>
-					<dd class="govuk-summary-list__actions">
-						<a href="#">
-							<span class="govuk-visually-hidden">Edit End-point assessor</span>
-						</a>
 					</dd>
 				</div>
 			</dl>
