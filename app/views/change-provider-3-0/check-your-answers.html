@@ -35,6 +35,8 @@
 		{% set startDate = data['change-provider']['start-date-year'] + '-' + data['change-provider']['start-date-month'] + '-01' %}
 		{% set endDate = data['change-provider']['end-date-year'] + '-' + data['change-provider']['end-date-month'] + '-01' %}
 
+		{% set stopDate = data['change-provider']['stop-date-year'] + '-' + data['change-provider']['stop-date-month'] + '-01' %}
+
 		{{ govukTable({
 			caption: "Darren Diamond's details",
 			captionClasses: "govuk-heading-m govuk-!-margin-top-6",
@@ -54,6 +56,21 @@
 			}
 			],
 			rows: [
+			[
+			{
+				text: "Stop date"
+			},
+			{
+				html: '-'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + stopDate | date('MMMM YYYY') + '</ins>'
+			},
+			{
+				classes: "govuk-table__cell--numeric",
+				html: '<a href="#">Change</a>'
+			}
+			],
 			[
 			{
 				text: "Training provider"

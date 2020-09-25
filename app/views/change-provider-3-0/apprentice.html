@@ -20,19 +20,55 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-	<div class="govuk-grid-column-full">
-		<h1 class="govuk-heading-xl">
-				Darren Diamond
-			</h1>
+	<div class="govuk-grid-column-two-thirds">
+		{% if data['change-provider']['apprentice-status'] == 'pending-confirmation' %}
+		<div class="app-alert app-alert--success govuk-!-margin-bottom-0">
+			<h2 class="govuk-heading-l govuk-!-margin-bottom-0" style="text-align: center;">
+				Apprenticeship stopped
+			</h2>
+		</div>
+
+		<div class="govuk-inset-text">
+			<h2 class="govuk-heading-m govuk-!-margin-bottom-2">
+				Changes for review
+			</h2>
+			<p class="govuk-!-margin-bottom-4">
+				There are changes to this apprentice's details that you need to review.
+			</p>
 
 			<p>
-				Edit details if there's a change in apprentice or apprenticeship circumstances.
+				<a href="#">View changes</a>
 			</p>
-	</div>
-</div>
+		</div>
+		{% elif data['change-provider']['apprentice-status'] == 'stopped-changing' %}
+		<div class="app-alert app-alert--success govuk-!-margin-bottom-0">
+			<h2 class="govuk-heading-l govuk-!-margin-bottom-0" style="text-align: center;">
+				Apprenticeship stopped
+			</h2>
+		</div>
 
-<div class="govuk-grid-row">
-	<div class="govuk-grid-column-two-thirds">
+		<div class="govuk-inset-text">
+			<h2 class="govuk-heading-m govuk-!-margin-bottom-2">
+				Changes pending
+			</h2>
+			<p class="govuk-!-margin-bottom-4">
+				There are changes to this apprentice's details that are waiting for approval by the training provider.
+			</p>
+
+			<p>
+				<a href="#">View changes</a>
+			</p>
+		</div>
+		{% endif %}
+
+		<h1 class="govuk-heading-xl">
+			Darren Diamond
+		</h1>
+
+		<p>
+			Edit details if there's a change in apprentice or apprenticeship circumstances.
+		</p>
+
 		<form method="post" class="form">
 			<dl class="govuk-summary-list govuk-!-margin-bottom-9">
 				<div class="govuk-summary-list__row">

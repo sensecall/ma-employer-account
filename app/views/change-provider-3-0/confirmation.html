@@ -30,22 +30,15 @@
 			<p>
 				We’ll ask {{data['change-provider']['new-provider']['name']}} to check the details of this change. Once they've confirmed the apprentice's details, we’ll send you an email to ask you to approve the change of provider.
 			</p>
-
-			<p>
-				If you approve the details, {{data['change-provider']['new-provider']['name']}} will become Darren Diamond’s new training provider.
-			</p>
 			{% else %}
 			<p>
-				We’ll ask {{data['change-provider']['new-provider']['name']}} to enter the new apprenticeship dates and price. 
+				We’ll ask {{data['change-provider']['new-provider']['name']}} to enter the new apprenticeship dates and price. Once they've added Darren Diamond’s apprenticeship details, we’ll send you an email asking you to approve the change of provider.
 			</p>
+			{% endif %}
 
-			<p>
-				Once they've added Darren Diamond’s apprenticeship details, we’ll send you an email asking you to approve the change of provider.
-			</p>
 			<p>
 				If you approve the details, {{data['change-provider']['new-provider']['name']}} will become Darren Diamond’s new training provider.
 			</p>
-			{% endif %}
 
 			<p>
 				<a href="account-home" class="govuk-link govuk-link--no-visited-state">Return to account home</a>
