@@ -28,49 +28,7 @@ function createReservation(req,res){
 }
 
 router.post('/config', (req, res) => {
-	if(req.session.data['reserved-funding'] == 'true'){
-		createReservation(req,res)
-	} else {
-		delete req.session.data['reserved-funding']
-		req.session.data['reserved-funding'] = 'false'
-
-		delete req.session.data['reservation']
-		req.session.data['reservation'] = []
-	}
-
-	// PAYE
-	if(req.session.data['add-paye-now'] != 'yes'){
-		req.session.data['add-paye-now'] = 'no'
-	}
-
-	// agreement
-	if(req.session.data['sign-agreement-now'] != 'yes'){
-		req.session.data['sign-agreement-now'] = 'no'
-	}
-
-	if(req.session.data['started-add-approve']){
-		
-	} else {
-		req.session.data['apprentice'] = ''
-		req.session.data['apprentice-dob-day'] = ''
-		req.session.data['apprentice-dob-month'] = ''
-		req.session.data['apprentice-dob-year'] = ''
-		delete req.session.data['apprenticeship-status']
-	}
-
-	if(req.session.data['started-vacancy'] != 'true'){
-		req.session.data['vacancy'] = ''
-		req.session.data['vacancy']['name'] = ''
-		delete req.session.data['vacancy']
-	} else {
-		
-	}
-
-	if(req.session.data['logged-in'] == 'true'){
-		res.redirect(`/${req.version}/account-home`)
-	} else {
-		res.redirect(`/${req.version}/service-start`)
-	}
+	res.redirect(`/${req.version}/login`)
 })
 
 // Home page redirect

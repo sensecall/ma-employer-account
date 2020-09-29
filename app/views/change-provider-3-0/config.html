@@ -51,36 +51,6 @@ Prototype {{version}} config
 				]
 			}) }}
 
-			<!-- <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-				Apprentice details
-			</h3>
-			<div class="govuk-grid-row govuk-!-margin-bottom-6">
-				<div class="govuk-grid-column-one-half">
-					{{ govukInput({
-						value: data['apprentice']['first-name'],
-						label:
-						{
-							text: "First name"
-						},
-						classes: "govuk-!-width-two-thirds",
-						id: "start-month",
-						name: "apprentice[first-name]"
-					}) }}
-				</div>
-				<div class="govuk-grid-column-one-half">
-					{{ govukInput({
-						value: data['apprentice']['last-name'],
-						label:
-						{
-							text: "Last name"
-						},
-						classes: "govuk-!-width-full",
-						id: "start-month",
-						name: "apprentice[last-name]"
-					}) }}
-				</div>
-			</div> -->
-
 			{{govukButton({
 				text: "Save",
 				classes: "govuk-button--start govuk-!-margin-top-8  govuk-!-margin-bottom-2"
@@ -96,63 +66,7 @@ Prototype {{version}} config
 			</div>
 		</div>
 
-		<div class="govuk-grid-column-one-third">
-			{% call govukFieldset({
-				legend:
-				{
-					text: "Scenarios",
-					classes: "govuk-fieldset__legend--m",
-					isPageHeading: true
-				}
-			}) %}
-			{{ govukCheckboxes({
-				idPrefix: "logged-in",
-				name: "logged-in",
-				items:
-				[
-				{
-					value: "true",
-					text: "Logged in",
-					attributes:
-					{
-						checked: 'checked' if data['logged-in'] == 'true'
-					}
-				}
-				]
-			}) }}
-
-			{{ govukCheckboxes({
-				idPrefix: "add-paye-now",
-				name: "add-paye-now",
-				items:
-				[
-				{
-					value: "yes",
-					text: "Added PAYE",
-					attributes:
-					{
-						checked: 'checked' if data['add-paye-now'] == 'yes'
-					}
-				}
-				]
-			})}}
-			{{ govukCheckboxes({
-				idPrefix: "sign-agreement-now",
-				name: "sign-agreement-now",
-				items:
-				[
-				{
-					value: "yes",
-					text: "Signed agreement",
-					attributes:
-					{
-						checked: 'checked' if data['sign-agreement-now'] == 'yes'
-					}
-				}
-				]
-			}) }}
-			{% endcall %}
-		</div>
+		<div class="govuk-grid-column-one-third"></div>
 	</form>
 </div>
 {% endblock %}
