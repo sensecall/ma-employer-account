@@ -35,7 +35,7 @@
 				name: "employer-password"
 			}) }}
 
-			{% set url = "new-start-date" if data['change-provider-journey'] == 'provider' else "check-your-answers" %}
+			{% set url = "confirm-request" if data['change-provider-journey'] == 'provider' else "check-your-answers" %}
 
 			{{ govukButton({
 				text: "Sign in",

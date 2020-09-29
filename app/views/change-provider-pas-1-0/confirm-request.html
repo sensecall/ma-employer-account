@@ -1,0 +1,40 @@
+{% extends "./layout-pas.html" %}
+
+{% set currentPage = 'home' %}
+
+{% block content %}
+<div class="govuk-grid-row govuk-!-margin-top-8">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{{ govukRadios({
+				fieldset:
+				{
+					legend:
+					{
+						text: "Have you agreed to become Darren Diamond’s new training provider?",
+						isPageHeading: true,
+						classes: "govuk-fieldset__legend--xl"
+					}
+				},
+				idPrefix: "confirm-request",
+				name: "confirm-request",
+				items: [
+				{
+					value: "yes",
+					text: "Yes, I’ll add the details now"
+				},
+				{
+					value: "no",
+					text: "No, reject this request"
+				}
+				]
+			})}}
+
+			{{govukButton({
+				classes: "govuk-!-margin-top-4",
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}

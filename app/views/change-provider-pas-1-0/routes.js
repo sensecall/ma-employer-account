@@ -54,131 +54,6 @@ router.post('/login', (req, res) => {
 	res.redirect('account-home')
 })
 
-
-// set up an apprenticeship
-router.post('/set-up-an-apprenticeship', (req, res) => {
-	// started
-	let started = (req.session.data['started'] == 'true') ? true : false
-
-	// provider-added
-	let providerAdded = (req.session.data['provider-name']) ? true : false
-
-	// reserved-funding
-	let reservedFunding = (req.session.data['reserved-funding'] == 'true') ? true : false
-
-	// created-vacancy
-	let recruitment = (req.session.data['vacancy-created']) ? true : false
-
-	// apprentice-details
-	let apprenticeDetails = (req.session.data['apprentice-added']) ? true : false
-
-	if(!started){
-		res.redirect('eligibility-course-provider')
-	} else if(!providerAdded){
-		res.redirect('task--training-provider/introduction')
-	} else if(providerAdded && !reservedFunding){
-		res.redirect('task--reserve-funding/introduction')
-	} else if(providerAdded && reservedFunding && !recruitment){
-		res.redirect('task--recruitment/recruitment-check')
-	} else if(providerAdded && reservedFunding && recruitment && !apprenticeDetails){
-		res.redirect('task--apprentice-details/apprentice-details-check')
-	}
-})
-
-// recruit to add
-router.post('/recruit-to-add', (req, res) => {
-	req.session.data['apprentice'] = {}
-	res.redirect('task--apprentice-details/start')
-})
-
-
-// Eligibility
-router.post('/eligibility-course-provider', (req, res) => {
-	let course = req.session.data['course-name']
-	req.session.data['course-name'] = course.split("*")[1]
-	req.session.data['course-id'] = course.split("*")[0]
-
-	let provider = req.session.data['provider-name']
-	req.session.data['provider-name'] = provider.split("*")[0]
-	req.session.data['provider-ukprn'] = provider.split("*")[1]
-	
-	if (req.session.data['eligibility-course-provider'] == 'yes'){
-		res.redirect('eligibility-start-date')
-	} else {
-		res.redirect('eligibility-inform-fat')
-	}
-})
-
-// Eligibility - course
-router.get('/eligibility-course', (req, res) => {	
-	req.session.data['course-name'] = ''
-	res.render(`${req.version}/eligibility-course`)
-})
-
-router.post('/eligibility-course', (req, res) => {	
-	req.session.data['eligibility-course-name'] = req.session.data['course-name'].split("*")[1]
-
-	if (req.session.data['eligibility-course'] == 'yes'){
-		res.redirect('eligibility-provider')
-	} else {
-		res.redirect('eligibility-inform-course')
-	}
-})
-
-// Eligibility - provider
-router.post('/eligibility-provider', (req, res) => {	
-	if (req.session.data['eligibility-provider'] == 'yes'){
-		res.redirect('eligibility-start-date')
-	} else {
-		res.redirect('eligibility-inform-provider')
-	}
-})
-
-router.post('/eligibility-start-date', (req, res) => {
-	if (req.session.data['eligibility-start-date'] == 'yes'){
-		res.redirect('eligibility-recruit')
-	} else if (req.session.data['eligibility-start-date'] == 'no'){
-		res.redirect('eligibility-inform-start-date-too-far')
-	} else if (req.session.data['eligibility-start-date'] == 'unknown'){
-		res.redirect('eligibility-inform-start-date-unknown')
-	}
-})
-
-router.post('/eligibility-recruit', (req, res) => {
-	res.redirect('eligibility-start')
-})
-
-// continue set up
-router.post('/continue-set-up', (req, res) => {
-	if (req.session.data['continue-set-up'] == 'no'){
-		req.session.data['apprentice'] = {}
-		res.redirect('task--apprentice-details/start')
-	} else {
-		res.redirect('task--recruitment/recruitment-start')
-	}
-})
-
-
-// Reserve funding
-router.post('/task--reserve-funding/reserve-funding-start-page', (req, res) => {
-	req.session.data['reservation'] = {}
-	req.session.data['reservation']['course-name'] = ''
-	res.redirect('choose-course')
-})
-
-// Questions
-router.post('/task--reserve-funding/choose-course', (req, res) => {
-	req.session.data['started'] == 'true'
-	req.session.data['reservation']['start-month'] == ''
-	
-	if (req.session.data['know-course'] == 'yes' && req.session.data['reservation']['course-name']){
-		res.redirect('choose-start-month')
-	} else {
-		delete req.session.data['reservation']['course-name']
-		res.redirect('course-warning')
-	}
-})
-
 // choose start month
 router.post('/task--reserve-funding/choose-start-month', (req, res) => {
 	req.session.data['started'] == 'true'
@@ -382,11 +257,11 @@ router.post('/choose-new-training-provider', (req, res) => {
 	res.redirect('enter-dates-and-cost')
 })
 
-router.post('/enter-dates-and-cost', (req, res) => {
-	if(req.session.data['dates-cost'] == 'provider'){
-		res.redirect('confirmation')	
-	} else {
+router.post('/confirm-request', (req, res) => {
+	if(req.session.data['confirm-request'] == 'yes'){
 		res.redirect('new-start-date')
+	} else {
+		res.redirect('confirmation')
 	}
 })
 
