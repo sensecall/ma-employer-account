@@ -414,6 +414,11 @@ router.post('/new-price', (req, res) => {
 
 router.post('/check-your-answers', (req, res) => {
 	req.session.data['change-provider']['apprentice-status'] = "stopped-changing"
+
+	if (req.session.data['dates-cost'] == 'employer'){
+		req.session.data['change-provider']['status'] = "provider-checking-details"
+	}
+
 	res.redirect('confirmation')
 })
 

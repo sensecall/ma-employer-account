@@ -22,12 +22,6 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
 		{% if data['change-provider']['status'] == 'provider-confirmed-details' %}
-		<!-- <div class="app-alert app-alert--success govuk-!-margin-bottom-0">
-			<h2 class="govuk-heading-l govuk-!-margin-bottom-0" style="text-align: center;">
-				Apprenticeship stopped
-			</h2>
-		</div> -->
-
 		<div class="govuk-inset-text">
 			<h2 class="govuk-heading-m govuk-!-margin-bottom-2">
 				Changes for review
@@ -41,12 +35,6 @@
 			</p>
 		</div>
 		{% elif data['change-provider']['status'] == 'provider-adding-details' %}
-		<!-- <div class="app-alert app-alert--success govuk-!-margin-bottom-0">
-			<h2 class="govuk-heading-l govuk-!-margin-bottom-0" style="text-align: center;">
-				Apprenticeship stopped
-			</h2>
-		</div> -->
-
 		<div class="govuk-inset-text">
 			<h2 class="govuk-heading-m govuk-!-margin-bottom-2">
 				Changes pending
@@ -57,6 +45,19 @@
 
 			<p>
 				<a href="#">View changes</a>
+			</p>
+		</div>
+		{% elif data['change-provider']['status'] == 'provider-checking-details' %}
+		<div class="govuk-inset-text">
+			<h2 class="govuk-heading-m govuk-!-margin-bottom-2">
+				Changes pending
+			</h2>
+			<p class="govuk-!-margin-bottom-4">
+				There are changes to this apprentice's details that are waiting for approval by the training provider.
+			</p>
+
+			<p>
+				<a href="apprentice-changes">View changes</a>
 			</p>
 		</div>
 		{% endif %}

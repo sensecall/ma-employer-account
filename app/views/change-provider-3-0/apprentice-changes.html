@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">
+			Pending changes
+		</h1>
+
+		<p>
+			{{data['change-provider']['new-provider']['name']}} needs to check these details and confirm that they’re happy to take on your apprentice. 
+		</p>
+	</div>
+</div>
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+		{% set startDate = data['change-provider']['start-date-year'] + '-' + data['change-provider']['start-date-month'] + '-01' %}
+		{% set endDate = data['change-provider']['end-date-year'] + '-' + data['change-provider']['end-date-month'] + '-01' %}
+
+		{% set stopDate = data['change-provider']['stop-date-year'] + '-' + data['change-provider']['stop-date-month'] + '-01' %}
+
+		{{ govukTable({
+			caption: "Darren Diamond's details",
+			captionClasses: "govuk-heading-m govuk-!-margin-top-6",
+			firstCellIsHeader: true,
+			head: [
+			{
+				text: ""
+			},
+			{
+				text: "Current details"
+			},
+			{
+				text: "Requested changes"
+			},
+			{
+				text: ""
+			}
+			],
+			rows: [
+			[
+			{
+				text: "Stop date"
+			},
+			{
+				html: 'Not applicable'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + stopDate | date('MMMM YYYY') + '</ins>'
+			}
+			],
+			[
+			{
+				text: "Training provider"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">ABC Training Ltd</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + data['change-provider']['new-provider']['name'] + '</ins>'
+			}
+			],
+			[
+			{
+				text: "Training start date"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">May 2020</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + startDate | date('MMMM YYYY') + '</ins>'
+			}
+			],
+			[
+			{
+				text: "Training end date"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">July 2022</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">' + endDate | date('MMMM YYYY') + '</ins>'
+			}
+			],
+			[
+			{
+				text: "Price"
+			},
+			{
+				html: '<del style="text-decoration: none; /*background: #ffc0c0*/">£5,000</del>'
+			},
+			{
+				html: '<ins style="background: #cffdc6; text-decoration: none">£' + data['change-provider']['new-price'] + '</ins>'
+			}
+			]
+			]
+		}) }}
+	</div>
+</div>
+{% endblock %}
