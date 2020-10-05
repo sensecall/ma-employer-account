@@ -9,7 +9,11 @@
 			{% if data['confirm-request'] == 'no' %}
 			{{ govukPanel({
 				titleText: "You rejected " + data['employer-name'] + "’s request",
-				classes: "govuk-!-margin-top-8"
+				classes: "govuk-!-margin-top-8",
+				attributes:
+				{
+					style: "background: #00703c"
+				}
 			}) }}
 
 			<h2 class="govuk-heading-m govuk-!-margin-top-6">
@@ -23,7 +27,11 @@
 			
 			{{ govukPanel({
 				titleText: "You’ve confirmed Darren Diamond's apprenticeship details" if data['change-provider-journey'] != 'provider' else "You've entered Darren Diamond's apprenticeship details",
-				classes: "govuk-!-margin-top-8"
+				classes: "govuk-!-margin-top-8",
+				attributes:
+				{
+					style: "background: #00703c"
+				}
 			}) }}
 
 			<h2 class="govuk-heading-m govuk-!-margin-top-6">
