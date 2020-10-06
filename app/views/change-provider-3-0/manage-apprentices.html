@@ -217,9 +217,19 @@
 				{% endif %}
 			</td>
 			<td class="govuk-table__cell" data-label="Alerts">
-				<a class="govuk-link" href="#">
-					
+				{% if data['change-provider']['status'] == 'provider-confirmed-details' %}
+				<a class="govuk-link" href="apprentice-changes">
+					Changes for review
 				</a>
+				{% elif data['change-provider']['status'] == 'provider-adding-details' %}
+				<a class="govuk-link" href="apprentice-changes">
+					Changes pending
+				</a>
+				{% elif data['change-provider']['status'] == 'provider-checking-details' %}
+				<a class="govuk-link" href="apprentice-changes">
+					Changes pending
+				</a>
+				{% endif %}
 			</td>
 		</tr>
 		<tr class="govuk-table__row">
