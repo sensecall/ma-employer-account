@@ -35,11 +35,9 @@
 				name: "employer-password"
 			}) }}
 
-			{% set url = "confirm-request" if data['change-provider-journey'] == 'provider' else "check-your-answers" %}
-
 			{{ govukButton({
 				text: "Sign in",
-				href: url
+				href: "confirm-request"
 			}) }}
 		</form>
 

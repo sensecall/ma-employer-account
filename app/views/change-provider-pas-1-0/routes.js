@@ -259,7 +259,11 @@ router.post('/choose-new-training-provider', (req, res) => {
 
 router.post('/confirm-request', (req, res) => {
 	if(req.session.data['confirm-request'] == 'yes'){
-		res.redirect('new-start-date')
+		if(req.session.data['change-provider-journey'] == 'provider'){
+			res.redirect('new-start-date')
+		} else {
+			res.redirect('check-your-answers')
+		}
 	} else {
 		res.redirect('confirmation')
 	}

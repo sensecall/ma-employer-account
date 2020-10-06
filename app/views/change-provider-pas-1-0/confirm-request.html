@@ -6,6 +6,9 @@
 <div class="govuk-grid-row govuk-!-margin-top-8">
 	<div class="govuk-grid-column-two-thirds">
 		<form method="post">
+
+			{% set word = "add" if data['change-provider-journey'] == 'provider' else "review" %}
+
 			{{ govukRadios({
 				fieldset:
 				{
@@ -21,7 +24,7 @@
 				items: [
 				{
 					value: "yes",
-					text: "Yes, I’ll add the details now"
+					text: "Yes, I’ll " + word + " the details now"
 				},
 				{
 					value: "no",
