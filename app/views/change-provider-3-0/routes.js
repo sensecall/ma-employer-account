@@ -392,11 +392,19 @@ router.post('/choose-new-training-provider', (req, res) => {
 
 router.post('/enter-dates-and-cost', (req, res) => {
 	if(req.session.data['dates-cost'] == 'provider'){
+		res.redirect('check-provider')
+	} else {
+		res.redirect('new-start-date')
+	}
+})
+
+router.post('/check-provider', (req, res) => {
+	if(req.session.data['check-provider'] == 'yes'){
 		req.session.data['change-provider']['apprentice-status'] = "stopped-changing"
 		req.session.data['change-provider']['status'] = "provider-adding-details"
 		res.redirect('confirmation')
 	} else {
-		res.redirect('new-start-date')
+		res.redirect('apprentice')
 	}
 })
 

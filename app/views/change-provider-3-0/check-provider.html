@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+
+{% set currentPage = 'home' %}
+
+{% block header %}
+{% include "includes/cookie-banner.html" %}
+{% include "includes/ma-header.html" %}
+{% include "includes/ma-account-header.html" %}
+{% include "includes/ma-navbar.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+	text: "Back",
+	href: "javascript: window.history.go(-1)"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<form method="post">
+			{% call govukFieldset({
+				legend:
+				{
+					text: "Are you sure you want to send this request to " + data['change-provider']['new-provider']['name'] + "?",
+					isPageHeading: true,
+					classes: "govuk-fieldset__legend--xl"
+				}
+			}) %}
+
+			<p class="govuk-body">
+				Once you send this request, Darryl Dennis’s apprenticeship record and payments to {{data['change-provider']['current-provider']['name']}} will be stopped.
+			</p>
+
+			{{ govukRadios({
+				idPrefix: "check-provider",
+				name: "check-provider",
+				items: [
+				{
+					value: "yes",
+					text: "Yes"
+				},
+				{
+					value: "no",
+					text: "No, return to Darryl Dennis’s record"
+				}
+				]
+			})}}
+			{% endcall %}
+
+			{{govukButton({
+				classes: "govuk-!-margin-top-4",
+				text: "Continue"
+			})}}
+		</form>
+	</div>
+</div>
+{% endblock %}
