@@ -33,10 +33,10 @@
 				}) %}
 
 				<p class="govuk-body govuk-!-margin-top-3">
-					{% set startDate = data['change-provider']['start-date-year'] + '-' + data['change-provider']['start-date-month'] + '-01' %}
-					This date must be after the new start date ({{ startDate | date('MMMM YYYY')}}).
+					This date must be after the new start date ({% set startDate = data['change-provider']['start-date-year'] + '-' + data['change-provider']['start-date-month'] + '-01' %}{{ startDate | date('MMMM YYYY')}}).
 				</p>
-
+				
+				
 				<span id="start-date-hint" class="govuk-hint">
 					For example, 04 2020
 				</span>

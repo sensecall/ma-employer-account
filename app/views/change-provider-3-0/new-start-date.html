@@ -26,15 +26,18 @@
 				{% call govukFieldset({
 					legend:
 					{
-						text: "What is the start date with the new training provider?",
+						text: "What is the start date with [new training provider name]?",
 						isPageHeading: true,
 						classes: "govuk-fieldset__legend--xl"
 					}
 				}) %}
 
-				<!-- <p class="govuk-body govuk-!-margin-top-3">
-					This date must be on or after the current month (September 2020).
-				</p> -->
+				<p class="govuk-body govuk-!-margin-top-3">
+					This date must be on or after the stop date ({% set stopDate = data['change-provider']['stop-date-year'] + '-' + data['change-provider']['stop-date-month'] + '-01' %}{{ stopDate | date('MMMM YYYY')}}).
+				</p>
+								
+							
+
 
 				<span id="start-date-hint" class="govuk-hint">
 					For example, 04 2020

@@ -21,13 +21,22 @@
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-two-thirds">
+		
+		
 		<form method="post">
+			
+			
+			
 			{{ govukInput({
 				label:
 				{
-					text: "What is the agreed cost of completing the training with the new provider?",
+					text: "What is the agreed cost of completing the training with [new training provider name]?",
 					classes: "govuk-label--xl govuk-!-margin-bottom-6",
 					isPageHeading: true
+				},
+				prefix:
+				{
+					text: "Hello world?"
 				},
 				classes: "govuk-input--width-10",
 				id: "new-price",
@@ -37,7 +46,10 @@
 				spellcheck: false,
 				hint:
 				{
-					text: "For example, 5000"
+					html: '
+					<p class="gov-body">This is the price you agreed with [new training provider name] to complete the remainder of the apprenticeship training and assessment.</p>
+					<div id="event-name-hint" class="govuk-hint">For example, 5000</div>
+					'
 				}
 			}) }}
 
