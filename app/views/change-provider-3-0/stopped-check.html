@@ -25,7 +25,7 @@
 			{% call govukFieldset({
 				legend:
 				{
-					text: "Has Darren Diamond stopped training with " + data['change-provider']['current-provider']['name'] + "?",
+					text: "Is Darren Diamond still training with " + data['change-provider']['current-provider']['name'] + "?",
 					isPageHeading: true,
 					classes: "govuk-fieldset__legend--xl"
 				}
@@ -77,16 +77,16 @@
 				name: "stopped-check",
 				items: [
 				{
+					value: "false",
+					text: "Yes, they’re still training"
+				},
+				{
 					value: "true",
-					text: "Yes, they've stopped",
+					text: "No, they’ve stopped",
 					conditional:
 					{
 						html: stoppedDate
 					}
-				},
-				{
-					value: "false",
-					text: "No, they're still training"
 				}
 				]
 			})}}
