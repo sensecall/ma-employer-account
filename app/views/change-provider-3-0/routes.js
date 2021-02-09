@@ -398,6 +398,14 @@ router.post('/enter-dates-and-cost', (req, res) => {
 	}
 })
 
+router.post('/cancel-confirm', (req, res) => {
+	if(req.session.data['cancel-confirm'] == 'Yes'){
+		res.redirect('apprentice')
+	} else {
+		res.redirect('check-your-answers')
+	}
+})
+
 router.post('/check-provider', (req, res) => {
 	if(req.session.data['check-provider'] == 'yes'){
 		req.session.data['change-provider']['apprentice-status'] = "stopped-changing"
